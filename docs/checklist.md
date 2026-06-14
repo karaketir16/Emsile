@@ -1,6 +1,6 @@
 # Emsile Flutter Geliştirme Checklist
 
-Son güncelleme: Çekim ekranında kategori/bina geçişlerinde seçili şahıs korunur hale getirildi; şahıs seçimi ve tüm formlar görünümü PDF sırasına göre tablo düzenine taşındı.
+Son güncelleme: Tüm formlar tablosu da seçilebilir hale getirildi; çekim ekranında üst kontrol alanı sabitlenip tablolar ayrı scroll bölgesine taşındı.
 
 Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya tamamlanma durumu değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
@@ -81,8 +81,10 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Seçime göre Arapça formu büyük göster.
 - [x] Türkçe anlam ve kısa kural notu göster.
 - [x] Tüm formları listeleyen detay görünümü ekle.
+- [x] Tüm formlar tablosundan da aktif şahıs seçilebilsin.
 - [x] Şahıs seçimini PDF düzenine yakın tablo görünümüne taşı.
 - [x] Tüm formları PDF düzenine yakın tablo görünümüne taşı.
+- [x] Üst seçim alanını sabitle, tabloları ayrı scroll alanında göster.
 - [x] Sağdan sola yazım davranışını Playwright screenshot ile test et.
 - [ ] Nefy, Emir ve İsimler kategorilerini ekle.
 - [ ] Sayı/cinsiyet seçiciyi ayrı filtre olarak modelle.

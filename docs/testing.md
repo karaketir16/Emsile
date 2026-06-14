@@ -43,8 +43,10 @@ Kapsam:
 - Çekim tablosu: Meçhul segment tıklaması doğru formu gösteriyor.
 - Çekim tablosu: Muzâri segment tıklaması doğru formu gösteriyor.
 - Çekim tablosu: Şahıs tablosundaki hücre tıklaması sonuç kartını güncelliyor.
+- Çekim tablosu: Tüm formlar tablosundaki hücre tıklaması sonuç kartını güncelliyor.
 - Çekim tablosu: Bina değişiminde seçili şahıs korunuyor.
 - Çekim tablosu: Kategori değişiminde seçili şahıs korunuyor.
+- Çekim tablosu: Üst kontroller sabit kalırken alt tablolar ayrı scroll alanında akıyor.
 - Pratik: Doğru cevap tıklaması "Doğru" geri bildirimini gösteriyor.
 - Pratik: Yanlış cevap tıklaması "Tekrar Bak" geri bildirimini gösteriyor.
 - Pratik: Sonraki Soru butonu bir sonraki soruya geçiyor.
@@ -63,6 +65,21 @@ Not:
 Widget testleri Playwright'ın yerini tamamen almaz. `flutter test` etkileşim ve durum değişimini doğrular; `npm run visual-check` ise release web çıktısında görsel akışı ve layout'u kontrol eder.
 
 Widget testleri ChromeDriver veya Playwright kurulumu gerektirmez; tüm platformlarda `flutter test` ile çalışır.
+
+### Codex In-App Browser Doğrulaması
+
+Codex içinde çalışırken yerel web çıktısı ayrıca Codex in-app browser ile açılıp canlı olarak kontrol edilir.
+
+Amaç:
+
+- `build/web` veya servis edilen yerel web çıktısının gerçekten açıldığını görsel olarak doğrulamak.
+- Kritik ekranlarda manuel etkileşimleri hızlıca teyit etmek.
+- Özellikle mobil merkezli layout, sabit üst alanlar ve scroll davranışı gibi ayrıntıları canlı yüzeyde görmek.
+
+Not:
+
+- Bu adım otomatik testlerin yerine geçmez; `flutter test` ve `npm run visual-check` ile birlikte tamamlayıcı doğrulama olarak kullanılır.
+- Bu projede çekim ekranı gibi etkileşimli değişikliklerde Codex in-app browser üzerinden de kontrol yapılmıştır.
 
 ### Seed Veri Validasyonu
 

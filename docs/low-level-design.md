@@ -147,11 +147,12 @@ Paylaşılan widgetlar:
 - `StudyStep`
 - `LessonTile`
 - `ArabicResultCard`
-- `CompactFormRow`
 - `AnswerButton`
 - `InfoPanel`
 
 `AppPage`, tüm ekranlarda mobil merkezli sayfa iskeletini sağlar. `ConstrainedBox(maxWidth: 520)` ile webde de mobil okuma genişliği korunur.
+
+Varsayılan olarak sayfa gövdesini `CustomScrollView` içinde render eder. Ancak `scrollable: false` seçeneği ile başlık alanı sabit, gövde alanı ayrı scroll davranışına sahip olacak şekilde de kullanılabilir. Çekim ekranı bu ikinci modu kullanır.
 
 ## 7. Çekim Tablosu Davranışı
 
@@ -180,6 +181,18 @@ Kategori veya bina değiştiğinde seçili şahıs indeksle değil kimlikle koru
   - `1. Şahıs / Ortak`
 
 Bu şema hem şahıs seçim tablosunda hem de tüm formlar tablosunda ortak kullanılır.
+
+Etkileşim:
+
+- Şahıs tablosundaki bir hücreye dokunmak aktif formu değiştirir.
+- Tüm formlar tablosundaki bir hücreye dokunmak da aynı seçimi yapar.
+- Aktif hücre her iki tabloda da vurgulanır.
+
+Yerleşim:
+
+- `Mâzi/Muzâri` seçici, `Malum/Meçhul` seçici ve üstteki sonuç kartı sabittir.
+- `Şahıs Tablosu` ve `Tüm Formlar` alanı alttaki bağımsız scroll bölgesinde akar.
+- Böylece kullanıcı aşağıdaki tabloyu incelerken üst kontrol alanı ekranda kalır.
 
 ## 8. Arapça Metin Davranışı
 

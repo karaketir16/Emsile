@@ -432,6 +432,158 @@ void main() {
   );
 
   testWidgets(
+    'conjugation: selecting Muzari Malum second person singular masculine does not highlight third person singular feminine and displays correct meaning',
+    (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      final scenarioTestData = AppData(
+        lessons: const [],
+        pronouns: const [],
+        muhtelifeEntries: const [],
+        forms: [
+          ...testFormsList,
+          const ConjugationForm(
+            category: FormCategory.muzari,
+            voice: Voice.malum,
+            person: FormPerson.third,
+            number: FormNumber.singular,
+            gender: FormGender.feminine,
+            pronounLabel: 'O (kd.)',
+            arabic: 'تَنْصُرُ',
+            meaning: 'O kadın yardım ediyor.',
+          ),
+        ],
+        practiceQuestions: const [],
+      );
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ConjugationScreen(data: scenarioTestData),
+        ),
+      );
+      await navigateToConjugations(tester);
+
+      // Select 'Fiil-i Muzâri' from the dropdown
+      await selectConjugationCategory(tester, 'Fiil-i Muzâri');
+
+      // Tapping on 'تَنْصُرُ' (Muhatap) in FormsTable (it's the last one)
+      // The first 'تَنْصُرُ' is Gaibe (O kd.), the last one is Muhatap (Sen er.)
+      await tester.ensureVisible(find.text('تَنْصُرُ').last);
+      await tester.tap(find.text('تَنْصُرُ').last);
+      await tester.pumpAndSettle();
+
+      // Now verify result card displays 'Yardım ediyorsun.' (the 2nd person meaning)
+      expect(find.text('Yardım ediyorsun.'), findsWidgets);
+      expect(find.text('O kadın yardım ediyor.'), findsNothing);
+
+      // Verify that in SelectionTable, 'O (kd.)' is uncolored (white)
+      final oKdFinder = find.ancestor(
+        of: find.text('O (kd.)'),
+        matching: find.byType(Container),
+      ).first;
+      final oKdWidget = tester.widget<Container>(oKdFinder);
+      final oKdDecoration = oKdWidget.decoration as BoxDecoration;
+      expect(oKdDecoration.color, Colors.white);
+
+      // Verify that in SelectionTable, 'Sen (er.)' is colored (primaryContainer)
+      final senErFinder = find.ancestor(
+        of: find.text('Sen (er.)'),
+        matching: find.byType(Container),
+      ).first;
+      final senErWidget = tester.widget<Container>(senErFinder);
+      final senErDecoration = senErWidget.decoration as BoxDecoration;
+      final context = tester.element(find.text('Sen (er.)'));
+      expect(senErDecoration.color, Theme.of(context).colorScheme.primaryContainer);
+
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'conjugation: Muzari Malum selecting Gaib plural, switching to Mechul preserves plural and does not fallback to singular',
+    (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      final scenarioTestData = AppData(
+        lessons: const [],
+        pronouns: const [],
+        muhtelifeEntries: const [],
+        forms: [
+          ...testFormsList,
+          const ConjugationForm(
+            category: FormCategory.muzari,
+            voice: Voice.malum,
+            person: FormPerson.third,
+            number: FormNumber.plural,
+            gender: FormGender.masculine,
+            pronounLabel: 'Onlar (er.)',
+            arabic: 'يَنْصُرُونَ',
+            meaning: 'Yardım ediyorlar.',
+          ),
+          const ConjugationForm(
+            category: FormCategory.muzari,
+            voice: Voice.mechul,
+            person: FormPerson.third,
+            number: FormNumber.singular,
+            gender: FormGender.masculine,
+            pronounLabel: 'O (er.)',
+            arabic: 'يُنْصَرُ',
+            meaning: 'Yardım edilir.',
+          ),
+          const ConjugationForm(
+            category: FormCategory.muzari,
+            voice: Voice.mechul,
+            person: FormPerson.third,
+            number: FormNumber.plural,
+            gender: FormGender.masculine,
+            pronounLabel: 'Onlar (er.)',
+            arabic: 'يُنْصَرُونَ',
+            meaning: 'Yardım ediliyorlar.',
+          ),
+        ],
+        practiceQuestions: const [],
+      );
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ConjugationScreen(data: scenarioTestData),
+        ),
+      );
+      await navigateToConjugations(tester);
+
+      // Select 'Fiil-i Muzâri' from the dropdown
+      await selectConjugationCategory(tester, 'Fiil-i Muzâri');
+
+      // Tap on the plural third person masculine form cell ('يَنْصُرُونَ')
+      await tester.ensureVisible(find.text('يَنْصُرُونَ').first);
+      await tester.tap(find.text('يَنْصُرُونَ').first);
+      await tester.pumpAndSettle();
+
+      // Tap on 'Meçhul'
+      await tester.ensureVisible(find.text('Meçhul'));
+      await tester.tap(find.text('Meçhul'));
+      await tester.pumpAndSettle();
+
+      // Verify that the result card now displays يُنْصَرُونَ (the plural mechul form) and NOT يُنْصَرُ (the singular)
+      expect(find.text('يُنْصَرُونَ'), findsWidgets);
+      expect(find.text('Yardım ediliyorlar.'), findsWidgets);
+
+      // Verify that 'Onlar (er.)' is STILL selected in SelectionTable
+      final cellContainerFinder = find.ancestor(
+        of: find.text('Onlar (er.)'),
+        matching: find.byType(Container),
+      ).first;
+      final containerWidget = tester.widget<Container>(cellContainerFinder);
+      final decoration = containerWidget.decoration as BoxDecoration;
+      final context = tester.element(find.text('Onlar (er.)'));
+      expect(decoration.color, Theme.of(context).colorScheme.primaryContainer);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
     'conjugation: selected person is preserved when switching voice',
     (WidgetTester tester) async {
       await tester.binding.setSurfaceSize(const Size(390, 844));

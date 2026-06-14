@@ -922,8 +922,8 @@ class FormSelection {
   }
 
   bool matches(ConjugationForm form) {
-    if (arabic != null) {
-      return form.arabic == arabic;
+    if (arabic != null && form.arabic != arabic) {
+      return false;
     }
     return form.person == person &&
         form.number == number &&

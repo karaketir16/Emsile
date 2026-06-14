@@ -47,7 +47,7 @@ class LessonDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final muhtelifeRows = _buildMuhtelifeRows(data.muhtelifeEntries);
+    final muhtelifeEntries = _sortedMuhtelifeEntries(data.muhtelifeEntries);
     final relatedForms = data.forms
         .where((form) => form.category == lesson.relatedCategory)
         .take(4)
@@ -74,7 +74,7 @@ class LessonDetailScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 10),
-                _MuhtelifeTable(rows: muhtelifeRows),
+                _MuhtelifeList(entries: muhtelifeEntries),
               ] else ...[
                 Text('Örnekler', style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
@@ -91,117 +91,98 @@ class LessonDetailScreen extends StatelessWidget {
   }
 }
 
-List<_MuhtelifeRow> _buildMuhtelifeRows(List<MuhtelifeEntry> entries) {
-  final rows = <int, _MuhtelifeRowBuilder>{};
-
-  for (final entry in entries) {
-    if (entry.row == null || entry.column == null) {
-      continue;
-    }
-    final builder = rows.putIfAbsent(
-      entry.row!,
-      () => _MuhtelifeRowBuilder(entry.row!),
-    );
-    if (entry.column == 'left') {
-      builder.left = entry;
-    } else if (entry.column == 'right') {
-      builder.right = entry;
-    }
-  }
-
-  final orderedKeys = rows.keys.toList()..sort();
-  return orderedKeys
-      .map(
-        (key) => _MuhtelifeRow(left: rows[key]!.left, right: rows[key]!.right),
-      )
-      .toList();
+List<MuhtelifeEntry> _sortedMuhtelifeEntries(List<MuhtelifeEntry> entries) {
+  final sorted = [...entries];
+  sorted.sort((a, b) => a.sortOrder.compareTo(b.sortOrder));
+  return sorted;
 }
 
-class _MuhtelifeTable extends StatelessWidget {
-  const _MuhtelifeTable({required this.rows});
+class _MuhtelifeList extends StatelessWidget {
+  const _MuhtelifeList({required this.entries});
 
-  final List<_MuhtelifeRow> rows;
+  final List<MuhtelifeEntry> entries;
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        for (var index = 0; index < entries.length; index++) ...[
+          _MuhtelifeListItem(index: index + 1, entry: entries[index]),
+          if (index != entries.length - 1) const SizedBox(height: 10),
+        ],
+      ],
+    );
+  }
+}
+
+class _MuhtelifeListItem extends StatelessWidget {
+  const _MuhtelifeListItem({required this.index, required this.entry});
+
+  final int index;
+  final MuhtelifeEntry entry;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Card(
       clipBehavior: Clip.antiAlias,
-      child: Table(
-        columnWidths: const {0: FlexColumnWidth(), 1: FlexColumnWidth()},
-        border: TableBorder.symmetric(
-          inside: BorderSide(color: Theme.of(context).dividerColor),
-        ),
-        children: [
-          for (final row in rows)
-            TableRow(
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _MuhtelifeCell(entry: row.left, alignEnd: false),
-                _MuhtelifeCell(entry: row.right, alignEnd: true),
+                CircleAvatar(
+                  radius: 16,
+                  backgroundColor: colorScheme.primaryContainer,
+                  child: Text(
+                    index.toString(),
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: colorScheme.onPrimaryContainer,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        entry.label,
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.w800),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        entry.meaning,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MuhtelifeCell extends StatelessWidget {
-  const _MuhtelifeCell({required this.entry, required this.alignEnd});
-
-  final MuhtelifeEntry? entry;
-  final bool alignEnd;
-
-  @override
-  Widget build(BuildContext context) {
-    if (entry == null) {
-      return const SizedBox.shrink();
-    }
-
-    final textAlign = alignEnd ? TextAlign.end : TextAlign.start;
-    final crossAxisAlignment = alignEnd
-        ? CrossAxisAlignment.end
-        : CrossAxisAlignment.start;
-
-    return Padding(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: crossAxisAlignment,
-        children: [
-          Text(
-            entry!.label,
-            textAlign: textAlign,
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
-          const SizedBox(height: 8),
-          Directionality(
-            textDirection: TextDirection.rtl,
-            child: Text(
-              entry!.arabic,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineSmall,
+            const SizedBox(height: 12),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(
+                entry.arabic,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
             ),
-          ),
-          const SizedBox(height: 6),
-          Text(entry!.meaning, textAlign: textAlign),
-        ],
+          ],
+        ),
       ),
     );
   }
-}
-
-class _MuhtelifeRowBuilder {
-  _MuhtelifeRowBuilder(this.row);
-
-  final int row;
-  MuhtelifeEntry? left;
-  MuhtelifeEntry? right;
-}
-
-class _MuhtelifeRow {
-  const _MuhtelifeRow({required this.left, required this.right});
-
-  final MuhtelifeEntry? left;
-  final MuhtelifeEntry? right;
 }
 
 class LessonTile extends StatelessWidget {

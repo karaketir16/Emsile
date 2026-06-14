@@ -17,7 +17,7 @@
       "type": "fiil_mazi",
       "label": "Fiil-i Mâzi",
       "arabic": "نَصَرَ",
-      "meaning": "Geçmiş zaman fiili.",
+      "meaning": "Yardım etti.",
       "sortOrder": 10,
       "row": 1,
       "column": "left"
@@ -26,7 +26,7 @@
       "type": "fiil_muzari",
       "label": "Fiil-i Muzâri",
       "arabic": "يَنْصُرُ",
-      "meaning": "Şimdiki/geniş zaman fiili.",
+      "meaning": "Yardım ediyor. Yardım eder. Yardım edecek.",
       "sortOrder": 20,
       "row": 1,
       "column": "right"
@@ -35,7 +35,7 @@
       "type": "masdar",
       "label": "Masdar-ı Gayr-ı Mîmî",
       "arabic": "نَصْرًا",
-      "meaning": "Mimsiz masdar.",
+      "meaning": "Yardım etmek.",
       "sortOrder": 30,
       "row": 2,
       "column": "left"
@@ -44,7 +44,7 @@
       "type": "ism_fail",
       "label": "İsm-i Fâil",
       "arabic": "نَاصِرٌ",
-      "meaning": "Etken sıfat / yapan kişi.",
+      "meaning": "Yardım eden.",
       "sortOrder": 40,
       "row": 2,
       "column": "right"
@@ -53,7 +53,7 @@
       "type": "ism_meful",
       "label": "İsm-i Mef'ûl",
       "arabic": "مَنْصُورٌ",
-      "meaning": "Edilgen sıfat / yapılan kişi.",
+      "meaning": "Yardım edilen.",
       "sortOrder": 50,
       "row": 3,
       "column": "left"
@@ -62,7 +62,7 @@
       "type": "cahd_mutlak",
       "label": "Cahd-ı Mutlak",
       "arabic": "لَمْ يَنْصُرْ",
-      "meaning": "Geçmiş zamanın kesin olumsuzu.",
+      "meaning": "Yardım etmedi.",
       "sortOrder": 60,
       "row": 3,
       "column": "right"
@@ -70,8 +70,8 @@
     {
       "type": "cahd_mustagrak",
       "label": "Cahd-ı Mustağrak",
-      "arabic": "لَمَّا يَنْصُرْ",
-      "meaning": "Geçmişten şimdiki zamana olumsuz.",
+      "arabic": "لَمَّا يَنْصُرْ",
+      "meaning": "Henüz (hiç) yardım etmedi.",
       "sortOrder": 70,
       "row": 4,
       "column": "left"
@@ -80,7 +80,7 @@
       "type": "nefy_hal",
       "label": "Nefy-i Hâl",
       "arabic": "مَا يَنْصُرُ",
-      "meaning": "Şimdiki zamanın olumsuzu.",
+      "meaning": "Yardım etmiyor.",
       "sortOrder": 80,
       "row": 4,
       "column": "right"
@@ -89,7 +89,7 @@
       "type": "nefy_istikbal",
       "label": "Nefy-i İstikbâl",
       "arabic": "لا يَنْصُرُ",
-      "meaning": "Gelecek zamanın olumsuzu.",
+      "meaning": "Yardım etmeyecek.",
       "sortOrder": 90,
       "row": 5,
       "column": "left"
@@ -98,7 +98,7 @@
       "type": "tekid_nefy_istikbal",
       "label": "Te'kid-i Nefy-i İstikbâl",
       "arabic": "لَنْ يَنْصُرَ",
-      "meaning": "Vurgulu gelecek zaman olumsuzu.",
+      "meaning": "Asla (elbette) yardım etmeyecek.",
       "sortOrder": 100,
       "row": 5,
       "column": "right"
@@ -107,7 +107,7 @@
       "type": "emr_gaib",
       "label": "Emr-i Gâib",
       "arabic": "لِيَنْصُرْ",
-      "meaning": "Üçüncü şahıs emir fiili.",
+      "meaning": "Yardım etsin!",
       "sortOrder": 110,
       "row": 6,
       "column": "left"
@@ -116,7 +116,7 @@
       "type": "nehy_gaib",
       "label": "Nehy-i Gâib",
       "arabic": "لا يَنْصُرْ",
-      "meaning": "Üçüncü şahıs yasaklama fiili.",
+      "meaning": "Yardım etmesin!",
       "sortOrder": 120,
       "row": 6,
       "column": "right"
@@ -125,7 +125,7 @@
       "type": "emr_hazir",
       "label": "Emr-i Hâzır",
       "arabic": "اُنْصُرْ",
-      "meaning": "İkinci şahıs emir fiili / muhataba emir.",
+      "meaning": "Yardım et!",
       "sortOrder": 130,
       "row": 7,
       "column": "left"
@@ -134,7 +134,7 @@
       "type": "nehy_hazir",
       "label": "Nehy-i Hâzır",
       "arabic": "لا تَنْصُرْ",
-      "meaning": "İkinci şahıs yasaklama fiili / muhataba yasaklama.",
+      "meaning": "Yardım etme!",
       "sortOrder": 140,
       "row": 7,
       "column": "right"
@@ -143,7 +143,7 @@
       "type": "ism_zaman_mekan_masdar_mimi",
       "label": "İsm-i Zaman / İsm-i Mekân / Masdar-ı Mîmî",
       "arabic": "مَنْصَرٌ",
-      "meaning": "Zaman, mekan ve mimli masdar.",
+      "meaning": "Yardım etme zamanı. Yardım etme mekânı. Yardım etmek.",
       "sortOrder": 150,
       "row": 8,
       "column": "left"
@@ -152,7 +152,7 @@
       "type": "ism_alet",
       "label": "İsm-i Âlet",
       "arabic": "مِنْصَرٌ",
-      "meaning": "Alet ismi.",
+      "meaning": "Yardım etme aleti.",
       "sortOrder": 160,
       "row": 8,
       "column": "right"
@@ -161,7 +161,7 @@
       "type": "masdar_bina_merre",
       "label": "Masdar Bina-i Merre",
       "arabic": "نَصْرَةً",
-      "meaning": "Defa belirten masdar / kere.",
+      "meaning": "Bir defa yardım etmek.",
       "sortOrder": 170,
       "row": 9,
       "column": "left"
@@ -170,7 +170,7 @@
       "type": "masdar_bina_nev",
       "label": "Masdar Bina-i Nev'",
       "arabic": "نِصْرَةً",
-      "meaning": "Tarz/çeşit belirten masdar.",
+      "meaning": "Bir türlü (çeşit) yardım etmek.",
       "sortOrder": 180,
       "row": 9,
       "column": "right"
@@ -179,7 +179,7 @@
       "type": "ism_tasgir",
       "label": "İsm-i Tasğir",
       "arabic": "نُصَيْرٌ",
-      "meaning": "Küçültme ismi.",
+      "meaning": "Az yardım eden. (Küçük bir yardım)",
       "sortOrder": 190,
       "row": 10,
       "column": "left"
@@ -187,8 +187,8 @@
     {
       "type": "ism_mensub",
       "label": "İsm-i Mensub",
-      "arabic": "نَصْرِيٌّ",
-      "meaning": "Aitlik/nispet ismi.",
+      "arabic": "نَصْرِيٌّ",
+      "meaning": "Yardıma mensup olan.",
       "sortOrder": 200,
       "row": 10,
       "column": "right"
@@ -196,8 +196,8 @@
     {
       "type": "mubalaga_ism_fail",
       "label": "Mübalağa İsm-i Fâil",
-      "arabic": "نَصَّارٌ",
-      "meaning": "Mübalağalı etken sıfat.",
+      "arabic": "نَصَّارٌ",
+      "meaning": "Çok (mübalağalı) yardım eden.",
       "sortOrder": 210,
       "row": 11,
       "column": "left"
@@ -206,7 +206,7 @@
       "type": "ism_tafdil",
       "label": "İsm-i Tafdil",
       "arabic": "أَنْصَرُ",
-      "meaning": "Üstünlük sıfatı.",
+      "meaning": "En çok (daha çok) yardım eden.",
       "sortOrder": 220,
       "row": 11,
       "column": "right"
@@ -215,7 +215,7 @@
       "type": "fiil_taaccub_evvel",
       "label": "Fiil-i Taaccüb-i Evvel",
       "arabic": "مَا أَنْصَرَهُ",
-      "meaning": "Birinci hayret fiili.",
+      "meaning": "Acayip yardım etti!",
       "sortOrder": 230,
       "row": 12,
       "column": "left"
@@ -224,7 +224,7 @@
       "type": "fiil_taaccub_sani",
       "label": "Fiil-i Taaccüb-i Sânî",
       "arabic": "أَنْصِرْ بِهِ",
-      "meaning": "İkinci hayret fiili.",
+      "meaning": "Ne acayip (ne kadar da) yardım etti!",
       "sortOrder": 240,
       "row": 12,
       "column": "right"

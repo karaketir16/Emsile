@@ -13,7 +13,7 @@ class ArabicResultCard extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return SizedBox(
-      height: 88,
+      height: 74,
       child: Card(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -48,13 +48,6 @@ class ArabicResultCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(form.meaning, style: textTheme.titleSmall),
-                      const SizedBox(height: 2),
-                      Text(
-                        form.rule,
-                        style: textTheme.bodySmall?.copyWith(
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                      ),
                     ],
                   ),
                 ),

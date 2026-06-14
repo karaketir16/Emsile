@@ -5,20 +5,173 @@ import 'package:emsile_flutter/shared/widgets/app_page.dart';
 import 'package:emsile_flutter/shared/widgets/info_panel.dart';
 import 'package:flutter/material.dart';
 
-class ConjugationScreen extends StatefulWidget {
+class ConjugationScreen extends StatelessWidget {
   const ConjugationScreen({required this.data, super.key});
 
   final AppData data;
 
   @override
-  State<ConjugationScreen> createState() => _ConjugationScreenState();
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return AppPage(
+      title: 'Çekim Tablosu',
+      scrollable: false,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _MenuCard(
+              icon: Icons.grid_view_outlined,
+              title: 'Çekimler',
+              subtitle: 'Fiil ve isim çekim tablolarını incele',
+              color: colorScheme.primaryContainer,
+              iconColor: colorScheme.primary,
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => _ConjugationsPage(data: data),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            _MenuCard(
+              icon: Icons.badge_outlined,
+              title: 'Zamirler',
+              subtitle: 'Ayrı ve bitişik şahıs zamirlerini gör',
+              color: colorScheme.secondaryContainer,
+              iconColor: colorScheme.secondary,
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => _PronounsPage(pronouns: data.pronouns),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
-class _ConjugationScreenState extends State<ConjugationScreen> {
-  _TableView _tableView = _TableView.conjugations;
+class _MenuCard extends StatelessWidget {
+  const _MenuCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.color,
+    required this.iconColor,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final Color color;
+  final Color iconColor;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Icon(icon, color: iconColor, size: 28),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              Icon(
+                Icons.chevron_right,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PronounsPage extends StatefulWidget {
+  const _PronounsPage({required this.pronouns});
+
+  final List<PronounEntry> pronouns;
+
+  @override
+  State<_PronounsPage> createState() => _PronounsPageState();
+}
+
+class _PronounsPageState extends State<_PronounsPage> {
+  PronounKind _pronounKind = PronounKind.independent;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Zamirler'),
+        centerTitle: false,
+      ),
+      body: SafeArea(
+        child: AppPage(
+          title: 'Zamirler',
+          scrollable: false,
+          child: PronounsPanel(
+            pronouns: widget.pronouns,
+            selectedKind: _pronounKind,
+            onKindChanged: (kind) => setState(() => _pronounKind = kind),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ConjugationsPage extends StatefulWidget {
+  const _ConjugationsPage({required this.data});
+
+  final AppData data;
+
+  @override
+  State<_ConjugationsPage> createState() => _ConjugationsPageState();
+}
+
+class _ConjugationsPageState extends State<_ConjugationsPage> {
   FormCategory _category = FormCategory.mazi;
   Voice _voice = Voice.malum;
-  PronounKind _pronounKind = PronounKind.independent;
   FormSelection _selectedForm = const FormSelection(
     person: FormPerson.third,
     number: FormNumber.singular,
@@ -29,7 +182,9 @@ class _ConjugationScreenState extends State<ConjugationScreen> {
   void initState() {
     super.initState();
     if (widget.data.forms.isNotEmpty) {
-      final hasCategory = widget.data.forms.any((f) => f.category == _category);
+      final hasCategory = widget.data.forms.any(
+        (f) => f.category == _category,
+      );
       if (!hasCategory) {
         _category = widget.data.forms.first.category;
       }
@@ -91,189 +246,167 @@ class _ConjugationScreenState extends State<ConjugationScreen> {
     final forms = _visibleForms;
     final activeForm = forms.isEmpty ? null : _activeForm;
 
-    return AppPage(
-      title: 'Çekim Tablosu',
-      scrollable: false,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SegmentedButton<_TableView>(
-            expandedInsets: EdgeInsets.zero,
-            segments: const [
-              ButtonSegment(
-                value: _TableView.conjugations,
-                icon: Icon(Icons.grid_view_outlined),
-                label: Text('Çekimler'),
-              ),
-              ButtonSegment(
-                value: _TableView.pronouns,
-                icon: Icon(Icons.badge_outlined),
-                label: Text('Zamirler'),
-              ),
-            ],
-            selected: {_tableView},
-            onSelectionChanged: (value) {
-              setState(() => _tableView = value.first);
-            },
-          ),
-          const SizedBox(height: 10),
-          if (_tableView == _TableView.pronouns) ...[
-            Expanded(
-              child: PronounsPanel(
-                pronouns: widget.data.pronouns,
-                selectedKind: _pronounKind,
-                onKindChanged: (kind) => setState(() => _pronounKind = kind),
-              ),
-            ),
-          ] else if (activeForm == null) ...[
-            const Expanded(
-              child: Center(child: Text('Gösterilecek çekim formu yok.')),
-            ),
-          ] else ...[
-            ArabicResultCard(form: activeForm),
-            const SizedBox(height: 10),
-            if (_category.isVerb) ...[
-              SegmentedButton<Voice>(
-                expandedInsets: EdgeInsets.zero,
-                segments: const [
-                  ButtonSegment(
-                    value: Voice.malum,
-                    icon: Icon(Icons.record_voice_over),
-                    label: Text('Malum'),
-                  ),
-                  ButtonSegment(
-                    value: Voice.mechul,
-                    icon: Icon(Icons.visibility_off_outlined),
-                    label: Text('Meçhul'),
-                  ),
-                ],
-                selected: {_voice},
-                onSelectionChanged: (value) {
-                  _updateSelection(voice: value.first);
-                },
-              ),
-              const SizedBox(height: 16),
-            ],
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 8),
-                    DropdownButtonFormField<FormCategory>(
-                      initialValue: _category,
-                      isExpanded: true,
-                      decoration: const InputDecoration(
-                        labelText: 'Çekim Grubu',
-                        prefixIcon: Icon(Icons.view_list_outlined),
-                        border: OutlineInputBorder(),
-                      ),
-                      items: [
-                        for (final category in FormCategory.values)
-                          DropdownMenuItem(
-                            value: category,
-                            child: Text(category.label),
-                          ),
-                      ],
-                      onChanged: (value) {
-                        if (value != null) {
-                          _updateSelection(category: value);
-                        }
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    if (_category.isVerb) ...[
-                      Text(
-                        'Şahıs Tablosu',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: 10),
-                      SelectionTable(
-                        forms: forms,
-                        selectedForm: _selectedForm,
-                        onSelect: (selection) =>
-                            _updateSelection(selectedForm: selection),
-                      ),
-                      const SizedBox(height: 18),
-                      Text(
-                        'Seçili Tablo (${_category.label} - ${_voice.label})',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: 10),
-                      FormsTable(
-                        forms: forms,
-                        selectedForm: _selectedForm,
-                        activeCategory: _category,
-                        activeVoice: _voice,
-                        onSelect: (selection) =>
-                            _updateSelection(selectedForm: selection),
-                      ),
-                    ] else ...[
-                      Text(
-                        'Çekim Tablosu',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: 10),
-                      NounFormsTable(
-                        forms: forms,
-                        selectedForm: _selectedForm,
-                        onSelect: (selection) =>
-                            _updateSelection(selectedForm: selection),
-                      ),
-                    ],
-                    const SizedBox(height: 18),
-                    Text(
-                      'Tüm Muttaride Tabloları',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const SizedBox(height: 12),
-                    for (final group in _groups) ...[
-                      Text(
-                        group.category.isVerb
-                            ? '${group.category.label} (${group.voice.label})'
-                            : group.category.label,
-                        style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ),
-                      const SizedBox(height: 6),
-                      if (group.category.isVerb)
-                        FormsTable(
-                          forms: group.forms,
-                          selectedForm: _selectedForm,
-                          activeCategory: _category,
-                          activeVoice: _voice,
-                          onSelect: (selection) => _updateSelection(
-                            category: group.category,
-                            voice: group.voice,
-                            selectedForm: selection,
-                          ),
-                        )
-                      else
-                        NounFormsTable(
-                          forms: group.forms,
-                          selectedForm: _selectedForm,
-                          onSelect: (selection) => _updateSelection(
-                            category: group.category,
-                            selectedForm: selection,
-                          ),
-                        ),
-                      const SizedBox(height: 16),
-                    ],
-                  ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Çekimler'),
+        centerTitle: false,
+      ),
+      body: SafeArea(
+        child: AppPage(
+          title: 'Çekimler',
+          scrollable: false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (activeForm == null) ...[
+                const Expanded(
+                  child: Center(child: Text('Gösterilecek çekim formu yok.')),
                 ),
-              ),
-            ),
-          ],
-        ],
+              ] else ...[
+                ArabicResultCard(form: activeForm),
+                const SizedBox(height: 10),
+                if (_category.isVerb) ...[
+                  SegmentedButton<Voice>(
+                    expandedInsets: EdgeInsets.zero,
+                    segments: const [
+                      ButtonSegment(
+                        value: Voice.malum,
+                        icon: Icon(Icons.record_voice_over),
+                        label: Text('Malum'),
+                      ),
+                      ButtonSegment(
+                        value: Voice.mechul,
+                        icon: Icon(Icons.visibility_off_outlined),
+                        label: Text('Meçhul'),
+                      ),
+                    ],
+                    selected: {_voice},
+                    onSelectionChanged: (value) {
+                      _updateSelection(voice: value.first);
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 8),
+                        DropdownButtonFormField<FormCategory>(
+                          initialValue: _category,
+                          isExpanded: true,
+                          decoration: const InputDecoration(
+                            labelText: 'Çekim Grubu',
+                            prefixIcon: Icon(Icons.view_list_outlined),
+                            border: OutlineInputBorder(),
+                          ),
+                          items: [
+                            for (final category in FormCategory.values)
+                              DropdownMenuItem(
+                                value: category,
+                                child: Text(category.label),
+                              ),
+                          ],
+                          onChanged: (value) {
+                            if (value != null) {
+                              _updateSelection(category: value);
+                            }
+                          },
+                        ),
+                        const SizedBox(height: 16),
+                        if (_category.isVerb) ...[
+                          Text(
+                            'Şahıs Tablosu',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          const SizedBox(height: 10),
+                          SelectionTable(
+                            forms: forms,
+                            selectedForm: _selectedForm,
+                            onSelect: (selection) =>
+                                _updateSelection(selectedForm: selection),
+                          ),
+                          const SizedBox(height: 18),
+                          Text(
+                            'Seçili Tablo (${_category.label} - ${_voice.label})',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          const SizedBox(height: 10),
+                          FormsTable(
+                            forms: forms,
+                            selectedForm: _selectedForm,
+                            activeCategory: _category,
+                            activeVoice: _voice,
+                            onSelect: (selection) =>
+                                _updateSelection(selectedForm: selection),
+                          ),
+                        ] else ...[
+                          Text(
+                            'Çekim Tablosu',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          const SizedBox(height: 10),
+                          NounFormsTable(
+                            forms: forms,
+                            selectedForm: _selectedForm,
+                            onSelect: (selection) =>
+                                _updateSelection(selectedForm: selection),
+                          ),
+                        ],
+                        const SizedBox(height: 18),
+                        Text(
+                          'Tüm Muttaride Tabloları',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const SizedBox(height: 12),
+                        for (final group in _groups) ...[
+                          Text(
+                            group.category.isVerb
+                                ? '${group.category.label} (${group.voice.label})'
+                                : group.category.label,
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                          ),
+                          const SizedBox(height: 6),
+                          if (group.category.isVerb)
+                            FormsTable(
+                              forms: group.forms,
+                              selectedForm: _selectedForm,
+                              activeCategory: _category,
+                              activeVoice: _voice,
+                              onSelect: (selection) => _updateSelection(
+                                category: group.category,
+                                voice: group.voice,
+                                selectedForm: selection,
+                              ),
+                            )
+                          else
+                            NounFormsTable(
+                              forms: group.forms,
+                              selectedForm: _selectedForm,
+                              onSelect: (selection) => _updateSelection(
+                                category: group.category,
+                                selectedForm: selection,
+                              ),
+                            ),
+                          const SizedBox(height: 16),
+                        ],
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
       ),
     );
   }
 }
-
-enum _TableView { conjugations, pronouns }
 
 class _ConjugationGroup {
   const _ConjugationGroup({
@@ -811,8 +944,8 @@ class FormSelection {
   }
 
   bool matches(ConjugationForm form) {
-    if (arabic != null && form.arabic == arabic) {
-      return true;
+    if (arabic != null) {
+      return form.arabic == arabic;
     }
     return form.person == person &&
         form.number == number &&

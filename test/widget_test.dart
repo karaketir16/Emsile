@@ -45,13 +45,19 @@ void main() {
 
     await tester.pumpWidget(
       const MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: ConjugationScreen(data: testData)),
-        ),
+        home: ConjugationScreen(data: testData),
       ),
     );
 
+    // Seçim ekranı görünmeli
     expect(find.text('Çekim Tablosu'), findsOneWidget);
+    expect(find.text('Çekimler'), findsOneWidget);
+    expect(find.text('Zamirler'), findsOneWidget);
+
+    // Çekimler kartına tıklayarak çekim sayfasına geç
+    await tester.tap(find.text('Çekimler'));
+    await tester.pumpAndSettle();
+
     expect(find.text('Fiil-i Mâzi'), findsOneWidget);
     expect(find.text('Malum'), findsOneWidget);
     expect(find.text('Çoğul'), findsWidgets);
@@ -114,8 +120,9 @@ void main() {
     notifier.value = 2; // Tablo
     await tester.pumpAndSettle();
 
+    // Seçim ekranı görünmeli
     expect(find.text('Çekim Tablosu'), findsOneWidget);
-    expect(find.text('Fiil-i Mâzi'), findsOneWidget);
+    expect(find.text('Çekimler'), findsOneWidget);
   });
 
   testWidgets('selected index 3 renders practice screen', (
@@ -168,10 +175,11 @@ void main() {
     );
 
     expect(find.text('Muhtelife Tablosu'), findsOneWidget);
-    expect(find.text('İsm-i Fâil'), findsOneWidget);
-    expect(find.text('نَاصِرٌ'), findsOneWidget);
     expect(find.text('Fiil-i Mâzi'), findsOneWidget);
     expect(find.text('نَصَرَ'), findsOneWidget);
+    expect(find.text('Yardım etti.'), findsOneWidget);
+    expect(find.text('İsm-i Fâil'), findsOneWidget);
+    expect(find.text('Yardım eden.'), findsOneWidget);
   });
 
   testWidgets('selected index 4 renders source screen', (
@@ -199,11 +207,10 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: ConjugationScreen(data: richTestData)),
-        ),
+        home: ConjugationScreen(data: richTestData),
       ),
     );
+    await navigateToConjugations(tester);
 
     await tester.tap(find.text('Meçhul'));
     await tester.pumpAndSettle();
@@ -222,11 +229,10 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: ConjugationScreen(data: richTestData)),
-        ),
+        home: ConjugationScreen(data: richTestData),
       ),
     );
+    await navigateToConjugations(tester);
 
     await selectConjugationCategory(tester, 'Fiil-i Muzâri');
 
@@ -242,11 +248,10 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: ConjugationScreen(data: richTestData)),
-        ),
+        home: ConjugationScreen(data: richTestData),
       ),
     );
+    await navigateToConjugations(tester);
 
     await tester.ensureVisible(find.text('Sen (er.)'));
     await tester.tap(find.text('Sen (er.)'));
@@ -264,11 +269,10 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: ConjugationScreen(data: richTestData)),
-        ),
+        home: ConjugationScreen(data: richTestData),
       ),
     );
+    await navigateToConjugations(tester);
 
     await tester.ensureVisible(find.text('نَصَرْتَ').first);
     await tester.tap(find.text('نَصَرْتَ').first);
@@ -287,11 +291,10 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: SafeArea(child: ConjugationScreen(data: richTestData)),
-          ),
+          home: ConjugationScreen(data: richTestData),
         ),
       );
+      await navigateToConjugations(tester);
 
       await tester.ensureVisible(find.text('Sen (er.)'));
       await tester.tap(find.text('Sen (er.)'));
@@ -316,11 +319,10 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: SafeArea(child: ConjugationScreen(data: richTestData)),
-          ),
+          home: ConjugationScreen(data: richTestData),
         ),
       );
+      await navigateToConjugations(tester);
 
       await tester.ensureVisible(find.text('Sen (er.)'));
       await tester.tap(find.text('Sen (er.)'));
@@ -343,11 +345,10 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: ConjugationScreen(data: richTestData)),
-        ),
+        home: ConjugationScreen(data: richTestData),
       ),
     );
+    await navigateToConjugations(tester);
 
     final beforeTop = tester.getTopLeft(find.byType(ArabicResultCard)).dy;
 
@@ -372,11 +373,10 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: ConjugationScreen(data: richTestData)),
-        ),
+        home: ConjugationScreen(data: richTestData),
       ),
     );
+    await navigateToConjugations(tester);
 
     final horizontalScrollFinder = find.byWidgetPredicate(
       (widget) =>
@@ -403,11 +403,10 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: ConjugationScreen(data: richTestData)),
-        ),
+        home: ConjugationScreen(data: richTestData),
       ),
     );
+    await navigateToConjugations(tester);
 
     // Başlangıçta Mazi Malum aktiftir.
     // 'نَصَرَ' (Mazi Malum Hüve) hücresini saran Container'ın Container rengini bulalım.
@@ -779,11 +778,10 @@ void main() {
 
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: SafeArea(child: ConjugationScreen(data: nounTestData)),
-          ),
+          home: ConjugationScreen(data: nounTestData),
         ),
       );
+      await navigateToConjugations(tester);
 
       // Select 'İsm-i Fâil' from the dropdown
       await selectConjugationCategory(tester, 'İsm-i Fâil');
@@ -800,13 +798,14 @@ void main() {
       expect(find.text('Müennes'), findsWidgets);
 
       // Tap on the singular feminine cell ('نَاصِرَةٌ')
+      await tester.ensureVisible(find.text('نَاصِرَةٌ').first);
       await tester.tap(find.text('نَاصِرَةٌ').first);
       await tester.pumpAndSettle();
 
       // ArabicResultCard should display the selected word and rule details
       expect(find.text('نَاصِرَةٌ'), findsWidgets);
       expect(
-        find.textContaining('müennes tekil İsm-i Fâil formudur.'),
+        find.textContaining('Yardım eden bir kadın.'),
         findsWidgets,
       );
 
@@ -824,7 +823,7 @@ void main() {
       // Result card should update to 'نُصَّارٌ'
       expect(find.text('نُصَّارٌ'), findsWidgets);
       expect(
-        find.textContaining('müzekker çoğul İsm-i Fâil formudur.'),
+        find.textContaining('Yardım eden erkekler (Kırık Çoğul 1).'),
         findsWidgets,
       );
       expect(tester.takeException(), isNull);
@@ -956,12 +955,11 @@ void main() {
 
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(
-            body: SafeArea(child: ConjugationScreen(data: pronounTestData)),
-          ),
+          home: ConjugationScreen(data: pronounTestData),
         ),
       );
 
+      // Seçim ekranında 'Zamirler' kartına tıkla → ayrı sayfaya gider
       await tester.tap(find.text('Zamirler'));
       await tester.pumpAndSettle();
 
@@ -979,6 +977,11 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+}
+
+Future<void> navigateToConjugations(WidgetTester tester) async {
+  await tester.tap(find.text('Çekimler'));
+  await tester.pumpAndSettle();
 }
 
 Future<void> selectConjugationCategory(
@@ -1185,37 +1188,37 @@ const muhtelifeTestData = AppData(
   pronouns: [],
   muhtelifeEntries: [
     MuhtelifeEntry(
-      type: 'ism_fail',
-      label: 'İsm-i Fâil',
-      arabic: 'نَاصِرٌ',
-      meaning: 'Yardım eden.',
+      type: 'fiil_mazi',
+      label: 'Fiil-i Mâzi',
+      arabic: 'نَصَرَ',
+      meaning: 'Yardım etti.',
       sortOrder: 10,
       row: 1,
       column: 'left',
+    ),
+    MuhtelifeEntry(
+      type: 'fiil_muzari',
+      label: 'Fiil-i Muzâri',
+      arabic: 'يَنْصُرُ',
+      meaning: 'Yardım ediyor / yardım eder.',
+      sortOrder: 20,
+      row: 1,
+      column: 'right',
     ),
     MuhtelifeEntry(
       type: 'masdar',
       label: 'Masdar-ı Gayr-ı Mîmî',
       arabic: 'نَصْرًا',
       meaning: 'Yardım etmek.',
-      sortOrder: 20,
-      row: 1,
-      column: 'right',
-    ),
-    MuhtelifeEntry(
-      type: 'fiil_muzari',
-      label: 'Fiil-i Muzâri',
-      arabic: 'يَنْصُرُ',
-      meaning: 'Yardım ediyor.',
       sortOrder: 30,
       row: 2,
       column: 'left',
     ),
     MuhtelifeEntry(
-      type: 'fiil_mazi',
-      label: 'Fiil-i Mâzi',
-      arabic: 'نَصَرَ',
-      meaning: 'Yardım etti.',
+      type: 'ism_fail',
+      label: 'İsm-i Fâil',
+      arabic: 'نَاصِرٌ',
+      meaning: 'Yardım eden.',
       sortOrder: 40,
       row: 2,
       column: 'right',

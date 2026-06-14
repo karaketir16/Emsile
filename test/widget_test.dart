@@ -362,6 +362,36 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('conjugation: narrow tables expand to available width', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(900, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SafeArea(child: ConjugationScreen(data: richTestData)),
+        ),
+      ),
+    );
+
+    final horizontalScrollFinder = find.byWidgetPredicate(
+      (widget) =>
+          widget is SingleChildScrollView &&
+          widget.scrollDirection == Axis.horizontal,
+    );
+    final horizontalViewportWidth =
+        tester.getSize(horizontalScrollFinder.first).width;
+    final firstTableWidth = tester.getSize(find.byType(Table).first).width;
+
+    expect(
+      firstTableWidth,
+      moreOrLessEquals(horizontalViewportWidth, epsilon: 0.01),
+    );
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets(
     'conjugation: selection coloring is only applied to the active table',
     (WidgetTester tester) async {

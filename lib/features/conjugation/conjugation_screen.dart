@@ -428,59 +428,70 @@ class PdfStyleTable extends StatelessWidget {
     final labelStyle = Theme.of(
       context,
     ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w700);
-    final dataWidths = dataColumnWidths ?? const [56, 56, 56];
+    final baseDataWidths = dataColumnWidths ?? const [56, 56, 56];
+    const baseLabelWidth = 80.0;
 
     return Card(
       clipBehavior: Clip.antiAlias,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Table(
-          border: TableBorder.all(color: borderColor),
-          columnWidths: {
-            0: FixedColumnWidth(dataWidths[0]),
-            1: FixedColumnWidth(dataWidths[1]),
-            2: FixedColumnWidth(dataWidths[2]),
-            3: const FixedColumnWidth(80),
-          },
-          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-          children: [
-            TableRow(
-              decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final columnWidths = _expandTableColumnWidths(
+            availableWidth: constraints.maxWidth,
+            dataWidths: baseDataWidths,
+            labelWidth: baseLabelWidth,
+          );
+
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Table(
+              border: TableBorder.all(color: borderColor),
+              columnWidths: {
+                0: FixedColumnWidth(columnWidths[0]),
+                1: FixedColumnWidth(columnWidths[1]),
+                2: FixedColumnWidth(columnWidths[2]),
+                3: FixedColumnWidth(columnWidths[3]),
+              },
+              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
               children: [
-                _HeaderCell(text: pdfColumns[0].label, width: dataWidths[0]),
-                _HeaderCell(text: pdfColumns[1].label, width: dataWidths[1]),
-                _HeaderCell(text: pdfColumns[2].label, width: dataWidths[2]),
-                const _HeaderCell(text: ''),
+                TableRow(
+                  decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
+                  children: [
+                    _HeaderCell(text: pdfColumns[0].label, width: columnWidths[0]),
+                    _HeaderCell(text: pdfColumns[1].label, width: columnWidths[1]),
+                    _HeaderCell(text: pdfColumns[2].label, width: columnWidths[2]),
+                    _HeaderCell(text: '', width: columnWidths[3]),
+                  ],
+                ),
+                for (final row in rows)
+                  TableRow(
+                    children: [
+                      for (final cell in row.cells)
+                        Padding(
+                          padding: const EdgeInsets.all(1),
+                          child: SizedBox(
+                            height: 30,
+                            child: Center(child: cellBuilder(context, cell)),
+                          ),
+                        ),
+                      Container(
+                        color: const Color(0xFFF4F0E6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 5,
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          row.rowLabel,
+                          textAlign: TextAlign.center,
+                          style: labelStyle,
+                        ),
+                      ),
+                    ],
+                  ),
               ],
             ),
-            for (final row in rows)
-              TableRow(
-                children: [
-                  for (final cell in row.cells)
-                    Padding(
-                      padding: const EdgeInsets.all(1),
-                      child: SizedBox(
-                        height: 30,
-                        child: Center(child: cellBuilder(context, cell)),
-                      ),
-                    ),
-                  Container(
-                    color: const Color(0xFFF4F0E6),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 4,
-                      vertical: 5,
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      row.rowLabel,
-                      textAlign: TextAlign.center,
-                      style: labelStyle,
-                    ),
-                  ),
-                ],
-              ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -542,6 +553,24 @@ List<double> _measureDataColumnWidths(
 
   return [
     for (final width in widths) width < 54 ? 54 : width,
+  ];
+}
+
+List<double> _expandTableColumnWidths({
+  required double availableWidth,
+  required List<double> dataWidths,
+  required double labelWidth,
+}) {
+  final baseWidths = [...dataWidths.take(3), labelWidth];
+  final intrinsicWidth = baseWidths.reduce((sum, width) => sum + width);
+
+  if (!availableWidth.isFinite || availableWidth <= intrinsicWidth) {
+    return baseWidths;
+  }
+
+  final extraPerColumn = (availableWidth - intrinsicWidth) / baseWidths.length;
+  return [
+    for (final width in baseWidths) width + extraPerColumn,
   ];
 }
 

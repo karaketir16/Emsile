@@ -94,13 +94,15 @@ Kök yapı:
 {
   "meta": {},
   "muhtelifeEntries": [],
-  "muttarideForms": []
+  "conjugationSource": {}
 }
 ```
 
 `catalog.lessons` alanı ders listesini ve ders detayındaki temel açıklamayı taşır.
 
-`muttarideForms` alanı çekim tablosunun ana veri kaynağıdır. Her form şu seçimlerle filtrelenir:
+`conjugationSource` alanı kıyasi çekimleri runtime'da üretmek için kullanılır.
+
+Repository, bu kaynaktan `muttarideForms` listesini üretir. Runtime form listesi şu seçimlerle filtrelenir:
 
 - `category`: `mazi`, `muzari`
 - `voice`: `malum`, `mechul`
@@ -111,7 +113,7 @@ Kök yapı:
 
 `muhtelifeEntries` alanı aynı fiilin `Emsile-i Muhtelife` kalıplarını taşımak için ayrılmıştır.
 
-Çoktan seçmeli alıştırmalar seed JSON'da tek tek tutulmaz; çalışma anında `muttarideForms` listesinden üretilir.
+Çoktan seçmeli alıştırmalar seed JSON'da tek tek tutulmaz; çalışma anında generated `muttarideForms` listesinden üretilir.
 
 ## 5. Model Sınıfları
 
@@ -132,7 +134,19 @@ Kök yapı:
 
 - `meta`
 - `muhtelifeEntries`
-- `muttarideForms`
+- `conjugationSource`
+
+`ConjugationSource`
+
+- `strategy`
+- `generated`
+
+`GeneratedConjugationSource`
+
+- `family`
+- `verbClass`
+- `bab`
+- `lemma`
 
 `Lesson`
 
@@ -159,7 +173,7 @@ Kök yapı:
 - Distractor seçeneklerini aynı `category` + `voice` grubundaki kardeş formlardan toplar.
 - Aynı Arapça formun birden çok şahısta tekrar ettiği durumlarda kardeş filtrelemesini `candidate != form` mantığıyla yapar.
 
-Repository akışı artık önce `catalog.json`, sonra seçili fiilin `verbs/<id>.json` dosyasını okur; ardından mevcut ekranların kullandığı `AppData` runtime modelini üretir.
+Repository akışı artık önce `catalog.json`, sonra seçili fiilin `verbs/<id>.json` dosyasını okur; ardından `MuttarideGenerator` ile runtime form listesini üretir ve mevcut ekranların kullandığı `AppData` modelini kurar.
 
 ## 6. UI Katmanı
 

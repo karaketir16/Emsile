@@ -1,6 +1,6 @@
 # Emsile Flutter Geliştirme Checklist
 
-Son güncelleme: çok-fiilli geleceğe hazırlık için `catalog.json + verbs/<id>.json` veri yapısı eklendi; `nasara` ilk ayrık fiil dosyasına taşındı ve scalable tasarım kaydı oluşturuldu.
+Son güncelleme: `nasara` için flat `muttarideForms` listesi kaldırılıp `conjugationSource` tabanlı rule-based generate akışına geçildi.
 
 Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya tamamlanma durumu değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
@@ -42,6 +42,8 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Alıştırma sorularını formlardan türetilecek şekilde modelle.
 - [x] Veri kaynağını `catalog + verbs` yapısına evriltmeye başla.
 - [x] İlk fiili ayrı verb dosyasına taşı: `assets/data/verbs/nasara.json`.
+- [x] İlk generated `conjugationSource` profilini ekle.
+- [x] `nasara` için `muttarideForms` verisini rule-based üretime taşı.
 - [ ] Şahıs zamirleri veri modelini ayrıca oluştur.
 - [x] JSON seed veri validasyon script'i ekle.
 - [x] Catalog/verb veri validasyon script'ini yeni yapıya göre güncelle.
@@ -159,6 +161,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Scalable veri tasarım dokümanını ekle.
 - [ ] PDF'teki şahıs zamirleri tablosunu JSON'a taşı.
 - [x] Fiil-i mâzi ve muzâri için 14 şahıslık tam tabloyu tamamla.
+- [ ] `daraba`, `fataha` gibi yeni bablar için generated conjugation profilleri ekle.
 - [ ] Muhtelife explorer için ayrı UI modeli ve ekranı ekle.
 - [ ] Fiil listesi/katalog ekranını ekle.
 - [ ] Nefy, emir ve isim kategorileri için aynı tablo genişletmesini yap.

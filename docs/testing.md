@@ -52,6 +52,7 @@ Kapsam:
 - Pratik: Sonraki Soru butonu bir sonraki soruya geçiyor.
 - Test fixture'ları yeni `person/number/gender` veri modelini kullanıyor.
 - `PracticeQuestionGenerator` unit testleri aynı Arapça form tekrarlarında ayrı şahıs soruları üretildiğini doğruluyor.
+- `MuttarideGenerator` unit testleri generated conjugation kaynağından 56 form üretildiğini ve temel `nasara` örneklerinin doğru geldiğini doğruluyor.
 
 Test altyapısı:
 

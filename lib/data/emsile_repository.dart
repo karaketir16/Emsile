@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'catalog_models.dart';
 import 'models.dart';
+import 'muttaride_generator.dart';
 import 'practice_question_generator.dart';
 
 class EmsileRepository {
@@ -20,17 +21,16 @@ class EmsileRepository {
     final verbRaw = await rootBundle.loadString(manifest.assetPath);
     final verbJson = jsonDecode(verbRaw) as Map<String, dynamic>;
     final verbEntry = VerbEntry.fromJson(verbJson);
+    final forms = MuttarideGenerator.fromVerbEntry(verbEntry);
 
     final seedData = AppData(
       lessons: catalog.lessons,
-      forms: verbEntry.muttarideForms,
+      forms: forms,
       practiceQuestions: const [],
     );
 
     return seedData.copyWith(
-      practiceQuestions: PracticeQuestionGenerator.fromForms(
-        verbEntry.muttarideForms,
-      ),
+      practiceQuestions: PracticeQuestionGenerator.fromForms(forms),
     );
   }
 }

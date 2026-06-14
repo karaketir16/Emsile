@@ -58,11 +58,13 @@ class VerbEntry {
     required this.meta,
     required this.muhtelifeEntries,
     required this.muttarideForms,
+    this.conjugationSource,
   });
 
   final VerbMeta meta;
   final List<MuhtelifeEntry> muhtelifeEntries;
   final List<ConjugationForm> muttarideForms;
+  final ConjugationSource? conjugationSource;
 
   factory VerbEntry.fromJson(Map<String, dynamic> json) {
     return VerbEntry(
@@ -70,9 +72,14 @@ class VerbEntry {
       muhtelifeEntries: (json['muhtelifeEntries'] as List<dynamic>)
           .map((item) => MuhtelifeEntry.fromJson(item as Map<String, dynamic>))
           .toList(),
-      muttarideForms: (json['muttarideForms'] as List<dynamic>)
+      muttarideForms: ((json['muttarideForms'] as List<dynamic>?) ?? [])
           .map((item) => ConjugationForm.fromJson(item as Map<String, dynamic>))
           .toList(),
+      conjugationSource: json['conjugationSource'] == null
+          ? null
+          : ConjugationSource.fromJson(
+              json['conjugationSource'] as Map<String, dynamic>,
+            ),
     );
   }
 }
@@ -131,6 +138,61 @@ class MuhtelifeEntry {
       arabic: json['arabic'] as String,
       meaning: json['meaning'] as String,
       sortOrder: json['sortOrder'] as int,
+    );
+  }
+}
+
+class ConjugationSource {
+  const ConjugationSource({required this.strategy, this.generated});
+
+  final String strategy;
+  final GeneratedConjugationSource? generated;
+
+  factory ConjugationSource.fromJson(Map<String, dynamic> json) {
+    return ConjugationSource(
+      strategy: json['strategy'] as String,
+      generated: json['generated'] == null
+          ? null
+          : GeneratedConjugationSource.fromJson(
+              json['generated'] as Map<String, dynamic>,
+            ),
+    );
+  }
+}
+
+class GeneratedConjugationSource {
+  const GeneratedConjugationSource({
+    required this.family,
+    required this.verbClass,
+    required this.bab,
+    required this.lemma,
+  });
+
+  final String family;
+  final String verbClass;
+  final String bab;
+  final ConjugationLemma lemma;
+
+  factory GeneratedConjugationSource.fromJson(Map<String, dynamic> json) {
+    return GeneratedConjugationSource(
+      family: json['family'] as String,
+      verbClass: json['verbClass'] as String,
+      bab: json['bab'] as String,
+      lemma: ConjugationLemma.fromJson(json['lemma'] as Map<String, dynamic>),
+    );
+  }
+}
+
+class ConjugationLemma {
+  const ConjugationLemma({required this.mazi, required this.muzari});
+
+  final String mazi;
+  final String muzari;
+
+  factory ConjugationLemma.fromJson(Map<String, dynamic> json) {
+    return ConjugationLemma(
+      mazi: json['mazi'] as String,
+      muzari: json['muzari'] as String,
     );
   }
 }

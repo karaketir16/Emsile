@@ -17,14 +17,15 @@ Bu yüzden veri katmanı "ekranı besleyen sabit seed" olmaktan çıkıp "geniş
 
 ## 2. Önerilen Mimari
 
-Önerilen yaklaşım: `normalized JSON + runtime composition`
+Önerilen yaklaşım: `normalized JSON + runtime composition + rule-based generation`
 
 Bu yapıda veri tek bir büyük dosyada tutulmaz; bunun yerine birbirini tamamlayan birkaç kaynağa ayrılır:
 
 1. `catalog`
 2. `verbs`
-3. `patterns`
-4. `runtime adapters`
+3. `conjugationSource`
+4. `runtime generators`
+5. `runtime adapters`
 
 Şimdilik JSON ile ilerlenir. Veri büyüdüğünde aynı model SQLite'a taşınabilir.
 
@@ -77,12 +78,13 @@ Her fiil kendi dosyasında tutulur.
 
 - `meta`
 - `muhtelifeEntries`
-- `muttarideForms`
+- `conjugationSource`
 
 Bu ayrım önemlidir:
 
 - `Muhtelife`: farklı kalıp ve türev türleri
 - `Muttaride`: şahıslara göre çekilen tablolar
+- `conjugationSource`: kıyasi çekimlerin hangi kuralla üretileceğini tarif eden kısa yapı
 
 ## 4. Veri Katmanları
 
@@ -119,9 +121,36 @@ Emsile-i Muhtelife satırlarını taşır:
 - `nefy_hal`
 - `emr_hazir`
 
-### 4.3 MuttarideForm
+### 4.3 ConjugationSource
 
-Şahıslara göre çekim tablosu için gereken veriyi taşır:
+Kıyasi çekimleri veri tekrarı olmadan üretmek için kullanılır.
+
+Örnek:
+
+```json
+{
+  "conjugationSource": {
+    "strategy": "generated",
+    "generated": {
+      "family": "sulasi_mujarrad",
+      "verbClass": "sahih_salim",
+      "bab": "nasara_yansuru",
+      "lemma": {
+        "mazi": "نَصَرَ",
+        "muzari": "يَنْصُرُ"
+      }
+    }
+  }
+}
+```
+
+Bu yapı, yüzlerce fiilde tekrar edecek `category / voice / person / number / gender` satırlarını veri dosyasında tek tek yazma ihtiyacını azaltır.
+
+### 4.4 Runtime MuttarideForm
+
+Şahıslara göre çekim tablosu için gereken `ConjugationForm[]` listesi repository/generator tarafından runtime'da üretilir.
+
+Bu alanlar UI ile uyumludur:
 
 - `category`
 - `voice`
@@ -132,8 +161,6 @@ Emsile-i Muhtelife satırlarını taşır:
 - `arabic`
 - `meaning`
 
-Bu alanlar mevcut MVP ile uyumludur.
-
 ## 5. Neden Bu Yapı
 
 Bu yaklaşımın avantajları:
@@ -141,6 +168,7 @@ Bu yaklaşımın avantajları:
 - yeni fiil eklemek kod yerine veri eklemek olur
 - aynı UI birden çok fiil için yeniden kullanılabilir
 - `muhtelife` ve `muttaride` içerikleri ayrı fakat ilişkili kalır
+- kıyasi çekimlerde büyük veri tekrarını kaldırır
 - tek fiili güncellemek küçük ve okunur diff üretir
 - sonradan SQLite'a geçiş kolaylaşır
 
@@ -153,8 +181,9 @@ Uygulama JSON dosyalarını doğrudan UI modeli olarak kullanmaz.
 1. `catalog.json` yüklenir
 2. varsayılan fiil veya seçilen fiil manifesti bulunur
 3. ilgili `verbs/<id>.json` yüklenir
-4. verb verisi mevcut ekranların anlayacağı `AppData` benzeri runtime modele dönüştürülür
-5. pratik soruları `muttarideForms` üzerinden üretilir
+4. `conjugationSource` varsa muttaride çekimleri runtime'da generate edilir
+5. verb verisi mevcut ekranların anlayacağı `AppData` benzeri runtime modele dönüştürülür
+6. pratik soruları generated `muttarideForms` üzerinden üretilir
 
 Bu sayede UI bir anda bütünüyle yeniden yazılmak zorunda kalmaz.
 
@@ -169,17 +198,23 @@ Bu sayede UI bir anda bütünüyle yeniden yazılmak zorunda kalmaz.
 
 ### Faz 2
 
+- ilk `generated` conjugation strategy'sini ekle
+- `nasara` için flat `muttarideForms` listesini kaldır
+- `sahih_salim` + `nasara_yansuru` profiliyle runtime üretime geç
+
+### Faz 3
+
 - `Muhtelife Explorer` ekranı ekle
 - muhtelife içeriklerini ayrı görünümde göster
 - fiil listesi ekranını ekle
 
-### Faz 3
+### Faz 4
 
 - birden çok sülasi fiil ekle
 - arama ve filtreleme ekle
 - içerik doğrulamasını schema tabanlı sıkılaştır
 
-### Faz 4
+### Faz 5
 
 - gerekirse SQLite'a geç
 - kullanıcı ilerleme verisini kalıcı tut
@@ -191,5 +226,7 @@ Bu proje için önerilen yol:
 - hemen SQLite ile başlamamak
 - fakat veri modelini SQLite-ready kurmak
 - kısa vadede `normalized JSON + repository composition` ile ilerlemek
+- `muttaride` tarafında mümkün olan çekimleri rule-based generate etmek
+- semai veya istisnai alanlarda override/veri tabanlı yaklaşımı korumak
 
 Bu karar, içerik henüz büyüme aşamasındayken diff okunabilirliğini ve veri düzenleme kolaylığını korur.

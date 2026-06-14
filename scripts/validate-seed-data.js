@@ -94,6 +94,39 @@ function validateMuttarideForms(forms, verbId) {
   });
 }
 
+function validateConjugationSource(source, verbId) {
+  assert(source && typeof source === 'object', `${verbId}.conjugationSource is required`);
+  assertString(source.strategy, `${verbId}.conjugationSource.strategy`);
+
+  if (source.strategy === 'generated') {
+    assert(
+      source.generated && typeof source.generated === 'object',
+      `${verbId}.conjugationSource.generated is required`,
+    );
+    assertString(
+      source.generated.family,
+      `${verbId}.conjugationSource.generated.family`,
+    );
+    assertString(
+      source.generated.verbClass,
+      `${verbId}.conjugationSource.generated.verbClass`,
+    );
+    assertString(source.generated.bab, `${verbId}.conjugationSource.generated.bab`);
+    assert(
+      source.generated.lemma && typeof source.generated.lemma === 'object',
+      `${verbId}.conjugationSource.generated.lemma is required`,
+    );
+    assertString(
+      source.generated.lemma.mazi,
+      `${verbId}.conjugationSource.generated.lemma.mazi`,
+    );
+    assertString(
+      source.generated.lemma.muzari,
+      `${verbId}.conjugationSource.generated.lemma.muzari`,
+    );
+  }
+}
+
 function validateVerbEntry(verbPath) {
   const entry = JSON.parse(fs.readFileSync(verbPath, 'utf8'));
   const verbId = entry.meta?.id ?? path.basename(verbPath, '.json');
@@ -112,7 +145,20 @@ function validateVerbEntry(verbPath) {
   assertString(entry.meta.group, `${verbId}.meta.group`);
 
   validateMuhtelifeEntries(entry.muhtelifeEntries, verbId);
-  validateMuttarideForms(entry.muttarideForms, verbId);
+
+  const hasForms = Array.isArray(entry.muttarideForms) && entry.muttarideForms.length > 0;
+  const hasSource = entry.conjugationSource != null;
+  assert(
+    hasForms || hasSource,
+    `${verbId} must define muttarideForms or conjugationSource`,
+  );
+
+  if (hasForms) {
+    validateMuttarideForms(entry.muttarideForms, verbId);
+  }
+  if (hasSource) {
+    validateConjugationSource(entry.conjugationSource, verbId);
+  }
 }
 
 function main() {

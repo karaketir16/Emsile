@@ -4,10 +4,21 @@ import 'package:emsile_flutter/data/models.dart';
 import 'package:emsile_flutter/shared/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class EmsileApp extends StatelessWidget {
+class EmsileApp extends StatefulWidget {
   const EmsileApp({super.key});
 
-  static final Future<AppData> _appData = EmsileRepository.load();
+  @override
+  State<EmsileApp> createState() => _EmsileAppState();
+}
+
+class _EmsileAppState extends State<EmsileApp> {
+  late final Future<AppData> _appData;
+
+  @override
+  void initState() {
+    super.initState();
+    _appData = EmsileRepository.load();
+  }
 
   @override
   Widget build(BuildContext context) {

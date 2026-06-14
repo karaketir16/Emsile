@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "defaultVerbId": "nasara",
+  "lessons": [
+    {
+      "order": 1,
+      "title": "Emsile-i Muhtelife",
+      "summary": "Temel sarf formlarını ve anlamlarını birlikte gör.",
+      "rule": "Aynı kökten türeyen farklı kalıplar anlam ilişkisiyle çalışılır.",
+      "relatedCategory": "mazi"
+    },
+    {
+      "order": 2,
+      "title": "Fiil-i Mâzi",
+      "summary": "Geçmiş zaman çekimlerini şahıslara göre incele.",
+      "rule": "Mâzi fiil geçmişte gerçekleşen işi bildirir.",
+      "relatedCategory": "mazi"
+    },
+    {
+      "order": 3,
+      "title": "Fiil-i Muzâri",
+      "summary": "Şimdiki, geniş ve gelecek zaman anlamlarını tanı.",
+      "rule": "Muzâri fiil başına muzaraat harflerinden biri gelerek kurulur.",
+      "relatedCategory": "muzari"
+    },
+    {
+      "order": 4,
+      "title": "Malum ve Meçhul",
+      "summary": "Etken ve edilgen çekim farkını karşılaştır.",
+      "rule": "Meçhul çekimde hareke düzeni değişir ve işi yapan gizlenir.",
+      "relatedCategory": "mazi"
+    }
+  ],
+  "verbs": [
+    {
+      "id": "nasara",
+      "root": "نصر",
+      "title": "نصر",
+      "assetPath": "assets/data/verbs/nasara.json",
+      "group": "sulasi_mujarrad"
+    }
+  ]
+}

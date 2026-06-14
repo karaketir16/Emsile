@@ -12,12 +12,19 @@ import 'package:emsile_flutter/features/source/source_screen.dart';
 Future<void> pumpLoadedApp(WidgetTester tester) async {
   await tester.binding.setSurfaceSize(const Size(390, 844));
   await tester.pumpWidget(const EmsileApp());
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 60; i++) {
     await tester.pump(const Duration(milliseconds: 100));
     if (find.text('Bugünkü Akış').evaluate().isNotEmpty) {
       return;
     }
+    if (find.textContaining('Veri yüklenemedi').evaluate().isNotEmpty) {
+      final errorText =
+          tester.widget<Text>(find.textContaining('Veri yüklenemedi')).data ??
+          'Veri yüklenemedi';
+      throw TestFailure(errorText);
+    }
   }
+  throw TestFailure('AppData did not finish loading in widget test.');
 }
 
 void main() {

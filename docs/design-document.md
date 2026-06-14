@@ -187,6 +187,8 @@ Tipografi:
 
 İlk sürümde içerikler yerel JSON veya Dart sabitleriyle tutulabilir.
 
+Not: Çok fiilli ve tüm `Emsile-i Muhtelife` hedefi için önerilen ölçeklenebilir veri mimarisi ayrı olarak [docs/scaling-plan.md](/Users/karaketir16/Documents/EmsileFlutter/docs/scaling-plan.md) içinde tutulur. Bu dosya ürün/tasarım bakışını, `scaling-plan.md` ise veri ve genişleme mimarisini detaylandırır.
+
 Örnek yapı:
 
 ```json

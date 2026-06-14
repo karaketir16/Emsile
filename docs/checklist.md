@@ -1,6 +1,6 @@
 # Emsile Flutter Geliştirme Checklist
 
-Son güncelleme: Tüm formlar tablosu da seçilebilir hale getirildi; çekim ekranında üst kontrol alanı sabitlenip tablolar ayrı scroll bölgesine taşındı.
+Son güncelleme: çok-fiilli geleceğe hazırlık için `catalog.json + verbs/<id>.json` veri yapısı eklendi; `nasara` ilk ayrık fiil dosyasına taşındı ve scalable tasarım kaydı oluşturuldu.
 
 Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya tamamlanma durumu değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
@@ -40,8 +40,11 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Her form için Türkçe anlam alanı ekle.
 - [x] `person`, `number`, `gender` alanlarını seed veri modeline ekle.
 - [x] Alıştırma sorularını formlardan türetilecek şekilde modelle.
+- [x] Veri kaynağını `catalog + verbs` yapısına evriltmeye başla.
+- [x] İlk fiili ayrı verb dosyasına taşı: `assets/data/verbs/nasara.json`.
 - [ ] Şahıs zamirleri veri modelini ayrıca oluştur.
 - [x] JSON seed veri validasyon script'i ekle.
+- [x] Catalog/verb veri validasyon script'ini yeni yapıya göre güncelle.
 - [ ] PDF'ten taşınacak sonraki tabloları elle kontrol et.
 
 ## 4. Navigasyon
@@ -153,8 +156,11 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 
 - [x] Kod organizasyonunu `lib/data`, `lib/features`, `lib/shared` klasörlerine böl.
 - [x] JSON veri şemasını büyütmeden önce temel alan adlarını sabitle.
+- [x] Scalable veri tasarım dokümanını ekle.
 - [ ] PDF'teki şahıs zamirleri tablosunu JSON'a taşı.
 - [x] Fiil-i mâzi ve muzâri için 14 şahıslık tam tabloyu tamamla.
+- [ ] Muhtelife explorer için ayrı UI modeli ve ekranı ekle.
+- [ ] Fiil listesi/katalog ekranını ekle.
 - [ ] Nefy, emir ve isim kategorileri için aynı tablo genişletmesini yap.
 - [ ] Üretilen pratik sorularına zorluk/karıştırma stratejisi ekle.
 - [ ] Playwright testini 360px ve 430px viewportlarla genişlet.

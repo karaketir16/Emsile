@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
+import 'catalog_models.dart';
 import 'models.dart';
 import 'practice_question_generator.dart';
 
@@ -9,11 +10,27 @@ class EmsileRepository {
   const EmsileRepository._();
 
   static Future<AppData> load() async {
-    final rawJson = await rootBundle.loadString('assets/data/emsile_seed.json');
-    final decoded = jsonDecode(rawJson) as Map<String, dynamic>;
-    final seedData = AppData.fromJson(decoded);
+    final catalogRaw = await rootBundle.loadString('assets/data/catalog.json');
+    final catalogJson = jsonDecode(catalogRaw) as Map<String, dynamic>;
+    final catalog = CatalogData.fromJson(catalogJson);
+
+    final manifest = catalog.verbs.firstWhere(
+      (verb) => verb.id == catalog.defaultVerbId,
+    );
+    final verbRaw = await rootBundle.loadString(manifest.assetPath);
+    final verbJson = jsonDecode(verbRaw) as Map<String, dynamic>;
+    final verbEntry = VerbEntry.fromJson(verbJson);
+
+    final seedData = AppData(
+      lessons: catalog.lessons,
+      forms: verbEntry.muttarideForms,
+      practiceQuestions: const [],
+    );
+
     return seedData.copyWith(
-      practiceQuestions: PracticeQuestionGenerator.fromForms(seedData.forms),
+      practiceQuestions: PracticeQuestionGenerator.fromForms(
+        verbEntry.muttarideForms,
+      ),
     );
   }
 }

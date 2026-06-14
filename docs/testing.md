@@ -89,9 +89,10 @@ npm run validate-seed
 
 Amaç:
 
-- `assets/data/emsile_seed.json` dosyasının beklenen kök alanları taşıdığını doğrulamak.
-- Ders ve çekim alanlarının boş olmadığını kontrol etmek.
+- `assets/data/catalog.json` ve `assets/data/verbs/*.json` dosyalarının beklenen yapıyı taşıdığını doğrulamak.
+- Ders, verb manifesti, muhtelife ve muttaride alanlarının boş olmadığını kontrol etmek.
 - `category`, `voice`, `person`, `number` ve `gender` alanlarında temel tutarlılığı yakalamak.
+- Varsayılan fiilin katalog içinde gerçekten tanımlı olduğunu doğrulamak.
 - Pratik soruları artık seed JSON'dan değil, uygulama içinde formlardan üretildiği için doğrulama odağı form verisindedir.
 
 ### Web Build

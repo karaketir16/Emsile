@@ -1,0 +1,614 @@
+{
+  "meta": {
+    "id": "nasara",
+    "root": "نصر",
+    "letters": [
+      "ن",
+      "ص",
+      "ر"
+    ],
+    "title": "نصر",
+    "transliteration": "nasara",
+    "meaningSummary": "yardım etmek",
+    "group": "sulasi_mujarrad"
+  },
+  "muhtelifeEntries": [
+    {
+      "type": "fiil_mazi",
+      "label": "Fiil-i Mâzi",
+      "arabic": "نَصَرَ",
+      "meaning": "Yardım etti.",
+      "sortOrder": 10
+    },
+    {
+      "type": "fiil_muzari",
+      "label": "Fiil-i Muzâri",
+      "arabic": "يَنْصُرُ",
+      "meaning": "Yardım ediyor / yardım eder.",
+      "sortOrder": 20
+    },
+    {
+      "type": "masdar",
+      "label": "Masdar-ı Gayr-ı Mîmî",
+      "arabic": "نَصْرًا",
+      "meaning": "Yardım etmek.",
+      "sortOrder": 30
+    },
+    {
+      "type": "ism_fail",
+      "label": "İsm-i Fâil",
+      "arabic": "نَاصِرٌ",
+      "meaning": "Yardım eden.",
+      "sortOrder": 40
+    },
+    {
+      "type": "ism_meful",
+      "label": "İsm-i Mef'ul",
+      "arabic": "مَنْصُورٌ",
+      "meaning": "Yardım edilen.",
+      "sortOrder": 50
+    }
+  ],
+  "muttarideForms": [
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "third",
+      "number": "singular",
+      "gender": "masculine",
+      "pronounLabel": "O (er.)",
+      "arabic": "نَصَرَ",
+      "meaning": "O erkek yardım etti."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "third",
+      "number": "dual",
+      "gender": "masculine",
+      "pronounLabel": "O ikisi (er.)",
+      "arabic": "نَصَرَا",
+      "meaning": "O iki erkek yardım etti."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "third",
+      "number": "plural",
+      "gender": "masculine",
+      "pronounLabel": "Onlar (er.)",
+      "arabic": "نَصَرُوا",
+      "meaning": "O erkekler yardım etti."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "third",
+      "number": "singular",
+      "gender": "feminine",
+      "pronounLabel": "O (kad.)",
+      "arabic": "نَصَرَتْ",
+      "meaning": "O kadın yardım etti."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "third",
+      "number": "dual",
+      "gender": "feminine",
+      "pronounLabel": "O ikisi (kad.)",
+      "arabic": "نَصَرَتَا",
+      "meaning": "O iki kadın yardım etti."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "third",
+      "number": "plural",
+      "gender": "feminine",
+      "pronounLabel": "Onlar (kad.)",
+      "arabic": "نَصَرْنَ",
+      "meaning": "O kadınlar yardım etti."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "second",
+      "number": "singular",
+      "gender": "masculine",
+      "pronounLabel": "Sen (er.)",
+      "arabic": "نَصَرْتَ",
+      "meaning": "Sen erkek yardım ettin."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "second",
+      "number": "dual",
+      "gender": "masculine",
+      "pronounLabel": "Siz ikiniz (er.)",
+      "arabic": "نَصَرْتُمَا",
+      "meaning": "Siz iki erkek yardım ettiniz."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "second",
+      "number": "plural",
+      "gender": "masculine",
+      "pronounLabel": "Siz (er.)",
+      "arabic": "نَصَرْتُمْ",
+      "meaning": "Siz erkekler yardım ettiniz."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "second",
+      "number": "singular",
+      "gender": "feminine",
+      "pronounLabel": "Sen (kad.)",
+      "arabic": "نَصَرْتِ",
+      "meaning": "Sen kadın yardım ettin."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "second",
+      "number": "dual",
+      "gender": "feminine",
+      "pronounLabel": "Siz ikiniz (kad.)",
+      "arabic": "نَصَرْتُمَا",
+      "meaning": "Siz iki kadın yardım ettiniz."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "second",
+      "number": "plural",
+      "gender": "feminine",
+      "pronounLabel": "Siz (kad.)",
+      "arabic": "نَصَرْتُنَّ",
+      "meaning": "Siz kadınlar yardım ettiniz."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "first",
+      "number": "singular",
+      "gender": "common",
+      "pronounLabel": "Ben",
+      "arabic": "نَصَرْتُ",
+      "meaning": "Ben yardım ettim."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "person": "first",
+      "number": "plural",
+      "gender": "common",
+      "pronounLabel": "Biz",
+      "arabic": "نَصَرْنَا",
+      "meaning": "Biz yardım ettik."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "third",
+      "number": "singular",
+      "gender": "masculine",
+      "pronounLabel": "O (er.)",
+      "arabic": "نُصِرَ",
+      "meaning": "O erkeğe yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "third",
+      "number": "dual",
+      "gender": "masculine",
+      "pronounLabel": "O ikisi (er.)",
+      "arabic": "نُصِرَا",
+      "meaning": "O iki erkeğe yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "third",
+      "number": "plural",
+      "gender": "masculine",
+      "pronounLabel": "Onlar (er.)",
+      "arabic": "نُصِرُوا",
+      "meaning": "O erkeklere yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "third",
+      "number": "singular",
+      "gender": "feminine",
+      "pronounLabel": "O (kad.)",
+      "arabic": "نُصِرَتْ",
+      "meaning": "O kadına yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "third",
+      "number": "dual",
+      "gender": "feminine",
+      "pronounLabel": "O ikisi (kad.)",
+      "arabic": "نُصِرَتَا",
+      "meaning": "O iki kadına yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "third",
+      "number": "plural",
+      "gender": "feminine",
+      "pronounLabel": "Onlar (kad.)",
+      "arabic": "نُصِرْنَ",
+      "meaning": "O kadınlara yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "second",
+      "number": "singular",
+      "gender": "masculine",
+      "pronounLabel": "Sen (er.)",
+      "arabic": "نُصِرْتَ",
+      "meaning": "Sana erkek olarak yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "second",
+      "number": "dual",
+      "gender": "masculine",
+      "pronounLabel": "Siz ikiniz (er.)",
+      "arabic": "نُصِرْتُمَا",
+      "meaning": "Siz iki erkeğe yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "second",
+      "number": "plural",
+      "gender": "masculine",
+      "pronounLabel": "Siz (er.)",
+      "arabic": "نُصِرْتُمْ",
+      "meaning": "Siz erkeklere yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "second",
+      "number": "singular",
+      "gender": "feminine",
+      "pronounLabel": "Sen (kad.)",
+      "arabic": "نُصِرْتِ",
+      "meaning": "Sana kadın olarak yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "second",
+      "number": "dual",
+      "gender": "feminine",
+      "pronounLabel": "Siz ikiniz (kad.)",
+      "arabic": "نُصِرْتُمَا",
+      "meaning": "Siz iki kadına yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "second",
+      "number": "plural",
+      "gender": "feminine",
+      "pronounLabel": "Siz (kad.)",
+      "arabic": "نُصِرْتُنَّ",
+      "meaning": "Siz kadınlara yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "first",
+      "number": "singular",
+      "gender": "common",
+      "pronounLabel": "Ben",
+      "arabic": "نُصِرْتُ",
+      "meaning": "Bana yardım edildi."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "person": "first",
+      "number": "plural",
+      "gender": "common",
+      "pronounLabel": "Biz",
+      "arabic": "نُصِرْنَا",
+      "meaning": "Bize yardım edildi."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "third",
+      "number": "singular",
+      "gender": "masculine",
+      "pronounLabel": "O (er.)",
+      "arabic": "يَنْصُرُ",
+      "meaning": "O erkek yardım ediyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "third",
+      "number": "dual",
+      "gender": "masculine",
+      "pronounLabel": "O ikisi (er.)",
+      "arabic": "يَنْصُرَانِ",
+      "meaning": "O iki erkek yardım ediyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "third",
+      "number": "plural",
+      "gender": "masculine",
+      "pronounLabel": "Onlar (er.)",
+      "arabic": "يَنْصُرُونَ",
+      "meaning": "O erkekler yardım ediyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "third",
+      "number": "singular",
+      "gender": "feminine",
+      "pronounLabel": "O (kad.)",
+      "arabic": "تَنْصُرُ",
+      "meaning": "O kadın yardım ediyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "third",
+      "number": "dual",
+      "gender": "feminine",
+      "pronounLabel": "O ikisi (kad.)",
+      "arabic": "تَنْصُرَانِ",
+      "meaning": "O iki kadın yardım ediyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "third",
+      "number": "plural",
+      "gender": "feminine",
+      "pronounLabel": "Onlar (kad.)",
+      "arabic": "يَنْصُرْنَ",
+      "meaning": "O kadınlar yardım ediyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "second",
+      "number": "singular",
+      "gender": "masculine",
+      "pronounLabel": "Sen (er.)",
+      "arabic": "تَنْصُرُ",
+      "meaning": "Sen erkek yardım ediyorsun."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "second",
+      "number": "dual",
+      "gender": "masculine",
+      "pronounLabel": "Siz ikiniz (er.)",
+      "arabic": "تَنْصُرَانِ",
+      "meaning": "Siz iki erkek yardım ediyorsunuz."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "second",
+      "number": "plural",
+      "gender": "masculine",
+      "pronounLabel": "Siz (er.)",
+      "arabic": "تَنْصُرُونَ",
+      "meaning": "Siz erkekler yardım ediyorsunuz."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "second",
+      "number": "singular",
+      "gender": "feminine",
+      "pronounLabel": "Sen (kad.)",
+      "arabic": "تَنْصُرِينَ",
+      "meaning": "Sen kadın yardım ediyorsun."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "second",
+      "number": "dual",
+      "gender": "feminine",
+      "pronounLabel": "Siz ikiniz (kad.)",
+      "arabic": "تَنْصُرَانِ",
+      "meaning": "Siz iki kadın yardım ediyorsunuz."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "second",
+      "number": "plural",
+      "gender": "feminine",
+      "pronounLabel": "Siz (kad.)",
+      "arabic": "تَنْصُرْنَ",
+      "meaning": "Siz kadınlar yardım ediyorsunuz."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "first",
+      "number": "singular",
+      "gender": "common",
+      "pronounLabel": "Ben",
+      "arabic": "أَنْصُرُ",
+      "meaning": "Ben yardım ediyorum."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "person": "first",
+      "number": "plural",
+      "gender": "common",
+      "pronounLabel": "Biz",
+      "arabic": "نَنْصُرُ",
+      "meaning": "Biz yardım ediyoruz."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "third",
+      "number": "singular",
+      "gender": "masculine",
+      "pronounLabel": "O (er.)",
+      "arabic": "يُنْصَرُ",
+      "meaning": "O erkeğe yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "third",
+      "number": "dual",
+      "gender": "masculine",
+      "pronounLabel": "O ikisi (er.)",
+      "arabic": "يُنْصَرَانِ",
+      "meaning": "O iki erkeğe yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "third",
+      "number": "plural",
+      "gender": "masculine",
+      "pronounLabel": "Onlar (er.)",
+      "arabic": "يُنْصَرُونَ",
+      "meaning": "O erkeklere yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "third",
+      "number": "singular",
+      "gender": "feminine",
+      "pronounLabel": "O (kad.)",
+      "arabic": "تُنْصَرُ",
+      "meaning": "O kadına yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "third",
+      "number": "dual",
+      "gender": "feminine",
+      "pronounLabel": "O ikisi (kad.)",
+      "arabic": "تُنْصَرَانِ",
+      "meaning": "O iki kadına yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "third",
+      "number": "plural",
+      "gender": "feminine",
+      "pronounLabel": "Onlar (kad.)",
+      "arabic": "يُنْصَرْنَ",
+      "meaning": "O kadınlara yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "second",
+      "number": "singular",
+      "gender": "masculine",
+      "pronounLabel": "Sen (er.)",
+      "arabic": "تُنْصَرُ",
+      "meaning": "Sana erkek olarak yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "second",
+      "number": "dual",
+      "gender": "masculine",
+      "pronounLabel": "Siz ikiniz (er.)",
+      "arabic": "تُنْصَرَانِ",
+      "meaning": "Siz iki erkeğe yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "second",
+      "number": "plural",
+      "gender": "masculine",
+      "pronounLabel": "Siz (er.)",
+      "arabic": "تُنْصَرُونَ",
+      "meaning": "Siz erkeklere yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "second",
+      "number": "singular",
+      "gender": "feminine",
+      "pronounLabel": "Sen (kad.)",
+      "arabic": "تُنْصَرِينَ",
+      "meaning": "Sana kadın olarak yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "second",
+      "number": "dual",
+      "gender": "feminine",
+      "pronounLabel": "Siz ikiniz (kad.)",
+      "arabic": "تُنْصَرَانِ",
+      "meaning": "Siz iki kadına yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "second",
+      "number": "plural",
+      "gender": "feminine",
+      "pronounLabel": "Siz (kad.)",
+      "arabic": "تُنْصَرْنَ",
+      "meaning": "Siz kadınlara yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "first",
+      "number": "singular",
+      "gender": "common",
+      "pronounLabel": "Ben",
+      "arabic": "أُنْصَرُ",
+      "meaning": "Bana yardım ediliyor."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "person": "first",
+      "number": "plural",
+      "gender": "common",
+      "pronounLabel": "Biz",
+      "arabic": "نُنْصَرُ",
+      "meaning": "Bize yardım ediliyor."
+    }
+  ]
+}

@@ -56,7 +56,8 @@ lib/
 Veri kaynağı:
 
 ```text
-assets/data/emsile_seed.json
+assets/data/catalog.json
+assets/data/verbs/<id>.json
 ```
 
 Bu tercih şimdilik SQLite yerine daha uygun çünkü:
@@ -76,16 +77,30 @@ SQLite ileride şu durumlarda mantıklı olur:
 
 Kök yapı:
 
+`catalog.json` kök yapı:
+
 ```json
 {
+  "version": 1,
+  "defaultVerbId": "nasara",
   "lessons": [],
-  "forms": []
+  "verbs": []
 }
 ```
 
-`lessons` alanı ders listesini ve ders detayındaki temel açıklamayı taşır.
+`verbs/<id>.json` yapı:
 
-`forms` alanı çekim tablosunun ana veri kaynağıdır. Her form şu seçimlerle filtrelenir:
+```json
+{
+  "meta": {},
+  "muhtelifeEntries": [],
+  "muttarideForms": []
+}
+```
+
+`catalog.lessons` alanı ders listesini ve ders detayındaki temel açıklamayı taşır.
+
+`muttarideForms` alanı çekim tablosunun ana veri kaynağıdır. Her form şu seçimlerle filtrelenir:
 
 - `category`: `mazi`, `muzari`
 - `voice`: `malum`, `mechul`
@@ -94,7 +109,9 @@ Kök yapı:
 - `gender`: `masculine`, `feminine`, `common`
 - `pronounLabel`: kullanıcıya gösterilen şahıs etiketi
 
-Çoktan seçmeli alıştırmalar seed JSON'da tek tek tutulmaz; çalışma anında `forms` listesinden üretilir.
+`muhtelifeEntries` alanı aynı fiilin `Emsile-i Muhtelife` kalıplarını taşımak için ayrılmıştır.
+
+Çoktan seçmeli alıştırmalar seed JSON'da tek tek tutulmaz; çalışma anında `muttarideForms` listesinden üretilir.
 
 ## 5. Model Sınıfları
 
@@ -103,6 +120,19 @@ Kök yapı:
 - `lessons`
 - `forms`
 - `practiceQuestions`
+
+`CatalogData`
+
+- içerik sürümü
+- varsayılan fiil
+- ders listesi
+- fiil manifestleri
+
+`VerbEntry`
+
+- `meta`
+- `muhtelifeEntries`
+- `muttarideForms`
 
 `Lesson`
 
@@ -128,6 +158,8 @@ Kök yapı:
   - şahsı seç
 - Distractor seçeneklerini aynı `category` + `voice` grubundaki kardeş formlardan toplar.
 - Aynı Arapça formun birden çok şahısta tekrar ettiği durumlarda kardeş filtrelemesini `candidate != form` mantığıyla yapar.
+
+Repository akışı artık önce `catalog.json`, sonra seçili fiilin `verbs/<id>.json` dosyasını okur; ardından mevcut ekranların kullandığı `AppData` runtime modelini üretir.
 
 ## 6. UI Katmanı
 

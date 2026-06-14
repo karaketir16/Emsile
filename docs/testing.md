@@ -42,7 +42,9 @@ Kapsam:
 - Seçili sekme index'ine göre Tablo, Pratik, Dersler ve Kaynak ekranları doğru render oluyor.
 - Çekim tablosu: Meçhul segment tıklaması doğru formu gösteriyor.
 - Çekim tablosu: Muzâri segment tıklaması doğru formu gösteriyor.
-- Çekim tablosu: Şahıs chip tıklaması sonuç kartını güncelliyor.
+- Çekim tablosu: Şahıs tablosundaki hücre tıklaması sonuç kartını güncelliyor.
+- Çekim tablosu: Bina değişiminde seçili şahıs korunuyor.
+- Çekim tablosu: Kategori değişiminde seçili şahıs korunuyor.
 - Pratik: Doğru cevap tıklaması "Doğru" geri bildirimini gösteriyor.
 - Pratik: Yanlış cevap tıklaması "Tekrar Bak" geri bildirimini gösteriyor.
 - Pratik: Sonraki Soru butonu bir sonraki soruya geçiyor.

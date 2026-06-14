@@ -1,6 +1,6 @@
 # Emsile Flutter Geliştirme Checklist
 
-Son güncelleme: `نصر` için 14 şahıslık mâzi/muzâri malum/meçhul tablo eklendi; pratik soruları JSON'da tek tek yazmak yerine çekim formlarından üretilir hale getirildi.
+Son güncelleme: Çekim ekranında kategori/bina geçişlerinde seçili şahıs korunur hale getirildi; şahıs seçimi ve tüm formlar görünümü PDF sırasına göre tablo düzenine taşındı.
 
 Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya tamamlanma durumu değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
@@ -77,9 +77,12 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Kategori seçici oluştur: Mâzi, Muzâri.
 - [x] Bina seçici oluştur: Malum, Meçhul.
 - [x] Şahıs seçici oluştur.
+- [x] Kategori/bina geçişlerinde seçili şahsı koru.
 - [x] Seçime göre Arapça formu büyük göster.
 - [x] Türkçe anlam ve kısa kural notu göster.
 - [x] Tüm formları listeleyen detay görünümü ekle.
+- [x] Şahıs seçimini PDF düzenine yakın tablo görünümüne taşı.
+- [x] Tüm formları PDF düzenine yakın tablo görünümüne taşı.
 - [x] Sağdan sola yazım davranışını Playwright screenshot ile test et.
 - [ ] Nefy, Emir ve İsimler kategorilerini ekle.
 - [ ] Sayı/cinsiyet seçiciyi ayrı filtre olarak modelle.

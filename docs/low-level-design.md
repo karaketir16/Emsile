@@ -159,7 +159,7 @@ State:
 
 - `_category`: Mâzi veya Muzâri
 - `_voice`: Malum veya Meçhul
-- `_formIndex`: seçili şahıs
+- `_selectedForm`: seçili şahsın `person + number + gender` kimliği
 
 Filtre:
 
@@ -167,9 +167,19 @@ Filtre:
 forms.where((form) => form.category == _category && form.voice == _voice)
 ```
 
-Seçim değiştiğinde `_formIndex` sıfırlanır. Böylece bir kategoriden diğerine geçerken eski index'in yeni listede taşma üretmesi engellenir.
+Kategori veya bina değiştiğinde seçili şahıs indeksle değil kimlikle korunur. Yeni görünür grupta aynı `person + number + gender` eşleşmesi varsa o form aktif kalır; yoksa ilk görünür forma düşülür.
 
-Şahıs listesi şu anda seçili `category` + `voice` grubundaki sıra ile gösterilir. Veri artık 14 şahıslık tam tablo içerdiği için chip sırası seed JSON sırası ile sabitlenmiş olur.
+Şahıs seçimi ve tüm formlar görünümü artık seed sırasına bırakılmaz; PDF'deki muttaride düzenini izleyen sabit bir tablo şeması ile çizilir:
+
+- sütunlar soldan sağa: `Çoğul`, `İkil`, `Tekil`
+- satırlar yukarıdan aşağıya:
+  - `3. Şahıs / Müzekker`
+  - `3. Şahıs / Müennes`
+  - `2. Şahıs / Müzekker`
+  - `2. Şahıs / Müennes`
+  - `1. Şahıs / Ortak`
+
+Bu şema hem şahıs seçim tablosunda hem de tüm formlar tablosunda ortak kullanılır.
 
 ## 8. Arapça Metin Davranışı
 

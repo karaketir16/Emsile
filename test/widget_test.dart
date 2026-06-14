@@ -45,6 +45,7 @@ void main() {
     expect(find.text('Çekim Tablosu'), findsOneWidget);
     expect(find.text('Mâzi'), findsOneWidget);
     expect(find.text('Malum'), findsOneWidget);
+    expect(find.text('Çoğul'), findsWidgets);
   });
 
   testWidgets('renders practice at mobile width', (WidgetTester tester) async {
@@ -197,7 +198,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('conjugation: tapping a pronoun chip updates result card', (
+  testWidgets('conjugation: tapping a pronoun cell updates result card', (
     WidgetTester tester,
   ) async {
     await tester.binding.setSurfaceSize(const Size(390, 844));
@@ -211,13 +212,66 @@ void main() {
       ),
     );
 
-    // First chip is selected by default — tap the second one.
-    await tester.tap(find.widgetWithText(ChoiceChip, 'Sen (er.)'));
+    await tester.tap(find.text('Sen (er.)'));
     await tester.pumpAndSettle();
 
     expect(find.text('نَصَرْتَ'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets(
+    'conjugation: selected person is preserved when switching voice',
+    (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: SafeArea(child: ConjugationScreen(data: richTestData)),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('Sen (er.)'));
+      await tester.pumpAndSettle();
+      expect(find.text('نَصَرْتَ'), findsWidgets);
+
+      await tester.tap(find.text('Meçhul'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('نُصِرْتَ'), findsWidgets);
+      expect(find.text('Sen (er.)'), findsWidgets);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'conjugation: selected person is preserved when switching category',
+    (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: SafeArea(child: ConjugationScreen(data: richTestData)),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('Sen (er.)'));
+      await tester.pumpAndSettle();
+      expect(find.text('نَصَرْتَ'), findsWidgets);
+
+      await tester.tap(find.text('Muzâri'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('تَنْصُرُ'), findsWidgets);
+      expect(find.text('Sen (er.)'), findsWidgets);
+      expect(tester.takeException(), isNull);
+    },
+  );
 
   // ── Practice interactions ───────────────────────────────────────────────────
 
@@ -360,6 +414,16 @@ const richTestData = AppData(
       meaning: 'Yardım edildi.',
     ),
     ConjugationForm(
+      category: FormCategory.mazi,
+      voice: Voice.mechul,
+      person: FormPerson.second,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      pronounLabel: 'Sen (er.)',
+      arabic: 'نُصِرْتَ',
+      meaning: 'Yardım edildin.',
+    ),
+    ConjugationForm(
       category: FormCategory.muzari,
       voice: Voice.malum,
       person: FormPerson.third,
@@ -368,6 +432,16 @@ const richTestData = AppData(
       pronounLabel: 'O (er.)',
       arabic: 'يَنْصُرُ',
       meaning: 'Yardım ediyor.',
+    ),
+    ConjugationForm(
+      category: FormCategory.muzari,
+      voice: Voice.malum,
+      person: FormPerson.second,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      pronounLabel: 'Sen (er.)',
+      arabic: 'تَنْصُرُ',
+      meaning: 'Yardım ediyorsun.',
     ),
   ],
   practiceQuestions: [],

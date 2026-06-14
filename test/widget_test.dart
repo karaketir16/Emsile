@@ -376,22 +376,6 @@ void main() {
       // Seçili Tablo altındaki 'نَصَرَ' aktif olmalı.
       // Tüm Tablolar altındaki 'يَنْصُرُ' (Muzari Malum) ise o an aktif olmadığı için boyanmamalı.
 
-      // Container bulucu ile boyanan kutuları bulalım.
-      // BoxDecoration color'ı primaryContainer olan kutular seçilidir.
-      final primaryColor = const Color(0xFFEADDFF); // Standart primaryContainer rengi (varsayılan ThemeData için)
-      
-      // Testimizde renklendirmeyi ThemeData üzerinden çekiyor: colorScheme.primaryContainer.withValues(alpha: 0.55) veya primaryContainer
-      // Dolayısıyla Container'ları BoxDecoration renklerine göre test etmek için Finder yazabiliriz.
-      Finder findSelectedContainer() {
-        return find.byWidgetPredicate((widget) {
-          if (widget is Container && widget.decoration is BoxDecoration) {
-            final decoration = widget.decoration as BoxDecoration;
-            return decoration.color != null;
-          }
-          return false;
-        });
-      }
-
       // Seçili tek bir hücre olmalı (Seçili Tablo altındaki Hüve hücresi).
       // Şahıs Tablosunda ise pronounLabel olan hücre seçilidir (primaryContainer ile).
       // FormsTable içinde sadece bir hücre boyanmalıdır (Mazi Malum Hüve).

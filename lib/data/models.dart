@@ -162,8 +162,8 @@ class ConjugationForm {
       person.label,
       number.label,
       if (gender != FormGender.common) gender.label,
-      category.name,
-      voice.name,
+      category.label,
+      voice.label,
       'formudur.',
     ];
     return parts.join(' ');

@@ -289,7 +289,7 @@ class SelectionTable extends StatelessWidget {
           onTap: () => onSelect(selectionCell.selection),
           borderRadius: BorderRadius.circular(6),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
             decoration: BoxDecoration(
               color: isSelected ? colorScheme.primaryContainer : Colors.white,
               borderRadius: BorderRadius.circular(6),
@@ -357,23 +357,21 @@ class FormsTable extends StatelessWidget {
           onTap: () => onSelect(selection),
           borderRadius: BorderRadius.circular(6),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
             decoration: BoxDecoration(
               color: isSelected
                   ? colorScheme.primaryContainer.withValues(alpha: 0.55)
                   : null,
               borderRadius: BorderRadius.circular(6),
             ),
-            child: Center(
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: Text(
-                  form.arabic,
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  softWrap: false,
-                  style: arabicTextStyle(18),
-                ),
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(
+                form.arabic,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                softWrap: false,
+                style: arabicTextStyle(18),
               ),
             ),
           ),
@@ -402,61 +400,54 @@ class PdfStyleTable extends StatelessWidget {
       context,
     ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w700);
 
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: constraints.maxWidth,
-              ),
-              child: Table(
-                border: TableBorder.all(color: borderColor),
-                columnWidths: const {
-                  0: IntrinsicColumnWidth(),
-                  1: IntrinsicColumnWidth(),
-                  2: IntrinsicColumnWidth(),
-                  3: FixedColumnWidth(94),
-                },
-                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+    return Center(
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Table(
+            border: TableBorder.all(color: borderColor),
+            columnWidths: const {
+              0: IntrinsicColumnWidth(),
+              1: IntrinsicColumnWidth(),
+              2: IntrinsicColumnWidth(),
+              3: FixedColumnWidth(94),
+            },
+            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+            children: [
+              TableRow(
+                decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
                 children: [
-                  TableRow(
-                    decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
-                    children: [
-                      _HeaderCell(text: pdfColumns[0].label),
-                      _HeaderCell(text: pdfColumns[1].label),
-                      _HeaderCell(text: pdfColumns[2].label),
-                      _HeaderCell(text: headerTitle),
-                    ],
-                  ),
-                  for (final row in rows)
-                    TableRow(
-                      children: [
-                        for (final cell in row.cells)
-                          Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: SizedBox(
-                              height: 40,
-                              child: Center(child: cellBuilder(context, cell)),
-                            ),
-                          ),
-                        Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Text(
-                            row.rowLabel,
-                            textAlign: TextAlign.center,
-                            style: labelStyle,
-                          ),
-                        ),
-                      ],
-                    ),
+                  _HeaderCell(text: pdfColumns[0].label),
+                  _HeaderCell(text: pdfColumns[1].label),
+                  _HeaderCell(text: pdfColumns[2].label),
+                  _HeaderCell(text: headerTitle),
                 ],
               ),
-            ),
-          );
-        },
+              for (final row in rows)
+                TableRow(
+                  children: [
+                    for (final cell in row.cells)
+                      Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: SizedBox(
+                          height: 40,
+                          child: Center(child: cellBuilder(context, cell)),
+                        ),
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        row.rowLabel,
+                        textAlign: TextAlign.center,
+                        style: labelStyle,
+                      ),
+                    ),
+                  ],
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -681,23 +672,21 @@ class NounFormsTable extends StatelessWidget {
               onTap: () => onSelect(FormSelection.fromForm(form)),
               borderRadius: BorderRadius.circular(6),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
                 decoration: BoxDecoration(
                   color: isSelected
                       ? colorScheme.primaryContainer.withValues(alpha: 0.55)
                       : null,
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: Center(
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Text(
-                      form.arabic,
-                      textAlign: TextAlign.center,
-                      maxLines: 1,
-                      softWrap: false,
-                      style: arabicTextStyle(18),
-                    ),
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    form.arabic,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    softWrap: false,
+                    style: arabicTextStyle(18),
                   ),
                 ),
               ),

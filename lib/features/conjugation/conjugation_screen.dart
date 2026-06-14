@@ -308,7 +308,7 @@ class SelectionTable extends StatelessWidget {
           onTap: () => onSelect(selectionCell.selection),
           borderRadius: BorderRadius.circular(6),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 5),
             decoration: BoxDecoration(
               color: isSelected ? colorScheme.primaryContainer : Colors.white,
               borderRadius: BorderRadius.circular(6),
@@ -363,7 +363,7 @@ class FormsTable extends StatelessWidget {
       context,
       rows: rows,
       textForCell: (data) => (data as ConjugationForm?)?.arabic,
-      textStyle: arabicTextStyle(17),
+      textStyle: arabicTextStyle(20),
       textDirection: TextDirection.rtl,
     );
 
@@ -400,7 +400,7 @@ class FormsTable extends StatelessWidget {
                 textAlign: TextAlign.center,
                 maxLines: 1,
                 softWrap: false,
-                style: arabicTextStyle(17),
+                style: arabicTextStyle(20),
               ),
             ),
           ),
@@ -469,7 +469,7 @@ class PdfStyleTable extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(1),
                           child: SizedBox(
-                            height: 30,
+                            height: 40,
                             child: Center(child: cellBuilder(context, cell)),
                           ),
                         ),
@@ -759,7 +759,7 @@ class NounFormsTable extends StatelessWidget {
       context,
       rows: tableRows,
       textForCell: (data) => (data as ConjugationForm?)?.arabic,
-      textStyle: arabicTextStyle(17),
+      textStyle: arabicTextStyle(20),
       textDirection: TextDirection.rtl,
     );
 
@@ -780,7 +780,7 @@ class NounFormsTable extends StatelessWidget {
               onTap: () => onSelect(FormSelection.fromForm(form)),
               borderRadius: BorderRadius.circular(6),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 5),
                 decoration: BoxDecoration(
                   color: isSelected
                       ? colorScheme.primaryContainer.withValues(alpha: 0.55)
@@ -794,7 +794,7 @@ class NounFormsTable extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     softWrap: false,
-                    style: arabicTextStyle(17),
+                    style: arabicTextStyle(20),
                   ),
                 ),
               ),

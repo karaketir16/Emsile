@@ -51,9 +51,13 @@ Kapsam:
 - Pratik: Doğru cevap tıklaması "Doğru" geri bildirimini gösteriyor.
 - Pratik: Yanlış cevap tıklaması "Tekrar Bak" geri bildirimini gösteriyor.
 - Pratik: Sonraki Soru butonu bir sonraki soruya geçiyor.
+- Pratik: Ayarlar ekranında kategori filtrelerinin sıfırlanabilmesi ve 5 form sınırının kontrolü.
+- Pratik: Ayarlar ekranında sütun başlıkları ve satır etiketlerine tıklanarak şahıs/zamir gruplarının toplu seçilip kaldırılabilmesi.
+- Pratik: İsim çekim kategorileri için filtreleme ve isim pratiği başlatılabilmesi.
+- Çekim tablosu: İsim kategorisi (İsm-i Fâil vb.) seçildiğinde çatı seçicinin gizlenmesi, isim tablosunda hücre seçimi ve kırık çoğul çipi tıklamaları.
 - Test fixture'ları yeni `person/number/gender` veri modelini kullanıyor.
 - `PracticeQuestionGenerator` unit testleri aynı Arapça form tekrarlarında ayrı şahıs soruları üretildiğini doğruluyor.
-- `MuttarideGenerator` unit testleri generated conjugation kaynağından 252 fiil formu üretildiğini, temel `nasara` örneklerini, nefy/cahd/emir/nehy formlarını ve PDF'te boş kalan komut hücrelerini doğruluyor.
+- `MuttarideGenerator` unit testleri generated conjugation kaynağından tüm fiil ve isim/taaccüb çekimlerinin (toplam 339 form) doğru ve harekeli üretildiğini test ediyor.
 
 Test altyapısı:
 

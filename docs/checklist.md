@@ -1,6 +1,6 @@
 # Emsile Flutter Geliştirme Checklist
 
-Son güncelleme: `nasara` için fiil çekimli muttaride grupları PDF kurallarına göre rule-based üretildi ve çekim ekranında tüm tablolar erişilebilir hale getirildi.
+Son güncelleme: İsim çekimleri ve taaccüb fiilleri entegrasyonu tamamlandı. Pratik ayar ekranında filtreler sadeleştirilerek tablo görünümüne geçirildi, sütun ve satır başlıklarından toplu seçim yapılması sağlandı.
 
 Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya tamamlanma durumu değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
@@ -96,8 +96,8 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Nefy, cahd, emir ve nehy fiil gruplarını çekim ekranına ekle.
 - [x] Tüm fiil muttaride tablolarını tek ekrandan erişilebilir yap.
 - [x] Sağdan sola yazım davranışını Playwright screenshot ile test et.
-- [ ] İsim ve masdar türev tablolarını çekim ekranına ayrı bölüm olarak ekle.
-- [ ] Sayı/cinsiyet seçiciyi ayrı filtre olarak modelle.
+- [x] İsim ve masdar türev tablolarını çekim ekranına ayrı bölüm olarak ekle.
+- [x] Sayı/cinsiyet seçiciyi ayrı filtre olarak modelle.
 - [ ] Boş veri durumlarını tasarla.
 
 ## 8. Alıştırma
@@ -118,7 +118,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Belge güncelleme tarihini göster: 01.01.2025.
 - [x] Kullanım notunu kısa ve açık şekilde göster.
 - [x] Yerel PDF yolunu göster.
-- [ ] Kaynak bağlantısını tıklanabilir hale getir.
+- [x] Kaynak bağlantısını tıklanabilir hale getir.
 - [ ] PDF açma veya dış bağlantı alanı ekle.
 
 ## 10. Mobil/Web Kalite Kontrol
@@ -170,6 +170,6 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [ ] Muhtelife explorer için ders detayından ayrı, filtrelenebilir bağımsız ekran ekle.
 - [ ] Fiil listesi/katalog ekranını ekle.
 - [x] Nefy, cahd, emir ve nehy fiil kategorileri için aynı tablo genişletmesini yap.
-- [ ] İsim/masdar türevleri için sayı-cinsiyet tablolarını ayrı muttaride bölümü olarak ekle.
+- [x] İsim/masdar türevleri için sayı-cinsiyet tablolarını ayrı muttaride bölümü olarak ekle.
 - [ ] Üretilen pratik sorularına zorluk/karıştırma stratejisi ekle.
 - [ ] Playwright testini 360px ve 430px viewportlarla genişlet.

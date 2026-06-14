@@ -1277,6 +1277,73 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  testWidgets(
+    'conjugation: opening all tables page does not highlight cells in inactive tables',
+    (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(500, 1000));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ConjugationScreen(data: richTestData),
+        ),
+      );
+      await navigateToConjugations(tester);
+
+      // Open 'Tüm Muttaride Tablolarını Gör' page
+      await tester.ensureVisible(find.text('Tüm Muttaride Tablolarını Gör'));
+      await tester.tap(find.text('Tüm Muttaride Tablolarını Gör'));
+      await tester.pumpAndSettle();
+
+      // The default category on the main screen is Mazi Malum.
+      // So on the All Tables page, the Mazi Malum table should highlight 'نَصَرَ' (Hüve).
+      // But the Muzari Malum table ('يَنْصُرُ') should NOT highlight 'يَنْصُرُ' (Hüve).
+      
+      // Let's verify 'نَصَرَ' is highlighted (with primaryContainer color)
+      final nasaraFinder = find.text('نَصَرَ');
+      expect(nasaraFinder, findsAtLeastNWidgets(1));
+      
+      final nasaraContainers = tester.widgetList<Container>(
+        find.ancestor(
+          of: nasaraFinder,
+          matching: find.byType(Container),
+        ),
+      );
+      
+      bool foundHighlightedNasara = false;
+      for (final container in nasaraContainers) {
+        if (container.decoration is BoxDecoration) {
+          final deco = container.decoration as BoxDecoration;
+          if (deco.color != null) {
+            foundHighlightedNasara = true;
+            break;
+          }
+        }
+      }
+      expect(foundHighlightedNasara, isTrue, reason: 'Mazi Malum cell should be highlighted');
+
+      // Now verify 'يَنْصُرُ' (Muzari Malum) is NOT highlighted
+      final yansuruFinder = find.text('يَنْصُرُ');
+      expect(yansuruFinder, findsAtLeastNWidgets(1));
+
+      final yansuruContainers = tester.widgetList<Container>(
+        find.ancestor(
+          of: yansuruFinder,
+          matching: find.byType(Container),
+        ),
+      );
+
+      for (final container in yansuruContainers) {
+        if (container.decoration is BoxDecoration) {
+          final deco = container.decoration as BoxDecoration;
+          expect(deco.color, isNull, reason: 'Muzari Malum cell should not be highlighted');
+        }
+      }
+
+      expect(tester.takeException(), isNull);
+    },
+  );
 }
 
 Future<void> navigateToConjugations(WidgetTester tester) async {

@@ -360,6 +360,8 @@ class _ConjugationsPageState extends State<_ConjugationsPage> {
                                 builder: (_) => _AllMuttarideTablesPage(
                                   data: widget.data,
                                   selectedForm: _selectedForm,
+                                  activeCategory: _category,
+                                  activeVoice: _voice,
                                   onSelect: _updateSelection,
                                 ),
                               ),
@@ -488,6 +490,7 @@ class FormsTable extends StatelessWidget {
     required this.activeCategory,
     required this.activeVoice,
     required this.onSelect,
+    this.highlightSelection = true,
     super.key,
   });
 
@@ -496,6 +499,7 @@ class FormsTable extends StatelessWidget {
   final FormCategory activeCategory;
   final Voice activeVoice;
   final ValueChanged<FormSelection> onSelect;
+  final bool highlightSelection;
 
   @override
   Widget build(BuildContext context) {
@@ -527,7 +531,7 @@ class FormsTable extends StatelessWidget {
           return const SizedBox.shrink();
         }
 
-        final isSelected =
+        final isSelected = highlightSelection &&
             activeCategory == form.category &&
             activeVoice == form.voice &&
             selectedForm.matches(form);
@@ -1014,12 +1018,14 @@ class NounFormsTable extends StatelessWidget {
     required this.forms,
     required this.selectedForm,
     required this.onSelect,
+    this.highlightSelection = true,
     super.key,
   });
 
   final List<ConjugationForm> forms;
   final FormSelection selectedForm;
   final ValueChanged<FormSelection> onSelect;
+  final bool highlightSelection;
 
   @override
   Widget build(BuildContext context) {
@@ -1115,7 +1121,7 @@ class NounFormsTable extends StatelessWidget {
             final form = data as ConjugationForm?;
             if (form == null) return const SizedBox.shrink();
 
-            final isSelected = selectedForm.matches(form);
+            final isSelected = highlightSelection && selectedForm.matches(form);
             final colorScheme = Theme.of(context).colorScheme;
 
             return InkWell(
@@ -1156,7 +1162,7 @@ class NounFormsTable extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: otherForms.map((form) {
-              final isSelected = selectedForm.matches(form);
+              final isSelected = highlightSelection && selectedForm.matches(form);
               final colorScheme = Theme.of(context).colorScheme;
 
               return InkWell(
@@ -1237,11 +1243,15 @@ class _AllMuttarideTablesPage extends StatelessWidget {
   const _AllMuttarideTablesPage({
     required this.data,
     required this.selectedForm,
+    required this.activeCategory,
+    required this.activeVoice,
     required this.onSelect,
   });
 
   final AppData data;
   final FormSelection selectedForm;
+  final FormCategory activeCategory;
+  final Voice activeVoice;
   final Function({
     FormCategory? category,
     Voice? voice,
@@ -1296,6 +1306,7 @@ class _AllMuttarideTablesPage extends StatelessWidget {
                     selectedForm: selectedForm,
                     activeCategory: group.category,
                     activeVoice: group.voice,
+                    highlightSelection: group.category == activeCategory && group.voice == activeVoice,
                     onSelect: (selection) {
                       onSelect(
                         category: group.category,
@@ -1309,6 +1320,7 @@ class _AllMuttarideTablesPage extends StatelessWidget {
                   NounFormsTable(
                     forms: group.forms,
                     selectedForm: selectedForm,
+                    highlightSelection: group.category == activeCategory,
                     onSelect: (selection) {
                       onSelect(
                         category: group.category,

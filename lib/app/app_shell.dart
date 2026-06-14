@@ -30,10 +30,7 @@ class _AppShellState extends State<AppShell> {
 
     return Scaffold(
       body: SafeArea(
-        child: IndexedStack(
-          index: _selectedIndex,
-          children: screens,
-        ),
+        child: IndexedStack(index: _selectedIndex, children: screens),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,

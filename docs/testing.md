@@ -48,6 +48,7 @@ Kapsam:
 - Çekim tablosu: Kategori değişiminde seçili şahıs korunuyor.
 - Çekim tablosu: Üst kontroller sabit kalırken alt tablolar ayrı scroll alanında akıyor.
 - Çekim tablosu: Tüm fiil muttaride tabloları aynı ekrandan erişilebilir oluyor.
+- Çekim tablosu: Zamirler modunda ayrı ve bitişik zamir tabloları render ediliyor.
 - Pratik: Doğru cevap tıklaması "Doğru" geri bildirimini gösteriyor.
 - Pratik: Yanlış cevap tıklaması "Tekrar Bak" geri bildirimini gösteriyor.
 - Pratik: Sonraki Soru butonu bir sonraki soruya geçiyor.
@@ -99,6 +100,7 @@ Amaç:
 
 - `assets/data/catalog.json` ve `assets/data/verbs/*.json` dosyalarının beklenen yapıyı taşıdığını doğrulamak.
 - Ders, verb manifesti, muhtelife ve muttaride alanlarının boş olmadığını kontrol etmek.
+- PDF'ten taşınan ayrı/bitişik zamir verisinin 15'er satırla tanımlandığını kontrol etmek.
 - Muhtelife satirlarinda varsa `row`/`column` yerlesim bilgilerinin tutarli oldugunu kontrol etmek.
 - `category`, `voice`, `person`, `number` ve `gender` alanlarında temel tutarlılığı yakalamak.
 - Varsayılan fiilin katalog içinde gerçekten tanımlı olduğunu doğrulamak.
@@ -132,7 +134,7 @@ veya aynı portta `build/web` servis ediliyor olmalı.
 Amaç:
 
 - Release web çıktısında ana akışın gerçekten açıldığını doğrulamak.
-- Mobil viewport'ta ana ekran, çekim tablosu ve pratik ekranı screenshot'larını üretmek.
+- Mobil viewport'ta ana ekran, çekim tablosu, zamir tablosu ve pratik ekranı screenshot'larını üretmek.
 - Console error veya page error durumlarını yakalamak.
 
 ## 2. Mevcut Test Sınırları

@@ -4,8 +4,37 @@ const path = require('path');
 const dataDir = path.join(__dirname, '..', 'assets', 'data');
 const catalogPath = path.join(dataDir, 'catalog.json');
 const verbsDir = path.join(dataDir, 'verbs');
-const validCategories = new Set(['mazi', 'muzari']);
+const validCategories = new Set([
+  'mazi',
+  'muzari',
+  'masdar',
+  'ismFail',
+  'ismMeful',
+  'cahdMutlak',
+  'cahdMustagrak',
+  'nefyHal',
+  'nefyIstikbal',
+  'tekidNefyIstikbal',
+  'emrGaib',
+  'nehyGaib',
+  'emrHazir',
+  'nehyHazir',
+  'ismZamanMekan',
+  'ismAlet',
+  'masdarMerre',
+  'masdarNev',
+  'ismTasgir',
+  'ismMensub',
+  'mubalagaIsmFail',
+  'ismTafdil',
+  'fiilTaaccubEvvel',
+  'fiilTaaccubSani',
+]);
 const validVoices = new Set(['malum', 'mechul']);
+const validPronounKinds = new Set(['independent', 'attached']);
+const validPersons = new Set(['first', 'second', 'third', 'none']);
+const validNumbers = new Set(['singular', 'dual', 'plural']);
+const validGenders = new Set(['masculine', 'feminine', 'common']);
 
 function assert(condition, message) {
   if (!condition) {
@@ -48,6 +77,39 @@ function validateVerbManifest(verbs) {
   });
 }
 
+function validatePronouns(pronouns) {
+  assert(Array.isArray(pronouns), 'pronouns must be an array');
+  assert(pronouns.length > 0, 'pronouns must not be empty');
+  pronouns.forEach((pronoun, index) => {
+    assert(
+      validPronounKinds.has(pronoun.kind),
+      `pronouns[${index}].kind is invalid`,
+    );
+    assert(
+      validPersons.has(pronoun.person) && pronoun.person !== 'none',
+      `pronouns[${index}].person is invalid`,
+    );
+    assert(
+      validNumbers.has(pronoun.number),
+      `pronouns[${index}].number is invalid`,
+    );
+    assert(
+      validGenders.has(pronoun.gender),
+      `pronouns[${index}].gender is invalid`,
+    );
+    assertString(pronoun.labelTr, `pronouns[${index}].labelTr`);
+    assertString(pronoun.arabic, `pronouns[${index}].arabic`);
+    assertString(pronoun.meaning, `pronouns[${index}].meaning`);
+  });
+
+  for (const kind of validPronounKinds) {
+    assert(
+      pronouns.filter((pronoun) => pronoun.kind === kind).length === 15,
+      `pronouns must contain 15 ${kind} entries`,
+    );
+  }
+}
+
 function validateMuhtelifeEntries(entries, verbId) {
   assert(Array.isArray(entries), `${verbId}.muhtelifeEntries must be an array`);
   entries.forEach((entry, index) => {
@@ -86,15 +148,15 @@ function validateMuttarideForms(forms, verbId) {
       `${verbId}.muttarideForms[${index}].voice is invalid`,
     );
     assert(
-      ['first', 'second', 'third'].includes(form.person),
+      validPersons.has(form.person),
       `${verbId}.muttarideForms[${index}].person is invalid`,
     );
     assert(
-      ['singular', 'dual', 'plural'].includes(form.number),
+      validNumbers.has(form.number),
       `${verbId}.muttarideForms[${index}].number is invalid`,
     );
     assert(
-      ['masculine', 'feminine', 'common'].includes(form.gender),
+      validGenders.has(form.gender),
       `${verbId}.muttarideForms[${index}].gender is invalid`,
     );
     assertString(
@@ -179,6 +241,7 @@ function main() {
   assert(Number.isInteger(catalog.version), 'catalog.version must be an integer');
   assertString(catalog.defaultVerbId, 'catalog.defaultVerbId');
   validateLessons(catalog.lessons);
+  validatePronouns(catalog.pronouns);
   validateVerbManifest(catalog.verbs);
 
   const knownVerbIds = new Set(catalog.verbs.map((verb) => verb.id));

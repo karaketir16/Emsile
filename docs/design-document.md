@@ -98,11 +98,13 @@ Amaç: PDF'teki geniş tabloları mobilde gezilebilir hale getirmek.
 
 Temel etkileşim:
 
+- Kullanıcı ana tablo modunu seçer: Çekimler veya Zamirler
 - Kullanıcı kök/örnek fiil seçer: örneğin `نصر`
 - Kullanıcı kategori seçer: Mâzi, Muzâri, Nefy, Emir, İsimler
 - Kullanıcı bina seçer: Malum, Meçhul
 - Kullanıcı şahıs seçer: 1., 2., 3. şahıs
 - Kullanıcı sayı/cinsiyet seçer: müfred, tesniye, cemi; müzekker, müennes
+- Zamirler modunda kullanıcı ayrı zamirler ile bitişik zamirler arasında geçiş yapar
 
 Çıktı:
 
@@ -110,6 +112,7 @@ Temel etkileşim:
 - Latin/Türkçe açıklama
 - Kısa kural notu
 - Aynı satırdaki diğer şahıslara geçiş
+- Zamirler için PDF düzenine yakın `Çoğul / İkil / Tekil` tablosu
 
 Mobil tasarım:
 

@@ -18,15 +18,27 @@ class PracticeScreen extends StatefulWidget {
 
 class _PracticeScreenState extends State<PracticeScreen> {
   static const _verbPronouns = [
-    'O (er.)', 'O ikisi (er.)', 'Onlar (er.)',
-    'O (kad.)', 'O ikisi (kad.)', 'Onlar (kad.)',
-    'Sen (er.)', 'Siz ikiniz (er.)', 'Siz (er.)',
-    'Sen (kad.)', 'Siz ikiniz (kad.)', 'Siz (kad.)',
-    'Ben', 'Biz'
+    'O (er.)',
+    'O ikisi (er.)',
+    'Onlar (er.)',
+    'O (kad.)',
+    'O ikisi (kad.)',
+    'Onlar (kad.)',
+    'Sen (er.)',
+    'Siz ikiniz (er.)',
+    'Siz (er.)',
+    'Sen (kad.)',
+    'Siz ikiniz (kad.)',
+    'Siz (kad.)',
+    'Ben',
+    'Biz',
   ];
 
   static const _nounOptions = [
-    'Tekil', 'İkil', 'Çoğul (Kurallı)', 'Kırık Çoğul'
+    'Tekil',
+    'İkil',
+    'Çoğul (Kurallı)',
+    'Kırık Çoğul',
   ];
 
   bool _setupMode = true;
@@ -47,7 +59,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
   void _initializeSelections() {
     _selectedCategories.clear();
     _selectedCategories.addAll(FormCategory.values);
-    
+
     _selectedVoices.clear();
     _selectedVoices.addAll(Voice.values);
 
@@ -71,7 +83,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return widget.data.forms.where((form) {
       final categoryMatch = _selectedCategories.contains(form.category);
       final voiceMatch = _selectedVoices.contains(form.voice);
-      
+
       final String mappedPronoun;
       if (form.category.isNoun) {
         final label = form.pronounLabel;
@@ -89,7 +101,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
       } else {
         mappedPronoun = form.pronounLabel;
       }
-      
+
       final pronounMatch = _selectedPronouns.contains(mappedPronoun);
       return categoryMatch && voiceMatch && pronounMatch;
     }).toList();
@@ -122,10 +134,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
             title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
         Row(
@@ -138,7 +147,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 6, vertical: 8),
                 child: Text(
                   'Tümünü Seç',
-                  style: TextStyle(fontSize: 12, color: Colors.blue, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -150,7 +163,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 6, vertical: 8),
                 child: Text(
                   'Temizle',
-                  style: TextStyle(fontSize: 12, color: Colors.blue, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -218,9 +235,9 @@ class _PracticeScreenState extends State<PracticeScreen> {
         text,
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: hasTap ? Theme.of(context).colorScheme.primary : null,
-            ),
+          fontWeight: FontWeight.bold,
+          color: hasTap ? Theme.of(context).colorScheme.primary : null,
+        ),
       ),
     );
 
@@ -239,10 +256,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
       );
     }
 
-    return Container(
-      color: const Color(0xFFF4F0E6),
-      child: content,
-    );
+    return Container(color: const Color(0xFFF4F0E6), child: content);
   }
 
   Widget _buildLabelCell(String text, {VoidCallback? onTap}) {
@@ -252,9 +266,9 @@ class _PracticeScreenState extends State<PracticeScreen> {
         text,
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: hasTap ? Theme.of(context).colorScheme.primary : null,
-            ),
+          fontWeight: FontWeight.bold,
+          color: hasTap ? Theme.of(context).colorScheme.primary : null,
+        ),
       ),
     );
 
@@ -273,10 +287,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
       );
     }
 
-    return Container(
-      color: const Color(0xFFF4F0E6),
-      child: content,
-    );
+    return Container(color: const Color(0xFFF4F0E6), child: content);
   }
 
   TableRow _buildPronounRow({
@@ -329,7 +340,6 @@ class _PracticeScreenState extends State<PracticeScreen> {
       },
     );
   }
-
 
   Widget _buildSetupView(BuildContext context) {
     final showVerbs = _selectedCategories.isEmpty
@@ -523,35 +533,52 @@ class _PracticeScreenState extends State<PracticeScreen> {
                     plural: 'Onlar (er.)',
                     dual: 'O ikisi (er.)',
                     singular: 'O (er.)',
-                    onLabelTap: () => _togglePronounsGroup(const ['Onlar (er.)', 'O ikisi (er.)', 'O (er.)']),
+                    onLabelTap: () => _togglePronounsGroup(const [
+                      'Onlar (er.)',
+                      'O ikisi (er.)',
+                      'O (er.)',
+                    ]),
                   ),
                   _buildPronounRow(
                     label: '3. Şh. Müennes\n(Gâibe)',
                     plural: 'Onlar (kad.)',
                     dual: 'O ikisi (kad.)',
                     singular: 'O (kad.)',
-                    onLabelTap: () => _togglePronounsGroup(const ['Onlar (kad.)', 'O ikisi (kad.)', 'O (kad.)']),
+                    onLabelTap: () => _togglePronounsGroup(const [
+                      'Onlar (kad.)',
+                      'O ikisi (kad.)',
+                      'O (kad.)',
+                    ]),
                   ),
                   _buildPronounRow(
                     label: '2. Şh. Müzekker\n(Muhatab)',
                     plural: 'Siz (er.)',
                     dual: 'Siz ikiniz (er.)',
                     singular: 'Sen (er.)',
-                    onLabelTap: () => _togglePronounsGroup(const ['Siz (er.)', 'Siz ikiniz (er.)', 'Sen (er.)']),
+                    onLabelTap: () => _togglePronounsGroup(const [
+                      'Siz (er.)',
+                      'Siz ikiniz (er.)',
+                      'Sen (er.)',
+                    ]),
                   ),
                   _buildPronounRow(
                     label: '2. Şh. Müennes\n(Muhataba)',
                     plural: 'Siz (kad.)',
                     dual: 'Siz ikiniz (kad.)',
                     singular: 'Sen (kad.)',
-                    onLabelTap: () => _togglePronounsGroup(const ['Siz (kad.)', 'Siz ikiniz (kad.)', 'Sen (kad.)']),
+                    onLabelTap: () => _togglePronounsGroup(const [
+                      'Siz (kad.)',
+                      'Siz ikiniz (kad.)',
+                      'Sen (kad.)',
+                    ]),
                   ),
                   _buildPronounRow(
                     label: '1. Şh. Ortak\n(Mütekellim)',
                     plural: 'Biz',
                     dual: 'Biz',
                     singular: 'Ben',
-                    onLabelTap: () => _togglePronounsGroup(const ['Biz', 'Ben']),
+                    onLabelTap: () =>
+                        _togglePronounsGroup(const ['Biz', 'Ben']),
                   ),
                 ],
               ),
@@ -675,7 +702,11 @@ class _PracticeScreenState extends State<PracticeScreen> {
             children: [
               Text(
                 'Soru Havuzu: ${_matchingForms.length} Form',
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                  color: Colors.grey,
+                ),
               ),
               IconButton.filledTonal(
                 onPressed: () {
@@ -805,10 +836,7 @@ class AnswerButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: const TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 20,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
         ),
       ),
     );

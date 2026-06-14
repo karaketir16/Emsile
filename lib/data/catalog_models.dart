@@ -5,12 +5,14 @@ class CatalogData {
     required this.version,
     required this.defaultVerbId,
     required this.lessons,
+    required this.pronouns,
     required this.verbs,
   });
 
   final int version;
   final String defaultVerbId;
   final List<Lesson> lessons;
+  final List<PronounEntry> pronouns;
   final List<VerbManifest> verbs;
 
   factory CatalogData.fromJson(Map<String, dynamic> json) {
@@ -19,6 +21,9 @@ class CatalogData {
       defaultVerbId: json['defaultVerbId'] as String,
       lessons: (json['lessons'] as List<dynamic>)
           .map((item) => Lesson.fromJson(item as Map<String, dynamic>))
+          .toList(),
+      pronouns: ((json['pronouns'] as List<dynamic>?) ?? [])
+          .map((item) => PronounEntry.fromJson(item as Map<String, dynamic>))
           .toList(),
       verbs: (json['verbs'] as List<dynamic>)
           .map((item) => VerbManifest.fromJson(item as Map<String, dynamic>))

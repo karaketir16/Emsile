@@ -48,11 +48,13 @@ lib/
 1. `main()` çalışır.
 2. `EmsileApp` oluşturulur.
 3. `EmsileRepository.load()` çağrılır.
-4. `assets/data/emsile_seed.json` okunur.
-5. JSON, `AppData` modeline parse edilir.
-6. `PracticeQuestionGenerator`, `forms` listesinden çoktan seçmeli pratik sorularını üretir.
-7. Veri hazırsa `AppShell(data: snapshot.data!)` render edilir.
-8. Veri yüklenirken `LoadingScreen`, hata varsa `LoadErrorScreen` gösterilir.
+4. `assets/data/catalog.json` okunur.
+5. Varsayılan fiilin `assets/data/verbs/<id>.json` dosyası okunur.
+6. `MuttarideGenerator`, `conjugationSource` üzerinden runtime form listesini üretir.
+7. `catalog.lessons`, `catalog.pronouns`, `verb.muhtelifeEntries` ve generated formlar `AppData` modelinde birleştirilir.
+8. `PracticeQuestionGenerator`, `forms` listesinden çoktan seçmeli pratik sorularını üretir.
+9. Veri hazırsa `AppShell(data: snapshot.data!)` render edilir.
+10. Veri yüklenirken `LoadingScreen`, hata varsa `LoadErrorScreen` gösterilir.
 
 ## 3. Veri Katmanı
 
@@ -87,6 +89,7 @@ Kök yapı:
   "version": 1,
   "defaultVerbId": "nasara",
   "lessons": [],
+  "pronouns": [],
   "verbs": []
 }
 ```
@@ -102,6 +105,8 @@ Kök yapı:
 ```
 
 `catalog.lessons` alanı ders listesini ve ders detayındaki temel açıklamayı taşır.
+
+`catalog.pronouns` alanı PDF'teki `Şahıs Zamirleri (Ayrı Zamirler)` ve `Şahıs Zamirleri (Bitişik Zamirler)` tablolarını taşır.
 
 `conjugationSource` alanı kıyasi çekimleri runtime'da üretmek için kullanılır.
 
@@ -123,6 +128,7 @@ Repository, bu kaynaktan `muttarideForms` listesini üretir. Runtime form listes
 `AppData`
 
 - `lessons`
+- `pronouns`
 - `muhtelifeEntries`
 - `forms`
 - `practiceQuestions`
@@ -132,7 +138,16 @@ Repository, bu kaynaktan `muttarideForms` listesini üretir. Runtime form listes
 - içerik sürümü
 - varsayılan fiil
 - ders listesi
+- ayrı ve bitişik zamir listesi
 - fiil manifestleri
+
+`PronounEntry`
+
+- `kind`: `independent` veya `attached`
+- `person`, `number`, `gender`
+- `labelTr`
+- `arabic`
+- `meaning`
 
 `VerbEntry`
 
@@ -228,8 +243,10 @@ Varsayılan olarak sayfa gövdesini `CustomScrollView` içinde render eder. Anca
 
 State:
 
+- `_tableView`: `Çekimler` veya `Zamirler`
 - `_category`: seçili fiil çekim grubu
 - `_voice`: Malum veya Meçhul
+- `_pronounKind`: `Ayrı` veya `Bitişik`
 - `_selectedForm`: seçili şahsın `person + number + gender` kimliği
 
 Filtre:
@@ -257,6 +274,12 @@ Bazı gruplar PDF gereği tüm şahıslarda çekilmez:
   - `1. Şahıs / Ortak`
 
 Bu şema hem şahıs seçim tablosunda hem de tüm formlar tablosunda ortak kullanılır.
+
+`Zamirler` görünümü de aynı şemayı kullanır:
+
+- `Ayrı` görünümü kaynak tablodaki şahıs zamirlerini gösterir.
+- `Bitişik` görünümü kaynak tablodaki bitişik zamirleri gösterir.
+- Bitişik zamir görünümünde fiile geldiğinde fail eki değil çoğunlukla mef'ul zamiri olduğu ayrıca belirtilir.
 
 Etkileşim:
 

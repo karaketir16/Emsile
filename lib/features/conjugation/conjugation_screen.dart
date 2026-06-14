@@ -2,6 +2,7 @@ import 'package:emsile_flutter/data/models.dart';
 import 'package:emsile_flutter/shared/widgets/arabic_result_card.dart';
 import 'package:emsile_flutter/shared/widgets/arabic_text.dart';
 import 'package:emsile_flutter/shared/widgets/app_page.dart';
+import 'package:emsile_flutter/shared/widgets/info_panel.dart';
 import 'package:flutter/material.dart';
 
 class ConjugationScreen extends StatefulWidget {
@@ -14,8 +15,10 @@ class ConjugationScreen extends StatefulWidget {
 }
 
 class _ConjugationScreenState extends State<ConjugationScreen> {
+  _TableView _tableView = _TableView.conjugations;
   FormCategory _category = FormCategory.mazi;
   Voice _voice = Voice.malum;
+  PronounKind _pronounKind = PronounKind.independent;
   FormSelection _selectedForm = const FormSelection(
     person: FormPerson.third,
     number: FormNumber.singular,
@@ -86,7 +89,7 @@ class _ConjugationScreenState extends State<ConjugationScreen> {
   @override
   Widget build(BuildContext context) {
     final forms = _visibleForms;
-    final activeForm = _activeForm;
+    final activeForm = forms.isEmpty ? null : _activeForm;
 
     return AppPage(
       title: 'Çekim Tablosu',
@@ -94,146 +97,183 @@ class _ConjugationScreenState extends State<ConjugationScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ArabicResultCard(form: activeForm),
+          SegmentedButton<_TableView>(
+            expandedInsets: EdgeInsets.zero,
+            segments: const [
+              ButtonSegment(
+                value: _TableView.conjugations,
+                icon: Icon(Icons.grid_view_outlined),
+                label: Text('Çekimler'),
+              ),
+              ButtonSegment(
+                value: _TableView.pronouns,
+                icon: Icon(Icons.badge_outlined),
+                label: Text('Zamirler'),
+              ),
+            ],
+            selected: {_tableView},
+            onSelectionChanged: (value) {
+              setState(() => _tableView = value.first);
+            },
+          ),
           const SizedBox(height: 10),
-          if (_category.isVerb) ...[
-            SegmentedButton<Voice>(
-              expandedInsets: EdgeInsets.zero,
-              segments: const [
-                ButtonSegment(
-                  value: Voice.malum,
-                  icon: Icon(Icons.record_voice_over),
-                  label: Text('Malum'),
-                ),
-                ButtonSegment(
-                  value: Voice.mechul,
-                  icon: Icon(Icons.visibility_off_outlined),
-                  label: Text('Meçhul'),
-                ),
-              ],
-              selected: {_voice},
-              onSelectionChanged: (value) {
-                _updateSelection(voice: value.first);
-              },
+          if (_tableView == _TableView.pronouns) ...[
+            Expanded(
+              child: PronounsPanel(
+                pronouns: widget.data.pronouns,
+                selectedKind: _pronounKind,
+                onKindChanged: (kind) => setState(() => _pronounKind = kind),
+              ),
             ),
-            const SizedBox(height: 16),
-          ],
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 8),
-                  DropdownButtonFormField<FormCategory>(
-                    initialValue: _category,
-                    isExpanded: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Çekim Grubu',
-                      prefixIcon: Icon(Icons.view_list_outlined),
-                      border: OutlineInputBorder(),
-                    ),
-                    items: [
-                      for (final category in FormCategory.values)
-                        DropdownMenuItem(
-                          value: category,
-                          child: Text(category.label),
-                        ),
-                    ],
-                    onChanged: (value) {
-                      if (value != null) {
-                        _updateSelection(category: value);
-                      }
-                    },
+          ] else if (activeForm == null) ...[
+            const Expanded(
+              child: Center(child: Text('Gösterilecek çekim formu yok.')),
+            ),
+          ] else ...[
+            ArabicResultCard(form: activeForm),
+            const SizedBox(height: 10),
+            if (_category.isVerb) ...[
+              SegmentedButton<Voice>(
+                expandedInsets: EdgeInsets.zero,
+                segments: const [
+                  ButtonSegment(
+                    value: Voice.malum,
+                    icon: Icon(Icons.record_voice_over),
+                    label: Text('Malum'),
                   ),
-                  const SizedBox(height: 16),
-                  if (_category.isVerb) ...[
-                    Text(
-                      'Şahıs Tablosu',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const SizedBox(height: 10),
-                    SelectionTable(
-                      forms: forms,
-                      selectedForm: _selectedForm,
-                      onSelect: (selection) =>
-                          _updateSelection(selectedForm: selection),
-                    ),
-                    const SizedBox(height: 18),
-                    Text(
-                      'Seçili Tablo (${_category.label} - ${_voice.label})',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const SizedBox(height: 10),
-                    FormsTable(
-                      forms: forms,
-                      selectedForm: _selectedForm,
-                      activeCategory: _category,
-                      activeVoice: _voice,
-                      onSelect: (selection) =>
-                          _updateSelection(selectedForm: selection),
-                    ),
-                  ] else ...[
-                    Text(
-                      'Çekim Tablosu',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const SizedBox(height: 10),
-                    NounFormsTable(
-                      forms: forms,
-                      selectedForm: _selectedForm,
-                      onSelect: (selection) =>
-                          _updateSelection(selectedForm: selection),
-                    ),
-                  ],
-                  const SizedBox(height: 18),
-                  Text(
-                    'Tüm Muttaride Tabloları',
-                    style: Theme.of(context).textTheme.titleLarge,
+                  ButtonSegment(
+                    value: Voice.mechul,
+                    icon: Icon(Icons.visibility_off_outlined),
+                    label: Text('Meçhul'),
                   ),
-                  const SizedBox(height: 12),
-                  for (final group in _groups) ...[
-                    Text(
-                      group.category.isVerb
-                          ? '${group.category.label} (${group.voice.label})'
-                          : group.category.label,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.w600,
+                ],
+                selected: {_voice},
+                onSelectionChanged: (value) {
+                  _updateSelection(voice: value.first);
+                },
+              ),
+              const SizedBox(height: 16),
+            ],
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 8),
+                    DropdownButtonFormField<FormCategory>(
+                      initialValue: _category,
+                      isExpanded: true,
+                      decoration: const InputDecoration(
+                        labelText: 'Çekim Grubu',
+                        prefixIcon: Icon(Icons.view_list_outlined),
+                        border: OutlineInputBorder(),
+                      ),
+                      items: [
+                        for (final category in FormCategory.values)
+                          DropdownMenuItem(
+                            value: category,
+                            child: Text(category.label),
                           ),
+                      ],
+                      onChanged: (value) {
+                        if (value != null) {
+                          _updateSelection(category: value);
+                        }
+                      },
                     ),
-                    const SizedBox(height: 6),
-                    if (group.category.isVerb)
+                    const SizedBox(height: 16),
+                    if (_category.isVerb) ...[
+                      Text(
+                        'Şahıs Tablosu',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 10),
+                      SelectionTable(
+                        forms: forms,
+                        selectedForm: _selectedForm,
+                        onSelect: (selection) =>
+                            _updateSelection(selectedForm: selection),
+                      ),
+                      const SizedBox(height: 18),
+                      Text(
+                        'Seçili Tablo (${_category.label} - ${_voice.label})',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 10),
                       FormsTable(
-                        forms: group.forms,
+                        forms: forms,
                         selectedForm: _selectedForm,
                         activeCategory: _category,
                         activeVoice: _voice,
-                        onSelect: (selection) => _updateSelection(
-                          category: group.category,
-                          voice: group.voice,
-                          selectedForm: selection,
-                        ),
-                      )
-                    else
-                      NounFormsTable(
-                        forms: group.forms,
-                        selectedForm: _selectedForm,
-                        onSelect: (selection) => _updateSelection(
-                          category: group.category,
-                          selectedForm: selection,
-                        ),
+                        onSelect: (selection) =>
+                            _updateSelection(selectedForm: selection),
                       ),
-                    const SizedBox(height: 16),
+                    ] else ...[
+                      Text(
+                        'Çekim Tablosu',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 10),
+                      NounFormsTable(
+                        forms: forms,
+                        selectedForm: _selectedForm,
+                        onSelect: (selection) =>
+                            _updateSelection(selectedForm: selection),
+                      ),
+                    ],
+                    const SizedBox(height: 18),
+                    Text(
+                      'Tüm Muttaride Tabloları',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 12),
+                    for (final group in _groups) ...[
+                      Text(
+                        group.category.isVerb
+                            ? '${group.category.label} (${group.voice.label})'
+                            : group.category.label,
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
+                      const SizedBox(height: 6),
+                      if (group.category.isVerb)
+                        FormsTable(
+                          forms: group.forms,
+                          selectedForm: _selectedForm,
+                          activeCategory: _category,
+                          activeVoice: _voice,
+                          onSelect: (selection) => _updateSelection(
+                            category: group.category,
+                            voice: group.voice,
+                            selectedForm: selection,
+                          ),
+                        )
+                      else
+                        NounFormsTable(
+                          forms: group.forms,
+                          selectedForm: _selectedForm,
+                          onSelect: (selection) => _updateSelection(
+                            category: group.category,
+                            selectedForm: selection,
+                          ),
+                        ),
+                      const SizedBox(height: 16),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );
   }
 }
+
+enum _TableView { conjugations, pronouns }
 
 class _ConjugationGroup {
   const _ConjugationGroup({
@@ -376,7 +416,8 @@ class FormsTable extends StatelessWidget {
           return const SizedBox.shrink();
         }
 
-        final isSelected = activeCategory == form.category &&
+        final isSelected =
+            activeCategory == form.category &&
             activeVoice == form.voice &&
             selectedForm.matches(form);
         final colorScheme = Theme.of(context).colorScheme;
@@ -403,6 +444,137 @@ class FormsTable extends StatelessWidget {
                 style: arabicTextStyle(20),
               ),
             ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class PronounsPanel extends StatelessWidget {
+  const PronounsPanel({
+    required this.pronouns,
+    required this.selectedKind,
+    required this.onKindChanged,
+    super.key,
+  });
+
+  final List<PronounEntry> pronouns;
+  final PronounKind selectedKind;
+  final ValueChanged<PronounKind> onKindChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final visiblePronouns = pronouns
+        .where((pronoun) => pronoun.kind == selectedKind)
+        .toList();
+
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SegmentedButton<PronounKind>(
+            expandedInsets: EdgeInsets.zero,
+            segments: const [
+              ButtonSegment(
+                value: PronounKind.independent,
+                icon: Icon(Icons.person_outline),
+                label: Text('Ayrı'),
+              ),
+              ButtonSegment(
+                value: PronounKind.attached,
+                icon: Icon(Icons.link),
+                label: Text('Bitişik'),
+              ),
+            ],
+            selected: {selectedKind},
+            onSelectionChanged: (value) => onKindChanged(value.first),
+          ),
+          const SizedBox(height: 14),
+          InfoPanel(
+            title: selectedKind.label,
+            body: selectedKind == PronounKind.independent
+                ? 'Şahıs zamirleri, fiil çekimindeki şahıs düzenini okumak için temel tablodur.'
+                : 'Bitişik zamirler isim, harf ve fiile eklenir; fiile geldiğinde çoğunlukla mef’ul anlamı verir.',
+          ),
+          const SizedBox(height: 14),
+          if (visiblePronouns.isEmpty)
+            const Center(child: Text('Gösterilecek zamir verisi yok.'))
+          else
+            PronounTable(pronouns: visiblePronouns),
+          if (selectedKind == PronounKind.attached) ...[
+            const SizedBox(height: 14),
+            const InfoPanel(
+              title: 'Fiile gelince',
+              body:
+                  'Örnek: ضَرَبْتُهُ kelimesinde تُ faili, هُ ise fiile bitişen mef’ul zamiridir.',
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class PronounTable extends StatelessWidget {
+  const PronounTable({required this.pronouns, super.key});
+
+  final List<PronounEntry> pronouns;
+
+  @override
+  Widget build(BuildContext context) {
+    final rows = [
+      for (final row in pdfRows)
+        PdfTableRowData(
+          rowLabel: row.label,
+          cells: [
+            for (final number in pdfColumns)
+              _findPronoun(pronouns, row.selectionFor(number.number)),
+          ],
+        ),
+    ];
+
+    final dataColumnWidths = _measureDataColumnWidths(
+      context,
+      rows: rows,
+      textForCell: (data) => (data as PronounEntry?)?.arabic,
+      textStyle: arabicTextStyle(21),
+      textDirection: TextDirection.rtl,
+    );
+
+    return PdfStyleTable(
+      dataColumnWidths: dataColumnWidths,
+      rows: rows,
+      cellBuilder: (context, data) {
+        final pronoun = data as PronounEntry?;
+        if (pronoun == null) {
+          return const SizedBox.shrink();
+        }
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: Text(
+                  pronoun.arabic,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  softWrap: false,
+                  style: arabicTextStyle(21),
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                pronoun.labelTr,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+            ],
           ),
         );
       },
@@ -456,9 +628,18 @@ class PdfStyleTable extends StatelessWidget {
                 TableRow(
                   decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
                   children: [
-                    _HeaderCell(text: pdfColumns[0].label, width: columnWidths[0]),
-                    _HeaderCell(text: pdfColumns[1].label, width: columnWidths[1]),
-                    _HeaderCell(text: pdfColumns[2].label, width: columnWidths[2]),
+                    _HeaderCell(
+                      text: pdfColumns[0].label,
+                      width: columnWidths[0],
+                    ),
+                    _HeaderCell(
+                      text: pdfColumns[1].label,
+                      width: columnWidths[1],
+                    ),
+                    _HeaderCell(
+                      text: pdfColumns[2].label,
+                      width: columnWidths[2],
+                    ),
                     _HeaderCell(text: '', width: columnWidths[3]),
                   ],
                 ),
@@ -469,7 +650,7 @@ class PdfStyleTable extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(1),
                           child: SizedBox(
-                            height: 40,
+                            height: 66,
                             child: Center(child: cellBuilder(context, cell)),
                           ),
                         ),
@@ -551,9 +732,7 @@ List<double> _measureDataColumnWidths(
     }
   }
 
-  return [
-    for (final width in widths) width < 54 ? 54 : width,
-  ];
+  return [for (final width in widths) width < 54 ? 54 : width];
 }
 
 List<double> _expandTableColumnWidths({
@@ -569,9 +748,7 @@ List<double> _expandTableColumnWidths({
   }
 
   final extraPerColumn = (availableWidth - intrinsicWidth) / baseWidths.length;
-  return [
-    for (final width in baseWidths) width + extraPerColumn,
-  ];
+  return [for (final width in baseWidths) width + extraPerColumn];
 }
 
 class PdfTableRowData {
@@ -670,6 +847,20 @@ ConjugationForm? _findForm(
   return null;
 }
 
+PronounEntry? _findPronoun(
+  List<PronounEntry> pronouns,
+  FormSelection selection,
+) {
+  for (final pronoun in pronouns) {
+    if (pronoun.person == selection.person &&
+        pronoun.number == selection.number &&
+        pronoun.gender == selection.gender) {
+      return pronoun;
+    }
+  }
+  return null;
+}
+
 const pdfColumns = [
   PdfColumnSpec(FormNumber.plural, 'Çoğul'),
   PdfColumnSpec(FormNumber.dual, 'İkil'),
@@ -718,42 +909,79 @@ class NounFormsTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasGender = forms.any((f) => f.gender == FormGender.masculine) ||
+    final hasGender =
+        forms.any((f) => f.gender == FormGender.masculine) ||
         forms.any((f) => f.gender == FormGender.feminine);
 
     final List<PdfTableRowData> tableRows = [];
 
     if (hasGender) {
       // Müzekker row
-      final singularMasc = _findNounForm(forms, FormGender.masculine, FormNumber.singular);
-      final dualMasc = _findNounForm(forms, FormGender.masculine, FormNumber.dual);
-      final pluralMasc = _findNounForm(forms, FormGender.masculine, FormNumber.plural, isSound: true);
-      tableRows.add(PdfTableRowData(
-        rowLabel: 'Müzekker',
-        cells: [pluralMasc, dualMasc, singularMasc],
-      ));
+      final singularMasc = _findNounForm(
+        forms,
+        FormGender.masculine,
+        FormNumber.singular,
+      );
+      final dualMasc = _findNounForm(
+        forms,
+        FormGender.masculine,
+        FormNumber.dual,
+      );
+      final pluralMasc = _findNounForm(
+        forms,
+        FormGender.masculine,
+        FormNumber.plural,
+        isSound: true,
+      );
+      tableRows.add(
+        PdfTableRowData(
+          rowLabel: 'Müzekker',
+          cells: [pluralMasc, dualMasc, singularMasc],
+        ),
+      );
 
       // Müennes row
-      final singularFem = _findNounForm(forms, FormGender.feminine, FormNumber.singular);
-      final dualFem = _findNounForm(forms, FormGender.feminine, FormNumber.dual);
-      final pluralFem = _findNounForm(forms, FormGender.feminine, FormNumber.plural, isSound: true);
-      tableRows.add(PdfTableRowData(
-        rowLabel: 'Müennes',
-        cells: [pluralFem, dualFem, singularFem],
-      ));
+      final singularFem = _findNounForm(
+        forms,
+        FormGender.feminine,
+        FormNumber.singular,
+      );
+      final dualFem = _findNounForm(
+        forms,
+        FormGender.feminine,
+        FormNumber.dual,
+      );
+      final pluralFem = _findNounForm(
+        forms,
+        FormGender.feminine,
+        FormNumber.plural,
+        isSound: true,
+      );
+      tableRows.add(
+        PdfTableRowData(
+          rowLabel: 'Müennes',
+          cells: [pluralFem, dualFem, singularFem],
+        ),
+      );
     } else {
       // Ortak row
-      final singular = _findNounForm(forms, FormGender.common, FormNumber.singular);
+      final singular = _findNounForm(
+        forms,
+        FormGender.common,
+        FormNumber.singular,
+      );
       final dual = _findNounForm(forms, FormGender.common, FormNumber.dual);
       final plural = _findNounForm(forms, FormGender.common, FormNumber.plural);
-      tableRows.add(PdfTableRowData(
-        rowLabel: 'Ortak',
-        cells: [plural, dual, singular],
-      ));
+      tableRows.add(
+        PdfTableRowData(rowLabel: 'Ortak', cells: [plural, dual, singular]),
+      );
     }
 
     // We also want to find if there are any other forms (broken plurals)
-    final mainFormsSet = tableRows.expand((r) => r.cells).whereType<ConjugationForm>().toSet();
+    final mainFormsSet = tableRows
+        .expand((r) => r.cells)
+        .whereType<ConjugationForm>()
+        .toSet();
     final otherForms = forms.where((f) => !mainFormsSet.contains(f)).toList();
     final dataColumnWidths = _measureDataColumnWidths(
       context,
@@ -805,9 +1033,9 @@ class NounFormsTable extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             'Kırık Çoğullar (Cemi Mükesser)',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Wrap(
@@ -821,11 +1049,18 @@ class NounFormsTable extends StatelessWidget {
                 onTap: () => onSelect(FormSelection.fromForm(form)),
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 10,
+                  ),
                   decoration: BoxDecoration(
-                    color: isSelected ? colorScheme.primaryContainer : Colors.white,
+                    color: isSelected
+                        ? colorScheme.primaryContainer
+                        : Colors.white,
                     border: Border.all(
-                      color: isSelected ? colorScheme.primary : const Color(0xFFD8D1C1),
+                      color: isSelected
+                          ? colorScheme.primary
+                          : const Color(0xFFD8D1C1),
                     ),
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -833,10 +1068,7 @@ class NounFormsTable extends StatelessWidget {
                     children: [
                       Directionality(
                         textDirection: TextDirection.rtl,
-                        child: Text(
-                          form.arabic,
-                          style: arabicTextStyle(20),
-                        ),
+                        child: Text(form.arabic, style: arabicTextStyle(20)),
                       ),
                       const SizedBox(height: 4),
                       Text(
@@ -863,7 +1095,9 @@ class NounFormsTable extends StatelessWidget {
     for (final form in forms) {
       if (form.gender == gender && form.number == number) {
         if (isSound != null) {
-          final isSoundLabel = form.pronounLabel.contains('Sâlim') || !form.pronounLabel.contains('Kırık');
+          final isSoundLabel =
+              form.pronounLabel.contains('Sâlim') ||
+              !form.pronounLabel.contains('Kırık');
           if (isSoundLabel != isSound) continue;
         }
         return form;

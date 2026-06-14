@@ -5,7 +5,10 @@ class PracticeQuestionGenerator {
   const PracticeQuestionGenerator._();
 
   /// Rastgele tek bir soru üretir (Runtime için).
-  static PracticeQuestion generateSingleQuestion(List<ConjugationForm> forms, [Random? randomOverride]) {
+  static PracticeQuestion generateSingleQuestion(
+    List<ConjugationForm> forms, [
+    Random? randomOverride,
+  ]) {
     if (forms.isEmpty) {
       throw StateError('Forms list cannot be empty.');
     }
@@ -58,8 +61,7 @@ class PracticeQuestionGenerator {
         arabic: '؟', // Ekrandaki büyük Arapça alanı için soru işareti
         options: _buildArabicOptions(form, siblings, random),
         answer: form.arabic,
-        explanation:
-            '"${form.meaning}" anlamı ${form.arabic} formuna aittir.',
+        explanation: '"${form.meaning}" anlamı ${form.arabic} formuna aittir.',
       );
     }
   }

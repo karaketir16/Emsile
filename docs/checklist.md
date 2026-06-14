@@ -1,6 +1,6 @@
 # Emsile Flutter Geliştirme Checklist
 
-Son güncelleme: `nasara` için runtime generated muttaride akışı aktif. Fiil grupları, isim türevleri ve taaccüb formları aynı çekim ekranında gösteriliyor; pratik ekranı ise kategori, çatı ve şahıs/zamir filtreleriyle soru üretiyor.
+Son güncelleme: `Tablo` ekranına `Çekimler / Zamirler` modu eklendi. PDF'teki ayrı zamirler ve bitişik zamirler `catalog.json` altında yapılandırılmış veri olarak tutuluyor ve PDF düzenine yakın tabloyla gösteriliyor.
 
 Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya tamamlanma durumu değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
@@ -9,6 +9,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Uygulama `catalog.json + verbs/<id>.json + repository composition` yapısına geçti.
 - [x] Varsayılan fiil `nasara` için generated çekim üretimi çalışıyor.
 - [x] Fiil muttaride grupları, isim türevleri ve taaccüb formları tek çekim ekranında erişilebilir.
+- [x] Ayrı ve bitişik şahıs zamirleri `Tablo > Zamirler` görünümünden erişilebilir.
 - [x] Dersler ekranı katalogdan geliyor; Muhtelife dersi iki sütunlu tabloyla gösteriliyor.
 - [x] Pratik ekranı soru başlamadan önce filtrelenebilir ayar modu sunuyor.
 - [ ] Hâlâ tek fiilli MVP durumundayız; çok fiilli katalog ve fiil seçici henüz yok.
@@ -56,7 +57,8 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] `nasara` için muhtelife satırlarını PDF'teki sıra ve eşleşmelere göre tamamla.
 - [x] `nasara` için fiil çekimli tüm muttaride gruplarını generate et.
 - [x] `nasara` için isim ve taaccüb türevlerini generated forma taşı.
-- [ ] Şahıs zamirleri veri modelini ayrıca oluştur.
+- [x] Şahıs zamirleri veri modelini ayrıca oluştur.
+- [x] PDF'teki ayrı ve bitişik zamir tablolarını `catalog.json` içine taşı.
 - [x] JSON seed veri validasyon script'i ekle.
 - [x] Catalog/verb veri validasyon script'ini yeni yapıya göre güncelle.
 - [ ] PDF'ten taşınacak sonraki tabloları elle kontrol et.
@@ -108,6 +110,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Sağdan sola yazım davranışını Playwright screenshot ile test et.
 - [x] İsim ve masdar türev tablolarını çekim ekranına ayrı bölüm olarak ekle.
 - [x] Taaccüb fiillerini çekim ekranına ayrı kategori olarak ekle.
+- [x] Ayrı zamirler ve bitişik zamirler için tablo modu ekle.
 - [x] Sayı/cinsiyet seçiciyi ayrı filtre olarak modelle.
 - [ ] Boş veri durumlarını tasarla.
 
@@ -156,6 +159,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] `npm run visual-check` çalıştır.
 - [x] Seed veri alanları için temel validasyon ekle.
 - [x] Seed veri alanlarında `person/number/gender` doğrulaması ekle.
+- [x] Catalog zamir alanları için validasyon ekle.
 - [ ] Veri modelleri için ayrı Dart unit test ekle.
 - [x] Pratik soru üreticisi için ayrı Dart unit test ekle.
 - [x] `MuttarideGenerator` için generated form kapsam testi ekle.
@@ -179,7 +183,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Kod organizasyonunu `lib/data`, `lib/features`, `lib/shared` klasörlerine böl.
 - [x] JSON veri şemasını büyütmeden önce temel alan adlarını sabitle.
 - [x] Scalable veri tasarım dokümanını ekle.
-- [ ] PDF'teki şahıs zamirleri tablosunu JSON'a taşı.
+- [x] PDF'teki şahıs zamirleri tablosunu JSON'a taşı.
 - [x] Fiil-i mâzi ve muzâri için 14 şahıslık tam tabloyu tamamla.
 - [ ] `daraba`, `fataha` gibi yeni bablar için generated conjugation profilleri ekle.
 - [ ] Muhtelife explorer için ders detayından ayrı, filtrelenebilir bağımsız ekran ekle.

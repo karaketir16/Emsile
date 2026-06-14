@@ -64,7 +64,9 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: SafeArea(child: PracticeScreen(data: testData, random: Random(1))),
+          body: SafeArea(
+            child: PracticeScreen(data: testData, random: Random(1)),
+          ),
         ),
       ),
     );
@@ -381,8 +383,9 @@ void main() {
           widget is SingleChildScrollView &&
           widget.scrollDirection == Axis.horizontal,
     );
-    final horizontalViewportWidth =
-        tester.getSize(horizontalScrollFinder.first).width;
+    final horizontalViewportWidth = tester
+        .getSize(horizontalScrollFinder.first)
+        .width;
     final firstTableWidth = tester.getSize(find.byType(Table).first).width;
 
     expect(
@@ -392,55 +395,54 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets(
-    'conjugation: selection coloring is only applied to the active table',
-    (WidgetTester tester) async {
-      await tester.binding.setSurfaceSize(const Size(500, 1000));
-      addTearDown(() => tester.binding.setSurfaceSize(null));
+  testWidgets('conjugation: selection coloring is only applied to the active table', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(500, 1000));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
 
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: SafeArea(child: ConjugationScreen(data: richTestData)),
-          ),
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SafeArea(child: ConjugationScreen(data: richTestData)),
         ),
-      );
+      ),
+    );
 
-      // Başlangıçta Mazi Malum aktiftir.
-      // 'نَصَرَ' (Mazi Malum Hüve) hücresini saran Container'ın Container rengini bulalım.
-      // testData içinde birden fazla 'نَصَرَ' ve 'يَنْصُرُ' olabilir (hem Seçili Tablo hem de Tüm Tablolar altında).
-      // Seçili Tablo altındaki 'نَصَرَ' aktif olmalı.
-      // Tüm Tablolar altındaki 'يَنْصُرُ' (Muzari Malum) ise o an aktif olmadığı için boyanmamalı.
+    // Başlangıçta Mazi Malum aktiftir.
+    // 'نَصَرَ' (Mazi Malum Hüve) hücresini saran Container'ın Container rengini bulalım.
+    // testData içinde birden fazla 'نَصَرَ' ve 'يَنْصُرُ' olabilir (hem Seçili Tablo hem de Tüm Tablolar altında).
+    // Seçili Tablo altındaki 'نَصَرَ' aktif olmalı.
+    // Tüm Tablolar altındaki 'يَنْصُرُ' (Muzari Malum) ise o an aktif olmadığı için boyanmamalı.
 
-      // Seçili tek bir hücre olmalı (Seçili Tablo altındaki Hüve hücresi).
-      // Şahıs Tablosunda ise pronounLabel olan hücre seçilidir (primaryContainer ile).
-      // FormsTable içinde sadece bir hücre boyanmalıdır (Mazi Malum Hüve).
-      // Eğer düzeltmemiz çalışıyorsa, Tüm Tablolar altındaki diğer pasif tabloların (Muzari Malum gibi) Hüve hücresi boyanmamıştır.
-      // Testi doğrudan text üzerinden veya widget ağacından doğrulayalım:
-      
-      expect(find.text('نَصَرَ'), findsAtLeastNWidgets(1));
-      
-      // Tüm Tablolar altındaki 'يَنْصُرُ' (Muzari Malum Hüve) hücresinin (o an Mazi aktifken) 
-      // arka planının boyanmadığını doğrula.
-      final yansuruContainerFinder = find.ancestor(
-        of: find.text('يَنْصُرُ'),
-        matching: find.byType(Container),
-      );
+    // Seçili tek bir hücre olmalı (Seçili Tablo altındaki Hüve hücresi).
+    // Şahıs Tablosunda ise pronounLabel olan hücre seçilidir (primaryContainer ile).
+    // FormsTable içinde sadece bir hücre boyanmalıdır (Mazi Malum Hüve).
+    // Eğer düzeltmemiz çalışıyorsa, Tüm Tablolar altındaki diğer pasif tabloların (Muzari Malum gibi) Hüve hücresi boyanmamıştır.
+    // Testi doğrudan text üzerinden veya widget ağacından doğrulayalım:
 
-      // yansuruContainer'lardan hiçbirinin arka planı primaryContainer olmamalı (yani decoration.color null olmalı)
-      final contexts = tester.elementList(yansuruContainerFinder);
-      for (final element in contexts) {
-        final container = element.widget as Container;
-        if (container.decoration is BoxDecoration) {
-          final deco = container.decoration as BoxDecoration;
-          // Eğer boyanmış olsaydı null olmazdı
-          expect(deco.color, isNull);
-        }
+    expect(find.text('نَصَرَ'), findsAtLeastNWidgets(1));
+
+    // Tüm Tablolar altındaki 'يَنْصُرُ' (Muzari Malum Hüve) hücresinin (o an Mazi aktifken)
+    // arka planının boyanmadığını doğrula.
+    final yansuruContainerFinder = find.ancestor(
+      of: find.text('يَنْصُرُ'),
+      matching: find.byType(Container),
+    );
+
+    // yansuruContainer'lardan hiçbirinin arka planı primaryContainer olmamalı (yani decoration.color null olmalı)
+    final contexts = tester.elementList(yansuruContainerFinder);
+    for (final element in contexts) {
+      final container = element.widget as Container;
+      if (container.decoration is BoxDecoration) {
+        final deco = container.decoration as BoxDecoration;
+        // Eğer boyanmış olsaydı null olmazdı
+        expect(deco.color, isNull);
       }
-      
-      expect(tester.takeException(), isNull);
-    },
-  );
+    }
+
+    expect(tester.takeException(), isNull);
+  });
 
   // ── Practice interactions ───────────────────────────────────────────────────
 
@@ -453,24 +455,56 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: SafeArea(child: PracticeScreen(data: testData, random: Random(1))),
+          body: SafeArea(
+            child: PracticeScreen(data: testData, random: Random(1)),
+          ),
         ),
       ),
     );
 
     await startPractice(tester);
 
-    final promptFinder = find.byWidgetPredicate((w) => w is Text && w.data != null && w.data!.contains('?'));
+    final promptFinder = find.byWidgetPredicate(
+      (w) => w is Text && w.data != null && w.data!.contains('?'),
+    );
     final promptText = (tester.widget(promptFinder.first) as Text).data!;
-    
+
     String correctAnswer = '';
     if (promptText.contains('anlamı hangisi')) {
-      final arabicText = (tester.widget(find.byWidgetPredicate((w) => w is Text && w.data != '?' && w.data!.runes.any((r) => r > 1000)).first) as Text).data!;
-      final matchedForm = testFormsList.firstWhere((f) => f.arabic == arabicText);
+      final arabicText =
+          (tester.widget(
+                    find
+                        .byWidgetPredicate(
+                          (w) =>
+                              w is Text &&
+                              w.data != '?' &&
+                              w.data!.runes.any((r) => r > 1000),
+                        )
+                        .first,
+                  )
+                  as Text)
+              .data!;
+      final matchedForm = testFormsList.firstWhere(
+        (f) => f.arabic == arabicText,
+      );
       correctAnswer = matchedForm.meaning;
     } else if (promptText.contains('şahsa aittir')) {
-      final arabicText = (tester.widget(find.byWidgetPredicate((w) => w is Text && w.data != '?' && w.data!.runes.any((r) => r > 1000)).first) as Text).data!;
-      final matchedForm = testFormsList.firstWhere((f) => f.arabic == arabicText);
+      final arabicText =
+          (tester.widget(
+                    find
+                        .byWidgetPredicate(
+                          (w) =>
+                              w is Text &&
+                              w.data != '?' &&
+                              w.data!.runes.any((r) => r > 1000),
+                        )
+                        .first,
+                  )
+                  as Text)
+              .data!;
+      final matchedForm = testFormsList.firstWhere(
+        (f) => f.arabic == arabicText,
+      );
       correctAnswer = matchedForm.pronounLabel;
     } else {
       final meaning = promptText.split('"')[1];
@@ -495,24 +529,56 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: SafeArea(child: PracticeScreen(data: testData, random: Random(1))),
+          body: SafeArea(
+            child: PracticeScreen(data: testData, random: Random(1)),
+          ),
         ),
       ),
     );
 
     await startPractice(tester);
 
-    final promptFinder = find.byWidgetPredicate((w) => w is Text && w.data != null && w.data!.contains('?'));
+    final promptFinder = find.byWidgetPredicate(
+      (w) => w is Text && w.data != null && w.data!.contains('?'),
+    );
     final promptText = (tester.widget(promptFinder.first) as Text).data!;
-    
+
     String correctAnswer = '';
     if (promptText.contains('anlamı hangisi')) {
-      final arabicText = (tester.widget(find.byWidgetPredicate((w) => w is Text && w.data != '?' && w.data!.runes.any((r) => r > 1000)).first) as Text).data!;
-      final matchedForm = testFormsList.firstWhere((f) => f.arabic == arabicText);
+      final arabicText =
+          (tester.widget(
+                    find
+                        .byWidgetPredicate(
+                          (w) =>
+                              w is Text &&
+                              w.data != '?' &&
+                              w.data!.runes.any((r) => r > 1000),
+                        )
+                        .first,
+                  )
+                  as Text)
+              .data!;
+      final matchedForm = testFormsList.firstWhere(
+        (f) => f.arabic == arabicText,
+      );
       correctAnswer = matchedForm.meaning;
     } else if (promptText.contains('şahsa aittir')) {
-      final arabicText = (tester.widget(find.byWidgetPredicate((w) => w is Text && w.data != '?' && w.data!.runes.any((r) => r > 1000)).first) as Text).data!;
-      final matchedForm = testFormsList.firstWhere((f) => f.arabic == arabicText);
+      final arabicText =
+          (tester.widget(
+                    find
+                        .byWidgetPredicate(
+                          (w) =>
+                              w is Text &&
+                              w.data != '?' &&
+                              w.data!.runes.any((r) => r > 1000),
+                        )
+                        .first,
+                  )
+                  as Text)
+              .data!;
+      final matchedForm = testFormsList.firstWhere(
+        (f) => f.arabic == arabicText,
+      );
       correctAnswer = matchedForm.pronounLabel;
     } else {
       final meaning = promptText.split('"')[1];
@@ -523,10 +589,13 @@ void main() {
     final wrongOptionFinder = find.byWidgetPredicate((widget) {
       return widget is InkWell &&
           widget.child is Container &&
-          find.descendant(
-            of: find.byWidget(widget),
-            matching: find.text(correctAnswer),
-          ).evaluate().isEmpty;
+          find
+              .descendant(
+                of: find.byWidget(widget),
+                matching: find.text(correctAnswer),
+              )
+              .evaluate()
+              .isEmpty;
     });
 
     await tester.tap(wrongOptionFinder.first);
@@ -546,7 +615,9 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: SafeArea(child: PracticeScreen(data: multiQuestionData, random: Random(1))),
+          body: SafeArea(
+            child: PracticeScreen(data: multiQuestionData, random: Random(1)),
+          ),
         ),
       ),
     );
@@ -554,17 +625,47 @@ void main() {
     await startPractice(tester);
 
     // İlk sorunun doğru cevabını bulalım
-    final promptFinder = find.byWidgetPredicate((w) => w is Text && w.data != null && w.data!.contains('?'));
+    final promptFinder = find.byWidgetPredicate(
+      (w) => w is Text && w.data != null && w.data!.contains('?'),
+    );
     final firstPromptText = (tester.widget(promptFinder.first) as Text).data!;
-    
+
     String firstCorrectAnswer = '';
     if (firstPromptText.contains('anlamı hangisi')) {
-      final arabicText = (tester.widget(find.byWidgetPredicate((w) => w is Text && w.data != '?' && w.data!.runes.any((r) => r > 1000)).first) as Text).data!;
-      final matchedForm = testFormsList.firstWhere((f) => f.arabic == arabicText);
+      final arabicText =
+          (tester.widget(
+                    find
+                        .byWidgetPredicate(
+                          (w) =>
+                              w is Text &&
+                              w.data != '?' &&
+                              w.data!.runes.any((r) => r > 1000),
+                        )
+                        .first,
+                  )
+                  as Text)
+              .data!;
+      final matchedForm = testFormsList.firstWhere(
+        (f) => f.arabic == arabicText,
+      );
       firstCorrectAnswer = matchedForm.meaning;
     } else if (firstPromptText.contains('şahsa aittir')) {
-      final arabicText = (tester.widget(find.byWidgetPredicate((w) => w is Text && w.data != '?' && w.data!.runes.any((r) => r > 1000)).first) as Text).data!;
-      final matchedForm = testFormsList.firstWhere((f) => f.arabic == arabicText);
+      final arabicText =
+          (tester.widget(
+                    find
+                        .byWidgetPredicate(
+                          (w) =>
+                              w is Text &&
+                              w.data != '?' &&
+                              w.data!.runes.any((r) => r > 1000),
+                        )
+                        .first,
+                  )
+                  as Text)
+              .data!;
+      final matchedForm = testFormsList.firstWhere(
+        (f) => f.arabic == arabicText,
+      );
       firstCorrectAnswer = matchedForm.pronounLabel;
     } else {
       final meaning = firstPromptText.split('"')[1];
@@ -578,42 +679,59 @@ void main() {
     expect(find.text('Doğru'), findsOneWidget);
 
     // Sonraki soruya geçelim.
+    await tester.ensureVisible(find.text('Sonraki Soru'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Sonraki Soru'));
     await tester.pumpAndSettle();
     expect(find.text('Doğru'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('practice: setup view allows filtering and disables button when matching < 5', (
-    WidgetTester tester,
-  ) async {
-    await tester.binding.setSurfaceSize(const Size(500, 1000));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
+  testWidgets(
+    'practice: setup view allows filtering and disables button when matching < 5',
+    (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(500, 1000));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
 
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Scaffold(
-          body: SafeArea(child: PracticeScreen(data: testData, random: Random(1))),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: SafeArea(
+              child: PracticeScreen(data: testData, random: Random(1)),
+            ),
+          ),
         ),
-      ),
-    );
+      );
 
-    // Başlangıçta 6 form eşleştiği için canStart true olmalı
-    expect(find.text('Eşleşen Form Sayısı:'), findsOneWidget);
-    expect(find.text('6'), findsOneWidget);
-    expect(tester.widget<FilledButton>(find.byType(FilledButton)).enabled, isTrue);
+      // Başlangıçta 6 form eşleştiği için canStart true olmalı
+      expect(find.text('Eşleşen Form Sayısı:'), findsOneWidget);
+      expect(find.text('6'), findsOneWidget);
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+        isTrue,
+      );
 
-    // Çekim Tablolarını temizle diyelim -> Eşleşen 0 olur, buton kilitlenir
-    await tester.tap(find.descendant(
-      of: find.byType(Row),
-      matching: find.text('Temizle'),
-    ).first);
-    await tester.pumpAndSettle();
+      // Çekim Tablolarını temizle diyelim -> Eşleşen 0 olur, buton kilitlenir
+      await tester.tap(
+        find
+            .descendant(of: find.byType(Row), matching: find.text('Temizle'))
+            .first,
+      );
+      await tester.pumpAndSettle();
 
-    expect(find.text('0'), findsOneWidget);
-    expect(tester.widget<FilledButton>(find.byType(FilledButton)).enabled, isFalse);
-    expect(find.text('Soru üretilebilmesi için en az 5 farklı çekim formu eşleşmelidir. Lütfen seçimlerinizi artırın.'), findsOneWidget);
-  });
+      expect(find.text('0'), findsOneWidget);
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+        isFalse,
+      );
+      expect(
+        find.text(
+          'Soru üretilebilmesi için en az 5 farklı çekim formu eşleşmelidir. Lütfen seçimlerinizi artırın.',
+        ),
+        findsOneWidget,
+      );
+    },
+  );
 
   testWidgets(
     'practice: clicking column headers and row labels toggles selection groups',
@@ -624,7 +742,9 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: SafeArea(child: PracticeScreen(data: testData, random: Random(1))),
+            body: SafeArea(
+              child: PracticeScreen(data: testData, random: Random(1)),
+            ),
           ),
         ),
       );
@@ -685,7 +805,10 @@ void main() {
 
       // ArabicResultCard should display the selected word and rule details
       expect(find.text('نَاصِرَةٌ'), findsWidgets);
-      expect(find.textContaining('müennes tekil İsm-i Fâil formudur.'), findsWidgets);
+      expect(
+        find.textContaining('müennes tekil İsm-i Fâil formudur.'),
+        findsWidgets,
+      );
 
       // Broken plural chip 'نُصَّارٌ' should be visible at the bottom
       expect(find.text('نُصَّارٌ'), findsWidgets);
@@ -700,7 +823,10 @@ void main() {
 
       // Result card should update to 'نُصَّارٌ'
       expect(find.text('نُصَّارٌ'), findsWidgets);
-      expect(find.textContaining('müzekker çoğul İsm-i Fâil formudur.'), findsWidgets);
+      expect(
+        find.textContaining('müzekker çoğul İsm-i Fâil formudur.'),
+        findsWidgets,
+      );
       expect(tester.takeException(), isNull);
     },
   );
@@ -714,31 +840,46 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: SafeArea(child: PracticeScreen(data: nounTestData, random: Random(1))),
+            body: SafeArea(
+              child: PracticeScreen(data: nounTestData, random: Random(1)),
+            ),
           ),
         ),
       );
 
       // Initially, ismFail is selected by default in filters, and we have 7 forms matching.
       expect(find.text('7'), findsOneWidget);
-      expect(tester.widget<FilledButton>(find.byType(FilledButton)).enabled, isTrue);
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+        isTrue,
+      );
 
       // Clear all categories
-      await tester.tap(find.descendant(
-        of: find.byType(Row),
-        matching: find.text('Temizle').first,
-      ).first);
+      await tester.tap(
+        find
+            .descendant(
+              of: find.byType(Row),
+              matching: find.text('Temizle').first,
+            )
+            .first,
+      );
       await tester.pumpAndSettle();
 
       expect(find.text('0'), findsOneWidget);
-      expect(tester.widget<FilledButton>(find.byType(FilledButton)).enabled, isFalse);
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+        isFalse,
+      );
 
       // Tap on the 'İsm-i Fâil' chip to select it again
       await tester.tap(find.text('İsm-i Fâil'));
       await tester.pumpAndSettle();
 
       expect(find.text('7'), findsOneWidget);
-      expect(tester.widget<FilledButton>(find.byType(FilledButton)).enabled, isTrue);
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+        isTrue,
+      );
 
       // Start the practice
       await startPractice(tester);
@@ -747,23 +888,55 @@ void main() {
       expect(find.text('Pratik'), findsOneWidget);
 
       // Check for prompt
-      final promptFinder = find.byWidgetPredicate((w) => w is Text && w.data != null && w.data!.contains('?'));
+      final promptFinder = find.byWidgetPredicate(
+        (w) => w is Text && w.data != null && w.data!.contains('?'),
+      );
       expect(promptFinder, findsOneWidget);
 
       final promptText = (tester.widget(promptFinder.first) as Text).data!;
-      
+
       String correctAnswer = '';
       if (promptText.contains('anlamı hangisi')) {
-        final arabicText = (tester.widget(find.byWidgetPredicate((w) => w is Text && w.data != '?' && w.data!.runes.any((r) => r > 1000)).first) as Text).data!;
-        final matchedForm = nounTestFormsList.firstWhere((f) => f.arabic == arabicText);
+        final arabicText =
+            (tester.widget(
+                      find
+                          .byWidgetPredicate(
+                            (w) =>
+                                w is Text &&
+                                w.data != '?' &&
+                                w.data!.runes.any((r) => r > 1000),
+                          )
+                          .first,
+                    )
+                    as Text)
+                .data!;
+        final matchedForm = nounTestFormsList.firstWhere(
+          (f) => f.arabic == arabicText,
+        );
         correctAnswer = matchedForm.meaning;
       } else if (promptText.contains('dil bilgisi özelliği')) {
-        final arabicText = (tester.widget(find.byWidgetPredicate((w) => w is Text && w.data != '?' && w.data!.runes.any((r) => r > 1000)).first) as Text).data!;
-        final matchedForm = nounTestFormsList.firstWhere((f) => f.arabic == arabicText);
+        final arabicText =
+            (tester.widget(
+                      find
+                          .byWidgetPredicate(
+                            (w) =>
+                                w is Text &&
+                                w.data != '?' &&
+                                w.data!.runes.any((r) => r > 1000),
+                          )
+                          .first,
+                    )
+                    as Text)
+                .data!;
+        final matchedForm = nounTestFormsList.firstWhere(
+          (f) => f.arabic == arabicText,
+        );
         correctAnswer = matchedForm.pronounLabel;
       } else {
         final meaning = promptText.split('"')[1];
-        final matchedForm = nounTestFormsList.firstWhere((f) => f.meaning == meaning);
+        final matchedForm = nounTestFormsList.firstWhere(
+          (f) => f.meaning == meaning,
+        );
         correctAnswer = matchedForm.arabic;
       }
 
@@ -771,6 +944,38 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Doğru'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'conjugation: pronoun view renders independent and attached tables',
+    (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: SafeArea(child: ConjugationScreen(data: pronounTestData)),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('Zamirler'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Ayrı Zamirler'), findsOneWidget);
+      expect(find.text('هُوَ'), findsOneWidget);
+      expect(find.text('أَنْتَ'), findsOneWidget);
+
+      await tester.tap(find.text('Bitişik'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Bitişik Zamirler'), findsOneWidget);
+      expect(find.text('ـهُ'), findsOneWidget);
+      expect(find.text('ـكَ'), findsOneWidget);
+      expect(find.textContaining('ضَرَبْتُهُ'), findsOneWidget);
       expect(tester.takeException(), isNull);
     },
   );
@@ -862,6 +1067,7 @@ const testFormsList = [
 
 const testData = AppData(
   lessons: [],
+  pronouns: [],
   muhtelifeEntries: [],
   forms: testFormsList,
   practiceQuestions: [],
@@ -942,6 +1148,7 @@ const nounTestFormsList = [
 
 const nounTestData = AppData(
   lessons: [],
+  pronouns: [],
   muhtelifeEntries: [],
   forms: nounTestFormsList,
   practiceQuestions: [],
@@ -950,6 +1157,7 @@ const nounTestData = AppData(
 /// Richer dataset for interaction tests that need multiple forms.
 const richTestData = AppData(
   lessons: [],
+  pronouns: [],
   muhtelifeEntries: [],
   forms: testFormsList,
   practiceQuestions: [],
@@ -958,6 +1166,7 @@ const richTestData = AppData(
 /// Two-question dataset for the "Sonraki Soru" advance test.
 const multiQuestionData = AppData(
   lessons: [],
+  pronouns: [],
   muhtelifeEntries: [],
   forms: testFormsList,
   practiceQuestions: [],
@@ -973,6 +1182,7 @@ const muhtelifeLesson = Lesson(
 
 const muhtelifeTestData = AppData(
   lessons: [muhtelifeLesson],
+  pronouns: [],
   muhtelifeEntries: [
     MuhtelifeEntry(
       type: 'ism_fail',
@@ -1015,6 +1225,51 @@ const muhtelifeTestData = AppData(
   practiceQuestions: [],
 );
 
+const pronounTestData = AppData(
+  lessons: [],
+  pronouns: [
+    PronounEntry(
+      kind: PronounKind.independent,
+      person: FormPerson.third,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      labelTr: 'O',
+      arabic: 'هُوَ',
+      meaning: '3. şahıs müzekker tekil ayrı zamir',
+    ),
+    PronounEntry(
+      kind: PronounKind.independent,
+      person: FormPerson.second,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      labelTr: 'Sen',
+      arabic: 'أَنْتَ',
+      meaning: '2. şahıs müzekker tekil ayrı zamir',
+    ),
+    PronounEntry(
+      kind: PronounKind.attached,
+      person: FormPerson.third,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      labelTr: 'Onun',
+      arabic: 'ـهُ',
+      meaning: '3. şahıs müzekker tekil bitişik zamir',
+    ),
+    PronounEntry(
+      kind: PronounKind.attached,
+      person: FormPerson.second,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      labelTr: 'Senin',
+      arabic: 'ـكَ',
+      meaning: '2. şahıs müzekker tekil bitişik zamir',
+    ),
+  ],
+  muhtelifeEntries: [],
+  forms: testFormsList,
+  practiceQuestions: [],
+);
+
 // ── Test helpers ──────────────────────────────────────────────────────────────
 
 /// Mirrors AppShell screen selection while allowing tests to drive the index
@@ -1042,10 +1297,7 @@ class _IndexedAppShell extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: IndexedStack(
-          index: selectedIndex,
-          children: screens,
-        ),
+        child: IndexedStack(index: selectedIndex, children: screens),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: selectedIndex,

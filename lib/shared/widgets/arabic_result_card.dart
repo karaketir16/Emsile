@@ -23,10 +23,7 @@ class ArabicResultCard extends StatelessWidget {
               // Sol: Arapça metin
               Directionality(
                 textDirection: TextDirection.rtl,
-                child: Text(
-                  form.arabic,
-                  style: arabicTextStyle(30),
-                ),
+                child: Text(form.arabic, style: arabicTextStyle(30)),
               ),
               const SizedBox(width: 16),
               VerticalDivider(
@@ -50,10 +47,7 @@ class ArabicResultCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      Text(
-                        form.meaning,
-                        style: textTheme.titleSmall,
-                      ),
+                      Text(form.meaning, style: textTheme.titleSmall),
                       const SizedBox(height: 2),
                       Text(
                         form.rule,

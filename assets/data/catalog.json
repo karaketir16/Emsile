@@ -66,6 +66,278 @@
       "relatedCategory": "ismTafdil"
     }
   ],
+  "pronouns": [
+    {
+      "kind": "independent",
+      "person": "third",
+      "number": "plural",
+      "gender": "masculine",
+      "labelTr": "Onlar",
+      "arabic": "هُمْ",
+      "meaning": "3. şahıs müzekker çoğul ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "third",
+      "number": "dual",
+      "gender": "masculine",
+      "labelTr": "O ikisi",
+      "arabic": "هُمَا",
+      "meaning": "3. şahıs müzekker ikil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "third",
+      "number": "singular",
+      "gender": "masculine",
+      "labelTr": "O",
+      "arabic": "هُوَ",
+      "meaning": "3. şahıs müzekker tekil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "third",
+      "number": "plural",
+      "gender": "feminine",
+      "labelTr": "Onlar",
+      "arabic": "هُنَّ",
+      "meaning": "3. şahıs müennes çoğul ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "third",
+      "number": "dual",
+      "gender": "feminine",
+      "labelTr": "O ikisi",
+      "arabic": "هُمَا",
+      "meaning": "3. şahıs müennes ikil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "third",
+      "number": "singular",
+      "gender": "feminine",
+      "labelTr": "O",
+      "arabic": "هِيَ",
+      "meaning": "3. şahıs müennes tekil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "second",
+      "number": "plural",
+      "gender": "masculine",
+      "labelTr": "Siz",
+      "arabic": "أَنْتُمْ",
+      "meaning": "2. şahıs müzekker çoğul ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "second",
+      "number": "dual",
+      "gender": "masculine",
+      "labelTr": "Siz ikiniz",
+      "arabic": "أَنْتُمَا",
+      "meaning": "2. şahıs müzekker ikil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "second",
+      "number": "singular",
+      "gender": "masculine",
+      "labelTr": "Sen",
+      "arabic": "أَنْتَ",
+      "meaning": "2. şahıs müzekker tekil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "second",
+      "number": "plural",
+      "gender": "feminine",
+      "labelTr": "Siz",
+      "arabic": "أَنْتُنَّ",
+      "meaning": "2. şahıs müennes çoğul ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "second",
+      "number": "dual",
+      "gender": "feminine",
+      "labelTr": "Siz ikiniz",
+      "arabic": "أَنْتُمَا",
+      "meaning": "2. şahıs müennes ikil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "second",
+      "number": "singular",
+      "gender": "feminine",
+      "labelTr": "Sen",
+      "arabic": "أَنْتِ",
+      "meaning": "2. şahıs müennes tekil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "first",
+      "number": "plural",
+      "gender": "common",
+      "labelTr": "Biz",
+      "arabic": "نَحْنُ",
+      "meaning": "1. şahıs ortak çoğul ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "first",
+      "number": "dual",
+      "gender": "common",
+      "labelTr": "İkimiz",
+      "arabic": "نَحْنُ",
+      "meaning": "1. şahıs ortak ikil ayrı zamir"
+    },
+    {
+      "kind": "independent",
+      "person": "first",
+      "number": "singular",
+      "gender": "common",
+      "labelTr": "Ben",
+      "arabic": "أَنَا",
+      "meaning": "1. şahıs ortak tekil ayrı zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "third",
+      "number": "plural",
+      "gender": "masculine",
+      "labelTr": "Onların",
+      "arabic": "ـهُمْ",
+      "meaning": "3. şahıs müzekker çoğul bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "third",
+      "number": "dual",
+      "gender": "masculine",
+      "labelTr": "O ikisinin",
+      "arabic": "ـهُمَا",
+      "meaning": "3. şahıs müzekker ikil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "third",
+      "number": "singular",
+      "gender": "masculine",
+      "labelTr": "Onun",
+      "arabic": "ـهُ",
+      "meaning": "3. şahıs müzekker tekil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "third",
+      "number": "plural",
+      "gender": "feminine",
+      "labelTr": "Onların",
+      "arabic": "ـهُنَّ",
+      "meaning": "3. şahıs müennes çoğul bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "third",
+      "number": "dual",
+      "gender": "feminine",
+      "labelTr": "O ikisinin",
+      "arabic": "ـهُمَا",
+      "meaning": "3. şahıs müennes ikil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "third",
+      "number": "singular",
+      "gender": "feminine",
+      "labelTr": "Onun",
+      "arabic": "ـهَا",
+      "meaning": "3. şahıs müennes tekil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "second",
+      "number": "plural",
+      "gender": "masculine",
+      "labelTr": "Sizin",
+      "arabic": "ـكُمْ",
+      "meaning": "2. şahıs müzekker çoğul bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "second",
+      "number": "dual",
+      "gender": "masculine",
+      "labelTr": "Siz ikinizin",
+      "arabic": "ـكُمَا",
+      "meaning": "2. şahıs müzekker ikil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "second",
+      "number": "singular",
+      "gender": "masculine",
+      "labelTr": "Senin",
+      "arabic": "ـكَ",
+      "meaning": "2. şahıs müzekker tekil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "second",
+      "number": "plural",
+      "gender": "feminine",
+      "labelTr": "Sizin",
+      "arabic": "ـكُنَّ",
+      "meaning": "2. şahıs müennes çoğul bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "second",
+      "number": "dual",
+      "gender": "feminine",
+      "labelTr": "Siz ikinizin",
+      "arabic": "ـكُمَا",
+      "meaning": "2. şahıs müennes ikil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "second",
+      "number": "singular",
+      "gender": "feminine",
+      "labelTr": "Senin",
+      "arabic": "ـكِ",
+      "meaning": "2. şahıs müennes tekil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "first",
+      "number": "plural",
+      "gender": "common",
+      "labelTr": "Bizim",
+      "arabic": "ـنَا",
+      "meaning": "1. şahıs ortak çoğul bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "first",
+      "number": "dual",
+      "gender": "common",
+      "labelTr": "İkimizin",
+      "arabic": "ـنَا",
+      "meaning": "1. şahıs ortak ikil bitişik zamir"
+    },
+    {
+      "kind": "attached",
+      "person": "first",
+      "number": "singular",
+      "gender": "common",
+      "labelTr": "Benim",
+      "arabic": "ـي",
+      "meaning": "1. şahıs ortak tekil bitişik zamir"
+    }
+  ],
   "verbs": [
     {
       "id": "nasara",

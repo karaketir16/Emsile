@@ -25,6 +25,7 @@ class EmsileRepository {
 
     final seedData = AppData(
       lessons: catalog.lessons,
+      pronouns: catalog.pronouns,
       muhtelifeEntries: verbEntry.muhtelifeEntries,
       forms: forms,
       practiceQuestions: const [],

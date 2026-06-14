@@ -42,6 +42,15 @@ async function main() {
     fullPage: true,
   });
 
+  await page.touchscreen.tap(285, 74);
+  await page.waitForTimeout(900);
+  await page.touchscreen.tap(280, 112);
+  await page.waitForTimeout(900);
+  await page.screenshot({
+    path: path.join(outputDir, '04-pronouns-mobile.png'),
+    fullPage: true,
+  });
+
   await page.touchscreen.tap(275, 796);
   await page.waitForTimeout(900);
   await page.touchscreen.tap(120, 306);

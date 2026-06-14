@@ -281,7 +281,6 @@ class SelectionTable extends StatelessWidget {
     );
 
     return PdfStyleTable(
-      headerTitle: 'ŞAHIS ZAMİRLERİ',
       dataColumnWidths: dataColumnWidths,
       rows: [
         for (final row in pdfRows)
@@ -370,7 +369,6 @@ class FormsTable extends StatelessWidget {
 
     return PdfStyleTable(
       dataColumnWidths: dataColumnWidths,
-      headerTitle: '${forms.first.category.label} ${forms.first.voice.label}',
       rows: rows,
       cellBuilder: (context, data) {
         final form = data as ConjugationForm?;
@@ -414,14 +412,12 @@ class FormsTable extends StatelessWidget {
 
 class PdfStyleTable extends StatelessWidget {
   const PdfStyleTable({
-    required this.headerTitle,
     required this.rows,
     required this.cellBuilder,
     this.dataColumnWidths,
     super.key,
   });
 
-  final String headerTitle;
   final List<PdfTableRowData> rows;
   final Widget Function(BuildContext context, Object? data) cellBuilder;
   final List<double>? dataColumnWidths;
@@ -454,7 +450,7 @@ class PdfStyleTable extends StatelessWidget {
                 _HeaderCell(text: pdfColumns[0].label, width: dataWidths[0]),
                 _HeaderCell(text: pdfColumns[1].label, width: dataWidths[1]),
                 _HeaderCell(text: pdfColumns[2].label, width: dataWidths[2]),
-                _HeaderCell(text: headerTitle),
+                const _HeaderCell(text: ''),
               ],
             ),
             for (final row in rows)
@@ -468,11 +464,13 @@ class PdfStyleTable extends StatelessWidget {
                         child: Center(child: cellBuilder(context, cell)),
                       ),
                     ),
-                  Padding(
+                  Container(
+                    color: const Color(0xFFF4F0E6),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 4,
                       vertical: 5,
                     ),
+                    alignment: Alignment.center,
                     child: Text(
                       row.rowLabel,
                       textAlign: TextAlign.center,
@@ -741,7 +739,6 @@ class NounFormsTable extends StatelessWidget {
       children: [
         PdfStyleTable(
           dataColumnWidths: dataColumnWidths,
-          headerTitle: forms.isNotEmpty ? forms.first.category.label.toUpperCase() : 'İSİM',
           rows: tableRows,
           cellBuilder: (context, data) {
             final form = data as ConjugationForm?;

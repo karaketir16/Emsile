@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const EmsileApp());
@@ -6,6 +9,8 @@ void main() {
 
 class EmsileApp extends StatelessWidget {
   const EmsileApp({super.key});
+
+  static final Future<AppData> _appData = EmsileRepository.load();
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +46,28 @@ class EmsileApp extends StatelessWidget {
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         ),
       ),
-      home: const AppShell(),
+      home: FutureBuilder<AppData>(
+        future: _appData,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return LoadErrorScreen(error: snapshot.error.toString());
+          }
+
+          if (!snapshot.hasData) {
+            return const LoadingScreen();
+          }
+
+          return AppShell(data: snapshot.data!);
+        },
+      ),
     );
   }
 }
 
 class AppShell extends StatefulWidget {
-  const AppShell({super.key});
+  const AppShell({required this.data, super.key});
+
+  final AppData data;
 
   @override
   State<AppShell> createState() => _AppShellState();
@@ -56,18 +76,18 @@ class AppShell extends StatefulWidget {
 class _AppShellState extends State<AppShell> {
   int _selectedIndex = 0;
 
-  static const _screens = [
-    HomeScreen(),
-    LessonsScreen(),
-    ConjugationScreen(),
-    PracticeScreen(),
-    SourceScreen(),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final screens = [
+      HomeScreen(data: widget.data),
+      LessonsScreen(data: widget.data),
+      ConjugationScreen(data: widget.data),
+      PracticeScreen(data: widget.data),
+      const SourceScreen(),
+    ];
+
     return Scaffold(
-      body: SafeArea(child: _screens[_selectedIndex]),
+      body: SafeArea(child: screens[_selectedIndex]),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) =>
@@ -105,7 +125,9 @@ class _AppShellState extends State<AppShell> {
 }
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({required this.data, super.key});
+
+  final AppData data;
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +159,7 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(height: 16),
           Text('Örnek Form', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 10),
-          ArabicResultCard(form: sampleForms.first),
+          ArabicResultCard(form: data.forms.first),
         ],
       ),
     );
@@ -145,7 +167,9 @@ class HomeScreen extends StatelessWidget {
 }
 
 class LessonsScreen extends StatelessWidget {
-  const LessonsScreen({super.key});
+  const LessonsScreen({required this.data, super.key});
+
+  final AppData data;
 
   @override
   Widget build(BuildContext context) {
@@ -153,14 +177,15 @@ class LessonsScreen extends StatelessWidget {
       title: 'Dersler',
       subtitle: 'PDF akışını mobil çalışma başlıklarına böldük.',
       child: Column(
-        children: lessons
+        children: data.lessons
             .map(
               (lesson) => LessonTile(
                 lesson: lesson,
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (_) => LessonDetailScreen(lesson: lesson),
+                      builder: (_) =>
+                          LessonDetailScreen(lesson: lesson, data: data),
                     ),
                   );
                 },
@@ -173,13 +198,18 @@ class LessonsScreen extends StatelessWidget {
 }
 
 class LessonDetailScreen extends StatelessWidget {
-  const LessonDetailScreen({required this.lesson, super.key});
+  const LessonDetailScreen({
+    required this.lesson,
+    required this.data,
+    super.key,
+  });
 
   final Lesson lesson;
+  final AppData data;
 
   @override
   Widget build(BuildContext context) {
-    final relatedForms = sampleForms
+    final relatedForms = data.forms
         .where((form) => form.category == lesson.relatedCategory)
         .take(4)
         .toList();
@@ -214,7 +244,9 @@ class LessonDetailScreen extends StatelessWidget {
 }
 
 class ConjugationScreen extends StatefulWidget {
-  const ConjugationScreen({super.key});
+  const ConjugationScreen({required this.data, super.key});
+
+  final AppData data;
 
   @override
   State<ConjugationScreen> createState() => _ConjugationScreenState();
@@ -226,7 +258,7 @@ class _ConjugationScreenState extends State<ConjugationScreen> {
   int _formIndex = 0;
 
   List<ConjugationForm> get _visibleForms {
-    return sampleForms
+    return widget.data.forms
         .where((form) => form.category == _category && form.voice == _voice)
         .toList();
   }
@@ -313,7 +345,9 @@ class _ConjugationScreenState extends State<ConjugationScreen> {
 }
 
 class PracticeScreen extends StatefulWidget {
-  const PracticeScreen({super.key});
+  const PracticeScreen({required this.data, super.key});
+
+  final AppData data;
 
   @override
   State<PracticeScreen> createState() => _PracticeScreenState();
@@ -323,7 +357,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
   int _questionIndex = 0;
   String? _selectedAnswer;
 
-  PracticeQuestion get _question => practiceQuestions[_questionIndex];
+  PracticeQuestion get _question =>
+      widget.data.practiceQuestions[_questionIndex];
 
   @override
   Widget build(BuildContext context) {
@@ -338,7 +373,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${_questionIndex + 1}/${practiceQuestions.length}',
+            '${_questionIndex + 1}/${widget.data.practiceQuestions.length}',
             style: Theme.of(context).textTheme.labelLarge,
           ),
           const SizedBox(height: 10),
@@ -389,7 +424,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
               onPressed: () {
                 setState(() {
                   _questionIndex =
-                      (_questionIndex + 1) % practiceQuestions.length;
+                      (_questionIndex + 1) %
+                      widget.data.practiceQuestions.length;
                   _selectedAnswer = null;
                 });
               },
@@ -766,12 +802,81 @@ TextStyle arabicTextStyle(double size) {
   );
 }
 
+class LoadingScreen extends StatelessWidget {
+  const LoadingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+  }
+}
+
+class LoadErrorScreen extends StatelessWidget {
+  const LoadErrorScreen({required this.error, super.key});
+
+  final String error;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Text('Veri yüklenemedi: $error'),
+        ),
+      ),
+    );
+  }
+}
+
+class EmsileRepository {
+  const EmsileRepository._();
+
+  static Future<AppData> load() async {
+    final rawJson = await rootBundle.loadString('assets/data/emsile_seed.json');
+    final decoded = jsonDecode(rawJson) as Map<String, dynamic>;
+    return AppData.fromJson(decoded);
+  }
+}
+
+class AppData {
+  const AppData({
+    required this.lessons,
+    required this.forms,
+    required this.practiceQuestions,
+  });
+
+  final List<Lesson> lessons;
+  final List<ConjugationForm> forms;
+  final List<PracticeQuestion> practiceQuestions;
+
+  factory AppData.fromJson(Map<String, dynamic> json) {
+    return AppData(
+      lessons: (json['lessons'] as List<dynamic>)
+          .map((item) => Lesson.fromJson(item as Map<String, dynamic>))
+          .toList(),
+      forms: (json['forms'] as List<dynamic>)
+          .map((item) => ConjugationForm.fromJson(item as Map<String, dynamic>))
+          .toList(),
+      practiceQuestions: (json['practiceQuestions'] as List<dynamic>)
+          .map(
+            (item) => PracticeQuestion.fromJson(item as Map<String, dynamic>),
+          )
+          .toList(),
+    );
+  }
+}
+
 enum FormCategory {
   mazi('Mâzi'),
   muzari('Muzâri');
 
   const FormCategory(this.label);
   final String label;
+
+  static FormCategory fromJson(String value) {
+    return FormCategory.values.firstWhere((category) => category.name == value);
+  }
 }
 
 enum Voice {
@@ -780,6 +885,10 @@ enum Voice {
 
   const Voice(this.label);
   final String label;
+
+  static Voice fromJson(String value) {
+    return Voice.values.firstWhere((voice) => voice.name == value);
+  }
 }
 
 class Lesson {
@@ -796,6 +905,16 @@ class Lesson {
   final String summary;
   final String rule;
   final FormCategory relatedCategory;
+
+  factory Lesson.fromJson(Map<String, dynamic> json) {
+    return Lesson(
+      order: json['order'] as int,
+      title: json['title'] as String,
+      summary: json['summary'] as String,
+      rule: json['rule'] as String,
+      relatedCategory: FormCategory.fromJson(json['relatedCategory'] as String),
+    );
+  }
 }
 
 class ConjugationForm {
@@ -814,6 +933,17 @@ class ConjugationForm {
   final String arabic;
   final String meaning;
   final String rule;
+
+  factory ConjugationForm.fromJson(Map<String, dynamic> json) {
+    return ConjugationForm(
+      category: FormCategory.fromJson(json['category'] as String),
+      voice: Voice.fromJson(json['voice'] as String),
+      pronounLabel: json['pronounLabel'] as String,
+      arabic: json['arabic'] as String,
+      meaning: json['meaning'] as String,
+      rule: json['rule'] as String,
+    );
+  }
 }
 
 class PracticeQuestion {
@@ -830,190 +960,14 @@ class PracticeQuestion {
   final List<String> options;
   final String answer;
   final String explanation;
+
+  factory PracticeQuestion.fromJson(Map<String, dynamic> json) {
+    return PracticeQuestion(
+      prompt: json['prompt'] as String,
+      arabic: json['arabic'] as String,
+      options: (json['options'] as List<dynamic>).cast<String>(),
+      answer: json['answer'] as String,
+      explanation: json['explanation'] as String,
+    );
+  }
 }
-
-const lessons = [
-  Lesson(
-    order: 1,
-    title: 'Emsile-i Muhtelife',
-    summary: 'Temel sarf formlarını ve anlamlarını birlikte gör.',
-    rule: 'Aynı kökten türeyen farklı kalıplar anlam ilişkisiyle çalışılır.',
-    relatedCategory: FormCategory.mazi,
-  ),
-  Lesson(
-    order: 2,
-    title: 'Fiil-i Mâzi',
-    summary: 'Geçmiş zaman çekimlerini şahıslara göre incele.',
-    rule: 'Mâzi fiil geçmişte gerçekleşen işi bildirir.',
-    relatedCategory: FormCategory.mazi,
-  ),
-  Lesson(
-    order: 3,
-    title: 'Fiil-i Muzâri',
-    summary: 'Şimdiki, geniş ve gelecek zaman anlamlarını tanı.',
-    rule: 'Muzâri fiil başına muzaraat harflerinden biri gelerek kurulur.',
-    relatedCategory: FormCategory.muzari,
-  ),
-  Lesson(
-    order: 4,
-    title: 'Malum ve Meçhul',
-    summary: 'Etken ve edilgen çekim farkını karşılaştır.',
-    rule: 'Meçhul çekimde hareke düzeni değişir ve işi yapan gizlenir.',
-    relatedCategory: FormCategory.mazi,
-  ),
-];
-
-const sampleForms = [
-  ConjugationForm(
-    category: FormCategory.mazi,
-    voice: Voice.malum,
-    pronounLabel: 'O',
-    arabic: 'نَصَرَ',
-    meaning: 'Yardım etti.',
-    rule: '3. tekil müzekker mâzi malum temel formdur.',
-  ),
-  ConjugationForm(
-    category: FormCategory.mazi,
-    voice: Voice.malum,
-    pronounLabel: 'O ikisi',
-    arabic: 'نَصَرَا',
-    meaning: 'O ikisi yardım etti.',
-    rule: 'Tesniye için elif uzatması görülür.',
-  ),
-  ConjugationForm(
-    category: FormCategory.mazi,
-    voice: Voice.malum,
-    pronounLabel: 'Onlar',
-    arabic: 'نَصَرُوا',
-    meaning: 'Onlar yardım etti.',
-    rule: 'Cemi müzekker için vav-elif sonu kullanılır.',
-  ),
-  ConjugationForm(
-    category: FormCategory.mazi,
-    voice: Voice.malum,
-    pronounLabel: 'Ben',
-    arabic: 'نَصَرْتُ',
-    meaning: 'Ben yardım ettim.',
-    rule: 'Mütekellim vahde için sonuna tü gelir.',
-  ),
-  ConjugationForm(
-    category: FormCategory.mazi,
-    voice: Voice.mechul,
-    pronounLabel: 'O',
-    arabic: 'نُصِرَ',
-    meaning: 'Yardım edildi.',
-    rule: 'Meçhul mâzide ilk hareke damme, orta hareke kesradır.',
-  ),
-  ConjugationForm(
-    category: FormCategory.mazi,
-    voice: Voice.mechul,
-    pronounLabel: 'O ikisi',
-    arabic: 'نُصِرَا',
-    meaning: 'O ikisine yardım edildi.',
-    rule: 'Meçhul yapı korunur, şahıs eki eklenir.',
-  ),
-  ConjugationForm(
-    category: FormCategory.mazi,
-    voice: Voice.mechul,
-    pronounLabel: 'Onlar',
-    arabic: 'نُصِرُوا',
-    meaning: 'Onlara yardım edildi.',
-    rule: 'Cemi müzekker eki meçhul gövdeye bağlanır.',
-  ),
-  ConjugationForm(
-    category: FormCategory.mazi,
-    voice: Voice.mechul,
-    pronounLabel: 'Ben',
-    arabic: 'نُصِرْتُ',
-    meaning: 'Bana yardım edildi.',
-    rule: 'Mütekellim eki meçhul mâzi gövdesine eklenir.',
-  ),
-  ConjugationForm(
-    category: FormCategory.muzari,
-    voice: Voice.malum,
-    pronounLabel: 'O',
-    arabic: 'يَنْصُرُ',
-    meaning: 'Yardım ediyor / eder / edecek.',
-    rule: 'Muzâri fiil başında muzaraat harfi bulunur.',
-  ),
-  ConjugationForm(
-    category: FormCategory.muzari,
-    voice: Voice.malum,
-    pronounLabel: 'O ikisi',
-    arabic: 'يَنْصُرَانِ',
-    meaning: 'O ikisi yardım ediyor.',
-    rule: 'Tesniye muzâride nun ile tamamlanır.',
-  ),
-  ConjugationForm(
-    category: FormCategory.muzari,
-    voice: Voice.malum,
-    pronounLabel: 'Onlar',
-    arabic: 'يَنْصُرُونَ',
-    meaning: 'Onlar yardım ediyor.',
-    rule: 'Cemi müzekker muzâride vav-nun sonu görülür.',
-  ),
-  ConjugationForm(
-    category: FormCategory.muzari,
-    voice: Voice.malum,
-    pronounLabel: 'Ben',
-    arabic: 'أَنْصُرُ',
-    meaning: 'Ben yardım ediyorum.',
-    rule: 'Mütekellim vahde için başta hemze kullanılır.',
-  ),
-  ConjugationForm(
-    category: FormCategory.muzari,
-    voice: Voice.mechul,
-    pronounLabel: 'O',
-    arabic: 'يُنْصَرُ',
-    meaning: 'Ona yardım ediliyor.',
-    rule: 'Meçhul muzâride muzaraat harfi damme alır.',
-  ),
-  ConjugationForm(
-    category: FormCategory.muzari,
-    voice: Voice.mechul,
-    pronounLabel: 'O ikisi',
-    arabic: 'يُنْصَرَانِ',
-    meaning: 'O ikisine yardım ediliyor.',
-    rule: 'Meçhul gövde tesniye ekiyle tamamlanır.',
-  ),
-  ConjugationForm(
-    category: FormCategory.muzari,
-    voice: Voice.mechul,
-    pronounLabel: 'Onlar',
-    arabic: 'يُنْصَرُونَ',
-    meaning: 'Onlara yardım ediliyor.',
-    rule: 'Cemi müzekker eki meçhul muzâri gövdesine eklenir.',
-  ),
-  ConjugationForm(
-    category: FormCategory.muzari,
-    voice: Voice.mechul,
-    pronounLabel: 'Ben',
-    arabic: 'أُنْصَرُ',
-    meaning: 'Bana yardım ediliyor.',
-    rule: 'Baş hemze damme alarak meçhul anlam kurar.',
-  ),
-];
-
-const practiceQuestions = [
-  PracticeQuestion(
-    prompt: 'Bu formun anlamı hangisi?',
-    arabic: 'نَصَرَ',
-    options: ['Yardım etti.', 'Yardım ediyor.', 'Yardım edilen.'],
-    answer: 'Yardım etti.',
-    explanation: 'نَصَرَ fiil-i mâzi bina-i malumdur.',
-  ),
-  PracticeQuestion(
-    prompt: 'Bu form hangi şahsa aittir?',
-    arabic: 'أَنْصُرُ',
-    options: ['Ben', 'O', 'Onlar'],
-    answer: 'Ben',
-    explanation: 'Muzâride baştaki hemze birinci tekil şahsı gösterir.',
-  ),
-  PracticeQuestion(
-    prompt: 'Bu formun bina türü nedir?',
-    arabic: 'نُصِرَ',
-    options: ['Malum', 'Meçhul', 'Emir'],
-    answer: 'Meçhul',
-    explanation: 'نُصِرَ edilgen mâzi formudur.',
-  ),
-];

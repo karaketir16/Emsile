@@ -1,0 +1,185 @@
+{
+  "lessons": [
+    {
+      "order": 1,
+      "title": "Emsile-i Muhtelife",
+      "summary": "Temel sarf formlarını ve anlamlarını birlikte gör.",
+      "rule": "Aynı kökten türeyen farklı kalıplar anlam ilişkisiyle çalışılır.",
+      "relatedCategory": "mazi"
+    },
+    {
+      "order": 2,
+      "title": "Fiil-i Mâzi",
+      "summary": "Geçmiş zaman çekimlerini şahıslara göre incele.",
+      "rule": "Mâzi fiil geçmişte gerçekleşen işi bildirir.",
+      "relatedCategory": "mazi"
+    },
+    {
+      "order": 3,
+      "title": "Fiil-i Muzâri",
+      "summary": "Şimdiki, geniş ve gelecek zaman anlamlarını tanı.",
+      "rule": "Muzâri fiil başına muzaraat harflerinden biri gelerek kurulur.",
+      "relatedCategory": "muzari"
+    },
+    {
+      "order": 4,
+      "title": "Malum ve Meçhul",
+      "summary": "Etken ve edilgen çekim farkını karşılaştır.",
+      "rule": "Meçhul çekimde hareke düzeni değişir ve işi yapan gizlenir.",
+      "relatedCategory": "mazi"
+    }
+  ],
+  "forms": [
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "pronounLabel": "O",
+      "arabic": "نَصَرَ",
+      "meaning": "Yardım etti.",
+      "rule": "3. tekil müzekker mâzi malum temel formdur."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "pronounLabel": "O ikisi",
+      "arabic": "نَصَرَا",
+      "meaning": "O ikisi yardım etti.",
+      "rule": "Tesniye için elif uzatması görülür."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "pronounLabel": "Onlar",
+      "arabic": "نَصَرُوا",
+      "meaning": "Onlar yardım etti.",
+      "rule": "Cemi müzekker için vav-elif sonu kullanılır."
+    },
+    {
+      "category": "mazi",
+      "voice": "malum",
+      "pronounLabel": "Ben",
+      "arabic": "نَصَرْتُ",
+      "meaning": "Ben yardım ettim.",
+      "rule": "Mütekellim vahde için sonuna tü gelir."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "pronounLabel": "O",
+      "arabic": "نُصِرَ",
+      "meaning": "Yardım edildi.",
+      "rule": "Meçhul mâzide ilk hareke damme, orta hareke kesradır."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "pronounLabel": "O ikisi",
+      "arabic": "نُصِرَا",
+      "meaning": "O ikisine yardım edildi.",
+      "rule": "Meçhul yapı korunur, şahıs eki eklenir."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "pronounLabel": "Onlar",
+      "arabic": "نُصِرُوا",
+      "meaning": "Onlara yardım edildi.",
+      "rule": "Cemi müzekker eki meçhul gövdeye bağlanır."
+    },
+    {
+      "category": "mazi",
+      "voice": "mechul",
+      "pronounLabel": "Ben",
+      "arabic": "نُصِرْتُ",
+      "meaning": "Bana yardım edildi.",
+      "rule": "Mütekellim eki meçhul mâzi gövdesine eklenir."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "pronounLabel": "O",
+      "arabic": "يَنْصُرُ",
+      "meaning": "Yardım ediyor / eder / edecek.",
+      "rule": "Muzâri fiil başında muzaraat harfi bulunur."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "pronounLabel": "O ikisi",
+      "arabic": "يَنْصُرَانِ",
+      "meaning": "O ikisi yardım ediyor.",
+      "rule": "Tesniye muzâride nun ile tamamlanır."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "pronounLabel": "Onlar",
+      "arabic": "يَنْصُرُونَ",
+      "meaning": "Onlar yardım ediyor.",
+      "rule": "Cemi müzekker muzâride vav-nun sonu görülür."
+    },
+    {
+      "category": "muzari",
+      "voice": "malum",
+      "pronounLabel": "Ben",
+      "arabic": "أَنْصُرُ",
+      "meaning": "Ben yardım ediyorum.",
+      "rule": "Mütekellim vahde için başta hemze kullanılır."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "pronounLabel": "O",
+      "arabic": "يُنْصَرُ",
+      "meaning": "Ona yardım ediliyor.",
+      "rule": "Meçhul muzâride muzaraat harfi damme alır."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "pronounLabel": "O ikisi",
+      "arabic": "يُنْصَرَانِ",
+      "meaning": "O ikisine yardım ediliyor.",
+      "rule": "Meçhul gövde tesniye ekiyle tamamlanır."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "pronounLabel": "Onlar",
+      "arabic": "يُنْصَرُونَ",
+      "meaning": "Onlara yardım ediliyor.",
+      "rule": "Cemi müzekker eki meçhul muzâri gövdesine eklenir."
+    },
+    {
+      "category": "muzari",
+      "voice": "mechul",
+      "pronounLabel": "Ben",
+      "arabic": "أُنْصَرُ",
+      "meaning": "Bana yardım ediliyor.",
+      "rule": "Baş hemze damme alarak meçhul anlam kurar."
+    }
+  ],
+  "practiceQuestions": [
+    {
+      "prompt": "Bu formun anlamı hangisi?",
+      "arabic": "نَصَرَ",
+      "options": ["Yardım etti.", "Yardım ediyor.", "Yardım edilen."],
+      "answer": "Yardım etti.",
+      "explanation": "نَصَرَ fiil-i mâzi bina-i malumdur."
+    },
+    {
+      "prompt": "Bu form hangi şahsa aittir?",
+      "arabic": "أَنْصُرُ",
+      "options": ["Ben", "O", "Onlar"],
+      "answer": "Ben",
+      "explanation": "Muzâride baştaki hemze birinci tekil şahsı gösterir."
+    },
+    {
+      "prompt": "Bu formun bina türü nedir?",
+      "arabic": "نُصِرَ",
+      "options": ["Malum", "Meçhul", "Emir"],
+      "answer": "Meçhul",
+      "explanation": "نُصِرَ edilgen mâzi formudur."
+    }
+  ]
+}

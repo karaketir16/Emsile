@@ -158,7 +158,7 @@ void main() {
           person: FormPerson.none,
           number: FormNumber.singular,
           gender: FormGender.masculine,
-          arabic: 'ن' + 'َ' + '\ufe8e' + 'ص' + 'ِ' + 'ر' + 'ٌ',
+          arabic: 'نَ\ufe8eصِرٌ',
         ),
         isTrue,
       );
@@ -171,7 +171,7 @@ void main() {
           person: FormPerson.none,
           number: FormNumber.plural,
           gender: FormGender.masculine,
-          arabic: 'ن' + 'َ' + '\ufe8e' + 'ص' + 'ِ' + 'ر' + 'ُ' + 'و' + 'ن' + 'َ',
+          arabic: 'نَ\ufe8eصِرُونَ',
         ),
         isTrue,
       );
@@ -185,7 +185,7 @@ void main() {
           person: FormPerson.none,
           number: FormNumber.dual,
           gender: FormGender.common,
-          arabic: 'ن' + 'َ' + 'ص' + 'ْ' + 'ر' + 'َ' + 'ت' + 'َ' + 'ي' + 'ْ' + 'ن' + 'ِ',
+          arabic: 'نَصْرَتَيْنِ',
         ),
         isTrue,
       );
@@ -199,7 +199,7 @@ void main() {
           person: FormPerson.second,
           number: FormNumber.singular,
           gender: FormGender.masculine,
-          arabic: 'م' + 'َ' + 'ا' + ' ' + 'أ' + 'َ' + 'ن' + 'ْ' + 'ص' + 'َ' + 'ر' + 'َ' + 'ك' + 'َ',
+          arabic: 'مَا أَنْصَرَكَ',
         ),
         isTrue,
       );

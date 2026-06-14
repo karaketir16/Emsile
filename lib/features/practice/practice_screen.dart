@@ -17,6 +17,18 @@ class PracticeScreen extends StatefulWidget {
 }
 
 class _PracticeScreenState extends State<PracticeScreen> {
+  static const _verbPronouns = [
+    'O (er.)', 'O ikisi (er.)', 'Onlar (er.)',
+    'O (kad.)', 'O ikisi (kad.)', 'Onlar (kad.)',
+    'Sen (er.)', 'Siz ikiniz (er.)', 'Siz (er.)',
+    'Sen (kad.)', 'Siz ikiniz (kad.)', 'Siz (kad.)',
+    'Ben', 'Biz'
+  ];
+
+  static const _nounOptions = [
+    'Tekil', 'İkil', 'Çoğul (Kurallı)', 'Kırık Çoğul'
+  ];
+
   bool _setupMode = true;
   PracticeQuestion? _question;
   String? _selectedAnswer;
@@ -40,8 +52,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
     _selectedVoices.addAll(Voice.values);
 
     _selectedPronouns.clear();
-    final allPronouns = widget.data.forms.map((f) => f.pronounLabel).toSet();
-    _selectedPronouns.addAll(allPronouns);
+    _selectedPronouns.addAll(_verbPronouns);
+    _selectedPronouns.addAll(_nounOptions);
   }
 
   @override
@@ -59,7 +71,26 @@ class _PracticeScreenState extends State<PracticeScreen> {
     return widget.data.forms.where((form) {
       final categoryMatch = _selectedCategories.contains(form.category);
       final voiceMatch = _selectedVoices.contains(form.voice);
-      final pronounMatch = _selectedPronouns.contains(form.pronounLabel);
+      
+      final String mappedPronoun;
+      if (form.category.isNoun) {
+        final label = form.pronounLabel;
+        if (label.contains('Kırık')) {
+          mappedPronoun = 'Kırık Çoğul';
+        } else if (label.contains('Tekil') || label == 'Tekil') {
+          mappedPronoun = 'Tekil';
+        } else if (label.contains('İkil') || label == 'İkil') {
+          mappedPronoun = 'İkil';
+        } else if (label.contains('Çoğul') || label == 'Çoğul') {
+          mappedPronoun = 'Çoğul (Kurallı)';
+        } else {
+          mappedPronoun = label;
+        }
+      } else {
+        mappedPronoun = form.pronounLabel;
+      }
+      
+      final pronounMatch = _selectedPronouns.contains(mappedPronoun);
       return categoryMatch && voiceMatch && pronounMatch;
     }).toList();
   }
@@ -89,6 +120,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
         Expanded(
           child: Text(
             title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -127,60 +160,137 @@ class _PracticeScreenState extends State<PracticeScreen> {
     );
   }
 
-  Widget _buildGroupHelperButton({
-    required String label,
-    required List<String> pronouns,
-    required List<String> allPronouns,
-  }) {
-    final availableInDb = pronouns.where((p) => allPronouns.contains(p)).toList();
-    if (availableInDb.isEmpty) return const SizedBox.shrink();
-
-    final allSelected = availableInDb.every((p) => _selectedPronouns.contains(p));
-
-    return OutlinedButton(
-      onPressed: () {
-        setState(() {
-          if (allSelected) {
-            _selectedPronouns.removeAll(availableInDb);
-          } else {
-            _selectedPronouns.addAll(availableInDb);
-          }
-        });
-      },
-      style: OutlinedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-        minimumSize: Size.zero,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+  Widget _buildTableContainer({required Widget child}) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: const Color(0xFFD8D1C1)),
       ),
-      child: Text(
-        label,
-        style: const TextStyle(fontSize: 11),
+      clipBehavior: Clip.antiAlias,
+      child: child,
+    );
+  }
+
+  Widget _buildSelectableTableCell({
+    required String text,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
+        color: isSelected
+            ? colorScheme.primaryContainer.withValues(alpha: 0.55)
+            : null,
+        child: Center(
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              color: isSelected ? colorScheme.primary : null,
+            ),
+          ),
+        ),
       ),
     );
   }
 
+  Widget _buildHeaderCell(String text) {
+    return Container(
+      color: const Color(0xFFF4F0E6),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
+      child: Center(
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLabelCell(String text) {
+    return Container(
+      color: const Color(0xFFF4F0E6),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
+      child: Center(
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+      ),
+    );
+  }
+
+  TableRow _buildPronounRow({
+    required String label,
+    required String plural,
+    required String dual,
+    required String singular,
+  }) {
+    return TableRow(
+      children: [
+        _buildPronounCell(plural),
+        _buildPronounCell(dual),
+        _buildPronounCell(singular),
+        _buildLabelCell(label),
+      ],
+    );
+  }
+
+  Widget _buildPronounCell(String pronoun) {
+    final isSelected = _selectedPronouns.contains(pronoun);
+    return _buildSelectableTableCell(
+      text: pronoun,
+      isSelected: isSelected,
+      onTap: () {
+        setState(() {
+          if (isSelected) {
+            _selectedPronouns.remove(pronoun);
+          } else {
+            _selectedPronouns.add(pronoun);
+          }
+        });
+      },
+    );
+  }
+
+  Widget _buildNounOptionCell(String option) {
+    final isSelected = _selectedPronouns.contains(option);
+    return _buildSelectableTableCell(
+      text: option,
+      isSelected: isSelected,
+      onTap: () {
+        setState(() {
+          if (isSelected) {
+            _selectedPronouns.remove(option);
+          } else {
+            _selectedPronouns.add(option);
+          }
+        });
+      },
+    );
+  }
+
+
   Widget _buildSetupView(BuildContext context) {
-    final allPronouns = widget.data.forms.map((f) => f.pronounLabel).toSet().toList();
-    const pronounOrder = [
-      'O (er.)', 'O ikisi (er.)', 'Onlar (er.)',
-      'O (kad.)', 'O ikisi (kad.)', 'Onlar (kad.)',
-      'Sen (er.)', 'Siz ikiniz (er.)', 'Siz (er.)',
-      'Sen (kad.)', 'Siz ikiniz (kad.)', 'Siz (kad.)',
-      'Ben', 'Biz',
-      'Tekil Müzekker', 'İkil Müzekker', 'Çoğul Müzekker (Sâlim)', 'Çoğul Müzekker',
-      'Kırık Çoğul Müzekker 1', 'Kırık Çoğul Müzekker 2', 'Kırık Çoğul Müzekker 3',
-      'Tekil Müennes', 'İkil Müennes', 'Çoğul Müennes (Sâlim)', 'Çoğul Müennes',
-      'Kırık Çoğul Müennes',
-      'Tekil', 'İkil', 'Çoğul', 'Kırık Çoğul', 'Kırık Çoğul (Emsile)'
-    ];
-    allPronouns.sort((a, b) {
-      final indexA = pronounOrder.indexOf(a);
-      final indexB = pronounOrder.indexOf(b);
-      if (indexA == -1 && indexB == -1) return a.compareTo(b);
-      if (indexA == -1) return 1;
-      if (indexB == -1) return -1;
-      return indexA.compareTo(indexB);
-    });
+    final showVerbs = _selectedCategories.isEmpty
+        ? widget.data.forms.any((f) => f.category.isVerb)
+        : _selectedCategories.any((cat) => cat.isVerb);
+    final showNouns = _selectedCategories.isEmpty
+        ? widget.data.forms.any((f) => f.category.isNoun)
+        : _selectedCategories.any((cat) => cat.isNoun);
+    final showVoice = showVerbs;
 
     final matchingCount = _matchingForms.length;
     final canStart = matchingCount >= 5;
@@ -203,119 +313,212 @@ class _PracticeScreenState extends State<PracticeScreen> {
               });
             },
           ),
-          Wrap(
-            spacing: 8,
-            runSpacing: 4,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: FormCategory.values.map((category) {
               final isSelected = _selectedCategories.contains(category);
-              return FilterChip(
-                label: Text(category.label),
-                selected: isSelected,
-                onSelected: (selected) {
+              return InkWell(
+                onTap: () {
                   setState(() {
-                    if (selected) {
-                      _selectedCategories.add(category);
-                    } else {
+                    if (isSelected) {
                       _selectedCategories.remove(category);
-                    }
-                  });
-                },
-              );
-            }).toList(),
-          ),
-          const SizedBox(height: 20),
-
-          _buildSectionHeader(
-            title: 'Çatı (Malum/Meçhul)',
-            onSelectAll: () {
-              setState(() {
-                _selectedVoices.addAll(Voice.values);
-              });
-            },
-            onClearAll: () {
-              setState(() {
-                _selectedVoices.clear();
-              });
-            },
-          ),
-          Wrap(
-            spacing: 8,
-            runSpacing: 4,
-            children: Voice.values.map((voice) {
-              final isSelected = _selectedVoices.contains(voice);
-              return FilterChip(
-                label: Text(voice.label),
-                selected: isSelected,
-                onSelected: (selected) {
-                  setState(() {
-                    if (selected) {
-                      _selectedVoices.add(voice);
                     } else {
-                      _selectedVoices.remove(voice);
+                      _selectedCategories.add(category);
                     }
                   });
                 },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        height: 24,
+                        width: 24,
+                        child: Checkbox(
+                          value: isSelected,
+                          onChanged: (selected) {
+                            setState(() {
+                              if (selected == true) {
+                                _selectedCategories.add(category);
+                              } else {
+                                _selectedCategories.remove(category);
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          category.label,
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               );
             }).toList(),
           ),
           const SizedBox(height: 20),
 
-          _buildSectionHeader(
-            title: 'Şahıslar (Zamirler)',
-            onSelectAll: () {
-              setState(() {
-                _selectedPronouns.addAll(allPronouns);
-              });
-            },
-            onClearAll: () {
-              setState(() {
-                _selectedPronouns.clear();
-              });
-            },
-          ),
-          Wrap(
-            spacing: 6,
-            runSpacing: 4,
-            children: [
-              _buildGroupHelperButton(
-                label: '3. Şahıs (Gâib/e)',
-                pronouns: const ['O (er.)', 'O (kad.)', 'O ikisi (er.)', 'O ikisi (kad.)', 'Onlar (er.)', 'Onlar (kad.)'],
-                allPronouns: allPronouns,
+          if (showVoice) ...[
+            _buildSectionHeader(
+              title: 'Çatı (Malum/Meçhul)',
+              onSelectAll: () {
+                setState(() {
+                  _selectedVoices.addAll(Voice.values);
+                });
+              },
+              onClearAll: () {
+                setState(() {
+                  _selectedVoices.clear();
+                });
+              },
+            ),
+            _buildTableContainer(
+              child: Table(
+                border: const TableBorder(
+                  verticalInside: BorderSide(color: Color(0xFFD8D1C1)),
+                ),
+                children: [
+                  TableRow(
+                    children: Voice.values.map((voice) {
+                      final isSelected = _selectedVoices.contains(voice);
+                      return _buildSelectableTableCell(
+                        text: voice.label,
+                        isSelected: isSelected,
+                        onTap: () {
+                          setState(() {
+                            if (isSelected) {
+                              _selectedVoices.remove(voice);
+                            } else {
+                              _selectedVoices.add(voice);
+                            }
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
               ),
-              _buildGroupHelperButton(
-                label: '2. Şahıs (Muhatab/a)',
-                pronouns: const ['Sen (er.)', 'Sen (kad.)', 'Siz ikiniz (er.)', 'Siz ikiniz (kad.)', 'Siz (er.)', 'Siz (kad.)'],
-                allPronouns: allPronouns,
+            ),
+            const SizedBox(height: 20),
+          ],
+
+          if (showVerbs) ...[
+            _buildSectionHeader(
+              title: 'Şahıslar (Fiiller)',
+              onSelectAll: () {
+                setState(() {
+                  _selectedPronouns.addAll(_verbPronouns);
+                });
+              },
+              onClearAll: () {
+                setState(() {
+                  _selectedPronouns.removeAll(_verbPronouns);
+                });
+              },
+            ),
+            _buildTableContainer(
+              child: Table(
+                border: const TableBorder(
+                  horizontalInside: BorderSide(color: Color(0xFFD8D1C1)),
+                  verticalInside: BorderSide(color: Color(0xFFD8D1C1)),
+                ),
+                columnWidths: const {
+                  0: FlexColumnWidth(1),
+                  1: FlexColumnWidth(1),
+                  2: FlexColumnWidth(1),
+                  3: FixedColumnWidth(96),
+                },
+                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                children: [
+                  TableRow(
+                    decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
+                    children: [
+                      _buildHeaderCell('Çoğul'),
+                      _buildHeaderCell('İkil'),
+                      _buildHeaderCell('Tekil'),
+                      _buildHeaderCell('Şahıs'),
+                    ],
+                  ),
+                  _buildPronounRow(
+                    label: '3. Şh. Müzekker\n(Gâib)',
+                    plural: 'Onlar (er.)',
+                    dual: 'O ikisi (er.)',
+                    singular: 'O (er.)',
+                  ),
+                  _buildPronounRow(
+                    label: '3. Şh. Müennes\n(Gâibe)',
+                    plural: 'Onlar (kad.)',
+                    dual: 'O ikisi (kad.)',
+                    singular: 'O (kad.)',
+                  ),
+                  _buildPronounRow(
+                    label: '2. Şh. Müzekker\n(Muhatab)',
+                    plural: 'Siz (er.)',
+                    dual: 'Siz ikiniz (er.)',
+                    singular: 'Sen (er.)',
+                  ),
+                  _buildPronounRow(
+                    label: '2. Şh. Müennes\n(Muhataba)',
+                    plural: 'Siz (kad.)',
+                    dual: 'Siz ikiniz (kad.)',
+                    singular: 'Sen (kad.)',
+                  ),
+                  _buildPronounRow(
+                    label: '1. Şh. Ortak\n(Mütekellim)',
+                    plural: 'Biz',
+                    dual: 'Biz',
+                    singular: 'Ben',
+                  ),
+                ],
               ),
-              _buildGroupHelperButton(
-                label: '1. Şahıs (Mütekellim)',
-                pronouns: const ['Ben', 'Biz'],
-                allPronouns: allPronouns,
+            ),
+            const SizedBox(height: 20),
+          ],
+
+          if (showNouns) ...[
+            _buildSectionHeader(
+              title: 'Dil Bilgisi (İsimler)',
+              onSelectAll: () {
+                setState(() {
+                  _selectedPronouns.addAll(_nounOptions);
+                });
+              },
+              onClearAll: () {
+                setState(() {
+                  _selectedPronouns.removeAll(_nounOptions);
+                });
+              },
+            ),
+            _buildTableContainer(
+              child: Table(
+                border: const TableBorder(
+                  verticalInside: BorderSide(color: Color(0xFFD8D1C1)),
+                ),
+                columnWidths: const {
+                  0: FlexColumnWidth(1),
+                  1: FlexColumnWidth(1),
+                  2: FlexColumnWidth(1),
+                  3: FlexColumnWidth(1),
+                },
+                children: [
+                  TableRow(
+                    children: [
+                      _buildNounOptionCell('Kırık Çoğul'),
+                      _buildNounOptionCell('Çoğul (Kurallı)'),
+                      _buildNounOptionCell('İkil'),
+                      _buildNounOptionCell('Tekil'),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+          ],
           const SizedBox(height: 10),
-          Wrap(
-            spacing: 8,
-            runSpacing: 4,
-            children: allPronouns.map((pronoun) {
-              final isSelected = _selectedPronouns.contains(pronoun);
-              return FilterChip(
-                label: Text(pronoun),
-                selected: isSelected,
-                onSelected: (selected) {
-                  setState(() {
-                    if (selected) {
-                      _selectedPronouns.add(pronoun);
-                    } else {
-                      _selectedPronouns.remove(pronoun);
-                    }
-                  });
-                },
-              );
-            }).toList(),
-          ),
-          const SizedBox(height: 30),
 
           Card(
             color: canStart ? null : Colors.orange.shade50,

@@ -54,7 +54,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] İlk fiili ayrı verb dosyasına taşı: `assets/data/verbs/nasara.json`.
 - [x] İlk generated `conjugationSource` profilini ekle.
 - [x] `nasara` için `muttarideForms` verisini rule-based üretime taşı.
-- [x] `nasara` için muhtelife satırlarını PDF'teki sıra ve eşleşmelere göre tamamla.
+- [x] `nasara` için muhtelife satırlarını kanonik ders sırasına göre tamamla.
 - [x] `nasara` için fiil çekimli tüm muttaride gruplarını generate et.
 - [x] `nasara` için isim ve taaccüb türevlerini generated forma taşı.
 - [x] Şahıs zamirleri veri modelini ayrıca oluştur.

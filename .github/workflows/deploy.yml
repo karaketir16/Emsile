@@ -1,0 +1,56 @@
+name: Deploy Flutter Web to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Manuel tetikleme için
+
+# GitHub Pages deploy için gerekli izinler
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Aynı anda tek deploy çalışsın
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Flutter Web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout kodu
+        uses: actions/checkout@v4
+
+      - name: Flutter kur
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.x'
+          channel: 'stable'
+          cache: true
+
+      - name: Bağımlılıkları yükle
+        run: flutter pub get
+
+      - name: Web için build al
+        run: flutter build web --release --base-href "/EmsileFlutter/"
+
+      - name: GitHub Pages artifact yükle
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    name: GitHub Pages'e Deploy Et
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: GitHub Pages'e deploy et
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -341,6 +341,97 @@ void main() {
   );
 
   testWidgets(
+    'conjugation: selecting Muzari Malum plural masculine, then switching to Mechul preserves plural masculine selection',
+    (WidgetTester tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      final scenarioTestData = AppData(
+        lessons: const [],
+        pronouns: const [],
+        muhtelifeEntries: const [],
+        forms: [
+          ...testFormsList,
+          const ConjugationForm(
+            category: FormCategory.muzari,
+            voice: Voice.malum,
+            person: FormPerson.third,
+            number: FormNumber.plural,
+            gender: FormGender.masculine,
+            pronounLabel: 'Onlar (er.)',
+            arabic: 'يَنْصُرُونَ',
+            meaning: 'Yardım ediyorlar.',
+          ),
+          const ConjugationForm(
+            category: FormCategory.muzari,
+            voice: Voice.mechul,
+            person: FormPerson.third,
+            number: FormNumber.singular,
+            gender: FormGender.masculine,
+            pronounLabel: 'O (er.)',
+            arabic: 'يُنْصَرُ',
+            meaning: 'Yardım edilir.',
+          ),
+          const ConjugationForm(
+            category: FormCategory.muzari,
+            voice: Voice.mechul,
+            person: FormPerson.third,
+            number: FormNumber.plural,
+            gender: FormGender.masculine,
+            pronounLabel: 'Onlar (er.)',
+            arabic: 'يُنْصَرُونَ',
+            meaning: 'Yardım ediliyorlar.',
+          ),
+        ],
+        practiceQuestions: const [],
+      );
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ConjugationScreen(data: scenarioTestData),
+        ),
+      );
+      await navigateToConjugations(tester);
+
+      // Select 'Fiil-i Muzâri' from the dropdown
+      await selectConjugationCategory(tester, 'Fiil-i Muzâri');
+
+      // Tap on the plural third person masculine form cell ('يَنْصُرُونَ')
+      await tester.ensureVisible(find.text('يَنْصُرُونَ').first);
+      await tester.tap(find.text('يَنْصُرُونَ').first);
+      await tester.pumpAndSettle();
+
+      // Verify that 'Onlar (er.)' is selected in SelectionTable
+      var cellContainerFinder = find.ancestor(
+        of: find.text('Onlar (er.)'),
+        matching: find.byType(Container),
+      ).first;
+      var containerWidget = tester.widget<Container>(cellContainerFinder);
+      var decoration = containerWidget.decoration as BoxDecoration;
+      var context = tester.element(find.text('Onlar (er.)'));
+      expect(decoration.color, Theme.of(context).colorScheme.primaryContainer);
+
+      // Tap on 'Meçhul'
+      await tester.ensureVisible(find.text('Meçhul'));
+      await tester.tap(find.text('Meçhul'));
+      await tester.pumpAndSettle();
+
+      // Verify that the result card now displays يُنْصَرُونَ (the plural mechul form)
+      expect(find.text('يُنْصَرُونَ'), findsWidgets);
+
+      // Verify that 'Onlar (er.)' is STILL selected in SelectionTable
+      cellContainerFinder = find.ancestor(
+        of: find.text('Onlar (er.)'),
+        matching: find.byType(Container),
+      ).first;
+      containerWidget = tester.widget<Container>(cellContainerFinder);
+      decoration = containerWidget.decoration as BoxDecoration;
+      expect(decoration.color, Theme.of(context).colorScheme.primaryContainer);
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
     'conjugation: selected person is preserved when switching voice',
     (WidgetTester tester) async {
       await tester.binding.setSurfaceSize(const Size(390, 844));

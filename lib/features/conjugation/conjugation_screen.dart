@@ -215,11 +215,26 @@ class _ConjugationsPageState extends State<_ConjugationsPage> {
     setState(() {
       _category = category ?? _category;
       _voice = voice ?? _voice;
-      _selectedForm = selectedForm ?? _selectedForm;
+
+      var tempSelection = selectedForm ?? _selectedForm;
+      if (category != null || voice != null) {
+        // Discard the arabic field because we are changing category/voice
+        tempSelection = FormSelection(
+          person: tempSelection.person,
+          number: tempSelection.number,
+          gender: tempSelection.gender,
+        );
+      }
 
       final forms = _visibleForms;
-      if (forms.isNotEmpty && !forms.any(_selectedForm.matches)) {
-        _selectedForm = FormSelection.fromForm(forms.first);
+      if (forms.isNotEmpty) {
+        final match = forms.firstWhere(
+          tempSelection.matches,
+          orElse: () => forms.first,
+        );
+        _selectedForm = FormSelection.fromForm(match);
+      } else {
+        _selectedForm = tempSelection;
       }
     });
   }

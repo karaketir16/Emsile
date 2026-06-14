@@ -4,12 +4,14 @@ Bu doküman uygulamanın nasıl test edildiğini ve hangi komutların hangi risk
 
 Bu dosya yaşayan test kaydıdır. Test komutları, kapsam, screenshot çıktıları veya doğrulama kriterleri değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
+Not: Bu doküman ve diğer proje kayıtları her zaman güncel tutulmalıdır; test kapsamı veya doğrulama adımları değişirse aynı commit içinde burada da güncelleme yapılmalıdır.
+
 ## 1. Çalıştırılan Kontroller
 
 ### Format
 
 ```bash
-dart format lib/main.dart test/widget_test.dart
+dart format lib test
 ```
 
 Amaç:
@@ -44,6 +46,7 @@ Kapsam:
 - Pratik: Doğru cevap tıklaması "Doğru" geri bildirimini gösteriyor.
 - Pratik: Yanlış cevap tıklaması "Tekrar Bak" geri bildirimini gösteriyor.
 - Pratik: Sonraki Soru butonu bir sonraki soruya geçiyor.
+- Test fixture'ları yeni `person/number/gender` veri modelini kullanıyor.
 
 Test altyapısı:
 
@@ -67,8 +70,9 @@ npm run validate-seed
 Amaç:
 
 - `assets/data/emsile_seed.json` dosyasının beklenen kök alanları taşıdığını doğrulamak.
-- Ders, çekim ve pratik sorusu alanlarının boş olmadığını kontrol etmek.
-- `category`, `voice` ve pratik doğru cevabı gibi alanlarda temel tutarlılığı yakalamak.
+- Ders ve çekim alanlarının boş olmadığını kontrol etmek.
+- `category`, `voice`, `person`, `number` ve `gender` alanlarında temel tutarlılığı yakalamak.
+- Pratik soruları artık seed JSON'dan değil, uygulama içinde formlardan üretildiği için doğrulama odağı form verisindedir.
 
 ### Web Build
 
@@ -107,6 +111,7 @@ Henüz yok:
 
 - Repository hata senaryosu testi (`EmsileRepository.load()` başarısız durumu).
 - Veri modelleri için ayrı Dart unit testi.
+- `PracticeQuestionGenerator` için ayrı Dart unit testi.
 - Form filtreleme mantığı için ayrı unit testi.
 - Ders detayından çekim tablosuna/pratiğe hedefli geçiş testi.
 - 360px ve 430px viewport genişlik testleri.
@@ -115,6 +120,7 @@ Henüz yok:
 ## 3. Önerilen Test Genişletmeleri
 
 - `assets/data/emsile_seed.json` için daha katı JSON Schema dosyası ekle (ajv ile).
+- `PracticeQuestionGenerator` için anlam ve şahıs seçeneklerini doğrulayan unit test ekle.
 - `EmsileRepository.load()` hata durumunu test edilebilir hale getir.
 - Form filtreleme mantığını ayrı unit test ile doğrula.
 - Widget testini 360px ve 430px viewport genişlikleriyle çalıştır.

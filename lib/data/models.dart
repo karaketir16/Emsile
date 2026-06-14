@@ -41,11 +41,23 @@ class AppData {
       forms: (json['forms'] as List<dynamic>)
           .map((item) => ConjugationForm.fromJson(item as Map<String, dynamic>))
           .toList(),
-      practiceQuestions: (json['practiceQuestions'] as List<dynamic>)
+      practiceQuestions: ((json['practiceQuestions'] as List<dynamic>?) ?? [])
           .map(
             (item) => PracticeQuestion.fromJson(item as Map<String, dynamic>),
           )
           .toList(),
+    );
+  }
+
+  AppData copyWith({
+    List<Lesson>? lessons,
+    List<ConjugationForm>? forms,
+    List<PracticeQuestion>? practiceQuestions,
+  }) {
+    return AppData(
+      lessons: lessons ?? this.lessons,
+      forms: forms ?? this.forms,
+      practiceQuestions: practiceQuestions ?? this.practiceQuestions,
     );
   }
 }
@@ -80,27 +92,45 @@ class ConjugationForm {
   const ConjugationForm({
     required this.category,
     required this.voice,
+    required this.person,
+    required this.number,
+    required this.gender,
     required this.pronounLabel,
     required this.arabic,
     required this.meaning,
-    required this.rule,
   });
 
   final FormCategory category;
   final Voice voice;
+  final FormPerson person;
+  final FormNumber number;
+  final FormGender gender;
   final String pronounLabel;
   final String arabic;
   final String meaning;
-  final String rule;
+
+  String get rule {
+    final parts = <String>[
+      person.label,
+      number.label,
+      if (gender != FormGender.common) gender.label,
+      category.name,
+      voice.name,
+      'formudur.',
+    ];
+    return parts.join(' ');
+  }
 
   factory ConjugationForm.fromJson(Map<String, dynamic> json) {
     return ConjugationForm(
       category: FormCategory.fromJson(json['category'] as String),
       voice: Voice.fromJson(json['voice'] as String),
+      person: FormPerson.fromJson(json['person'] as String),
+      number: FormNumber.fromJson(json['number'] as String),
+      gender: FormGender.fromJson(json['gender'] as String),
       pronounLabel: json['pronounLabel'] as String,
       arabic: json['arabic'] as String,
       meaning: json['meaning'] as String,
-      rule: json['rule'] as String,
     );
   }
 }
@@ -128,5 +158,44 @@ class PracticeQuestion {
       answer: json['answer'] as String,
       explanation: json['explanation'] as String,
     );
+  }
+}
+
+enum FormPerson {
+  first('1. şahıs'),
+  second('2. şahıs'),
+  third('3. şahıs');
+
+  const FormPerson(this.label);
+  final String label;
+
+  static FormPerson fromJson(String value) {
+    return FormPerson.values.firstWhere((person) => person.name == value);
+  }
+}
+
+enum FormNumber {
+  singular('tekil'),
+  dual('ikil'),
+  plural('çoğul');
+
+  const FormNumber(this.label);
+  final String label;
+
+  static FormNumber fromJson(String value) {
+    return FormNumber.values.firstWhere((number) => number.name == value);
+  }
+}
+
+enum FormGender {
+  masculine('müzekker'),
+  feminine('müennes'),
+  common('ortak');
+
+  const FormGender(this.label);
+  final String label;
+
+  static FormGender fromJson(String value) {
+    return FormGender.values.firstWhere((gender) => gender.name == value);
   }
 }

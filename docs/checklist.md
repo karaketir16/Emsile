@@ -1,6 +1,6 @@
 # Emsile Flutter Geliştirme Checklist
 
-Son güncelleme: Widget test kapsamı genişletildi; Playwright görsel kontrol korunurken etkileşim kapsamı `flutter test` ile büyütüldü.
+Son güncelleme: `نصر` için 14 şahıslık mâzi/muzâri malum/meçhul tablo eklendi; pratik soruları JSON'da tek tek yazmak yerine çekim formlarından üretilir hale getirildi.
 
 Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya tamamlanma durumu değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
@@ -38,6 +38,8 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Fiil-i muzâri malum çekimlerini yapılandır.
 - [x] Fiil-i muzâri meçhul çekimlerini yapılandır.
 - [x] Her form için Türkçe anlam alanı ekle.
+- [x] `person`, `number`, `gender` alanlarını seed veri modeline ekle.
+- [x] Alıştırma sorularını formlardan türetilecek şekilde modelle.
 - [ ] Şahıs zamirleri veri modelini ayrıca oluştur.
 - [x] JSON seed veri validasyon script'i ekle.
 - [ ] PDF'ten taşınacak sonraki tabloları elle kontrol et.
@@ -90,7 +92,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Cevap kontrol mekanizmasını ekle.
 - [x] Doğru/yanlış geri bildirimlerini tasarla.
 - [x] Sonraki soru akışını ekle.
-- [x] İlk alıştırma veri setini `نصر` üzerinden oluştur.
+- [x] İlk alıştırma veri setini `نصر` üzerinden otomatik üret.
 - [ ] Boşluk doldurma alıştırmasını ekle.
 - [ ] Eşleştirme alıştırmasını ekle.
 - [ ] Skor/ilerleme modelini ekle.
@@ -124,6 +126,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] `npm run validate-seed` çalıştır.
 - [x] `npm run visual-check` çalıştır.
 - [x] Seed veri alanları için temel validasyon ekle.
+- [x] Seed veri alanlarında `person/number/gender` doğrulaması ekle.
 - [ ] Veri modelleri için ayrı Dart unit test ekle.
 - [x] Çekim ve pratik ekranları için widget test ekle.
 - [x] Seçili sekme ekran eşleşmeleri için widget test ekle.
@@ -145,5 +148,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Kod organizasyonunu `lib/data`, `lib/features`, `lib/shared` klasörlerine böl.
 - [x] JSON veri şemasını büyütmeden önce temel alan adlarını sabitle.
 - [ ] PDF'teki şahıs zamirleri tablosunu JSON'a taşı.
-- [ ] Fiil-i mâzi ve muzâri için 14 şahıslık tam tabloyu tamamla.
+- [x] Fiil-i mâzi ve muzâri için 14 şahıslık tam tabloyu tamamla.
+- [ ] Nefy, emir ve isim kategorileri için aynı tablo genişletmesini yap.
+- [ ] Üretilen pratik sorularına zorluk/karıştırma stratejisi ekle.
 - [ ] Playwright testini 360px ve 430px viewportlarla genişlet.

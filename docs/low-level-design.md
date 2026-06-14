@@ -4,6 +4,8 @@ Bu doküman mevcut Flutter MVP'nin teknik yapısını tarif eder. Amaç, sonraki
 
 Bu dosya yaşayan teknik tasarım kaydıdır. Mimari, veri akışı, model alanları, klasör yapısı veya test edilebilirlik kararları değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
+Not: Bu doküman ve eşlik eden checklist/test kayıtları her zaman güncel tutulmalıdır; mimari veya veri akışında yapılan her değişiklik aynı commit içinde bu kayıtlara yansıtılmalıdır.
+
 ## 1. Mevcut Dosya Yapısı
 
 ```text
@@ -45,8 +47,9 @@ lib/
 3. `EmsileRepository.load()` çağrılır.
 4. `assets/data/emsile_seed.json` okunur.
 5. JSON, `AppData` modeline parse edilir.
-6. Veri hazırsa `AppShell(data: snapshot.data!)` render edilir.
-7. Veri yüklenirken `LoadingScreen`, hata varsa `LoadErrorScreen` gösterilir.
+6. `PracticeQuestionGenerator`, `forms` listesinden çoktan seçmeli pratik sorularını üretir.
+7. Veri hazırsa `AppShell(data: snapshot.data!)` render edilir.
+8. Veri yüklenirken `LoadingScreen`, hata varsa `LoadErrorScreen` gösterilir.
 
 ## 3. Veri Katmanı
 
@@ -76,8 +79,7 @@ Kök yapı:
 ```json
 {
   "lessons": [],
-  "forms": [],
-  "practiceQuestions": []
+  "forms": []
 }
 ```
 
@@ -87,9 +89,12 @@ Kök yapı:
 
 - `category`: `mazi`, `muzari`
 - `voice`: `malum`, `mechul`
+- `person`: `first`, `second`, `third`
+- `number`: `singular`, `dual`, `plural`
+- `gender`: `masculine`, `feminine`, `common`
 - `pronounLabel`: kullanıcıya gösterilen şahıs etiketi
 
-`practiceQuestions` alanı çoktan seçmeli alıştırmaları taşır.
+Çoktan seçmeli alıştırmalar seed JSON'da tek tek tutulmaz; çalışma anında `forms` listesinden üretilir.
 
 ## 5. Model Sınıfları
 
@@ -107,11 +112,22 @@ Kök yapı:
 `ConjugationForm`
 
 - Çekim tablosu kartı, şahıs seçici ve tüm formlar listesinde kullanılır.
-- Arapça form, Türkçe anlam ve kısa kural notunu birlikte taşır.
+- `category`, `voice`, `person`, `number`, `gender` alanlarıyla tanımlanır.
+- Arapça form ve Türkçe anlamı taşır.
+- Kısa kural notu `rule` getter'ı ile bu alanlardan türetilir.
 
 `PracticeQuestion`
 
 - Pratik ekranındaki soru, seçenekler, doğru cevap ve açıklamayı taşır.
+- Repository aşamasında `PracticeQuestionGenerator` tarafından üretilir.
+
+`PracticeQuestionGenerator`
+
+- Her çekim formu için en az iki soru üretir:
+  - anlamı seç
+  - şahsı seç
+- Distractor seçeneklerini aynı `category` + `voice` grubundaki kardeş formlardan toplar.
+- Aynı Arapça formun birden çok şahısta tekrar ettiği durumlarda kardeş filtrelemesini `candidate != form` mantığıyla yapar.
 
 ## 6. UI Katmanı
 
@@ -152,6 +168,8 @@ forms.where((form) => form.category == _category && form.voice == _voice)
 ```
 
 Seçim değiştiğinde `_formIndex` sıfırlanır. Böylece bir kategoriden diğerine geçerken eski index'in yeni listede taşma üretmesi engellenir.
+
+Şahıs listesi şu anda seçili `category` + `voice` grubundaki sıra ile gösterilir. Veri artık 14 şahıslık tam tablo içerdiği için chip sırası seed JSON sırası ile sabitlenmiş olur.
 
 ## 8. Arapça Metin Davranışı
 

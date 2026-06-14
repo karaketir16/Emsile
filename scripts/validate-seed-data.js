@@ -20,8 +20,6 @@ function main() {
 
   assert(Array.isArray(data.lessons), 'lessons must be an array');
   assert(Array.isArray(data.forms), 'forms must be an array');
-  assert(Array.isArray(data.practiceQuestions), 'practiceQuestions must be an array');
-
   data.lessons.forEach((lesson, index) => {
     assert(Number.isInteger(lesson.order), `lessons[${index}].order must be an integer`);
     assertString(lesson.title, `lessons[${index}].title`);
@@ -33,26 +31,12 @@ function main() {
   data.forms.forEach((form, index) => {
     assert(validCategories.has(form.category), `forms[${index}].category is invalid`);
     assert(validVoices.has(form.voice), `forms[${index}].voice is invalid`);
+    assert(['first', 'second', 'third'].includes(form.person), `forms[${index}].person is invalid`);
+    assert(['singular', 'dual', 'plural'].includes(form.number), `forms[${index}].number is invalid`);
+    assert(['masculine', 'feminine', 'common'].includes(form.gender), `forms[${index}].gender is invalid`);
     assertString(form.pronounLabel, `forms[${index}].pronounLabel`);
     assertString(form.arabic, `forms[${index}].arabic`);
     assertString(form.meaning, `forms[${index}].meaning`);
-    assertString(form.rule, `forms[${index}].rule`);
-  });
-
-  data.practiceQuestions.forEach((question, index) => {
-    assertString(question.prompt, `practiceQuestions[${index}].prompt`);
-    assertString(question.arabic, `practiceQuestions[${index}].arabic`);
-    assert(Array.isArray(question.options), `practiceQuestions[${index}].options must be an array`);
-    assert(question.options.length >= 2, `practiceQuestions[${index}].options must have at least two items`);
-    question.options.forEach((option, optionIndex) => {
-      assertString(option, `practiceQuestions[${index}].options[${optionIndex}]`);
-    });
-    assertString(question.answer, `practiceQuestions[${index}].answer`);
-    assert(
-      question.options.includes(question.answer),
-      `practiceQuestions[${index}].answer must exist in options`,
-    );
-    assertString(question.explanation, `practiceQuestions[${index}].explanation`);
   });
 
   console.log('Seed data valid');

@@ -87,8 +87,9 @@ void main() {
     return indexNotifier;
   }
 
-  testWidgets('selected index 2 renders conjugation screen',
-      (WidgetTester tester) async {
+  testWidgets('selected index 2 renders conjugation screen', (
+    WidgetTester tester,
+  ) async {
     final notifier = await pumpShell(tester);
     addTearDown(() {
       tester.binding.setSurfaceSize(null);
@@ -102,8 +103,9 @@ void main() {
     expect(find.text('Mâzi'), findsOneWidget);
   });
 
-  testWidgets('selected index 3 renders practice screen',
-      (WidgetTester tester) async {
+  testWidgets('selected index 3 renders practice screen', (
+    WidgetTester tester,
+  ) async {
     final notifier = await pumpShell(tester);
     addTearDown(() {
       tester.binding.setSurfaceSize(null);
@@ -116,8 +118,9 @@ void main() {
     expect(find.text('Formu gör, anlamı hatırla.'), findsOneWidget);
   });
 
-  testWidgets('selected index 1 renders lessons screen',
-      (WidgetTester tester) async {
+  testWidgets('selected index 1 renders lessons screen', (
+    WidgetTester tester,
+  ) async {
     final notifier = await pumpShell(tester);
     addTearDown(() {
       tester.binding.setSurfaceSize(null);
@@ -130,8 +133,9 @@ void main() {
     expect(find.text('Dersler'), findsWidgets);
   });
 
-  testWidgets('selected index 4 renders source screen',
-      (WidgetTester tester) async {
+  testWidgets('selected index 4 renders source screen', (
+    WidgetTester tester,
+  ) async {
     final notifier = await pumpShell(tester);
     addTearDown(() {
       tester.binding.setSurfaceSize(null);
@@ -146,8 +150,9 @@ void main() {
 
   // ── Conjugation interactions ────────────────────────────────────────────────
 
-  testWidgets('conjugation: tapping Meçhul switches voice',
-      (WidgetTester tester) async {
+  testWidgets('conjugation: tapping Meçhul switches voice', (
+    WidgetTester tester,
+  ) async {
     await tester.binding.setSurfaceSize(const Size(390, 844));
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
@@ -171,8 +176,9 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('conjugation: tapping Muzâri switches category',
-      (WidgetTester tester) async {
+  testWidgets('conjugation: tapping Muzâri switches category', (
+    WidgetTester tester,
+  ) async {
     await tester.binding.setSurfaceSize(const Size(390, 844));
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
@@ -191,8 +197,9 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('conjugation: tapping a pronoun chip updates result card',
-      (WidgetTester tester) async {
+  testWidgets('conjugation: tapping a pronoun chip updates result card', (
+    WidgetTester tester,
+  ) async {
     await tester.binding.setSurfaceSize(const Size(390, 844));
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
@@ -204,8 +211,8 @@ void main() {
       ),
     );
 
-    // First chip ("O") is selected by default — tap the second one ("Sen").
-    await tester.tap(find.widgetWithText(ChoiceChip, 'Sen'));
+    // First chip is selected by default — tap the second one.
+    await tester.tap(find.widgetWithText(ChoiceChip, 'Sen (er.)'));
     await tester.pumpAndSettle();
 
     expect(find.text('نَصَرْتَ'), findsWidgets);
@@ -214,8 +221,9 @@ void main() {
 
   // ── Practice interactions ───────────────────────────────────────────────────
 
-  testWidgets('practice: tapping correct answer shows Doğru feedback',
-      (WidgetTester tester) async {
+  testWidgets('practice: tapping correct answer shows Doğru feedback', (
+    WidgetTester tester,
+  ) async {
     await tester.binding.setSurfaceSize(const Size(390, 844));
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
@@ -236,8 +244,9 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('practice: tapping wrong answer shows Tekrar Bak feedback',
-      (WidgetTester tester) async {
+  testWidgets('practice: tapping wrong answer shows Tekrar Bak feedback', (
+    WidgetTester tester,
+  ) async {
     await tester.binding.setSurfaceSize(const Size(390, 844));
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
@@ -258,8 +267,9 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('practice: Sonraki Soru advances to the next question',
-      (WidgetTester tester) async {
+  testWidgets('practice: Sonraki Soru advances to the next question', (
+    WidgetTester tester,
+  ) async {
     await tester.binding.setSurfaceSize(const Size(390, 844));
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
@@ -296,10 +306,12 @@ const testData = AppData(
     ConjugationForm(
       category: FormCategory.mazi,
       voice: Voice.malum,
-      pronounLabel: 'O',
+      person: FormPerson.third,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      pronounLabel: 'O (er.)',
       arabic: 'نَصَرَ',
       meaning: 'Yardım etti.',
-      rule: '3. tekil müzekker mâzi malum temel formdur.',
     ),
   ],
   practiceQuestions: [
@@ -320,34 +332,42 @@ const richTestData = AppData(
     ConjugationForm(
       category: FormCategory.mazi,
       voice: Voice.malum,
-      pronounLabel: 'O',
+      person: FormPerson.third,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      pronounLabel: 'O (er.)',
       arabic: 'نَصَرَ',
       meaning: 'Yardım etti.',
-      rule: 'Mâzi malum 3. tekil müzekker.',
     ),
     ConjugationForm(
       category: FormCategory.mazi,
       voice: Voice.malum,
-      pronounLabel: 'Sen',
+      person: FormPerson.second,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      pronounLabel: 'Sen (er.)',
       arabic: 'نَصَرْتَ',
       meaning: 'Yardım ettin.',
-      rule: 'Mâzi malum 2. tekil müzekker.',
     ),
     ConjugationForm(
       category: FormCategory.mazi,
       voice: Voice.mechul,
-      pronounLabel: 'O',
+      person: FormPerson.third,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      pronounLabel: 'O (er.)',
       arabic: 'نُصِرَ',
       meaning: 'Yardım edildi.',
-      rule: 'Mâzi meçhul 3. tekil müzekker.',
     ),
     ConjugationForm(
       category: FormCategory.muzari,
       voice: Voice.malum,
-      pronounLabel: 'O',
+      person: FormPerson.third,
+      number: FormNumber.singular,
+      gender: FormGender.masculine,
+      pronounLabel: 'O (er.)',
       arabic: 'يَنْصُرُ',
       meaning: 'Yardım ediyor.',
-      rule: 'Muzâri malum 3. tekil müzekker.',
     ),
   ],
   practiceQuestions: [],

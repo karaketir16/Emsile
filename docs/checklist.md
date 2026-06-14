@@ -1,6 +1,6 @@
 # Emsile Flutter Geliştirme Checklist
 
-Son güncelleme: `nasara` için flat `muttarideForms` listesi kaldırılıp `conjugationSource` tabanlı rule-based generate akışına geçildi.
+Son güncelleme: `nasara` için `Emsile-i Muhtelife` tablosu PDF sırasına göre tamamlandı ve ders detayında tablo görünümüne bağlandı; `muttarideForms` ise `conjugationSource` tabanlı rule-based generate akışında kalıyor.
 
 Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya tamamlanma durumu değiştiğinde aynı değişiklikle birlikte güncel tutulmalıdır.
 
@@ -44,6 +44,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] İlk fiili ayrı verb dosyasına taşı: `assets/data/verbs/nasara.json`.
 - [x] İlk generated `conjugationSource` profilini ekle.
 - [x] `nasara` için `muttarideForms` verisini rule-based üretime taşı.
+- [x] `nasara` için muhtelife satırlarını PDF'teki sıra ve eşleşmelere göre tamamla.
 - [ ] Şahıs zamirleri veri modelini ayrıca oluştur.
 - [x] JSON seed veri validasyon script'i ekle.
 - [x] Catalog/verb veri validasyon script'ini yeni yapıya göre güncelle.
@@ -74,6 +75,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [x] Ders kartı bileşenini oluştur.
 - [x] Ders detay ekranını oluştur.
 - [x] Ders detayında Arapça örnek ve Türkçe açıklama göster.
+- [x] Muhtelife ders detayında PDF'e yakın iki sütunlu tabloyu göster.
 - [ ] Ders detayından çekim tablosuna hedefli geçiş ekle.
 - [ ] Ders detayından alıştırmaya hedefli geçiş ekle.
 
@@ -162,7 +164,7 @@ Bu dosya yaşayan proje kaydıdır. Kapsam, veri modeli, ekranlar, testler veya 
 - [ ] PDF'teki şahıs zamirleri tablosunu JSON'a taşı.
 - [x] Fiil-i mâzi ve muzâri için 14 şahıslık tam tabloyu tamamla.
 - [ ] `daraba`, `fataha` gibi yeni bablar için generated conjugation profilleri ekle.
-- [ ] Muhtelife explorer için ayrı UI modeli ve ekranı ekle.
+- [ ] Muhtelife explorer için ders detayından ayrı, filtrelenebilir bağımsız ekran ekle.
 - [ ] Fiil listesi/katalog ekranını ekle.
 - [ ] Nefy, emir ve isim kategorileri için aynı tablo genişletmesini yap.
 - [ ] Üretilen pratik sorularına zorluk/karıştırma stratejisi ekle.

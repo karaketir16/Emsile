@@ -59,6 +59,18 @@ function validateMuhtelifeEntries(entries, verbId) {
       Number.isInteger(entry.sortOrder),
       `${verbId}.muhtelifeEntries[${index}].sortOrder must be an integer`,
     );
+    if (entry.row != null) {
+      assert(
+        Number.isInteger(entry.row),
+        `${verbId}.muhtelifeEntries[${index}].row must be an integer`,
+      );
+    }
+    if (entry.column != null) {
+      assert(
+        ['left', 'right'].includes(entry.column),
+        `${verbId}.muhtelifeEntries[${index}].column must be left or right`,
+      );
+    }
   });
 }
 

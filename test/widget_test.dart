@@ -141,6 +141,32 @@ void main() {
     expect(find.text('Dersler'), findsWidgets);
   });
 
+  testWidgets('lesson detail renders muhtelife table entries', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: SafeArea(
+            child: LessonDetailScreen(
+              lesson: muhtelifeLesson,
+              data: muhtelifeTestData,
+            ),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('Muhtelife Tablosu'), findsOneWidget);
+    expect(find.text('İsm-i Fâil'), findsOneWidget);
+    expect(find.text('نَاصِرٌ'), findsOneWidget);
+    expect(find.text('Fiil-i Mâzi'), findsOneWidget);
+    expect(find.text('نَصَرَ'), findsOneWidget);
+  });
+
   testWidgets('selected index 4 renders source screen', (
     WidgetTester tester,
   ) async {
@@ -418,6 +444,7 @@ void main() {
 
 const testData = AppData(
   lessons: [],
+  muhtelifeEntries: [],
   forms: [
     ConjugationForm(
       category: FormCategory.mazi,
@@ -444,6 +471,7 @@ const testData = AppData(
 /// Richer dataset for interaction tests that need multiple forms.
 const richTestData = AppData(
   lessons: [],
+  muhtelifeEntries: [],
   forms: [
     ConjugationForm(
       category: FormCategory.mazi,
@@ -512,6 +540,7 @@ const richTestData = AppData(
 /// Two-question dataset for the "Sonraki Soru" advance test.
 const multiQuestionData = AppData(
   lessons: [],
+  muhtelifeEntries: [],
   forms: [],
   practiceQuestions: [
     PracticeQuestion(
@@ -529,6 +558,58 @@ const multiQuestionData = AppData(
       explanation: 'يَنْصُرُ fiil-i muzâridir.',
     ),
   ],
+);
+
+const muhtelifeLesson = Lesson(
+  order: 1,
+  title: 'Emsile-i Muhtelife',
+  summary: 'Muhtelife kaliplari',
+  rule: 'Bu derste PDF tablosundaki farkli kaliplar izlenir.',
+  relatedCategory: FormCategory.mazi,
+);
+
+const muhtelifeTestData = AppData(
+  lessons: [muhtelifeLesson],
+  muhtelifeEntries: [
+    MuhtelifeEntry(
+      type: 'ism_fail',
+      label: 'İsm-i Fâil',
+      arabic: 'نَاصِرٌ',
+      meaning: 'Yardım eden.',
+      sortOrder: 10,
+      row: 1,
+      column: 'left',
+    ),
+    MuhtelifeEntry(
+      type: 'masdar',
+      label: 'Masdar-ı Gayr-ı Mîmî',
+      arabic: 'نَصْرًا',
+      meaning: 'Yardım etmek.',
+      sortOrder: 20,
+      row: 1,
+      column: 'right',
+    ),
+    MuhtelifeEntry(
+      type: 'fiil_muzari',
+      label: 'Fiil-i Muzâri',
+      arabic: 'يَنْصُرُ',
+      meaning: 'Yardım ediyor.',
+      sortOrder: 30,
+      row: 2,
+      column: 'left',
+    ),
+    MuhtelifeEntry(
+      type: 'fiil_mazi',
+      label: 'Fiil-i Mâzi',
+      arabic: 'نَصَرَ',
+      meaning: 'Yardım etti.',
+      sortOrder: 40,
+      row: 2,
+      column: 'right',
+    ),
+  ],
+  forms: [],
+  practiceQuestions: [],
 );
 
 // ── Test helpers ──────────────────────────────────────────────────────────────

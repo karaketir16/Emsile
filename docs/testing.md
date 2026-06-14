@@ -92,6 +92,7 @@ Amaç:
 
 - `assets/data/catalog.json` ve `assets/data/verbs/*.json` dosyalarının beklenen yapıyı taşıdığını doğrulamak.
 - Ders, verb manifesti, muhtelife ve muttaride alanlarının boş olmadığını kontrol etmek.
+- Muhtelife satirlarinda varsa `row`/`column` yerlesim bilgilerinin tutarli oldugunu kontrol etmek.
 - `category`, `voice`, `person`, `number` ve `gender` alanlarında temel tutarlılığı yakalamak.
 - Varsayılan fiilin katalog içinde gerçekten tanımlı olduğunu doğrulamak.
 - Pratik soruları artık seed JSON'dan değil, uygulama içinde formlardan üretildiği için doğrulama odağı form verisindedir.

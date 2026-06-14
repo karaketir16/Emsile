@@ -116,32 +116,6 @@ class VerbMeta {
   }
 }
 
-class MuhtelifeEntry {
-  const MuhtelifeEntry({
-    required this.type,
-    required this.label,
-    required this.arabic,
-    required this.meaning,
-    required this.sortOrder,
-  });
-
-  final String type;
-  final String label;
-  final String arabic;
-  final String meaning;
-  final int sortOrder;
-
-  factory MuhtelifeEntry.fromJson(Map<String, dynamic> json) {
-    return MuhtelifeEntry(
-      type: json['type'] as String,
-      label: json['label'] as String,
-      arabic: json['arabic'] as String,
-      meaning: json['meaning'] as String,
-      sortOrder: json['sortOrder'] as int,
-    );
-  }
-}
-
 class ConjugationSource {
   const ConjugationSource({required this.strategy, this.generated});
 

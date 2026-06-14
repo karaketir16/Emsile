@@ -25,11 +25,13 @@ enum Voice {
 class AppData {
   const AppData({
     required this.lessons,
+    required this.muhtelifeEntries,
     required this.forms,
     required this.practiceQuestions,
   });
 
   final List<Lesson> lessons;
+  final List<MuhtelifeEntry> muhtelifeEntries;
   final List<ConjugationForm> forms;
   final List<PracticeQuestion> practiceQuestions;
 
@@ -37,6 +39,9 @@ class AppData {
     return AppData(
       lessons: (json['lessons'] as List<dynamic>)
           .map((item) => Lesson.fromJson(item as Map<String, dynamic>))
+          .toList(),
+      muhtelifeEntries: ((json['muhtelifeEntries'] as List<dynamic>?) ?? [])
+          .map((item) => MuhtelifeEntry.fromJson(item as Map<String, dynamic>))
           .toList(),
       forms: (json['forms'] as List<dynamic>)
           .map((item) => ConjugationForm.fromJson(item as Map<String, dynamic>))
@@ -51,13 +56,47 @@ class AppData {
 
   AppData copyWith({
     List<Lesson>? lessons,
+    List<MuhtelifeEntry>? muhtelifeEntries,
     List<ConjugationForm>? forms,
     List<PracticeQuestion>? practiceQuestions,
   }) {
     return AppData(
       lessons: lessons ?? this.lessons,
+      muhtelifeEntries: muhtelifeEntries ?? this.muhtelifeEntries,
       forms: forms ?? this.forms,
       practiceQuestions: practiceQuestions ?? this.practiceQuestions,
+    );
+  }
+}
+
+class MuhtelifeEntry {
+  const MuhtelifeEntry({
+    required this.type,
+    required this.label,
+    required this.arabic,
+    required this.meaning,
+    required this.sortOrder,
+    this.row,
+    this.column,
+  });
+
+  final String type;
+  final String label;
+  final String arabic;
+  final String meaning;
+  final int sortOrder;
+  final int? row;
+  final String? column;
+
+  factory MuhtelifeEntry.fromJson(Map<String, dynamic> json) {
+    return MuhtelifeEntry(
+      type: json['type'] as String,
+      label: json['label'] as String,
+      arabic: json['arabic'] as String,
+      meaning: json['meaning'] as String,
+      sortOrder: json['sortOrder'] as int,
+      row: json['row'] as int?,
+      column: json['column'] as String?,
     );
   }
 }

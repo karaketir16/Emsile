@@ -111,7 +111,7 @@ Repository, bu kaynaktan `muttarideForms` listesini üretir. Runtime form listes
 - `gender`: `masculine`, `feminine`, `common`
 - `pronounLabel`: kullanıcıya gösterilen şahıs etiketi
 
-`muhtelifeEntries` alanı aynı fiilin `Emsile-i Muhtelife` kalıplarını taşımak için ayrılmıştır.
+`muhtelifeEntries` alanı aynı fiilin `Emsile-i Muhtelife` kalıplarını taşır. Gerekirse `row` ve `column` alanları ile PDF'teki iki sutunlu tablo duzeni runtime'da korunur.
 
 Çoktan seçmeli alıştırmalar seed JSON'da tek tek tutulmaz; çalışma anında generated `muttarideForms` listesinden üretilir.
 
@@ -120,6 +120,7 @@ Repository, bu kaynaktan `muttarideForms` listesini üretir. Runtime form listes
 `AppData`
 
 - `lessons`
+- `muhtelifeEntries`
 - `forms`
 - `practiceQuestions`
 
@@ -135,6 +136,16 @@ Repository, bu kaynaktan `muttarideForms` listesini üretir. Runtime form listes
 - `meta`
 - `muhtelifeEntries`
 - `conjugationSource`
+
+`MuhtelifeEntry`
+
+- `type`
+- `label`
+- `arabic`
+- `meaning`
+- `sortOrder`
+- opsiyonel `row`
+- opsiyonel `column`
 
 `ConjugationSource`
 

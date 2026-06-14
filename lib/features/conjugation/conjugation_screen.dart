@@ -58,6 +58,7 @@ class _ConjugationScreenState extends State<ConjugationScreen> {
     return AppPage(
       title: 'Çekim Tablosu',
       subtitle: 'Nasara örneği üzerinden seç, gör, karşılaştır.',
+      scrollable: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -101,17 +102,38 @@ class _ConjugationScreenState extends State<ConjugationScreen> {
           const SizedBox(height: 16),
           ArabicResultCard(form: activeForm),
           const SizedBox(height: 16),
-          Text('Şahıs Tablosu', style: Theme.of(context).textTheme.titleLarge),
-          const SizedBox(height: 10),
-          SelectionTable(
-            forms: forms,
-            selectedForm: _selectedForm,
-            onSelect: (selection) => _updateSelection(selectedForm: selection),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Şahıs Tablosu',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: 10),
+                  SelectionTable(
+                    forms: forms,
+                    selectedForm: _selectedForm,
+                    onSelect: (selection) =>
+                        _updateSelection(selectedForm: selection),
+                  ),
+                  const SizedBox(height: 18),
+                  Text(
+                    'Tüm Formlar',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: 10),
+                  FormsTable(
+                    forms: forms,
+                    selectedForm: _selectedForm,
+                    onSelect: (selection) =>
+                        _updateSelection(selectedForm: selection),
+                  ),
+                ],
+              ),
+            ),
           ),
-          const SizedBox(height: 18),
-          Text('Tüm Formlar', style: Theme.of(context).textTheme.titleLarge),
-          const SizedBox(height: 10),
-          FormsTable(forms: forms, selectedForm: _selectedForm),
         ],
       ),
     );
@@ -184,11 +206,13 @@ class FormsTable extends StatelessWidget {
   const FormsTable({
     required this.forms,
     required this.selectedForm,
+    required this.onSelect,
     super.key,
   });
 
   final List<ConjugationForm> forms;
   final FormSelection selectedForm;
+  final ValueChanged<FormSelection> onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -212,22 +236,27 @@ class FormsTable extends StatelessWidget {
 
         final isSelected = selectedForm.matches(form);
         final colorScheme = Theme.of(context).colorScheme;
+        final selection = FormSelection.fromForm(form);
 
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-          decoration: BoxDecoration(
-            color: isSelected
-                ? colorScheme.primaryContainer.withValues(alpha: 0.55)
-                : null,
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Center(
-            child: Directionality(
-              textDirection: TextDirection.rtl,
-              child: Text(
-                form.arabic,
-                textAlign: TextAlign.center,
-                style: arabicTextStyle(24),
+        return InkWell(
+          onTap: () => onSelect(selection),
+          borderRadius: BorderRadius.circular(6),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            decoration: BoxDecoration(
+              color: isSelected
+                  ? colorScheme.primaryContainer.withValues(alpha: 0.55)
+                  : null,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Center(
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Text(
+                  form.arabic,
+                  textAlign: TextAlign.center,
+                  style: arabicTextStyle(24),
+                ),
               ),
             ),
           ),

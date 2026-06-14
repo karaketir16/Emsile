@@ -212,9 +212,33 @@ void main() {
       ),
     );
 
+    await tester.ensureVisible(find.text('Sen (er.)'));
     await tester.tap(find.text('Sen (er.)'));
     await tester.pumpAndSettle();
 
+    expect(find.text('نَصَرْتَ'), findsWidgets);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('conjugation: tapping a form cell updates result card', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SafeArea(child: ConjugationScreen(data: richTestData)),
+        ),
+      ),
+    );
+
+    await tester.ensureVisible(find.text('نَصَرْتَ'));
+    await tester.tap(find.text('نَصَرْتَ'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Sen (er.)'), findsWidgets);
     expect(find.text('نَصَرْتَ'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
@@ -233,6 +257,7 @@ void main() {
         ),
       );
 
+      await tester.ensureVisible(find.text('Sen (er.)'));
       await tester.tap(find.text('Sen (er.)'));
       await tester.pumpAndSettle();
       expect(find.text('نَصَرْتَ'), findsWidgets);
@@ -260,6 +285,7 @@ void main() {
         ),
       );
 
+      await tester.ensureVisible(find.text('Sen (er.)'));
       await tester.tap(find.text('Sen (er.)'));
       await tester.pumpAndSettle();
       expect(find.text('نَصَرْتَ'), findsWidgets);
@@ -272,6 +298,35 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  testWidgets('conjugation: top controls stay fixed while tables scroll', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SafeArea(child: ConjugationScreen(data: richTestData)),
+        ),
+      ),
+    );
+
+    final beforeTop = tester.getTopLeft(find.text('Mâzi').first).dy;
+
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -300),
+    );
+    await tester.pumpAndSettle();
+
+    final afterTop = tester.getTopLeft(find.text('Mâzi').first).dy;
+
+    expect(afterTop, beforeTop);
+    expect(find.text('Tüm Formlar'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
 
   // ── Practice interactions ───────────────────────────────────────────────────
 

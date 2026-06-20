@@ -103,6 +103,16 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
     for (final form in _forms) {
       if (selection.matches(form)) return form;
     }
+    if (selection.person == FormPerson.first &&
+        selection.number == FormNumber.dual) {
+      for (final form in _forms) {
+        if (form.person == FormPerson.first &&
+            form.number == FormNumber.plural &&
+            form.gender == selection.gender) {
+          return form;
+        }
+      }
+    }
     return null;
   }
 
@@ -110,7 +120,11 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
   Widget build(BuildContext context) {
     if (!_started) return _buildSetup();
 
-    final complete = _tokens.isEmpty;
+    final allPlaced = _tokens.isEmpty;
+    final complete =
+        allPlaced &&
+        _placed.length == _forms.length &&
+        _placed.values.every((placed) => placed.isCorrect);
     return AppPage(
       title: 'Tabloyu Doldur',
       subtitle: '${_category.label} - ${_voice.label}',
@@ -142,6 +156,31 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
             onDrop: _drop,
             onWrongDragStarted: _releaseWrong,
           ),
+          if (allPlaced && !complete) ...[
+            const SizedBox(height: 16),
+            const Card(
+              color: Color(0xFFFFECEC),
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(Icons.error_outline, color: Color(0xFFB43C3C)),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        'Tekrar bak. Kırmızı hücrelerdeki cevapları doğru yerlerine taşı.',
+                        style: TextStyle(
+                          color: Color(0xFF8D2D2D),
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
           if (complete) ...[
             const SizedBox(height: 16),
             Card(
@@ -250,30 +289,34 @@ class _TokenPool extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: SizedBox(
+          width: double.infinity,
           height: 132,
           child: SingleChildScrollView(
-            child: Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                for (final token in tokens)
-                  Draggable<_FormToken>(
-                    key: ValueKey('token-${token.id}'),
-                    data: token,
-                    feedback: Material(
-                      color: Colors.transparent,
-                      child: _ArabicToken(
-                        text: token.form.arabic,
-                        lifted: true,
+            child: SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  for (final token in tokens)
+                    Draggable<_FormToken>(
+                      key: ValueKey('token-${token.id}'),
+                      data: token,
+                      feedback: Material(
+                        color: Colors.transparent,
+                        child: _ArabicToken(
+                          text: token.form.arabic,
+                          lifted: true,
+                        ),
                       ),
-                    ),
-                    childWhenDragging: Opacity(
-                      opacity: 0.25,
+                      childWhenDragging: Opacity(
+                        opacity: 0.25,
+                        child: _ArabicToken(text: token.form.arabic),
+                      ),
                       child: _ArabicToken(text: token.form.arabic),
                     ),
-                    child: _ArabicToken(text: token.form.arabic),
-                  ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -327,6 +370,15 @@ class _FillTable extends StatelessWidget {
     for (final form in forms) {
       if (slot.matches(form)) return form;
     }
+    if (slot.person == FormPerson.first && slot.number == FormNumber.dual) {
+      for (final form in forms) {
+        if (form.person == FormPerson.first &&
+            form.number == FormNumber.plural &&
+            form.gender == slot.gender) {
+          return form;
+        }
+      }
+    }
     return null;
   }
 
@@ -336,41 +388,93 @@ class _FillTable extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Table(
-          border: TableBorder.all(color: const Color(0xFFD8D1C1)),
-          columnWidths: const {
-            0: FixedColumnWidth(82),
-            1: FixedColumnWidth(82),
-            2: FixedColumnWidth(82),
-            3: FixedColumnWidth(92),
-          },
-          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        child: Column(
           children: [
-            TableRow(
-              decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
+            Table(
+              border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+              columnWidths: const {
+                0: FixedColumnWidth(82),
+                1: FixedColumnWidth(82),
+                2: FixedColumnWidth(82),
+                3: FixedColumnWidth(92),
+              },
               children: [
-                for (final column in pdfColumns)
-                  _TableLabel(text: column.label),
-                const _TableLabel(text: ''),
+                TableRow(
+                  children: [
+                    for (final column in pdfColumns)
+                      _TableLabel(text: column.label),
+                    const _TableLabel(text: ''),
+                  ],
+                ),
               ],
             ),
             for (final row in pdfRows)
-              TableRow(
-                children: [
-                  for (final column in pdfColumns)
-                    _DropCell(
-                      slot: row.selectionFor(column.number),
-                      expected: _find(row.selectionFor(column.number)),
-                      placed: placed[row.selectionFor(column.number)],
-                      isWrong: wrongSlots.contains(
-                        row.selectionFor(column.number),
-                      ),
-                      onDrop: onDrop,
-                      onWrongDragStarted: onWrongDragStarted,
+              if (row.person == FormPerson.first)
+                Table(
+                  border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                  columnWidths: const {
+                    0: FixedColumnWidth(164),
+                    1: FixedColumnWidth(82),
+                    2: FixedColumnWidth(92),
+                  },
+                  children: [
+                    TableRow(
+                      children: [
+                        _DropCell(
+                          slot: row.selectionFor(FormNumber.plural),
+                          expected: _find(row.selectionFor(FormNumber.plural)),
+                          placed: placed[row.selectionFor(FormNumber.plural)],
+                          isWrong: wrongSlots.contains(
+                            row.selectionFor(FormNumber.plural),
+                          ),
+                          onDrop: onDrop,
+                          onWrongDragStarted: onWrongDragStarted,
+                        ),
+                        _DropCell(
+                          slot: row.selectionFor(FormNumber.singular),
+                          expected: _find(
+                            row.selectionFor(FormNumber.singular),
+                          ),
+                          placed: placed[row.selectionFor(FormNumber.singular)],
+                          isWrong: wrongSlots.contains(
+                            row.selectionFor(FormNumber.singular),
+                          ),
+                          onDrop: onDrop,
+                          onWrongDragStarted: onWrongDragStarted,
+                        ),
+                        _TableLabel(text: row.label),
+                      ],
                     ),
-                  _TableLabel(text: row.label),
-                ],
-              ),
+                  ],
+                )
+              else
+                Table(
+                  border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                  columnWidths: const {
+                    0: FixedColumnWidth(82),
+                    1: FixedColumnWidth(82),
+                    2: FixedColumnWidth(82),
+                    3: FixedColumnWidth(92),
+                  },
+                  children: [
+                    TableRow(
+                      children: [
+                        for (final column in pdfColumns)
+                          _DropCell(
+                            slot: row.selectionFor(column.number),
+                            expected: _find(row.selectionFor(column.number)),
+                            placed: placed[row.selectionFor(column.number)],
+                            isWrong: wrongSlots.contains(
+                              row.selectionFor(column.number),
+                            ),
+                            onDrop: onDrop,
+                            onWrongDragStarted: onWrongDragStarted,
+                          ),
+                        _TableLabel(text: row.label),
+                      ],
+                    ),
+                  ],
+                ),
           ],
         ),
       ),

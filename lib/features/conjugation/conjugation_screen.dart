@@ -105,9 +105,7 @@ class _MenuCard extends StatelessWidget {
                     Text(
                       subtitle,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.onSurfaceVariant,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                     ),
                   ],
@@ -141,10 +139,7 @@ class _PronounsPageState extends State<_PronounsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Zamirler'),
-        centerTitle: false,
-      ),
+      appBar: AppBar(title: const Text('Zamirler'), centerTitle: false),
       body: SafeArea(
         child: AppPage(
           title: 'Zamirler',
@@ -182,9 +177,7 @@ class _ConjugationsPageState extends State<_ConjugationsPage> {
   void initState() {
     super.initState();
     if (widget.data.forms.isNotEmpty) {
-      final hasCategory = widget.data.forms.any(
-        (f) => f.category == _category,
-      );
+      final hasCategory = widget.data.forms.any((f) => f.category == _category);
       if (!hasCategory) {
         _category = widget.data.forms.first.category;
       }
@@ -245,10 +238,7 @@ class _ConjugationsPageState extends State<_ConjugationsPage> {
     final activeForm = forms.isEmpty ? null : _activeForm;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Çekimler'),
-        centerTitle: false,
-      ),
+      appBar: AppBar(title: const Text('Çekimler'), centerTitle: false),
       body: SafeArea(
         child: AppPage(
           title: 'Çekimler',
@@ -452,7 +442,8 @@ class SelectionTable extends StatelessWidget {
           return const SizedBox.shrink();
         }
 
-        final isSelected = selectedForm.person == selectionCell.selection.person &&
+        final isSelected =
+            selectedForm.person == selectionCell.selection.person &&
             selectedForm.number == selectionCell.selection.number &&
             selectedForm.gender == selectionCell.selection.gender;
         final colorScheme = Theme.of(context).colorScheme;
@@ -531,7 +522,8 @@ class FormsTable extends StatelessWidget {
           return const SizedBox.shrink();
         }
 
-        final isSelected = highlightSelection &&
+        final isSelected =
+            highlightSelection &&
             activeCategory == form.category &&
             activeVoice == form.voice &&
             selectedForm.matches(form);
@@ -712,9 +704,6 @@ class PdfStyleTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final borderColor = const Color(0xFFD8D1C1);
-    final labelStyle = Theme.of(
-      context,
-    ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w700);
     final baseDataWidths = dataColumnWidths ?? const [56, 56, 56];
     const baseLabelWidth = 80.0;
 
@@ -730,63 +719,70 @@ class PdfStyleTable extends StatelessWidget {
 
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Table(
-              border: TableBorder.all(color: borderColor),
-              columnWidths: {
-                0: FixedColumnWidth(columnWidths[0]),
-                1: FixedColumnWidth(columnWidths[1]),
-                2: FixedColumnWidth(columnWidths[2]),
-                3: FixedColumnWidth(columnWidths[3]),
-              },
-              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+            child: Column(
               children: [
-                TableRow(
-                  decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
+                Table(
+                  border: TableBorder.all(color: borderColor),
+                  columnWidths: {
+                    0: FixedColumnWidth(columnWidths[0]),
+                    1: FixedColumnWidth(columnWidths[1]),
+                    2: FixedColumnWidth(columnWidths[2]),
+                    3: FixedColumnWidth(columnWidths[3]),
+                  },
                   children: [
-                    _HeaderCell(
-                      text: pdfColumns[0].label,
-                      width: columnWidths[0],
+                    TableRow(
+                      decoration: const BoxDecoration(color: Color(0xFFF4F0E6)),
+                      children: [
+                        _HeaderCell(text: pdfColumns[0].label),
+                        _HeaderCell(text: pdfColumns[1].label),
+                        _HeaderCell(text: pdfColumns[2].label),
+                        const _HeaderCell(text: ''),
+                      ],
                     ),
-                    _HeaderCell(
-                      text: pdfColumns[1].label,
-                      width: columnWidths[1],
-                    ),
-                    _HeaderCell(
-                      text: pdfColumns[2].label,
-                      width: columnWidths[2],
-                    ),
-                    _HeaderCell(text: '', width: columnWidths[3]),
                   ],
                 ),
                 for (final row in rows)
-                  TableRow(
-                    children: [
-                      for (final cell in row.cells)
-                        Padding(
-                          padding: const EdgeInsets.all(1),
-                          child: SizedBox(
-                            height: 66,
-                            child: Center(child: cellBuilder(context, cell)),
-                          ),
+                  if (row.rowLabel.startsWith('1. Şahıs'))
+                    Table(
+                      border: TableBorder.all(color: borderColor),
+                      columnWidths: {
+                        0: FixedColumnWidth(columnWidths[0] + columnWidths[1]),
+                        1: FixedColumnWidth(columnWidths[2]),
+                        2: FixedColumnWidth(columnWidths[3]),
+                      },
+                      children: [
+                        TableRow(
+                          children: [
+                            _DataCell(
+                              child: cellBuilder(context, row.cells[0]),
+                            ),
+                            _DataCell(
+                              child: cellBuilder(context, row.cells[2]),
+                            ),
+                            _RowLabel(text: row.rowLabel),
+                          ],
                         ),
-                      TableCell(
-                        verticalAlignment: TableCellVerticalAlignment.fill,
-                        child: Container(
-                          color: const Color(0xFFF4F0E6),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 4,
-                            vertical: 5,
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            row.rowLabel,
-                            textAlign: TextAlign.center,
-                            style: labelStyle,
-                          ),
+                      ],
+                    )
+                  else
+                    Table(
+                      border: TableBorder.all(color: borderColor),
+                      columnWidths: {
+                        0: FixedColumnWidth(columnWidths[0]),
+                        1: FixedColumnWidth(columnWidths[1]),
+                        2: FixedColumnWidth(columnWidths[2]),
+                        3: FixedColumnWidth(columnWidths[3]),
+                      },
+                      children: [
+                        TableRow(
+                          children: [
+                            for (final cell in row.cells)
+                              _DataCell(child: cellBuilder(context, cell)),
+                            _RowLabel(text: row.rowLabel),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
               ],
             ),
           );
@@ -796,27 +792,60 @@ class PdfStyleTable extends StatelessWidget {
   }
 }
 
-class _HeaderCell extends StatelessWidget {
-  const _HeaderCell({required this.text, this.width});
+class _DataCell extends StatelessWidget {
+  const _DataCell({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(1),
+      child: SizedBox(height: 66, child: Center(child: child)),
+    );
+  }
+}
+
+class _RowLabel extends StatelessWidget {
+  const _RowLabel({required this.text});
 
   final String text;
-  final double? width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 66,
+      color: const Color(0xFFF4F0E6),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 5),
+      alignment: Alignment.center,
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: Theme.of(
+          context,
+        ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w700),
+      ),
+    );
+  }
+}
+
+class _HeaderCell extends StatelessWidget {
+  const _HeaderCell({required this.text});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 7),
-      child: SizedBox(
-        width: width,
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: Theme.of(
-              context,
-            ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w800),
-          ),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: Theme.of(
+            context,
+          ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w800),
         ),
       ),
     );
@@ -960,6 +989,16 @@ ConjugationForm? _findForm(
   for (final form in forms) {
     if (selection.matches(form)) {
       return form;
+    }
+  }
+  if (selection.person == FormPerson.first &&
+      selection.number == FormNumber.dual) {
+    for (final form in forms) {
+      if (form.person == FormPerson.first &&
+          form.number == FormNumber.plural &&
+          form.gender == selection.gender) {
+        return form;
+      }
     }
   }
   return null;
@@ -1162,7 +1201,8 @@ class NounFormsTable extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: otherForms.map((form) {
-              final isSelected = highlightSelection && selectedForm.matches(form);
+              final isSelected =
+                  highlightSelection && selectedForm.matches(form);
               final colorScheme = Theme.of(context).colorScheme;
 
               return InkWell(
@@ -1256,7 +1296,8 @@ class _AllMuttarideTablesPage extends StatelessWidget {
     FormCategory? category,
     Voice? voice,
     FormSelection? selectedForm,
-  }) onSelect;
+  })
+  onSelect;
 
   List<_ConjugationGroup> get _groups {
     final groups = <_ConjugationGroup>[];
@@ -1295,9 +1336,9 @@ class _AllMuttarideTablesPage extends StatelessWidget {
                       ? '${group.category.label} (${group.voice.label})'
                       : group.category.label,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 const SizedBox(height: 6),
                 if (group.category.isVerb)
@@ -1306,7 +1347,9 @@ class _AllMuttarideTablesPage extends StatelessWidget {
                     selectedForm: selectedForm,
                     activeCategory: group.category,
                     activeVoice: group.voice,
-                    highlightSelection: group.category == activeCategory && group.voice == activeVoice,
+                    highlightSelection:
+                        group.category == activeCategory &&
+                        group.voice == activeVoice,
                     onSelect: (selection) {
                       onSelect(
                         category: group.category,

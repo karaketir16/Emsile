@@ -22,7 +22,7 @@ class PracticeScreen extends StatelessWidget {
         children: [
           _PracticeModeCard(
             icon: Icons.compare_arrows_outlined,
-            title: 'Muhtelife Alıştırması',
+            title: 'Emsile-i Muhtelife Alıştırması',
             body:
                 'Arapça sîgaları doğru dilbilgisi adları veya anlamlarıyla eşleştir.',
             onTap: () => Navigator.of(context).push(

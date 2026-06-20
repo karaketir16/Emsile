@@ -20,6 +20,7 @@ class TableFillPracticeScreen extends StatefulWidget {
 class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
   late FormCategory _category;
   Voice _voice = Voice.malum;
+  bool _includeBrokenPlurals = true;
   bool _started = false;
   int _round = 0;
   final Map<FormSelection, _PlacedForm> _placed = {};
@@ -29,13 +30,17 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
   List<FormCategory> get _categories => FormCategory.values
       .where(
         (category) =>
-            category.isVerb &&
             widget.data.forms.any((form) => form.category == category),
       )
       .toList();
 
   List<ConjugationForm> get _forms => widget.data.forms
-      .where((form) => form.category == _category && form.voice == _voice)
+      .where(
+        (form) =>
+            form.category == _category &&
+            (_category.isNoun || form.voice == _voice) &&
+            (_includeBrokenPlurals || !form.pronounLabel.contains('Kırık')),
+      )
       .toList();
 
   @override
@@ -66,7 +71,11 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
       return;
     }
 
-    final isCorrect = token.form.arabic == expected.arabic;
+    final bothBrokenPlurals =
+        token.form.category == expected.category &&
+        token.form.pronounLabel.contains('Kırık') &&
+        expected.pronounLabel.contains('Kırık');
+    final isCorrect = token.form.arabic == expected.arabic || bothBrokenPlurals;
     setState(() {
       if (previous != null &&
           previous.token.id != token.id &&
@@ -127,7 +136,9 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
         _placed.values.every((placed) => placed.isCorrect);
     return AppPage(
       title: 'Tabloyu Doldur',
-      subtitle: '${_category.label} - ${_voice.label}',
+      subtitle: _category.isVerb
+          ? '${_category.label} - ${_voice.label}'
+          : _category.label,
       leading: _backButton(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,13 +160,22 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
           const SizedBox(height: 8),
           _TokenPool(tokens: _tokens),
           const SizedBox(height: 18),
-          _FillTable(
-            forms: _forms,
-            placed: _placed,
-            wrongSlots: _wrongSlots,
-            onDrop: _drop,
-            onWrongDragStarted: _releaseWrong,
-          ),
+          if (_category.isVerb)
+            _FillTable(
+              forms: _forms,
+              placed: _placed,
+              wrongSlots: _wrongSlots,
+              onDrop: _drop,
+              onWrongDragStarted: _releaseWrong,
+            )
+          else
+            _NounFillTable(
+              forms: _forms,
+              placed: _placed,
+              wrongSlots: _wrongSlots,
+              onDrop: _drop,
+              onWrongDragStarted: _releaseWrong,
+            ),
           if (allPlaced && !complete) ...[
             const SizedBox(height: 16),
             const Card(
@@ -245,19 +265,36 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
               setState(() => _category = category);
             },
           ),
-          const SizedBox(height: 18),
-          Text('Çatı', style: Theme.of(context).textTheme.titleMedium),
-          const SizedBox(height: 8),
-          SegmentedButton<Voice>(
-            segments: [
-              for (final voice in voices)
-                ButtonSegment(value: voice, label: Text(voice.label)),
-            ],
-            selected: {_voice},
-            onSelectionChanged: (selection) {
-              setState(() => _voice = selection.first);
-            },
-          ),
+          if (_category.isVerb) ...[
+            const SizedBox(height: 18),
+            Text('Çatı', style: Theme.of(context).textTheme.titleMedium),
+            const SizedBox(height: 8),
+            SegmentedButton<Voice>(
+              segments: [
+                for (final voice in voices)
+                  ButtonSegment(value: voice, label: Text(voice.label)),
+              ],
+              selected: {_voice},
+              onSelectionChanged: (selection) {
+                setState(() => _voice = selection.first);
+              },
+            ),
+          ] else if (widget.data.forms.any(
+            (form) =>
+                form.category == _category &&
+                form.pronounLabel.contains('Kırık'),
+          )) ...[
+            const SizedBox(height: 18),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Kırık Çoğullar'),
+              subtitle: const Text('Kırık çoğulları alıştırmaya dahil et.'),
+              value: _includeBrokenPlurals,
+              onChanged: (value) {
+                setState(() => _includeBrokenPlurals = value);
+              },
+            ),
+          ],
           const SizedBox(height: 20),
           FilledButton.icon(
             onPressed: _forms.isEmpty ? null : _startRound,
@@ -478,6 +515,160 @@ class _FillTable extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _NounFillTable extends StatelessWidget {
+  const _NounFillTable({
+    required this.forms,
+    required this.placed,
+    required this.wrongSlots,
+    required this.onDrop,
+    required this.onWrongDragStarted,
+  });
+
+  final List<ConjugationForm> forms;
+  final Map<FormSelection, _PlacedForm> placed;
+  final Set<FormSelection> wrongSlots;
+  final void Function(_FormToken token, FormSelection slot) onDrop;
+  final ValueChanged<FormSelection> onWrongDragStarted;
+
+  @override
+  Widget build(BuildContext context) {
+    final rows = _buildRows();
+    final mainForms = rows
+        .expand((row) => row.forms)
+        .whereType<ConjugationForm>()
+        .toSet();
+    final extraForms = forms
+        .where((form) => !mainForms.contains(form))
+        .toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Card(
+          clipBehavior: Clip.antiAlias,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Table(
+              border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+              columnWidths: const {
+                0: FixedColumnWidth(82),
+                1: FixedColumnWidth(82),
+                2: FixedColumnWidth(82),
+                3: FixedColumnWidth(92),
+              },
+              children: [
+                const TableRow(
+                  children: [
+                    _TableLabel(text: 'Çoğul'),
+                    _TableLabel(text: 'İkil'),
+                    _TableLabel(text: 'Tekil'),
+                    _TableLabel(text: ''),
+                  ],
+                ),
+                for (final row in rows)
+                  TableRow(
+                    children: [
+                      for (final form in row.forms)
+                        if (form == null)
+                          const _ClosedCell()
+                        else
+                          _nounDropCell(form),
+                      _TableLabel(text: row.label),
+                    ],
+                  ),
+              ],
+            ),
+          ),
+        ),
+        if (extraForms.isNotEmpty) ...[
+          const SizedBox(height: 14),
+          Text(
+            'Kırık Çoğullar',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              for (final form in extraForms)
+                SizedBox(width: 112, child: _nounDropCell(form)),
+            ],
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _nounDropCell(ConjugationForm form) {
+    final slot = FormSelection.fromForm(form);
+    return _DropCell(
+      slot: slot,
+      expected: form,
+      placed: placed[slot],
+      isWrong: wrongSlots.contains(slot),
+      onDrop: onDrop,
+      onWrongDragStarted: onWrongDragStarted,
+    );
+  }
+
+  List<_NounRow> _buildRows() {
+    final hasGender = forms.any((form) => form.gender != FormGender.common);
+    final genders = hasGender
+        ? const [FormGender.masculine, FormGender.feminine]
+        : const [FormGender.common];
+
+    return [
+      for (final gender in genders)
+        _NounRow(
+          label: gender == FormGender.masculine
+              ? 'Müzekker'
+              : gender == FormGender.feminine
+              ? 'Müennes'
+              : 'Ortak',
+          forms: [
+            _findMainForm(gender, FormNumber.plural),
+            _findMainForm(gender, FormNumber.dual),
+            _findMainForm(gender, FormNumber.singular),
+          ],
+        ),
+    ];
+  }
+
+  ConjugationForm? _findMainForm(FormGender gender, FormNumber number) {
+    for (final form in forms) {
+      final genderMatches =
+          form.gender == gender ||
+          (gender == FormGender.common && form.gender == FormGender.common);
+      final isBroken = form.pronounLabel.contains('Kırık');
+      if (genderMatches && form.number == number && !isBroken) {
+        return form;
+      }
+    }
+    return null;
+  }
+}
+
+class _NounRow {
+  const _NounRow({required this.label, required this.forms});
+
+  final String label;
+  final List<ConjugationForm?> forms;
+}
+
+class _ClosedCell extends StatelessWidget {
+  const _ClosedCell();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+      color: const Color(0xFF5F625F),
+      child: const Icon(Icons.block, color: Colors.white54, size: 18),
     );
   }
 }

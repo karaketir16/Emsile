@@ -71,7 +71,7 @@ void main() {
       );
 
       // 1. Verify Setup Screen
-      expect(find.text('Sîga Eşleştirme'), findsOneWidget);
+      expect(find.text('Muhtelife Alıştırması'), findsOneWidget);
       expect(find.text('Arapça ↔ Sîga Adı'), findsOneWidget);
       expect(find.text('Arapça ↔ Türkçe Anlam'), findsOneWidget);
       expect(find.text('Karışık'), findsOneWidget);

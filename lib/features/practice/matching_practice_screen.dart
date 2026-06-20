@@ -245,7 +245,7 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
     return Scaffold(
       body: SafeArea(
         child: AppPage(
-          title: 'Sîga Eşleştirme',
+          title: 'Muhtelife Alıştırması',
           subtitle: 'Emsile-i Muhtelife sîgaları için pratik yap.',
           leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
@@ -344,7 +344,7 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
     return Scaffold(
       body: SafeArea(
         child: AppPage(
-          title: 'Sîga Eşleştirme',
+          title: 'Muhtelife Alıştırması',
           subtitle: 'Tur $_round / $_totalRounds • Doğru: $totalMatched / ${_allEntries.length}',
           scrollable: false,
           leading: IconButton(

@@ -21,6 +21,21 @@ class PracticeScreen extends StatelessWidget {
       child: Column(
         children: [
           _PracticeModeCard(
+            icon: Icons.compare_arrows_outlined,
+            title: 'Muhtelife Alıştırması',
+            body:
+                'Arapça sîgaları doğru dilbilgisi adları veya anlamlarıyla eşleştir.',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => MatchingPracticeScreen(
+                  data: data,
+                  random: random,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+          _PracticeModeCard(
             icon: Icons.quiz_outlined,
             title: 'Çoktan Seçmeli',
             body:
@@ -50,21 +65,6 @@ class PracticeScreen extends StatelessWidget {
                   body: SafeArea(
                     child: TableFillPracticeScreen(data: data, random: random),
                   ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 12),
-          _PracticeModeCard(
-            icon: Icons.compare_arrows_outlined,
-            title: 'Sîga Eşleştirme',
-            body:
-                'Arapça sîgaları doğru dilbilgisi adları veya anlamlarıyla eşleştir.',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => MatchingPracticeScreen(
-                  data: data,
-                  random: random,
                 ),
               ),
             ),

@@ -17,20 +17,25 @@ class AppShell extends StatefulWidget {
 
 class _AppShellState extends State<AppShell> {
   int _selectedIndex = 0;
+  late final List<Widget> _screens;
 
   @override
-  Widget build(BuildContext context) {
-    final screens = [
+  void initState() {
+    super.initState();
+    _screens = [
       HomeScreen(data: widget.data),
       LessonsScreen(data: widget.data),
       ConjugationScreen(data: widget.data),
       PracticeScreen(data: widget.data),
       const SourceScreen(),
     ];
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: IndexedStack(index: _selectedIndex, children: screens),
+        child: IndexedStack(index: _selectedIndex, children: _screens),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,

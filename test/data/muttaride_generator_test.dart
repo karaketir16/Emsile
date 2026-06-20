@@ -135,6 +135,20 @@ void main() {
         isTrue,
       );
 
+      // Mansub çoğul müzekker testi (Tekid-i Nefy-i İstikbal - len yansurû)
+      expect(
+        _hasForm(
+          forms,
+          category: FormCategory.tekidNefyIstikbal,
+          voice: Voice.malum,
+          person: FormPerson.third,
+          number: FormNumber.plural,
+          gender: FormGender.masculine,
+          arabic: 'لَنْ يَنْصُرُوا',
+        ),
+        isTrue,
+      );
+
       // 3. Şahıs Müfred Müennes Cehd-i Mutlak çekimi testi
       expect(
         _hasForm(

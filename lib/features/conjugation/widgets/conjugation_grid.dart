@@ -6,6 +6,8 @@ class ConjugationTableRow {
 
   final String label;
   final List<Object?> cells;
+
+  bool get isFirstPerson => label.startsWith('1. Şahıs');
 }
 
 class ConjugationGrid extends StatelessWidget {
@@ -36,7 +38,7 @@ class ConjugationGrid extends StatelessWidget {
               children: [
                 _buildHeader(widths, borderColor),
                 for (final row in rows)
-                  row.label.startsWith('1. Şahıs')
+                  row.isFirstPerson
                       ? _buildFirstPersonRow(context, row, widths, borderColor)
                       : _buildStandardRow(context, row, widths, borderColor),
               ],

@@ -19,7 +19,7 @@ npm run visual-check
 
 ## 2. Otomatik Test Kapsamı
 
-Mevcut test paketi `48` test içerir.
+Mevcut test paketi `51` test içerir.
 
 ### Veri ve Üretici Testleri
 
@@ -46,6 +46,11 @@ Mevcut test paketi `48` test içerir.
 - Enjekte edilen asset bundle ile katalog + fiil composition
 - Generated fiil verisinin repository üzerinden 339 forma dönüşmesi
 - Varsayılan fiil manifesti bulunamadığında hata üretimi
+
+`test/matching_practice_test.dart`
+
+- Eşleştirme alıştırması tam yaşam döngüsü (kurulum → başlama → hatalı → doğru eşleşmeler → tamamlanma → tekrar)
+- Hata sayımı, tur gösterimi ve tamamlanma istatistikleri
 
 ### Widget Testleri
 

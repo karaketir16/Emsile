@@ -33,7 +33,10 @@ enum FormCategory {
   bool get isNoun => type == FormCategoryType.noun;
 
   static FormCategory fromJson(String value) {
-    return FormCategory.values.firstWhere((category) => category.name == value);
+    return FormCategory.values.firstWhere(
+      (category) => category.name == value,
+      orElse: () => throw ArgumentError('Unknown FormCategory: $value'),
+    );
   }
 }
 
@@ -48,7 +51,10 @@ enum Voice {
   final String label;
 
   static Voice fromJson(String value) {
-    return Voice.values.firstWhere((voice) => voice.name == value);
+    return Voice.values.firstWhere(
+      (voice) => voice.name == value,
+      orElse: () => throw ArgumentError('Unknown Voice: $value'),
+    );
   }
 }
 
@@ -61,7 +67,10 @@ enum PronounKind {
   final String label;
 
   static PronounKind fromJson(String value) {
-    return PronounKind.values.firstWhere((kind) => kind.name == value);
+    return PronounKind.values.firstWhere(
+      (kind) => kind.name == value,
+      orElse: () => throw ArgumentError('Unknown PronounKind: $value'),
+    );
   }
 }
 
@@ -76,7 +85,10 @@ enum FormPerson {
   final String label;
 
   static FormPerson fromJson(String value) {
-    return FormPerson.values.firstWhere((person) => person.name == value);
+    return FormPerson.values.firstWhere(
+      (person) => person.name == value,
+      orElse: () => throw ArgumentError('Unknown FormPerson: $value'),
+    );
   }
 }
 
@@ -90,7 +102,10 @@ enum FormNumber {
   final String label;
 
   static FormNumber fromJson(String value) {
-    return FormNumber.values.firstWhere((number) => number.name == value);
+    return FormNumber.values.firstWhere(
+      (number) => number.name == value,
+      orElse: () => throw ArgumentError('Unknown FormNumber: $value'),
+    );
   }
 }
 
@@ -104,6 +119,9 @@ enum FormGender {
   final String label;
 
   static FormGender fromJson(String value) {
-    return FormGender.values.firstWhere((gender) => gender.name == value);
+    return FormGender.values.firstWhere(
+      (gender) => gender.name == value,
+      orElse: () => throw ArgumentError('Unknown FormGender: $value'),
+    );
   }
 }

@@ -93,7 +93,7 @@ Son durum: `نصر` fiili üzerinden dersler, çekim/zamir tabloları, çoktan s
 - [x] `dart format`
 - [x] `flutter analyze`
 - [x] `flutter test`
-- [x] 48 otomatik test
+- [x] 51 otomatik test
 - [x] Repository asset bundle dependency injection
 - [x] Domain modellerinin veri katmanından ayrılması
 - [x] Çekim tablolarının ekran dosyasından bağımsız widget'lara ayrılması
@@ -106,6 +106,7 @@ Son durum: `نصر` fiili üzerinden dersler, çekim/zamir tabloları, çoktan s
 - [x] İsim Tabloyu Doldur için doğrudan widget testleri
 - [x] Kırık çoğul anahtarı ve eşdeğer hedef testleri
 - [x] Birinci şahıs birleşik hücre testi
+- [x] Eşleştirme alıştırması (matching practice) testleri
 - [ ] 360 px ve 430 px viewport testleri
 - [x] Güncel ekran görüntülerini yeniden üretme
 - [ ] Özel ve platformlar arası doğrulanmış Arapça fontu

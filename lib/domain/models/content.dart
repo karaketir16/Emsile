@@ -79,6 +79,8 @@ class Lesson {
   final String rule;
   final FormCategory relatedCategory;
 
+  bool get isMuhtelife => title == 'Emsile-i Muhtelife';
+
   factory Lesson.fromJson(Map<String, dynamic> json) {
     return Lesson(
       order: json['order'] as int,

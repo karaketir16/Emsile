@@ -551,7 +551,7 @@ class _Slot {
       return 'َا';
     }
     if (number == FormNumber.plural && gender == FormGender.masculine) {
-      return mood == _MuzariMood.majzum ? 'ُوا' : 'ُوا';
+      return 'ُوا';
     }
     if (isSecondPerson &&
         number == FormNumber.singular &&

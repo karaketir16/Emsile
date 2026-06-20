@@ -104,7 +104,7 @@ class LessonDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (lesson.title == 'Emsile-i Muhtelife') {
+    if (lesson.isMuhtelife) {
       return _MuhtelifeLessonScreen(data: data);
     }
     return _MuttarideDetailScreen(data: data, category: lesson.relatedCategory);
@@ -239,6 +239,19 @@ class _MuttarideDetailScreen extends StatelessWidget {
     final forms = data.forms
         .where((form) => form.category == category)
         .toList();
+
+    if (forms.isEmpty) {
+      return _LessonScaffold(
+        title: category.label,
+        child: const Center(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text('Çekim tablosu bulunamadı.'),
+          ),
+        ),
+      );
+    }
+
     final voices = category.isNoun
         ? [forms.first.voice]
         : Voice.values

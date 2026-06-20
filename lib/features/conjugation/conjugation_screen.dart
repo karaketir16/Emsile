@@ -247,7 +247,7 @@ class _ConjugationContent extends StatelessWidget {
       children: [
         const SizedBox(height: 8),
         DropdownButtonFormField<FormCategory>(
-          initialValue: category,
+          value: category,
           isExpanded: true,
           decoration: const InputDecoration(
             labelText: 'Çekim Grubu',

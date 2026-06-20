@@ -44,7 +44,7 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
         (form) =>
             form.category == _category &&
             (_category.isNoun || form.voice == _voice) &&
-            (_includeBrokenPlurals || !form.pronounLabel.contains('Kırık')),
+            (_includeBrokenPlurals || !form.isBrokenPlural),
       )
       .toList();
 
@@ -64,6 +64,13 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
   void initState() {
     super.initState();
     _category = _categories.first;
+    final validVoices = Voice.values
+        .where((voice) => widget.data.forms.any((form) =>
+            form.category == _category && form.voice == voice))
+        .toList();
+    if (validVoices.isNotEmpty) {
+      _voice = validVoices.first;
+    }
   }
 
   void _startRound() {
@@ -148,8 +155,8 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
 
     final bothBrokenPlurals =
         token.form.category == expected.category &&
-        token.form.pronounLabel.contains('Kırık') &&
-        expected.pronounLabel.contains('Kırık');
+        token.form.isBrokenPlural &&
+        expected.isBrokenPlural;
     final isCorrect = token.form.arabic == expected.arabic || bothBrokenPlurals;
     setState(() {
       if (previous != null &&
@@ -320,7 +327,6 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
           ),
         )
         .toList();
-    if (!voices.contains(_voice)) _voice = voices.first;
 
     return AppPage(
       title: 'Tabloyu Doldur',
@@ -332,7 +338,7 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
           Text('Konu', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 8),
           DropdownButtonFormField<String>(
-            initialValue: _pronounMode ? 'pronouns' : _category.name,
+            value: _pronounMode ? 'pronouns' : _category.name,
             decoration: const InputDecoration(border: OutlineInputBorder()),
             items: [
               if (widget.data.pronouns.isNotEmpty)
@@ -354,6 +360,13 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
                   _category = FormCategory.values.firstWhere(
                     (category) => category.name == value,
                   );
+                  final validVoices = Voice.values
+                      .where((voice) => widget.data.forms.any((form) =>
+                          form.category == _category && form.voice == voice))
+                      .toList();
+                  if (validVoices.isNotEmpty && !validVoices.contains(_voice)) {
+                    _voice = validVoices.first;
+                  }
                 }
               });
             },
@@ -389,7 +402,7 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
           ] else if (widget.data.forms.any(
             (form) =>
                 form.category == _category &&
-                form.pronounLabel.contains('Kırık'),
+                form.isBrokenPlural,
           )) ...[
             const SizedBox(height: 18),
             SwitchListTile(
@@ -1018,7 +1031,7 @@ class _NounFillTable extends StatelessWidget {
       final genderMatches =
           form.gender == gender ||
           (gender == FormGender.common && form.gender == FormGender.common);
-      final isBroken = form.pronounLabel.contains('Kırık');
+      final isBroken = form.isBrokenPlural;
       if (genderMatches && form.number == number && !isBroken) {
         return form;
       }

@@ -28,6 +28,10 @@ lib/
     conjugation/
       conjugation_screen.dart
       widgets/
+        conjugation_grid.dart
+        forms_tables.dart
+        noun_forms_table.dart
+        pronouns_panel.dart
     practice/
       practice_screen.dart
       matching_practice_screen.dart
@@ -39,11 +43,20 @@ lib/
   shared/
     theme/app_theme.dart
     widgets/
+      app_page.dart
+      arabic_result_card.dart
+      arabic_text.dart
+      info_panel.dart
+      navigation_card.dart
 assets/data/
   catalog.json
   verbs/nasara.json
 test/
   data/
+    emsile_repository_test.dart
+    muttaride_generator_test.dart
+    practice_question_generator_test.dart
+  matching_practice_test.dart
   widget_test.dart
 ```
 

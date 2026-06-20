@@ -19,6 +19,9 @@ class EmsileRepository {
 
     final manifest = catalog.verbs.firstWhere(
       (verb) => verb.id == catalog.defaultVerbId,
+      orElse: () => throw StateError(
+        'Default verb "${catalog.defaultVerbId}" not found in catalog.',
+      ),
     );
     final verbRaw = await _bundle.loadString(manifest.assetPath);
     final verbJson = jsonDecode(verbRaw) as Map<String, dynamic>;

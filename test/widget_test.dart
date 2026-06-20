@@ -1206,6 +1206,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('هُوَ'), findsOneWidget);
       expect(find.text('أَنْتَ'), findsOneWidget);
+      expect(find.text('نَحْنُ'), findsOneWidget);
 
       await tester.tap(find.text('Konuyu Değiştir'));
       await tester.pumpAndSettle();
@@ -2027,6 +2028,24 @@ const pronounTestData = AppData(
       labelTr: 'Sen',
       arabic: 'أَنْتَ',
       meaning: '2. şahıs müzekker tekil ayrı zamir',
+    ),
+    PronounEntry(
+      kind: PronounKind.independent,
+      person: FormPerson.first,
+      number: FormNumber.plural,
+      gender: FormGender.common,
+      labelTr: 'Biz',
+      arabic: 'نَحْنُ',
+      meaning: '1. şahıs ortak çoğul ayrı zamir',
+    ),
+    PronounEntry(
+      kind: PronounKind.independent,
+      person: FormPerson.first,
+      number: FormNumber.dual,
+      gender: FormGender.common,
+      labelTr: 'İkimiz',
+      arabic: 'نَحْنُ',
+      meaning: '1. şahıs ortak ikil ayrı zamir',
     ),
     PronounEntry(
       kind: PronounKind.attached,

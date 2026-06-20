@@ -49,8 +49,16 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
       .toList();
 
   List<PronounEntry> get _pronouns => widget.data.pronouns
-      .where((pronoun) => pronoun.kind == _pronounKind)
+      .where(
+        (pronoun) =>
+            pronoun.kind == _pronounKind && !_isMergedFirstPersonDual(pronoun),
+      )
       .toList();
+
+  bool _isMergedFirstPersonDual(PronounEntry pronoun) {
+    return pronoun.person == FormPerson.first &&
+        pronoun.number == FormNumber.dual;
+  }
 
   @override
   void initState() {
@@ -559,97 +567,100 @@ class _FillTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAlias,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Column(
-          children: [
-            Table(
-              border: TableBorder.all(color: const Color(0xFFD8D1C1)),
-              columnWidths: const {
-                0: FixedColumnWidth(82),
-                1: FixedColumnWidth(82),
-                2: FixedColumnWidth(82),
-                3: FixedColumnWidth(92),
-              },
-              children: [
-                TableRow(
-                  children: [
-                    for (final column in conjugationColumns)
-                      _TableLabel(text: column.label),
-                    const _TableLabel(text: ''),
-                  ],
-                ),
-              ],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final layout = _FillTableLayout.forWidth(constraints.maxWidth);
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: SizedBox(
+              width: layout.totalWidth,
+              child: Column(
+                children: [
+                  Table(
+                    border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                    columnWidths: layout.standardColumns,
+                    children: [
+                      TableRow(
+                        children: [
+                          for (final column in conjugationColumns)
+                            _TableLabel(text: column.label),
+                          const _TableLabel(text: ''),
+                        ],
+                      ),
+                    ],
+                  ),
+                  for (final row in conjugationRows)
+                    if (row.person == FormPerson.first)
+                      Table(
+                        border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                        columnWidths: layout.firstPersonColumns,
+                        children: [
+                          TableRow(
+                            children: [
+                              _DropCell(
+                                slot: row.selectionFor(FormNumber.plural),
+                                expected: _find(
+                                  row.selectionFor(FormNumber.plural),
+                                ),
+                                placed:
+                                    placed[row.selectionFor(FormNumber.plural)],
+                                isWrong: wrongSlots.contains(
+                                  row.selectionFor(FormNumber.plural),
+                                ),
+                                onDrop: onDrop,
+                                onWrongDragStarted: onWrongDragStarted,
+                              ),
+                              _DropCell(
+                                slot: row.selectionFor(FormNumber.singular),
+                                expected: _find(
+                                  row.selectionFor(FormNumber.singular),
+                                ),
+                                placed:
+                                    placed[row.selectionFor(
+                                      FormNumber.singular,
+                                    )],
+                                isWrong: wrongSlots.contains(
+                                  row.selectionFor(FormNumber.singular),
+                                ),
+                                onDrop: onDrop,
+                                onWrongDragStarted: onWrongDragStarted,
+                              ),
+                              _TableLabel(text: row.label),
+                            ],
+                          ),
+                        ],
+                      )
+                    else
+                      Table(
+                        border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                        columnWidths: layout.standardColumns,
+                        children: [
+                          TableRow(
+                            children: [
+                              for (final column in conjugationColumns)
+                                _DropCell(
+                                  slot: row.selectionFor(column.number),
+                                  expected: _find(
+                                    row.selectionFor(column.number),
+                                  ),
+                                  placed:
+                                      placed[row.selectionFor(column.number)],
+                                  isWrong: wrongSlots.contains(
+                                    row.selectionFor(column.number),
+                                  ),
+                                  onDrop: onDrop,
+                                  onWrongDragStarted: onWrongDragStarted,
+                                ),
+                              _TableLabel(text: row.label),
+                            ],
+                          ),
+                        ],
+                      ),
+                ],
+              ),
             ),
-            for (final row in conjugationRows)
-              if (row.person == FormPerson.first)
-                Table(
-                  border: TableBorder.all(color: const Color(0xFFD8D1C1)),
-                  columnWidths: const {
-                    0: FixedColumnWidth(164),
-                    1: FixedColumnWidth(82),
-                    2: FixedColumnWidth(92),
-                  },
-                  children: [
-                    TableRow(
-                      children: [
-                        _DropCell(
-                          slot: row.selectionFor(FormNumber.plural),
-                          expected: _find(row.selectionFor(FormNumber.plural)),
-                          placed: placed[row.selectionFor(FormNumber.plural)],
-                          isWrong: wrongSlots.contains(
-                            row.selectionFor(FormNumber.plural),
-                          ),
-                          onDrop: onDrop,
-                          onWrongDragStarted: onWrongDragStarted,
-                        ),
-                        _DropCell(
-                          slot: row.selectionFor(FormNumber.singular),
-                          expected: _find(
-                            row.selectionFor(FormNumber.singular),
-                          ),
-                          placed: placed[row.selectionFor(FormNumber.singular)],
-                          isWrong: wrongSlots.contains(
-                            row.selectionFor(FormNumber.singular),
-                          ),
-                          onDrop: onDrop,
-                          onWrongDragStarted: onWrongDragStarted,
-                        ),
-                        _TableLabel(text: row.label),
-                      ],
-                    ),
-                  ],
-                )
-              else
-                Table(
-                  border: TableBorder.all(color: const Color(0xFFD8D1C1)),
-                  columnWidths: const {
-                    0: FixedColumnWidth(82),
-                    1: FixedColumnWidth(82),
-                    2: FixedColumnWidth(82),
-                    3: FixedColumnWidth(92),
-                  },
-                  children: [
-                    TableRow(
-                      children: [
-                        for (final column in conjugationColumns)
-                          _DropCell(
-                            slot: row.selectionFor(column.number),
-                            expected: _find(row.selectionFor(column.number)),
-                            placed: placed[row.selectionFor(column.number)],
-                            isWrong: wrongSlots.contains(
-                              row.selectionFor(column.number),
-                            ),
-                            onDrop: onDrop,
-                            onWrongDragStarted: onWrongDragStarted,
-                          ),
-                        _TableLabel(text: row.label),
-                      ],
-                    ),
-                  ],
-                ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -678,98 +689,101 @@ class _PronounFillTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAlias,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Column(
-          children: [
-            Table(
-              border: TableBorder.all(color: const Color(0xFFD8D1C1)),
-              columnWidths: const {
-                0: FixedColumnWidth(82),
-                1: FixedColumnWidth(82),
-                2: FixedColumnWidth(82),
-                3: FixedColumnWidth(92),
-              },
-              children: const [
-                TableRow(
-                  children: [
-                    _TableLabel(text: 'Çoğul'),
-                    _TableLabel(text: 'İkil'),
-                    _TableLabel(text: 'Tekil'),
-                    _TableLabel(text: ''),
-                  ],
-                ),
-              ],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final layout = _FillTableLayout.forWidth(constraints.maxWidth);
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: SizedBox(
+              width: layout.totalWidth,
+              child: Column(
+                children: [
+                  Table(
+                    border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                    columnWidths: layout.standardColumns,
+                    children: const [
+                      TableRow(
+                        children: [
+                          _TableLabel(text: 'Çoğul'),
+                          _TableLabel(text: 'İkil'),
+                          _TableLabel(text: 'Tekil'),
+                          _TableLabel(text: ''),
+                        ],
+                      ),
+                    ],
+                  ),
+                  for (final row in conjugationRows)
+                    if (row.person == FormPerson.first)
+                      Table(
+                        border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                        columnWidths: layout.firstPersonColumns,
+                        children: [
+                          TableRow(
+                            children: [
+                              _PronounDropCell(
+                                slot: row.selectionFor(FormNumber.plural),
+                                expected: _find(
+                                  row.selectionFor(FormNumber.plural),
+                                ),
+                                placed:
+                                    placed[row.selectionFor(FormNumber.plural)],
+                                isWrong: wrongSlots.contains(
+                                  row.selectionFor(FormNumber.plural),
+                                ),
+                                onDrop: onDrop,
+                                onWrongDragStarted: onWrongDragStarted,
+                              ),
+                              _PronounDropCell(
+                                slot: row.selectionFor(FormNumber.singular),
+                                expected: _find(
+                                  row.selectionFor(FormNumber.singular),
+                                ),
+                                placed:
+                                    placed[row.selectionFor(
+                                      FormNumber.singular,
+                                    )],
+                                isWrong: wrongSlots.contains(
+                                  row.selectionFor(FormNumber.singular),
+                                ),
+                                onDrop: onDrop,
+                                onWrongDragStarted: onWrongDragStarted,
+                              ),
+                              _TableLabel(text: row.label),
+                            ],
+                          ),
+                        ],
+                      )
+                    else
+                      Table(
+                        border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                        columnWidths: layout.standardColumns,
+                        children: [
+                          TableRow(
+                            children: [
+                              for (final column in conjugationColumns)
+                                _PronounDropCell(
+                                  slot: row.selectionFor(column.number),
+                                  expected: _find(
+                                    row.selectionFor(column.number),
+                                  ),
+                                  placed:
+                                      placed[row.selectionFor(column.number)],
+                                  isWrong: wrongSlots.contains(
+                                    row.selectionFor(column.number),
+                                  ),
+                                  onDrop: onDrop,
+                                  onWrongDragStarted: onWrongDragStarted,
+                                ),
+                              _TableLabel(text: row.label),
+                            ],
+                          ),
+                        ],
+                      ),
+                ],
+              ),
             ),
-            for (final row in conjugationRows)
-              if (row.person == FormPerson.first)
-                Table(
-                  border: TableBorder.all(color: const Color(0xFFD8D1C1)),
-                  columnWidths: const {
-                    0: FixedColumnWidth(164),
-                    1: FixedColumnWidth(82),
-                    2: FixedColumnWidth(92),
-                  },
-                  children: [
-                    TableRow(
-                      children: [
-                        _PronounDropCell(
-                          slot: row.selectionFor(FormNumber.plural),
-                          expected: _find(row.selectionFor(FormNumber.plural)),
-                          placed: placed[row.selectionFor(FormNumber.plural)],
-                          isWrong: wrongSlots.contains(
-                            row.selectionFor(FormNumber.plural),
-                          ),
-                          onDrop: onDrop,
-                          onWrongDragStarted: onWrongDragStarted,
-                        ),
-                        _PronounDropCell(
-                          slot: row.selectionFor(FormNumber.singular),
-                          expected: _find(
-                            row.selectionFor(FormNumber.singular),
-                          ),
-                          placed: placed[row.selectionFor(FormNumber.singular)],
-                          isWrong: wrongSlots.contains(
-                            row.selectionFor(FormNumber.singular),
-                          ),
-                          onDrop: onDrop,
-                          onWrongDragStarted: onWrongDragStarted,
-                        ),
-                        _TableLabel(text: row.label),
-                      ],
-                    ),
-                  ],
-                )
-              else
-                Table(
-                  border: TableBorder.all(color: const Color(0xFFD8D1C1)),
-                  columnWidths: const {
-                    0: FixedColumnWidth(82),
-                    1: FixedColumnWidth(82),
-                    2: FixedColumnWidth(82),
-                    3: FixedColumnWidth(92),
-                  },
-                  children: [
-                    TableRow(
-                      children: [
-                        for (final column in conjugationColumns)
-                          _PronounDropCell(
-                            slot: row.selectionFor(column.number),
-                            expected: _find(row.selectionFor(column.number)),
-                            placed: placed[row.selectionFor(column.number)],
-                            isWrong: wrongSlots.contains(
-                              row.selectionFor(column.number),
-                            ),
-                            onDrop: onDrop,
-                            onWrongDragStarted: onWrongDragStarted,
-                          ),
-                        _TableLabel(text: row.label),
-                      ],
-                    ),
-                  ],
-                ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -907,38 +921,41 @@ class _NounFillTable extends StatelessWidget {
       children: [
         Card(
           clipBehavior: Clip.antiAlias,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Table(
-              border: TableBorder.all(color: const Color(0xFFD8D1C1)),
-              columnWidths: const {
-                0: FixedColumnWidth(82),
-                1: FixedColumnWidth(82),
-                2: FixedColumnWidth(82),
-                3: FixedColumnWidth(92),
-              },
-              children: [
-                const TableRow(
-                  children: [
-                    _TableLabel(text: 'Çoğul'),
-                    _TableLabel(text: 'İkil'),
-                    _TableLabel(text: 'Tekil'),
-                    _TableLabel(text: ''),
-                  ],
-                ),
-                for (final row in rows)
-                  TableRow(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final layout = _FillTableLayout.forWidth(constraints.maxWidth);
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SizedBox(
+                  width: layout.totalWidth,
+                  child: Table(
+                    border: TableBorder.all(color: const Color(0xFFD8D1C1)),
+                    columnWidths: layout.standardColumns,
                     children: [
-                      for (final form in row.forms)
-                        if (form == null)
-                          const _ClosedCell()
-                        else
-                          _nounDropCell(form),
-                      _TableLabel(text: row.label),
+                      const TableRow(
+                        children: [
+                          _TableLabel(text: 'Çoğul'),
+                          _TableLabel(text: 'İkil'),
+                          _TableLabel(text: 'Tekil'),
+                          _TableLabel(text: ''),
+                        ],
+                      ),
+                      for (final row in rows)
+                        TableRow(
+                          children: [
+                            for (final form in row.forms)
+                              if (form == null)
+                                const _ClosedCell()
+                              else
+                                _nounDropCell(form),
+                            _TableLabel(text: row.label),
+                          ],
+                        ),
                     ],
                   ),
-              ],
-            ),
+                ),
+              );
+            },
           ),
         ),
         if (extraForms.isNotEmpty) ...[
@@ -1172,6 +1189,47 @@ class _TableLabel extends StatelessWidget {
       ),
     );
   }
+}
+
+class _FillTableLayout {
+  const _FillTableLayout({required this.dataWidth, required this.labelWidth});
+
+  factory _FillTableLayout.forWidth(double availableWidth) {
+    const minimumDataWidth = 82.0;
+    const minimumLabelWidth = 92.0;
+    const minimumWidth = minimumDataWidth * 3 + minimumLabelWidth;
+
+    if (!availableWidth.isFinite || availableWidth <= minimumWidth) {
+      return const _FillTableLayout(
+        dataWidth: minimumDataWidth,
+        labelWidth: minimumLabelWidth,
+      );
+    }
+
+    final extra = (availableWidth - minimumWidth) / 4;
+    return _FillTableLayout(
+      dataWidth: minimumDataWidth + extra,
+      labelWidth: minimumLabelWidth + extra,
+    );
+  }
+
+  final double dataWidth;
+  final double labelWidth;
+
+  double get totalWidth => dataWidth * 3 + labelWidth;
+
+  Map<int, TableColumnWidth> get standardColumns => {
+    0: FixedColumnWidth(dataWidth),
+    1: FixedColumnWidth(dataWidth),
+    2: FixedColumnWidth(dataWidth),
+    3: FixedColumnWidth(labelWidth),
+  };
+
+  Map<int, TableColumnWidth> get firstPersonColumns => {
+    0: FixedColumnWidth(dataWidth * 2),
+    1: FixedColumnWidth(dataWidth),
+    2: FixedColumnWidth(labelWidth),
+  };
 }
 
 class _FormToken {

@@ -402,13 +402,52 @@ const _muhtelifeNotes = [
 String _categoryDescription(FormCategory category) {
   switch (category) {
     case FormCategory.mazi:
-      return 'Geçmiş zamanın malum ve meçhul çekimleri';
+      return 'Geçmiş zamanda gerçekleşen işleri bildiren fiil çekimi';
     case FormCategory.muzari:
-      return 'Şimdiki, geniş ve gelecek zaman çekimleri';
+      return 'Şimdiki, geniş ve gelecek zamandaki işleri bildiren fiil çekimi';
     case FormCategory.masdar:
       return 'Fiilin şahıs ve zamandan bağımsız isim hali';
-    default:
-      return '${category.label} tablosu ve açıklaması';
+    case FormCategory.ismFail:
+      return 'Eylemi yapan etken özneyi bildiren sıfat kalıbı';
+    case FormCategory.ismMeful:
+      return 'Eylemden etkilenen edilgen nesneyi bildiren isim kalıbı';
+    case FormCategory.cahdMutlak:
+      return 'Geçmiş zamanda kesin olumsuzluk çekimi (lem ile)';
+    case FormCategory.cahdMustagrak:
+      return 'Konuşma anına kadar süren olumsuzluk çekimi (lemmâ ile)';
+    case FormCategory.nefyHal:
+      return 'Şimdiki zamanın olumsuz çekimi (mâ ile)';
+    case FormCategory.nefyIstikbal:
+      return 'Gelecek zamanın olumsuz çekimi (lâ ile)';
+    case FormCategory.tekidNefyIstikbal:
+      return 'Gelecek zamanın kesin olumsuzluk çekimi (len ile)';
+    case FormCategory.emrGaib:
+      return 'Üçüncü şahıslara yapılan emir çekimi (li ile)';
+    case FormCategory.nehyGaib:
+      return 'Üçüncü şahıslara yapılan yasaklama çekimi (lâ ile)';
+    case FormCategory.emrHazir:
+      return 'Karşımızdaki muhataba doğrudan yapılan emir çekimi';
+    case FormCategory.nehyHazir:
+      return 'Karşımızdaki muhataba yapılan yasaklama çekimi';
+    case FormCategory.ismZamanMekan:
+      return 'Eylemin yapıldığı zaman, mekân veya mimli mastar hali';
+    case FormCategory.ismAlet:
+      return 'Eylemin yapıldığı aracı/aleti bildiren isim kalıbı';
+    case FormCategory.masdarMerre:
+      return 'Eylemin kaç defa yapıldığını bildiren mastar';
+    case FormCategory.masdarNev:
+      return 'Eylemin yapılış tarzını ve çeşidini bildiren mastar';
+    case FormCategory.ismTasgir:
+      return 'Küçültme, sevgi veya azlık bildiren isim kalıbı';
+    case FormCategory.ismMensub:
+      return 'Nispet, aitlik veya mensubiyet bildiren isim kalıbı';
+    case FormCategory.mubalagaIsmFail:
+      return 'Eylemin çokça yapıldığını bildiren abartılı sıfat kalıbı';
+    case FormCategory.ismTafdil:
+      return 'En veya daha üstünlük bildiren karşılaştırma kalıbı';
+    case FormCategory.fiilTaaccubEvvel:
+    case FormCategory.fiilTaaccubSani:
+      return 'Hayret, şaşırma veya beğeni bildiren taaccüb kalıpları';
   }
 }
 

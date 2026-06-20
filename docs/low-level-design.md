@@ -181,17 +181,19 @@ Kategori/çatı değişiminde `person + number + gender` korunur. Aynı seçim y
 Çoktan seçmeli pratik üç parçaya ayrılır:
 
 - `multiple_choice_practice_screen.dart`: akış ve ekran state'i
-- `practice_filters.dart`: kategori, çatı, şahıs ve isim filtreleri
+- `practice_filters.dart`: kategori, çatı ve kırık çoğul filtreleri
 - `practice_answer.dart`: cevap butonu ve geri bildirim görünümü
 
-Filtre sonucu en az beş form gereklidir.
+En az bir kategori seçilmelidir. Fiil kategorisi seçiliyse malum veya meçhul
+çatılarından en az biri seçilmelidir.
 
 `PracticeQuestionGenerator.generateSingleQuestion()`:
 
-1. Filtreli listeden rastgele form seçer.
+1. Filtreli listeden, aynı kategoride en az iki seçenek üretebilen form seçer.
 2. İki soru yönünden birini rastgele seçer.
-3. Aynı Arapça yazılışa sahip kardeşleri yanlış şık adayından çıkarır.
-4. En fazla beş benzersiz şık üretir ve karıştırır.
+3. Yanlış şıkları yalnız hedefle aynı kategoriden seçer.
+4. Aynı Arapça yazılışa sahip kardeşleri yanlış şık adayından çıkarır.
+5. Mevcut kaliteli aday sayısına göre 2-5 benzersiz şık üretir ve karıştırır.
 
 Soru tipleri:
 

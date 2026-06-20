@@ -975,89 +975,97 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('practice: setup requires a category and voice for verbs', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(500, 1000));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SafeArea(
+            child: PracticeScreen(data: testData, random: Random(1)),
+          ),
+        ),
+      ),
+    );
+    await openMultipleChoicePractice(tester);
+
+    // Başlangıçta 6 form eşleştiği için canStart true olmalı
+    expect(find.text('Eşleşen Form Sayısı:'), findsOneWidget);
+    expect(find.text('6'), findsOneWidget);
+    expect(
+      tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+      isTrue,
+    );
+
+    // Çekim Tablolarını temizle diyelim -> Eşleşen 0 olur, buton kilitlenir
+    await tester.tap(
+      find
+          .descendant(of: find.byType(Row), matching: find.text('Temizle'))
+          .first,
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('0'), findsOneWidget);
+    expect(
+      tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+      isFalse,
+    );
+    expect(
+      find.text('Pratiğe başlamak için en az bir çekim tablosu seç.'),
+      findsOneWidget,
+    );
+
+    await tester.tap(find.text('Fiil-i Mâzi'));
+    await tester.pumpAndSettle();
+    expect(
+      tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+      isTrue,
+    );
+
+    await tester.ensureVisible(find.text('Çatı (Malum/Meçhul)'));
+    await tester.tap(
+      find
+          .descendant(of: find.byType(Row), matching: find.text('Temizle'))
+          .last,
+    );
+    await tester.pumpAndSettle();
+
+    expect(
+      tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
+      isFalse,
+    );
+    expect(
+      find.text('Fiil kategorileri için en az bir çatı seç.'),
+      findsOneWidget,
+    );
+  });
+
   testWidgets(
-    'practice: setup view allows filtering and disables button when matching < 5',
+    'practice: setup omits person filters and toggles broken plurals',
     (WidgetTester tester) async {
       await tester.binding.setSurfaceSize(const Size(500, 1000));
       addTearDown(() => tester.binding.setSurfaceSize(null));
 
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
-            body: SafeArea(
-              child: PracticeScreen(data: testData, random: Random(1)),
-            ),
+            body: SafeArea(child: PracticeScreen(data: nounTestData)),
           ),
         ),
       );
       await openMultipleChoicePractice(tester);
 
-      // Başlangıçta 6 form eşleştiği için canStart true olmalı
-      expect(find.text('Eşleşen Form Sayısı:'), findsOneWidget);
+      expect(find.text('Şahıslar (Fiiller)'), findsNothing);
+      expect(find.text('Kırık Çoğullar'), findsOneWidget);
+      expect(find.text('7'), findsOneWidget);
+
+      await tester.tap(find.byType(SwitchListTile));
+      await tester.pumpAndSettle();
+
       expect(find.text('6'), findsOneWidget);
-      expect(
-        tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
-        isTrue,
-      );
-
-      // Çekim Tablolarını temizle diyelim -> Eşleşen 0 olur, buton kilitlenir
-      await tester.tap(
-        find
-            .descendant(of: find.byType(Row), matching: find.text('Temizle'))
-            .first,
-      );
-      await tester.pumpAndSettle();
-
-      expect(find.text('0'), findsOneWidget);
-      expect(
-        tester.widget<FilledButton>(find.byType(FilledButton)).enabled,
-        isFalse,
-      );
-      expect(
-        find.text(
-          'Soru üretilebilmesi için en az 5 farklı çekim formu eşleşmelidir. Lütfen seçimlerinizi artırın.',
-        ),
-        findsOneWidget,
-      );
-    },
-  );
-
-  testWidgets(
-    'practice: clicking column headers and row labels toggles selection groups',
-    (WidgetTester tester) async {
-      await tester.binding.setSurfaceSize(const Size(500, 1000));
-      addTearDown(() => tester.binding.setSurfaceSize(null));
-
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: SafeArea(
-              child: PracticeScreen(data: testData, random: Random(1)),
-            ),
-          ),
-        ),
-      );
-      await openMultipleChoicePractice(tester);
-
-      // Verify column deselect/select via 'Tekil' header
-      await tester.ensureVisible(find.text('Tekil').first);
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Tekil').first);
-      await tester.pumpAndSettle();
-      expect(find.text('0'), findsOneWidget);
-
-      await tester.ensureVisible(find.text('Tekil').first);
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Tekil').first);
-      await tester.pumpAndSettle();
-      expect(find.text('6'), findsOneWidget);
-
-      // Verify row deselect/select via '3. Şh. Müzekker\n(Gâib)' label
-      await tester.ensureVisible(find.text('3. Şh. Müzekker\n(Gâib)'));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('3. Şh. Müzekker\n(Gâib)'));
-      await tester.pumpAndSettle();
-      expect(find.text('3'), findsOneWidget);
     },
   );
 

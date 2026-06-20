@@ -79,6 +79,60 @@ void main() {
         expect(question.options.toSet(), hasLength(question.options.length));
       }
     });
+
+    test('distractors stay in the target category', () {
+      final forms = [
+        ...testForms,
+        const ConjugationForm(
+          category: FormCategory.muzari,
+          voice: Voice.malum,
+          person: FormPerson.third,
+          number: FormNumber.singular,
+          gender: FormGender.masculine,
+          pronounLabel: 'O (er.)',
+          arabic: 'يَنْصُرُ',
+          meaning: 'O (erkek) yardım ediyor.',
+        ),
+        const ConjugationForm(
+          category: FormCategory.muzari,
+          voice: Voice.mechul,
+          person: FormPerson.third,
+          number: FormNumber.singular,
+          gender: FormGender.masculine,
+          pronounLabel: 'O (er.)',
+          arabic: 'يُنْصَرُ',
+          meaning: 'Ona (erkek) yardım ediliyor.',
+        ),
+      ];
+
+      for (var seed = 0; seed < 30; seed++) {
+        final question = PracticeQuestionGenerator.generateSingleQuestion(
+          forms,
+          Random(seed),
+        );
+        final target = forms.firstWhere(
+          (form) =>
+              form.arabic == question.answer ||
+              form.meaning == question.answer ||
+              form.arabic == question.arabic,
+        );
+        final categoryValues = forms
+            .where((form) => form.category == target.category)
+            .expand((form) => [form.arabic, form.meaning])
+            .toSet();
+
+        expect(question.options, everyElement(isIn(categoryValues)));
+      }
+    });
+
+    test('uses fewer than five options when category has fewer forms', () {
+      final question = PracticeQuestionGenerator.generateSingleQuestion(
+        testForms.take(3).toList(),
+        Random(1),
+      );
+
+      expect(question.options, hasLength(3));
+    });
   });
 }
 

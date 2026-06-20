@@ -104,13 +104,16 @@ Pratik ekranı iki moda ayrılır.
 
 #### Çoktan Seçmeli
 
-- Kategori, çatı, fiil şahısları ve isim özellikleri filtrelenebilir.
+- Kategori ve çatı filtrelenebilir; şahıslar soru seçeneklerinde karşılaştırılır.
+- İsimlerde kırık çoğullar isteğe bağlı olarak dahil edilir.
 - Kategori seçimi iki sütunlu kompakt kartlarla yapılır.
-- En az beş eşleşen form gerekir.
+- En az bir kategori seçilmelidir.
+- Fiil kategorisi seçiliyse malum veya meçhul çatılarından en az biri seçilmelidir.
 - İki soru tipi vardır:
   - Arapça sîgadan Türkçe anlamı bulma
   - Türkçe anlamdan Arapça sîgayı bulma
-- Şıklar en fazla beş seçenektir ve karıştırılır.
+- Şıklar yalnız hedefle aynı kategoriden gelir; seçili çatı kapsamına uyar.
+- Şık sayısı, aynı kategorideki kaliteli aday sayısına göre 2-5 arasındadır.
 - Yanlış seçimde yalnız seçilen şık kırmızı/X olur; doğru cevap açıklanmaz.
 - Doğru seçimde seçilen şık yeşil/tik olur.
 - Sonraki Soru ile yeni rastgele soru üretilir.

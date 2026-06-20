@@ -36,8 +36,10 @@ Mevcut test paketi `48` test içerir.
 - Şahıs sorularının artık üretilmemesi
 - Doğru şıkkın seçenekler içinde bulunması
 - Runtime sorularında yalnız iki soru yönünün kullanılması
-- Şıkların benzersiz ve en fazla beş adet olması
+- Şıkların benzersiz ve 2-5 adet olması
 - Aynı Arapça yazılışın distractor olarak tekrarlanmaması
+- Yanlış şıkların hedefle aynı kategoride kalması
+- Az formlu kategorilerde yapay beşinci şık eklenmemesi
 
 `test/data/emsile_repository_test.dart`
 
@@ -73,8 +75,8 @@ Genel:
 - Yanlış cevapta doğru cevabın ve açıklamanın gizli kalması
 - Sonraki soru
 - Beş form altı başlangıç engeli
-- Kategori, çatı, şahıs ve isim filtreleri
-- Satır/sütun toplu seçimleri
+- Kategori ve çatı filtreleri
+- İsimlerde kırık çoğul anahtarı
 
 Tabloyu Doldur:
 

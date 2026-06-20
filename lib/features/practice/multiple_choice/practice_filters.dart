@@ -1,52 +1,38 @@
 import 'package:emsile_flutter/data/models.dart';
 import 'package:flutter/material.dart';
 
-const verbPracticeGroups = [
-  'O (er.)',
-  'O ikisi (er.)',
-  'Onlar (er.)',
-  'O (kad.)',
-  'O ikisi (kad.)',
-  'Onlar (kad.)',
-  'Sen (er.)',
-  'Siz ikiniz (er.)',
-  'Siz (er.)',
-  'Sen (kad.)',
-  'Siz ikiniz (kad.)',
-  'Siz (kad.)',
-  'Ben',
-  'Biz',
-];
-
-const nounPracticeGroups = ['Tekil', 'İkil', 'Çoğul (Kurallı)', 'Kırık Çoğul'];
-
 class PracticeFilters extends StatelessWidget {
   const PracticeFilters({
     required this.availableForms,
     required this.categories,
     required this.voices,
-    required this.groups,
+    required this.includeBrokenPlurals,
     required this.onCategoriesChanged,
     required this.onVoicesChanged,
-    required this.onGroupsChanged,
+    required this.onIncludeBrokenPluralsChanged,
     super.key,
   });
 
   final List<ConjugationForm> availableForms;
   final Set<FormCategory> categories;
   final Set<Voice> voices;
-  final Set<String> groups;
+  final bool includeBrokenPlurals;
   final ValueChanged<Set<FormCategory>> onCategoriesChanged;
   final ValueChanged<Set<Voice>> onVoicesChanged;
-  final ValueChanged<Set<String>> onGroupsChanged;
+  final ValueChanged<bool> onIncludeBrokenPluralsChanged;
 
   bool get _showVerbs => categories.isEmpty
       ? availableForms.any((form) => form.category.isVerb)
       : categories.any((category) => category.isVerb);
 
-  bool get _showNouns => categories.isEmpty
-      ? availableForms.any((form) => form.category.isNoun)
-      : categories.any((category) => category.isNoun);
+  bool get _showBrokenPluralOption {
+    return availableForms.any(
+      (form) =>
+          categories.contains(form.category) &&
+          form.category.isNoun &&
+          form.isBrokenPlural,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,12 +69,18 @@ class PracticeFilters extends StatelessWidget {
         if (_showVerbs) ...[
           const SizedBox(height: 20),
           _VoiceFilters(selected: voices, onChanged: onVoicesChanged),
-          const SizedBox(height: 20),
-          _PronounFilters(selected: groups, onChanged: onGroupsChanged),
         ],
-        if (_showNouns) ...[
+        if (_showBrokenPluralOption) ...[
           const SizedBox(height: 20),
-          _NounFilters(selected: groups, onChanged: onGroupsChanged),
+          SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            title: const Text('Kırık Çoğullar'),
+            subtitle: const Text(
+              'Kırık çoğulları soru ve seçeneklere dahil et.',
+            ),
+            value: includeBrokenPlurals,
+            onChanged: onIncludeBrokenPluralsChanged,
+          ),
         ],
       ],
     );
@@ -110,7 +102,12 @@ class _VoiceFilters extends StatelessWidget {
           onSelectAll: () => onChanged(Voice.values.toSet()),
           onClearAll: () => onChanged({}),
         ),
-        _FilterTable(
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: const Color(0xFFD8D1C1)),
+          ),
+          clipBehavior: Clip.antiAlias,
           child: Table(
             border: const TableBorder(
               verticalInside: BorderSide(color: Color(0xFFD8D1C1)),
@@ -123,165 +120,6 @@ class _VoiceFilters extends StatelessWidget {
                       text: voice.label,
                       selected: selected.contains(voice),
                       onTap: () => onChanged(_toggled(selected, voice)),
-                    ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _PronounFilters extends StatelessWidget {
-  const _PronounFilters({required this.selected, required this.onChanged});
-
-  final Set<String> selected;
-  final ValueChanged<Set<String>> onChanged;
-
-  void _toggleGroup(List<String> values) {
-    final next = {...selected};
-    values.every(next.contains) ? next.removeAll(values) : next.addAll(values);
-    onChanged(next);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _SectionHeader(
-          title: 'Şahıslar (Fiiller)',
-          onSelectAll: () => onChanged({...selected, ...verbPracticeGroups}),
-          onClearAll: () =>
-              onChanged({...selected}..removeAll(verbPracticeGroups)),
-        ),
-        _FilterTable(
-          child: Table(
-            border: const TableBorder(
-              horizontalInside: BorderSide(color: Color(0xFFD8D1C1)),
-              verticalInside: BorderSide(color: Color(0xFFD8D1C1)),
-            ),
-            columnWidths: const {
-              0: FlexColumnWidth(),
-              1: FlexColumnWidth(),
-              2: FlexColumnWidth(),
-              3: FixedColumnWidth(96),
-            },
-            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-            children: [
-              TableRow(
-                children: [
-                  _HeaderCell(
-                    text: 'Çoğul',
-                    onTap: () => _toggleGroup(const [
-                      'Onlar (er.)',
-                      'Onlar (kad.)',
-                      'Siz (er.)',
-                      'Siz (kad.)',
-                      'Biz',
-                    ]),
-                  ),
-                  _HeaderCell(
-                    text: 'İkil',
-                    onTap: () => _toggleGroup(const [
-                      'O ikisi (er.)',
-                      'O ikisi (kad.)',
-                      'Siz ikiniz (er.)',
-                      'Siz ikiniz (kad.)',
-                      'Biz',
-                    ]),
-                  ),
-                  _HeaderCell(
-                    text: 'Tekil',
-                    onTap: () => _toggleGroup(const [
-                      'O (er.)',
-                      'O (kad.)',
-                      'Sen (er.)',
-                      'Sen (kad.)',
-                      'Ben',
-                    ]),
-                  ),
-                  const _HeaderCell(text: 'Şahıs'),
-                ],
-              ),
-              _row(
-                '3. Şh. Müzekker\n(Gâib)',
-                'Onlar (er.)',
-                'O ikisi (er.)',
-                'O (er.)',
-              ),
-              _row(
-                '3. Şh. Müennes\n(Gâibe)',
-                'Onlar (kad.)',
-                'O ikisi (kad.)',
-                'O (kad.)',
-              ),
-              _row(
-                '2. Şh. Müzekker\n(Muhatab)',
-                'Siz (er.)',
-                'Siz ikiniz (er.)',
-                'Sen (er.)',
-              ),
-              _row(
-                '2. Şh. Müennes\n(Muhataba)',
-                'Siz (kad.)',
-                'Siz ikiniz (kad.)',
-                'Sen (kad.)',
-              ),
-              _row('1. Şh. Ortak\n(Mütekellim)', 'Biz', 'Biz', 'Ben'),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  TableRow _row(String label, String plural, String dual, String singular) {
-    final values = [plural, dual, singular];
-    return TableRow(
-      children: [
-        for (final value in values)
-          _SelectableCell(
-            text: value,
-            selected: selected.contains(value),
-            onTap: () => onChanged(_toggled(selected, value)),
-          ),
-        _HeaderCell(text: label, onTap: () => _toggleGroup(values)),
-      ],
-    );
-  }
-}
-
-class _NounFilters extends StatelessWidget {
-  const _NounFilters({required this.selected, required this.onChanged});
-
-  final Set<String> selected;
-  final ValueChanged<Set<String>> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _SectionHeader(
-          title: 'Dil Bilgisi (İsimler)',
-          onSelectAll: () => onChanged({...selected, ...nounPracticeGroups}),
-          onClearAll: () =>
-              onChanged({...selected}..removeAll(nounPracticeGroups)),
-        ),
-        _FilterTable(
-          child: Table(
-            border: const TableBorder(
-              verticalInside: BorderSide(color: Color(0xFFD8D1C1)),
-            ),
-            children: [
-              TableRow(
-                children: [
-                  for (final group in nounPracticeGroups.reversed)
-                    _SelectableCell(
-                      text: group,
-                      selected: selected.contains(group),
-                      onTap: () => onChanged(_toggled(selected, group)),
                     ),
                 ],
               ),
@@ -396,24 +234,6 @@ class _CategoryOption extends StatelessWidget {
   }
 }
 
-class _FilterTable extends StatelessWidget {
-  const _FilterTable({required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: const Color(0xFFD8D1C1)),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: child,
-    );
-  }
-}
-
 class _SelectableCell extends StatelessWidget {
   const _SelectableCell({
     required this.text,
@@ -438,7 +258,6 @@ class _SelectableCell extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          maxLines: 2,
           style: TextStyle(
             fontSize: 12,
             fontWeight: selected ? FontWeight.bold : FontWeight.normal,
@@ -446,34 +265,6 @@ class _SelectableCell extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _HeaderCell extends StatelessWidget {
-  const _HeaderCell({required this.text, this.onTap});
-
-  final String text;
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final content = Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-      child: Center(
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: onTap == null ? null : Theme.of(context).colorScheme.primary,
-          ),
-        ),
-      ),
-    );
-    return Container(
-      color: const Color(0xFFF4F0E6),
-      child: onTap == null ? content : InkWell(onTap: onTap, child: content),
     );
   }
 }

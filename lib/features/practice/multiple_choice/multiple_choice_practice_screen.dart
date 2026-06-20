@@ -30,13 +30,19 @@ class _MultipleChoicePracticeScreenState
   String? _selectedAnswer;
   Set<FormCategory> _categories = FormCategory.values.toSet();
   Set<Voice> _voices = Voice.values.toSet();
-  Set<String> _groups = {...verbPracticeGroups, ...nounPracticeGroups};
+  bool _includeBrokenPlurals = true;
 
   List<ConjugationForm> get _matchingForms => widget.data.forms.where((form) {
     return _categories.contains(form.category) &&
-        _voices.contains(form.voice) &&
-        _groups.contains(form.practiceGroup);
+        (form.category.isNoun || _voices.contains(form.voice)) &&
+        (_includeBrokenPlurals || !form.isBrokenPlural);
   }).toList();
+
+  bool get _canStart {
+    if (_categories.isEmpty) return false;
+    final hasSelectedVerb = _categories.any((category) => category.isVerb);
+    return !hasSelectedVerb || _voices.isNotEmpty;
+  }
 
   @override
   void didUpdateWidget(covariant MultipleChoicePracticeScreen oldWidget) {
@@ -50,12 +56,12 @@ class _MultipleChoicePracticeScreenState
   void _resetFilters() {
     _categories = FormCategory.values.toSet();
     _voices = Voice.values.toSet();
-    _groups = {...verbPracticeGroups, ...nounPracticeGroups};
+    _includeBrokenPlurals = true;
   }
 
   void _generateQuestion() {
     final forms = _matchingForms;
-    if (forms.length < 5) {
+    if (!_canStart) {
       _setupMode = true;
       return;
     }
@@ -80,7 +86,7 @@ class _MultipleChoicePracticeScreenState
 
   Widget _buildSetup(BuildContext context) {
     final count = _matchingForms.length;
-    final canStart = count >= 5;
+    final canStart = _canStart;
     return AppPage(
       title: 'Pratik Ayarları',
       leading: _backButton(context),
@@ -91,19 +97,26 @@ class _MultipleChoicePracticeScreenState
             availableForms: widget.data.forms,
             categories: _categories,
             voices: _voices,
-            groups: _groups,
+            includeBrokenPlurals: _includeBrokenPlurals,
             onCategoriesChanged: (value) {
               setState(() => _categories = value);
             },
             onVoicesChanged: (value) {
               setState(() => _voices = value);
             },
-            onGroupsChanged: (value) {
-              setState(() => _groups = value);
+            onIncludeBrokenPluralsChanged: (value) {
+              setState(() => _includeBrokenPlurals = value);
             },
           ),
           const SizedBox(height: 30),
-          _StartPanel(count: count, canStart: canStart, onStart: _start),
+          _StartPanel(
+            count: count,
+            canStart: canStart,
+            validationMessage: _categories.isEmpty
+                ? 'Pratiğe başlamak için en az bir çekim tablosu seç.'
+                : 'Fiil kategorileri için en az bir çatı seç.',
+            onStart: _start,
+          ),
         ],
       ),
     );
@@ -201,11 +214,13 @@ class _StartPanel extends StatelessWidget {
   const _StartPanel({
     required this.count,
     required this.canStart,
+    required this.validationMessage,
     required this.onStart,
   });
 
   final int count;
   final bool canStart;
+  final String validationMessage;
   final VoidCallback onStart;
 
   @override
@@ -236,7 +251,7 @@ class _StartPanel extends StatelessWidget {
             if (!canStart) ...[
               const SizedBox(height: 10),
               Text(
-                'Soru üretilebilmesi için en az 5 farklı çekim formu eşleşmelidir. Lütfen seçimlerinizi artırın.',
+                validationMessage,
                 style: TextStyle(color: Colors.red.shade900, fontSize: 13),
               ),
             ],

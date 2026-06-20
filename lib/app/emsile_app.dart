@@ -5,7 +5,9 @@ import 'package:emsile_flutter/shared/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class EmsileApp extends StatefulWidget {
-  const EmsileApp({super.key});
+  const EmsileApp({this.repository, super.key});
+
+  final EmsileRepository? repository;
 
   @override
   State<EmsileApp> createState() => _EmsileAppState();
@@ -17,7 +19,7 @@ class _EmsileAppState extends State<EmsileApp> {
   @override
   void initState() {
     super.initState();
-    _appData = EmsileRepository.load();
+    _appData = (widget.repository ?? EmsileRepository()).load();
   }
 
   @override

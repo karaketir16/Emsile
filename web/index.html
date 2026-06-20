@@ -18,18 +18,21 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta
+    name="description"
+    content="Mobil öncelikli Arapça sarf ve Emsile çalışma uygulaması."
+  >
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="emsile_flutter">
+  <meta name="apple-mobile-web-app-title" content="Emsile">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>emsile_flutter</title>
+  <title>Emsile</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -42,12 +45,18 @@
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
   <script src="flutter_bootstrap.js" async></script>
-  <!-- Cloudflare Web Analytics -->
-  <script
-    defer
-    src="https://static.cloudflareinsights.com/beacon.min.js"
-    data-cf-beacon='{"token":"5dab064db9a84fe9a2b04da2a05ebae3"}'
-  ></script>
-  <!-- End Cloudflare Web Analytics -->
+  <script>
+    const isLocalhost = ['localhost', '127.0.0.1', '::1'].includes(
+      window.location.hostname,
+    );
+    if (!isLocalhost) {
+      const analytics = document.createElement('script');
+      analytics.defer = true;
+      analytics.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+      analytics.dataset.cfBeacon =
+        '{"token":"5dab064db9a84fe9a2b04da2a05ebae3"}';
+      document.body.appendChild(analytics);
+    }
+  </script>
 </body>
 </html>

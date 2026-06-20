@@ -8,17 +8,19 @@ import 'muttaride_generator.dart';
 import 'practice_question_generator.dart';
 
 class EmsileRepository {
-  const EmsileRepository._();
+  EmsileRepository({AssetBundle? bundle}) : _bundle = bundle ?? rootBundle;
 
-  static Future<AppData> load() async {
-    final catalogRaw = await rootBundle.loadString('assets/data/catalog.json');
+  final AssetBundle _bundle;
+
+  Future<AppData> load() async {
+    final catalogRaw = await _bundle.loadString('assets/data/catalog.json');
     final catalogJson = jsonDecode(catalogRaw) as Map<String, dynamic>;
     final catalog = CatalogData.fromJson(catalogJson);
 
     final manifest = catalog.verbs.firstWhere(
       (verb) => verb.id == catalog.defaultVerbId,
     );
-    final verbRaw = await rootBundle.loadString(manifest.assetPath);
+    final verbRaw = await _bundle.loadString(manifest.assetPath);
     final verbJson = jsonDecode(verbRaw) as Map<String, dynamic>;
     final verbEntry = VerbEntry.fromJson(verbJson);
     final forms = MuttarideGenerator.fromVerbEntry(verbEntry);

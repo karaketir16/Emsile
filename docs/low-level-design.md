@@ -7,18 +7,34 @@ lib/
   app/
     app_shell.dart
     emsile_app.dart
+  domain/
+    conjugation/
+      form_selection.dart
+    models/
+      app_data.dart
+      conjugation_form.dart
+      content.dart
+      grammar.dart
+      practice_question.dart
   data/
     catalog_models.dart
     emsile_repository.dart
     models.dart
     muttaride_generator.dart
+    generators/
+      nasara_muttaride_generator.dart
     practice_question_generator.dart
   features/
-    conjugation/conjugation_screen.dart
+    conjugation/
+      conjugation_screen.dart
+      widgets/
+    practice/
+      practice_screen.dart
+      matching_practice_screen.dart
+      table_fill_practice_screen.dart
+      multiple_choice/
     home/home_screen.dart
     lessons/lessons_screen.dart
-    practice/practice_screen.dart
-    practice/table_fill_practice_screen.dart
     source/source_screen.dart
   shared/
     theme/app_theme.dart
@@ -34,7 +50,7 @@ test/
 ## 2. Başlatma ve Veri Akışı
 
 1. `main()` → `EmsileApp`
-2. `EmsileRepository.load()`
+2. `EmsileRepository().load()`
 3. `catalog.json` yüklenir.
 4. `defaultVerbId` ile `verbs/nasara.json` yüklenir.
 5. `MuttarideGenerator.fromVerbEntry()` runtime `ConjugationForm` listesini üretir.
@@ -110,15 +126,17 @@ Birinci şahıs için ayrı ikil çekim yoktur. Veri yalnız `Ben` ve `Biz` form
 
 ## 5. Ortak Tablo Modeli
 
-`conjugation_screen.dart` aşağıdaki public bileşenleri sağlar:
+Çekim özelliği public API'yi `conjugation_screen.dart` üzerinden dışarı açar;
+uygulama ise sorumlulukları ayrı dosyalarda tutar:
 
 - `FormsTable`
 - `NounFormsTable`
 - `PronounsPanel`
-- `PdfStyleTable`
 - `FormSelection`
-- `pdfRows`
-- `pdfColumns`
+
+Ortak satır/sütun şeması ve form arama kuralları
+`domain/conjugation/form_selection.dart` içindedir. Böylece tablo gösterimi ile
+tablo doldurma alıştırması aynı seçim ve birinci şahıs fallback kuralını kullanır.
 
 `LessonsScreen`, Muttaride detaylarında aynı `FormsTable` ve `NounFormsTable` bileşenlerini kullanır. Böylece Dersler ve Tablo menüsü görsel olarak ayrışmaz.
 
@@ -150,14 +168,11 @@ Kategori/çatı değişiminde `person + number + gender` korunur. Aynı seçim y
 
 ### Çoktan Seçmeli
 
-`_MultipleChoicePracticeScreenState`:
+Çoktan seçmeli pratik üç parçaya ayrılır:
 
-- `_setupMode`
-- `_question`
-- `_selectedAnswer`
-- `_selectedCategories`
-- `_selectedVoices`
-- `_selectedPronouns`
+- `multiple_choice_practice_screen.dart`: akış ve ekran state'i
+- `practice_filters.dart`: kategori, çatı, şahıs ve isim filtreleri
+- `practice_answer.dart`: cevap butonu ve geri bildirim görünümü
 
 Filtre sonucu en az beş form gereklidir.
 
@@ -247,7 +262,7 @@ Arapça:
 
 - Tek fiil ve tek generated profil
 - Kalıcı skor/ilerleme yok
-- Repository dependency injection yok
+- Repository `AssetBundle` üzerinden enjekte edilebilir ve izole test edilebilir
 - Veri parse hataları alan bazında kullanıcı dostu raporlanmıyor
 - Özel Arapça fontu paketlenmiş değil
 - `emsile_seed.json` eski seed/uyumluluk asset'i olarak pakette kalıyor; repository aktif olarak katalog yapısını kullanıyor

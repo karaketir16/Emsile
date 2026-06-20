@@ -60,7 +60,6 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
   // Round & Scoring
   int _round = 1;
   int _mistakes = 0;
-  int _correctCount = 0;
   bool _transitioning = false;
 
   int get _totalRounds => (_allEntries.length / 5).ceil();
@@ -78,7 +77,6 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
       _completedMode = false;
       _round = 1;
       _mistakes = 0;
-      _correctCount = 0;
       _selectedLeft = null;
       _selectedRight = null;
       _failedLeft = null;
@@ -181,7 +179,6 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
       // Correct Match
       setState(() {
         _matchedEntryIds.add(left.entry.type);
-        _correctCount++;
         _selectedLeft = null;
         _selectedRight = null;
       });
@@ -267,20 +264,24 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                 String desc;
                 if (type == MatchingType.wordToSiga) {
                   icon = Icons.label_outline;
-                  desc = 'Kelimeleri dilbilgisindeki sîga (kalıp) adlarıyla eşleştir.';
+                  desc =
+                      'Kelimeleri dilbilgisindeki sîga (kalıp) adlarıyla eşleştir.';
                 } else if (type == MatchingType.wordToMeaning) {
                   icon = Icons.translate_outlined;
                   desc = 'Kelimeleri Türkçe anlam karşılıklarıyla eşleştir.';
                 } else {
                   icon = Icons.shuffle_outlined;
-                  desc = 'Sîga adları ve Türkçe anlamları bir arada harmanlayarak eşleştir.';
+                  desc =
+                      'Sîga adları ve Türkçe anlamları bir arada harmanlayarak eşleştir.';
                 }
 
                 return Card(
                   margin: const EdgeInsets.only(bottom: 12),
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
-                      color: isSelected ? colorScheme.primary : const Color(0xFFD8D1C1),
+                      color: isSelected
+                          ? colorScheme.primary
+                          : const Color(0xFFD8D1C1),
                       width: isSelected ? 2 : 1,
                     ),
                     borderRadius: BorderRadius.circular(12),
@@ -292,7 +293,13 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                       padding: const EdgeInsets.all(16),
                       child: Row(
                         children: [
-                          Icon(icon, color: isSelected ? colorScheme.primary : Colors.grey, size: 28),
+                          Icon(
+                            icon,
+                            color: isSelected
+                                ? colorScheme.primary
+                                : Colors.grey,
+                            size: 28,
+                          ),
                           const SizedBox(width: 16),
                           Expanded(
                             child: Column(
@@ -303,7 +310,9 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    color: isSelected ? colorScheme.primary : null,
+                                    color: isSelected
+                                        ? colorScheme.primary
+                                        : null,
                                   ),
                                 ),
                                 const SizedBox(height: 4),
@@ -325,9 +334,14 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                 onPressed: _startGame,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
-                child: const Text('Eşleştirmeyi Başlat', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                child: const Text(
+                  'Eşleştirmeyi Başlat',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),
@@ -345,7 +359,8 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
       body: SafeArea(
         child: AppPage(
           title: 'Emsile-i Muhtelife Alıştırması',
-          subtitle: 'Tur $_round / $_totalRounds • Doğru: $totalMatched / ${_allEntries.length}',
+          subtitle:
+              'Tur $_round / $_totalRounds • Doğru: $totalMatched / ${_allEntries.length}',
           scrollable: false,
           leading: IconButton(
             onPressed: () => setState(() => _setupMode = true),
@@ -375,14 +390,18 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                     // Left Column (Arabic Words)
                     Expanded(
                       child: Column(
-                        children: _leftItems.map((item) => _buildCard(item, true)).toList(),
+                        children: _leftItems
+                            .map((item) => _buildCard(item, true))
+                            .toList(),
                       ),
                     ),
                     const SizedBox(width: 12),
                     // Right Column (Siga / Meaning)
                     Expanded(
                       child: Column(
-                        children: _rightItems.map((item) => _buildCard(item, false)).toList(),
+                        children: _rightItems
+                            .map((item) => _buildCard(item, false))
+                            .toList(),
                       ),
                     ),
                   ],
@@ -395,11 +414,18 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.error_outline, color: Colors.redAccent, size: 18),
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.redAccent,
+                      size: 18,
+                    ),
                     const SizedBox(width: 6),
                     Text(
                       'Hata Sayısı: $_mistakes',
-                      style: const TextStyle(fontWeight: FontWeight.w600, color: Colors.redAccent),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.redAccent,
+                      ),
                     ),
                   ],
                 ),
@@ -453,7 +479,10 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
             color: backgroundColor,
             elevation: isMatched ? 0 : 1,
             child: InkWell(
-              onTap: isMatched ? null : () => isLeft ? _onLeftSelected(item) : _onRightSelected(item),
+              onTap: isMatched
+                  ? null
+                  : () =>
+                        isLeft ? _onLeftSelected(item) : _onRightSelected(item),
               borderRadius: BorderRadius.circular(12),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -462,7 +491,11 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (isMatched) ...[
-                        const Icon(Icons.check_circle, color: Colors.green, size: 18),
+                        const Icon(
+                          Icons.check_circle,
+                          color: Colors.green,
+                          size: 18,
+                        ),
                         const SizedBox(width: 6),
                       ],
                       Expanded(
@@ -471,10 +504,12 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                           textAlign: TextAlign.center,
                           style: item.isArabic
                               ? arabicTextStyle(21)
-                              : Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: item.text.length > 20 ? 12 : 14,
-                                  ),
+                              : Theme.of(
+                                  context,
+                                ).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: item.text.length > 20 ? 12 : 14,
+                                ),
                         ),
                       ),
                     ],
@@ -491,7 +526,9 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
   Widget _buildCompletedScreen() {
     final totalMatched = _allEntries.length;
     final totalAttempts = totalMatched + _mistakes;
-    final accuracy = totalAttempts > 0 ? (totalMatched / totalAttempts * 100).round() : 100;
+    final accuracy = totalAttempts > 0
+        ? (totalMatched / totalAttempts * 100).round()
+        : 100;
 
     return Scaffold(
       body: SafeArea(
@@ -503,15 +540,13 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
             children: [
               const SizedBox(height: 20),
               const Center(
-                child: Icon(
-                  Icons.stars,
-                  size: 80,
-                  color: Colors.amber,
-                ),
+                child: Icon(Icons.stars, size: 80, color: Colors.amber),
               ),
               const SizedBox(height: 24),
               Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
@@ -530,9 +565,14 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                 onPressed: _startGame,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
-                child: const Text('Yeniden Oyna', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                child: const Text(
+                  'Yeniden Oyna',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
               ),
               const SizedBox(height: 12),
               TextButton(
@@ -540,7 +580,10 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
-                child: const Text('Pratik Ekranına Dön', style: TextStyle(fontSize: 16)),
+                child: const Text(
+                  'Pratik Ekranına Dön',
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ],
           ),
@@ -555,8 +598,14 @@ class _MatchingPracticeScreenState extends State<MatchingPracticeScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-          Text(value, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            value,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );

@@ -93,7 +93,11 @@ Son durum: `نصر` fiili üzerinden dersler, çekim/zamir tabloları, çoktan s
 - [x] `dart format`
 - [x] `flutter analyze`
 - [x] `flutter test`
-- [x] 44 otomatik test
+- [x] 48 otomatik test
+- [x] Repository asset bundle dependency injection
+- [x] Domain modellerinin veri katmanından ayrılması
+- [x] Çekim tablolarının ekran dosyasından bağımsız widget'lara ayrılması
+- [x] Çoktan seçmeli pratiğin filtre/state/cevap bileşenlerine ayrılması
 - [x] `flutter build web`
 - [x] Playwright görsel kontrol altyapısı
 
@@ -103,9 +107,9 @@ Son durum: `نصر` fiili üzerinden dersler, çekim/zamir tabloları, çoktan s
 - [x] Kırık çoğul anahtarı ve eşdeğer hedef testleri
 - [x] Birinci şahıs birleşik hücre testi
 - [ ] 360 px ve 430 px viewport testleri
-- [ ] Güncel ekran görüntülerini yeniden üretme
+- [x] Güncel ekran görüntülerini yeniden üretme
 - [ ] Özel ve platformlar arası doğrulanmış Arapça fontu
-- [ ] Repository hata testleri
+- [x] Repository hata testleri
 - [ ] Çok fiilli katalog ve fiil seçici
 - [ ] Yeni generated bab profilleri
 - [ ] Kalıcı skor ve tekrar geçmişi

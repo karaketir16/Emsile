@@ -4,7 +4,6 @@ import 'models.dart';
 class PracticeQuestionGenerator {
   const PracticeQuestionGenerator._();
 
-  /// Rastgele tek bir soru üretir (Runtime için).
   static PracticeQuestion generateSingleQuestion(
     List<ConjugationForm> forms, [
     Random? randomOverride,
@@ -14,71 +13,46 @@ class PracticeQuestionGenerator {
     }
 
     final random = randomOverride ?? Random();
-    // Rastgele bir form seçelim
     final form = forms[random.nextInt(forms.length)];
+    final direction = _QuestionDirection.values[random.nextInt(2)];
+    return _buildQuestion(form, forms, direction, random);
+  }
 
-    // Şıklarda iki doğru cevap çakışmaması (homonimlerin elenmesi) için:
-    // Yanlış şık adaylarının Arapça yazımı bu formla birebir aynı olmamalıdır!
-    final siblings = forms
-        .where((candidate) => candidate.arabic != form.arabic)
-        .toList();
-    siblings.shuffle(random);
+  static List<PracticeQuestion> fromForms(List<ConjugationForm> forms) {
+    final random = Random();
+    return [
+      for (final form in forms)
+        _buildQuestion(form, forms, _QuestionDirection.arabicToMeaning, random),
+    ];
+  }
 
-    // 2 farklı soru tipinden birini rastgele seçelim:
-    // 0: Arapçadan Türkçeye anlam sorusu
-    // 1: Türkçeden Arapçaya form sorusu
-    final questionType = random.nextInt(2);
+  static PracticeQuestion _buildQuestion(
+    ConjugationForm form,
+    List<ConjugationForm> forms,
+    _QuestionDirection direction,
+    Random random,
+  ) {
+    final distractors =
+        forms.where((candidate) => candidate.arabic != form.arabic).toList()
+          ..shuffle(random);
 
-    if (questionType == 0) {
-      // Arapçadan Türkçeye Anlam Sorusu
+    if (direction == _QuestionDirection.arabicToMeaning) {
       return PracticeQuestion(
         prompt: 'Bu sîganın anlamı hangisi?',
         arabic: form.arabic,
-        options: _buildMeaningOptions(form, siblings, random),
+        options: _buildMeaningOptions(form, distractors, random),
         answer: form.meaning,
-        explanation: form.category.isNoun
-            ? '${form.arabic} ${form.category.label} ${form.pronounLabel.toLowerCase()} formudur.'
-            : '${form.arabic} ${form.category.label} ${form.voice.label} ${form.pronounLabel.toLowerCase()} formudur.',
-      );
-    } else {
-      // Türkçeden Arapçaya Soru
-      return PracticeQuestion(
-        prompt: 'Hangisi bu anlama gelir: "${form.meaning}"?',
-        arabic: '؟', // Ekrandaki büyük Arapça alanı için soru işareti
-        options: _buildArabicOptions(form, siblings, random),
-        answer: form.arabic,
-        explanation:
-            '"${form.meaning}" ifadesinin Arapça karşılığı ${form.arabic}.',
+        explanation: '${form.arabic} ${form.rule}',
       );
     }
-  }
-
-  /// Geriye dönük uyumluluk ve testler için toplu soru üreteci.
-  static List<PracticeQuestion> fromForms(List<ConjugationForm> forms) {
-    final questions = <PracticeQuestion>[];
-    final random = Random();
-
-    for (final form in forms) {
-      // Çakışmayı önlemek için yine aynı Arapça yazılımları eliyoruz
-      final siblings = forms
-          .where((candidate) => candidate.arabic != form.arabic)
-          .toList();
-      siblings.shuffle(random);
-
-      questions.add(
-        PracticeQuestion(
-          prompt: 'Bu sîganın anlamı hangisi?',
-          arabic: form.arabic,
-          options: _buildMeaningOptions(form, siblings, random),
-          answer: form.meaning,
-          explanation: form.category.isNoun
-              ? '${form.arabic} ${form.category.label} ${form.pronounLabel.toLowerCase()} formudur.'
-              : '${form.arabic} ${form.category.label} ${form.voice.label} ${form.pronounLabel.toLowerCase()} formudur.',
-        ),
-      );
-    }
-
-    return questions;
+    return PracticeQuestion(
+      prompt: 'Hangisi bu anlama gelir: "${form.meaning}"?',
+      arabic: '؟',
+      options: _buildArabicOptions(form, distractors, random),
+      answer: form.arabic,
+      explanation:
+          '"${form.meaning}" ifadesinin Arapça karşılığı ${form.arabic}.',
+    );
   }
 
   static List<String> _buildMeaningOptions(
@@ -121,3 +95,5 @@ class PracticeQuestionGenerator {
     return options;
   }
 }
+
+enum _QuestionDirection { arabicToMeaning, meaningToArabic }

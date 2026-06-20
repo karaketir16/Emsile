@@ -19,7 +19,7 @@ npm run visual-check
 
 ## 2. Otomatik Test Kapsamı
 
-Mevcut test paketi `44` test içerir.
+Mevcut test paketi `48` test içerir.
 
 ### Veri ve Üretici Testleri
 
@@ -38,6 +38,12 @@ Mevcut test paketi `44` test içerir.
 - Runtime sorularında yalnız iki soru yönünün kullanılması
 - Şıkların benzersiz ve en fazla beş adet olması
 - Aynı Arapça yazılışın distractor olarak tekrarlanmaması
+
+`test/data/emsile_repository_test.dart`
+
+- Enjekte edilen asset bundle ile katalog + fiil composition
+- Generated fiil verisinin repository üzerinden 339 forma dönüşmesi
+- Varsayılan fiil manifesti bulunamadığında hata üretimi
 
 ### Widget Testleri
 
@@ -123,7 +129,7 @@ Bu görüntüler güncel UI'nin garantisi değildir; büyük görsel değişikli
 ## 6. Eksik Testler
 
 - Bütün token'lar yanlış yerleştiğinde `Tekrar bak` kartı testi
-- Repository hata senaryoları
+- Ayrıntılı JSON alan/parse hata mesajları
 - 360 px ve 430 px viewport testleri
 - Erişilebilirlik/semantics testi
 

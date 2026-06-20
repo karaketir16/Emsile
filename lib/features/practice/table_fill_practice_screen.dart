@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:emsile_flutter/data/models.dart';
-import 'package:emsile_flutter/features/conjugation/conjugation_screen.dart';
+import 'package:emsile_flutter/domain/conjugation/form_selection.dart';
 import 'package:emsile_flutter/shared/widgets/app_page.dart';
 import 'package:emsile_flutter/shared/widgets/arabic_text.dart';
 import 'package:flutter/material.dart';
@@ -128,14 +128,7 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
   }
 
   PronounEntry? _pronounFor(FormSelection selection) {
-    for (final pronoun in _pronouns) {
-      if (pronoun.person == selection.person &&
-          pronoun.number == selection.number &&
-          pronoun.gender == selection.gender) {
-        return pronoun;
-      }
-    }
-    return null;
+    return findPronoun(_pronouns, selection);
   }
 
   void _drop(_FormToken token, FormSelection slot) {
@@ -183,20 +176,7 @@ class _TableFillPracticeScreenState extends State<TableFillPracticeScreen> {
   }
 
   ConjugationForm? _formFor(FormSelection selection) {
-    for (final form in _forms) {
-      if (selection.matches(form)) return form;
-    }
-    if (selection.person == FormPerson.first &&
-        selection.number == FormNumber.dual) {
-      for (final form in _forms) {
-        if (form.person == FormPerson.first &&
-            form.number == FormNumber.plural &&
-            form.gender == selection.gender) {
-          return form;
-        }
-      }
-    }
-    return null;
+    return findConjugationForm(_forms, selection);
   }
 
   @override
@@ -572,19 +552,7 @@ class _FillTable extends StatelessWidget {
   final ValueChanged<FormSelection> onWrongDragStarted;
 
   ConjugationForm? _find(FormSelection slot) {
-    for (final form in forms) {
-      if (slot.matches(form)) return form;
-    }
-    if (slot.person == FormPerson.first && slot.number == FormNumber.dual) {
-      for (final form in forms) {
-        if (form.person == FormPerson.first &&
-            form.number == FormNumber.plural &&
-            form.gender == slot.gender) {
-          return form;
-        }
-      }
-    }
-    return null;
+    return findConjugationForm(forms, slot);
   }
 
   @override
@@ -606,14 +574,14 @@ class _FillTable extends StatelessWidget {
               children: [
                 TableRow(
                   children: [
-                    for (final column in pdfColumns)
+                    for (final column in conjugationColumns)
                       _TableLabel(text: column.label),
                     const _TableLabel(text: ''),
                   ],
                 ),
               ],
             ),
-            for (final row in pdfRows)
+            for (final row in conjugationRows)
               if (row.person == FormPerson.first)
                 Table(
                   border: TableBorder.all(color: const Color(0xFFD8D1C1)),
@@ -664,7 +632,7 @@ class _FillTable extends StatelessWidget {
                   children: [
                     TableRow(
                       children: [
-                        for (final column in pdfColumns)
+                        for (final column in conjugationColumns)
                           _DropCell(
                             slot: row.selectionFor(column.number),
                             expected: _find(row.selectionFor(column.number)),
@@ -703,14 +671,7 @@ class _PronounFillTable extends StatelessWidget {
   final ValueChanged<FormSelection> onWrongDragStarted;
 
   PronounEntry? _find(FormSelection slot) {
-    for (final pronoun in pronouns) {
-      if (pronoun.person == slot.person &&
-          pronoun.number == slot.number &&
-          pronoun.gender == slot.gender) {
-        return pronoun;
-      }
-    }
-    return null;
+    return findPronoun(pronouns, slot);
   }
 
   @override
@@ -740,7 +701,7 @@ class _PronounFillTable extends StatelessWidget {
                 ),
               ],
             ),
-            for (final row in pdfRows)
+            for (final row in conjugationRows)
               if (row.person == FormPerson.first)
                 Table(
                   border: TableBorder.all(color: const Color(0xFFD8D1C1)),
@@ -791,7 +752,7 @@ class _PronounFillTable extends StatelessWidget {
                   children: [
                     TableRow(
                       children: [
-                        for (final column in pdfColumns)
+                        for (final column in conjugationColumns)
                           _PronounDropCell(
                             slot: row.selectionFor(column.number),
                             expected: _find(row.selectionFor(column.number)),

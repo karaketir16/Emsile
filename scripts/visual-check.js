@@ -4,6 +4,12 @@ const { chromium } = require('playwright');
 
 const baseUrl = process.env.EMSILE_URL || 'http://127.0.0.1:8090';
 const outputDir = path.join(__dirname, '..', 'docs', 'screenshots');
+const navigationBarY = 806;
+
+async function tap(page, x, y, wait = 700) {
+  await page.touchscreen.tap(x, y);
+  await page.waitForTimeout(wait);
+}
 
 async function main() {
   fs.mkdirSync(outputDir, { recursive: true });
@@ -33,28 +39,23 @@ async function main() {
     fullPage: true,
   });
 
-  await page.touchscreen.tap(195, 796);
-  await page.waitForTimeout(900);
-  await page.touchscreen.tap(165, 148);
-  await page.waitForTimeout(900);
+  await tap(page, 195, navigationBarY);
+  await tap(page, 165, 154);
   await page.screenshot({
     path: path.join(outputDir, '02-table-mobile.png'),
     fullPage: true,
   });
 
-  await page.touchscreen.tap(285, 74);
-  await page.waitForTimeout(900);
-  await page.touchscreen.tap(280, 112);
-  await page.waitForTimeout(900);
+  await tap(page, 28, 28);
+  await tap(page, 165, 230);
   await page.screenshot({
     path: path.join(outputDir, '04-pronouns-mobile.png'),
     fullPage: true,
   });
 
-  await page.touchscreen.tap(275, 796);
-  await page.waitForTimeout(900);
-  await page.touchscreen.tap(120, 306);
-  await page.waitForTimeout(900);
+  await tap(page, 28, 28);
+  await tap(page, 275, navigationBarY);
+  await tap(page, 150, 285);
   await page.screenshot({
     path: path.join(outputDir, '03-practice-mobile.png'),
     fullPage: true,

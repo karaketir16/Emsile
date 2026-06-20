@@ -36,6 +36,54 @@ class LessonsScreen extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 10),
+          _MainLessonTile(
+            title: 'Şahıs Zamirleri',
+            subtitle: 'Ayrı ve bitişik zamirlerin çekim tablosu',
+            icon: Icons.badge_outlined,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => _PronounsLessonScreen(pronouns: data.pronouns),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _PronounsLessonScreen extends StatefulWidget {
+  const _PronounsLessonScreen({required this.pronouns});
+
+  final List<PronounEntry> pronouns;
+
+  @override
+  State<_PronounsLessonScreen> createState() => _PronounsLessonScreenState();
+}
+
+class _PronounsLessonScreenState extends State<_PronounsLessonScreen> {
+  PronounKind _kind = PronounKind.independent;
+
+  @override
+  Widget build(BuildContext context) {
+    return _LessonScaffold(
+      title: 'Şahıs Zamirleri',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InfoPanel(
+            title: 'Zamirler',
+            body: _kind == PronounKind.independent
+                ? 'Ayrı zamirler tek başına kullanılabilir ve fiilin hangi şahsa ait olduğunu gösterir.'
+                : 'Bitişik zamirler kelimenin sonuna eklenir; yerine göre iyelik veya mef‘ûl anlamı taşır.',
+          ),
+          const SizedBox(height: 16),
+          PronounsPanel(
+            pronouns: widget.pronouns,
+            selectedKind: _kind,
+            onKindChanged: (kind) => setState(() => _kind = kind),
+          ),
         ],
       ),
     );

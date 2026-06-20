@@ -39,6 +39,22 @@ async function main() {
     fullPage: true,
   });
 
+  // 2. Dersler Ekranı
+  await tap(page, 117, navigationBarY);
+  await page.screenshot({
+    path: path.join(outputDir, '05-lessons-mobile.png'),
+    fullPage: true,
+  });
+
+  // 3. Ders Detay Ekranı
+  await tap(page, 165, 154);
+  await page.screenshot({
+    path: path.join(outputDir, '06-lesson-detail-mobile.png'),
+    fullPage: true,
+  });
+  await tap(page, 28, 28); // Geri dön
+
+  // 4. Tablo Ekranı
   await tap(page, 195, navigationBarY);
   await tap(page, 165, 154);
   await page.screenshot({
@@ -46,18 +62,50 @@ async function main() {
     fullPage: true,
   });
 
-  await tap(page, 28, 28);
+  // 5. Zamirler Ekranı
+  await tap(page, 28, 28); // Geri dön
   await tap(page, 165, 230);
   await page.screenshot({
     path: path.join(outputDir, '04-pronouns-mobile.png'),
     fullPage: true,
   });
+  await tap(page, 28, 28); // Geri dön
 
-  await tap(page, 28, 28);
+  // 6. Pratik Ekranı
   await tap(page, 275, navigationBarY);
-  await tap(page, 150, 285);
+  await page.screenshot({
+    path: path.join(outputDir, '07-practice-modes-mobile.png'),
+    fullPage: true,
+  });
+
+  // 7. Eşleştirme Alıştırması
+  await tap(page, 165, 154);
+  await page.screenshot({
+    path: path.join(outputDir, '08-matching-practice-mobile.png'),
+    fullPage: true,
+  });
+  await tap(page, 28, 28); // Geri dön
+
+  // 8. Çoktan Seçmeli
+  await tap(page, 165, 285);
   await page.screenshot({
     path: path.join(outputDir, '03-practice-mobile.png'),
+    fullPage: true,
+  });
+  await tap(page, 28, 28); // Geri dön
+
+  // 9. Tabloyu Doldur
+  await tap(page, 165, 415);
+  await page.screenshot({
+    path: path.join(outputDir, '09-table-fill-practice-mobile.png'),
+    fullPage: true,
+  });
+  await tap(page, 28, 28); // Geri dön
+
+  // 10. Hakkında Ekranı
+  await tap(page, 351, navigationBarY);
+  await page.screenshot({
+    path: path.join(outputDir, '10-about-mobile.png'),
     fullPage: true,
   });
 

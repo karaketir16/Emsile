@@ -1,5 +1,6 @@
 import 'package:emsile_flutter/data/models.dart';
 import 'package:emsile_flutter/features/conjugation/conjugation_screen.dart';
+import 'package:emsile_flutter/features/practice/matching_practice_screen.dart';
 import 'package:emsile_flutter/shared/widgets/app_page.dart';
 import 'package:emsile_flutter/shared/widgets/info_panel.dart';
 import 'package:flutter/material.dart';
@@ -131,9 +132,26 @@ class _MuhtelifeLessonScreen extends StatelessWidget {
                 'Aynı kökten türeyen, kalıp ve anlam bakımından birbirinden farklı kelime çeşitlerini gösterir.',
           ),
           const SizedBox(height: 18),
-          Text(
-            'Muhtelife Tablosu',
-            style: Theme.of(context).textTheme.titleLarge,
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Muhtelife Tablosu',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              TextButton.icon(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => MatchingPracticeScreen(data: data),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.compare_arrows_outlined),
+                label: const Text('Pratik Yap'),
+              ),
+            ],
           ),
           const SizedBox(height: 10),
           for (var index = 0; index < entries.length; index++) ...[

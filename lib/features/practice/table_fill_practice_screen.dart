@@ -523,7 +523,7 @@ class _DropCell extends StatelessWidget {
         } else if (isPlacedWrong || isWrong) {
           color = const Color(0xFFFFDCDC);
         } else if (candidates.isNotEmpty) {
-          color = Theme.of(context).colorScheme.primaryContainer;
+          color = const Color(0xFFE2E7EA);
         } else {
           color = Colors.white;
         }

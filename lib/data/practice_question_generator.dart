@@ -32,7 +32,7 @@ class PracticeQuestionGenerator {
     if (questionType == 0) {
       // Arapçadan Türkçeye Anlam Sorusu
       return PracticeQuestion(
-        prompt: 'Bu formun anlamı hangisi?',
+        prompt: 'Bu sîganın anlamı hangisi?',
         arabic: form.arabic,
         options: _buildMeaningOptions(form, siblings, random),
         answer: form.meaning,
@@ -47,7 +47,8 @@ class PracticeQuestionGenerator {
         arabic: '؟', // Ekrandaki büyük Arapça alanı için soru işareti
         options: _buildArabicOptions(form, siblings, random),
         answer: form.arabic,
-        explanation: '"${form.meaning}" anlamı ${form.arabic} formuna aittir.',
+        explanation:
+            '"${form.meaning}" ifadesinin Arapça karşılığı ${form.arabic}.',
       );
     }
   }
@@ -66,7 +67,7 @@ class PracticeQuestionGenerator {
 
       questions.add(
         PracticeQuestion(
-          prompt: 'Bu formun anlamı hangisi?',
+          prompt: 'Bu sîganın anlamı hangisi?',
           arabic: form.arabic,
           options: _buildMeaningOptions(form, siblings, random),
           answer: form.meaning,

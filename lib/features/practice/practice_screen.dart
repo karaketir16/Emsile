@@ -4,7 +4,6 @@ import 'package:emsile_flutter/data/practice_question_generator.dart';
 import 'package:emsile_flutter/features/practice/table_fill_practice_screen.dart';
 import 'package:emsile_flutter/shared/widgets/app_page.dart';
 import 'package:emsile_flutter/shared/widgets/arabic_text.dart';
-import 'package:emsile_flutter/shared/widgets/info_panel.dart';
 import 'package:flutter/material.dart';
 
 class PracticeScreen extends StatelessWidget {
@@ -494,52 +493,22 @@ class _MultipleChoicePracticeScreenState
               });
             },
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: FormCategory.values.map((category) {
-              final isSelected = _selectedCategories.contains(category);
-              return InkWell(
-                onTap: () {
-                  setState(() {
-                    if (isSelected) {
-                      _selectedCategories.remove(category);
-                    } else {
-                      _selectedCategories.add(category);
-                    }
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        height: 24,
-                        width: 24,
-                        child: Checkbox(
-                          value: isSelected,
-                          onChanged: (selected) {
-                            setState(() {
-                              if (selected == true) {
-                                _selectedCategories.add(category);
-                              } else {
-                                _selectedCategories.remove(category);
-                              }
-                            });
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          category.label,
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              const spacing = 8.0;
+              final itemWidth = (constraints.maxWidth - spacing) / 2;
+              return Wrap(
+                spacing: spacing,
+                runSpacing: spacing,
+                children: [
+                  for (final category in FormCategory.values)
+                    SizedBox(
+                      width: itemWidth,
+                      child: _buildCategoryOption(category),
+                    ),
+                ],
               );
-            }).toList(),
+            },
           ),
           const SizedBox(height: 20),
 
@@ -823,6 +792,50 @@ class _MultipleChoicePracticeScreenState
     );
   }
 
+  Widget _buildCategoryOption(FormCategory category) {
+    final isSelected = _selectedCategories.contains(category);
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return InkWell(
+      onTap: () {
+        setState(() {
+          if (isSelected) {
+            _selectedCategories.remove(category);
+          } else {
+            _selectedCategories.add(category);
+          }
+        });
+      },
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? colorScheme.primaryContainer.withValues(alpha: 0.55)
+              : Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: isSelected ? colorScheme.primary : const Color(0xFFD8D1C1),
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              isSelected ? Icons.check_box : Icons.check_box_outline_blank,
+              size: 20,
+              color: isSelected ? colorScheme.primary : colorScheme.outline,
+            ),
+            const SizedBox(width: 6),
+            Flexible(
+              child: Text(category.label, style: const TextStyle(fontSize: 12)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_setupMode) {
@@ -839,29 +852,19 @@ class _MultipleChoicePracticeScreenState
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Soru Havuzu: ${_matchingForms.length} Form',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
-                  color: Colors.grey,
-                ),
-              ),
-              IconButton.filledTonal(
-                onPressed: () {
-                  setState(() {
-                    _setupMode = true;
-                  });
-                },
-                icon: const Icon(Icons.settings),
-                tooltip: 'Ayarları Değiştir',
-                constraints: const BoxConstraints(),
-                padding: const EdgeInsets.all(8),
-              ),
-            ],
+          Align(
+            alignment: Alignment.centerRight,
+            child: IconButton.filledTonal(
+              onPressed: () {
+                setState(() {
+                  _setupMode = true;
+                });
+              },
+              icon: const Icon(Icons.settings),
+              tooltip: 'Ayarları Değiştir',
+              constraints: const BoxConstraints(),
+              padding: const EdgeInsets.all(8),
+            ),
           ),
           const SizedBox(height: 10),
           Card(
@@ -895,7 +898,10 @@ class _MultipleChoicePracticeScreenState
             AnswerButton(
               text: option,
               isSelected: _selectedAnswer == option,
-              isCorrect: isAnswered && option == question.answer,
+              isCorrect:
+                  isAnswered &&
+                  _selectedAnswer == option &&
+                  option == question.answer,
               isWrong:
                   isAnswered &&
                   _selectedAnswer == option &&
@@ -906,12 +912,7 @@ class _MultipleChoicePracticeScreenState
           ],
           if (isAnswered) ...[
             const SizedBox(height: 10),
-            InfoPanel(
-              title: isCorrect ? 'Doğru' : 'Tekrar Bak',
-              body: isCorrect
-                  ? question.explanation
-                  : 'Doğru cevap: ${question.answer}. ${question.explanation}',
-            ),
+            _AnswerFeedback(isCorrect: isCorrect),
             const SizedBox(height: 16),
             FilledButton.icon(
               onPressed: () {
@@ -923,6 +924,55 @@ class _MultipleChoicePracticeScreenState
               label: const Text('Sonraki Soru'),
             ),
           ],
+        ],
+      ),
+    );
+  }
+}
+
+class _AnswerFeedback extends StatelessWidget {
+  const _AnswerFeedback({required this.isCorrect});
+
+  final bool isCorrect;
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = isCorrect
+        ? const Color(0xFF2F7D46)
+        : const Color(0xFFB43C3C);
+    final background = isCorrect
+        ? const Color(0xFFE8F5EC)
+        : const Color(0xFFFFECEC);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: background,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: accent.withValues(alpha: 0.35)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(
+                isCorrect ? Icons.check_circle : Icons.cancel,
+                color: accent,
+                size: 22,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                isCorrect ? 'Doğru' : 'Tekrar Bak',
+                style: TextStyle(
+                  color: accent,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -984,9 +1034,22 @@ class AnswerButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: borderColor),
         ),
-        child: Text(
-          text,
-          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            if (isCorrect)
+              const Icon(Icons.check_circle, color: Color(0xFF2F7D46))
+            else if (isWrong)
+              const Icon(Icons.cancel, color: Color(0xFFB43C3C)),
+          ],
         ),
       ),
     );

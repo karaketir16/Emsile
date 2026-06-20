@@ -11,7 +11,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppPage(
       title: 'Emsile',
-      subtitle: 'Arapça sarf kalıplarını öğrenme ve tekrar uygulaması',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

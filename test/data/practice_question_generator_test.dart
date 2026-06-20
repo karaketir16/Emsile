@@ -12,7 +12,7 @@ void main() {
 
       final meaningQuestion = questions.firstWhere(
         (question) =>
-            question.prompt == 'Bu formun anlamı hangisi?' &&
+            question.prompt == 'Bu sîganın anlamı hangisi?' &&
             question.arabic == 'نَصَرَ',
       );
       expect(meaningQuestion.answer, 'O erkek yardım etti.');

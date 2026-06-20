@@ -412,19 +412,19 @@ String _categoryDescription(FormCategory category) {
     case FormCategory.ismMeful:
       return 'Eylemden etkilenen edilgen nesneyi bildiren isim kalıbı';
     case FormCategory.cahdMutlak:
-      return 'Geçmiş zamanda kesin olumsuzluk çekimi (lem ile)';
+      return 'Geçmiş zamanda kesin olumsuzluk çekimi';
     case FormCategory.cahdMustagrak:
-      return 'Konuşma anına kadar süren olumsuzluk çekimi (lemmâ ile)';
+      return 'Konuşma anına kadar süren olumsuzluk çekimi';
     case FormCategory.nefyHal:
-      return 'Şimdiki zamanın olumsuz çekimi (mâ ile)';
+      return 'Şimdiki zamanın olumsuz çekimi';
     case FormCategory.nefyIstikbal:
-      return 'Gelecek zamanın olumsuz çekimi (lâ ile)';
+      return 'Gelecek zamanın olumsuz çekimi';
     case FormCategory.tekidNefyIstikbal:
-      return 'Gelecek zamanın kesin olumsuzluk çekimi (len ile)';
+      return 'Gelecek zamanın kesin olumsuzluk çekimi';
     case FormCategory.emrGaib:
-      return 'Üçüncü şahıslara yapılan emir çekimi (li ile)';
+      return 'Üçüncü şahıslara yapılan emir çekimi';
     case FormCategory.nehyGaib:
-      return 'Üçüncü şahıslara yapılan yasaklama çekimi (lâ ile)';
+      return 'Üçüncü şahıslara yapılan yasaklama çekimi';
     case FormCategory.emrHazir:
       return 'Karşımızdaki muhataba doğrudan yapılan emir çekimi';
     case FormCategory.nehyHazir:

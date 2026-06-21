@@ -192,7 +192,7 @@ class _MuttarideLessonScreen extends StatelessWidget {
           InfoPanel(
             title: 'Emsile-i Muttaride',
             body:
-                'Bir kalıbın şahıs, sayı ve cinsiyete göre düzenli biçimde çekilmesini gösterir. Bu nedenle şahıs zamirlerinin bilinmesi gerekir.',
+                'Bir kalıbın şahıs, sayı ve cinsiyete göre düzenli biçimde çekilmesini gösterir.',
           ),
           const SizedBox(height: 18),
           Text(

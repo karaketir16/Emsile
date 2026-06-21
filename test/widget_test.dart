@@ -207,6 +207,40 @@ void main() {
     expect(find.textContaining('önceki harekeli harfler'), findsOneWidget);
   });
 
+  testWidgets('muttaride lesson advances to the next category', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: LessonDetailScreen(
+          lesson: Lesson(
+            order: 2,
+            title: 'Fiil-i Mâzi',
+            summary: '',
+            rule: '',
+            relatedCategory: FormCategory.mazi,
+          ),
+          data: testData,
+        ),
+      ),
+    );
+
+    expect(find.text('Önceki'), findsNothing);
+    await tester.tap(find.text('Sonraki'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Fiil-i Muzâri'), findsWidgets);
+    expect(find.text('Önceki'), findsOneWidget);
+
+    await tester.tap(find.text('Önceki'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Fiil-i Mâzi'), findsWidgets);
+  });
+
   testWidgets('selected index 4 renders source screen', (
     WidgetTester tester,
   ) async {

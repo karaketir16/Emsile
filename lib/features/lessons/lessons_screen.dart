@@ -236,6 +236,16 @@ class _MuttarideDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final available = FormCategory.values
+        .where(
+          (candidate) => data.forms.any((form) => form.category == candidate),
+        )
+        .toList();
+    final index = available.indexOf(category);
+    final previousCategory = index > 0 ? available[index - 1] : null;
+    final nextCategory = index >= 0 && index < available.length - 1
+        ? available[index + 1]
+        : null;
     final forms = data.forms
         .where((form) => form.category == category)
         .toList();
@@ -260,6 +270,33 @@ class _MuttarideDetailScreen extends StatelessWidget {
 
     return _LessonScaffold(
       title: category.label,
+      trailing: previousCategory == null && nextCategory == null
+          ? null
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (previousCategory != null)
+                  TextButton(
+                    onPressed: () =>
+                        _replaceMuttarideLesson(context, previousCategory),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      minimumSize: const Size(0, 40),
+                    ),
+                    child: const Text('Önceki'),
+                  ),
+                if (nextCategory != null)
+                  TextButton(
+                    onPressed: () =>
+                        _replaceMuttarideLesson(context, nextCategory),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      minimumSize: const Size(0, 40),
+                    ),
+                    child: const Text('Sonraki'),
+                  ),
+              ],
+            ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -301,6 +338,15 @@ class _MuttarideDetailScreen extends StatelessWidget {
             const SizedBox(height: 20),
           ],
         ],
+      ),
+    );
+  }
+
+  void _replaceMuttarideLesson(BuildContext context, FormCategory destination) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (_) =>
+            _MuttarideDetailScreen(data: data, category: destination),
       ),
     );
   }
@@ -407,10 +453,15 @@ class _MainLessonTile extends StatelessWidget {
 }
 
 class _LessonScaffold extends StatelessWidget {
-  const _LessonScaffold({required this.title, required this.child});
+  const _LessonScaffold({
+    required this.title,
+    required this.child,
+    this.trailing,
+  });
 
   final String title;
   final Widget child;
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -418,6 +469,7 @@ class _LessonScaffold extends StatelessWidget {
       body: SafeArea(
         child: AppPage(
           title: title,
+          trailing: trailing,
           leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(Icons.arrow_back),

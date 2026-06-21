@@ -6,6 +6,7 @@ class AppPage extends StatelessWidget {
     this.subtitle,
     required this.child,
     this.leading,
+    this.trailing,
     this.scrollable = true,
     super.key,
   });
@@ -14,6 +15,7 @@ class AppPage extends StatelessWidget {
   final String? subtitle;
   final Widget child;
   final Widget? leading;
+  final Widget? trailing;
   final bool scrollable;
 
   @override
@@ -44,6 +46,7 @@ class AppPage extends StatelessWidget {
               ],
             ),
           ),
+          if (trailing != null) ...[const SizedBox(width: 8), trailing!],
         ],
       ),
     );

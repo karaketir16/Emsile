@@ -75,4 +75,7 @@ npm run visual-check
 - [Geliştirme checklist'i](docs/checklist.md)
 - [Ölçeklenme planı](docs/scaling-plan.md)
 
-Uygulama hazırlanırken Zafer ESEN tarafından hazırlanan Emsile Ders Notu'ndan faydalanılmıştır.
+## Atıf
+
+İçerik hazırlanırken Zafer ESEN'in Emsile Ders Notu'ndan faydalanılmıştır:
+[Arapça Diyarı](https://arapcadiyari.blogspot.com)

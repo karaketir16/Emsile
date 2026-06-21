@@ -219,6 +219,11 @@ void main() {
     notifier.value = 4; // Hakkında
     await tester.pumpAndSettle();
 
+    expect(
+      tester.getTopLeft(find.text('Geliştirici')).dy,
+      lessThan(tester.getTopLeft(find.text('Atıf')).dy),
+    );
+    expect(find.textContaining('github.com/karaketir16'), findsOneWidget);
     expect(find.textContaining('arapcadiyari.blogspot.com'), findsOneWidget);
   });
 

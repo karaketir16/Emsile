@@ -14,7 +14,7 @@ class SourceScreen extends StatelessWidget {
           Card(
             child: InkWell(
               onTap: () async {
-                final url = Uri.parse('https://arapcadiyari.blogspot.com');
+                final url = Uri.parse('https://github.com/karaketir16');
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url, mode: LaunchMode.externalApplication);
                 }
@@ -27,10 +27,10 @@ class SourceScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.link, color: Colors.blue),
+                        Icon(Icons.code, color: Colors.blue),
                         SizedBox(width: 8),
                         Text(
-                          'Hakkında',
+                          'Geliştirici',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -40,12 +40,12 @@ class SourceScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 12),
                     Text(
-                      'Zafer ESEN tarafından hazırlanan Emsile Ders Notu’ndan faydalanılmıştır.',
+                      'Bu uygulama Osman Karaketir tarafından geliştirilmiştir.',
                       style: TextStyle(fontSize: 14),
                     ),
                     SizedBox(height: 12),
                     Text(
-                      'https://arapcadiyari.blogspot.com',
+                      'github.com/karaketir16',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.blue,
@@ -61,7 +61,7 @@ class SourceScreen extends StatelessWidget {
           Card(
             child: InkWell(
               onTap: () async {
-                final url = Uri.parse('https://github.com/karaketir16');
+                final url = Uri.parse('https://arapcadiyari.blogspot.com');
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url, mode: LaunchMode.externalApplication);
                 }
@@ -69,31 +69,36 @@ class SourceScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               child: const Padding(
                 padding: EdgeInsets.all(16),
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.code, color: Colors.blue),
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Bu uygulama Osman Karaketir tarafından geliştirilmiştir.',
-                            style: TextStyle(fontSize: 14),
+                    Row(
+                      children: [
+                        Icon(Icons.menu_book_outlined, color: Colors.blue),
+                        SizedBox(width: 8),
+                        Text(
+                          'Atıf',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
-                          SizedBox(height: 8),
-                          Text(
-                            'github.com/karaketir16',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 12),
+                    Text(
+                      'İçerik hazırlanırken Zafer ESEN tarafından hazırlanan Emsile Ders Notu’ndan faydalanılmıştır.',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    SizedBox(height: 12),
+                    Text(
+                      'https://arapcadiyari.blogspot.com',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
                       ),
                     ),
-                    Icon(Icons.open_in_new, size: 18),
                   ],
                 ),
               ),

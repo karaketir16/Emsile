@@ -181,6 +181,32 @@ void main() {
     expect(find.text('Yardım eden.'), findsOneWidget);
   });
 
+  testWidgets('lesson detail includes PDF conjugation rules', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: LessonDetailScreen(
+          lesson: Lesson(
+            order: 2,
+            title: 'Fiil-i Mâzi',
+            summary: '',
+            rule: '',
+            relatedCategory: FormCategory.mazi,
+          ),
+          data: testData,
+        ),
+      ),
+    );
+
+    expect(find.text('Meçhulün Yapılışı'), findsOneWidget);
+    expect(find.textContaining('Cezimli harflerin'), findsOneWidget);
+    expect(find.textContaining('önceki harekeli harfler'), findsOneWidget);
+  });
+
   testWidgets('selected index 4 renders source screen', (
     WidgetTester tester,
   ) async {

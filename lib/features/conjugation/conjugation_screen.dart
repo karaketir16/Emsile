@@ -126,6 +126,10 @@ class _ConjugationsPageState extends State<_ConjugationsPage> {
         (_category.isNoun || form.voice == _voice);
   }).toList();
 
+  bool _hasMechul(FormCategory category) => widget.data.forms.any(
+    (form) => form.category == category && form.voice == Voice.mechul,
+  );
+
   void _update({
     FormCategory? category,
     Voice? voice,
@@ -134,6 +138,8 @@ class _ConjugationsPageState extends State<_ConjugationsPage> {
     setState(() {
       _category = category ?? _category;
       _voice = voice ?? _voice;
+      if (!_hasMechul(_category)) _voice = Voice.malum;
+
       var candidate = selectedForm ?? _selection;
       if (category != null || voice != null) {
         candidate = FormSelection(
@@ -142,8 +148,13 @@ class _ConjugationsPageState extends State<_ConjugationsPage> {
           gender: candidate.gender,
         );
       }
-      final match = findConjugationForm(_forms, candidate);
-      _selection = match == null ? candidate : FormSelection.fromForm(match);
+      final forms = _forms;
+      final match = findConjugationForm(forms, candidate);
+      _selection = match != null
+          ? FormSelection.fromForm(match)
+          : forms.isNotEmpty
+          ? FormSelection.fromForm(forms.first)
+          : candidate;
     });
   }
 
@@ -167,7 +178,10 @@ class _ConjugationsPageState extends State<_ConjugationsPage> {
                     ArabicResultCard(form: active),
                     const SizedBox(height: 10),
                     if (_category.isVerb) ...[
-                      _VoiceSelector(value: _voice, onChanged: _update),
+                      if (_hasMechul(_category))
+                        _VoiceSelector(value: _voice, onChanged: _update)
+                      else
+                        const Text('Malûmdan olup meçhulleri gelmez.'),
                       const SizedBox(height: 16),
                     ],
                     Expanded(

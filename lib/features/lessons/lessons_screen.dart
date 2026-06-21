@@ -273,6 +273,15 @@ class _MuttarideDetailScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 10),
+            if (_voiceExplanation(category, voice) case final explanation?) ...[
+              InfoPanel(
+                title: voice == Voice.mechul
+                    ? 'Meçhulün Yapılışı'
+                    : 'Malûm Çekim Notu',
+                body: explanation,
+              ),
+              const SizedBox(height: 10),
+            ],
             if (category.isNoun)
               NounFormsTable(
                 forms: forms,
@@ -485,41 +494,150 @@ String _categoryDescription(FormCategory category) {
 String _categoryExplanation(FormCategory category) {
   switch (category) {
     case FormCategory.mazi:
-      return 'Fiil-i Mâzi geçmişte gerçekleşen işi bildirir. Meçhul çekimde sondan bir önceki harf kesralı, ondan önceki harekeli harfler dammeli okunur.';
+      return 'Fiil-i Mâzi geçmişte gerçekleşen işi bildirir.';
     case FormCategory.muzari:
-      return 'Fiil-i Muzâri, mâzi fiilin başına şahsa göre أ، ت، ي، ن muzaraat harflerinden biri getirilerek yapılır. Meçhulünde sondan bir önceki harf fethalı, muzaraat harfi dammeli olur.';
+      return 'Fiil-i Muzâri, mâzi fiilin başına şahsa göre أ، ت، ي، ن harflerinden biri getirilerek yapılır. Bunlara muzaraat harfleri denir.';
+    case FormCategory.masdar:
+      return 'Masdar-ı Gayr-ı Mîmî, fiilin şahıs ve zamana bağlı olmayan isim hâlidir. Tekil, ikil ve çoğul biçimleri bulunur.';
+    case FormCategory.ismFail:
+      return 'İsm-i Fâil, işi yapanı bildirir.'
+          '\n\n• Semâî olarak kullanılan on kuralsız kırık çoğul kalıbı vardır.'
+          '\n• Tabloda bu kırık çoğulların yalnız kullanılan örnekleri gösterilir.';
+    case FormCategory.ismMeful:
+      return 'İsm-i Mef‘ûl, işten etkileneni bildirir.'
+          '\n\n• Kırık çoğulu Emsile kitaplarında مَنَاصِرُ şeklinde geçer.'
+          '\n• Kullanımda مَنَاصِيرُ şekline de rastlanır.';
     case FormCategory.cahdMutlak:
-      return '“Lem” muzâri fiili olumsuz yapar, anlamını geçmiş zamana çevirir ve fiili cezm eder.';
+      return 'لَمْ, geçmişte hükmü sona ermiş bir işi olumsuz yapmak için kullanılır. Muzâri fiilin anlamını geçmiş zamana çevirir.'
+          '\n\n• Müennes çoğul nûnu dışında ikil, müzekker çoğul ve müennes tekil muhatap nûnlarını düşürür.'
+          '\n• Sonu sahih harf olan müfred fiili cezm eder; sonu illetli ise son harfi düşürür.'
+          '\n• Allah Teâlâ hakkında kullanıldığında geçici bir zaman sınırlaması bildirmez.';
     case FormCategory.cahdMustagrak:
-      return '“Lemmâ”, işin konuşma anına kadar yapılmadığını; sonrasında yapılmasının mümkün veya beklendiğini bildirir.';
+      return 'لَمَّا, işin konuşma anına kadar yapılmadığını; sonrasında yapılmasının mümkün veya beklendiğini bildirir.'
+          '\n\n• Muzâri fiili olumsuz yapar ve anlamını geçmiş zamana çevirir.'
+          '\n• Müennes çoğul nûnu dışında ikil, müzekker çoğul ve müennes tekil muhatap nûnlarını düşürür.'
+          '\n• Sonu sahih harf olan müfred fiili cezm eder; sonu illetli ise son harfi düşürür.';
     case FormCategory.nefyHal:
-      return '“Mâ” edatı muzâri fiili lafzen değiştirmeden şimdiki zamanda olumsuz yapar.';
+      return 'مَا, muzâri fiili şimdiki zamana tahsis ederek olumsuz yapar.'
+          '\n\n• Fiilin lafzında ve harekelerinde değişiklik yapmaz.';
     case FormCategory.nefyIstikbal:
-      return '“Lâ” edatı muzâri fiili lafzen değiştirmeden gelecek zamanda olumsuz yapar.';
+      return 'لَا, muzâri fiili gelecek zamana tahsis ederek olumsuz yapar.'
+          '\n\n• Fiilin lafzında ve harekelerinde değişiklik yapmaz.';
     case FormCategory.tekidNefyIstikbal:
-      return '“Len” gelecek zamanı kuvvetli biçimde olumsuz yapar ve muzâri fiili nasb eder.';
+      return 'لَنْ, gelecek zamanı kuvvetli biçimde olumsuz yapar.'
+          '\n\n• Müennes çoğul nûnu dışında ikil, müzekker çoğul ve müennes tekil muhatap nûnlarını düşürür.'
+          '\n• Müfred fiillerin sonunu nasb eder.';
     case FormCategory.emrGaib:
-      return 'Hazır olmayan şahsa bir işin yapılmasını emretmek için muzâri fiile emir lâmı getirilir.';
+      return 'Emr-i Gâib, hazır olmayan şahsa bir işin yapılmasını emretmektir. Muzârinin gâib ve gâibe biçimlerinin başına emir lâmı لِ getirilir.'
+          '\n\n• Malûm çekimde yalnız gâib ve gâibe biçimleri kullanılır.'
+          '\n• Müennes çoğul nûnu dışında ikil ve müzekker çoğul nûnları düşer.'
+          '\n• Sonu sahih harf olan müfred fiil cezm edilir; sonu illetli ise son harfi düşer.'
+          '\n• Anlam haber kipinden emir kipine ve gelecek zamana döner.';
     case FormCategory.nehyGaib:
-      return 'Hazır olmayan şahsın bir işi yapmasını yasaklamak için muzâri fiile nehiy “lâ”sı getirilir.';
+      return 'Nehy-i Gâib, hazır olmayan şahsın bir işi yapmasını yasaklamaktır. Muzârinin gâib ve gâibe biçimlerinin başına nehiy lâsı لَا getirilir.'
+          '\n\n• Malûm çekimde yalnız gâib ve gâibe biçimleri kullanılır.'
+          '\n• Müennes çoğul nûnu dışında ikil ve müzekker çoğul nûnları düşer.'
+          '\n• Sonu sahih harf olan müfred fiil cezm edilir; sonu illetli ise son harfi düşer.'
+          '\n• Fiil olumsuzlaşır; anlam haber kipinden yasaklama kipine ve gelecek zamana döner.';
     case FormCategory.emrHazir:
-      return 'Karşımızdaki şahsa emir verir. Muzâri fiil cezm edilir, muzaraat harfi kaldırılır; gerekirse başına vasıl hemzesi getirilir.';
+      return 'Emr-i Hâzır, karşımızda bulunan şahsa emir vermektir. Malûm çekimde yalnız muhatap ve muhataba biçimleri kullanılır.'
+          '\n\n• Önce muzâri fiil cezm edilir, ardından muzaraat harfi kaldırılır.'
+          '\n• Kalan ilk harf cezimli ise başına vasıl hemzesi getirilir.'
+          '\n• Sondan bir önceki harf dammeli ise vasıl hemzesi dammeli, değilse kesralı okunur.'
+          '\n• Müennes çoğul nûnu dışında ikil, müennes tekil ve müzekker çoğul nûnları düşer.'
+          '\n• Sonu illetli müfred fiillerde son harf düşer.';
     case FormCategory.nehyHazir:
-      return 'Karşımızdaki şahsın bir işi yapmasını yasaklamak için muhatap muzâri çekiminin başına nehiy “lâ”sı getirilir.';
+      return 'Nehy-i Hâzır, karşımızda bulunan şahsın bir işi yapmasını yasaklamaktır. Muhatap ve muhataba muzâri biçimlerinin başına لَا getirilir.'
+          '\n\n• Malûm çekimde yalnız muhatap ve muhataba biçimleri kullanılır.'
+          '\n• Müennes çoğul nûnu dışında ikil, müennes tekil ve müzekker çoğul nûnları düşer.'
+          '\n• Sonu sahih harf olan müfred fiil cezm edilir; sonu illetli ise son harfi düşer.'
+          '\n• Fiil olumsuzlaşır ve anlam yasaklama kipine döner.';
+    case FormCategory.ismZamanMekan:
+      return 'İsm-i Zaman, İsm-i Mekân ve Masdar-ı Mîmî مَفْعَلٌ kalıbındandır; مَفْعِلٌ kalıbı da kullanılabilir.'
+          '\n\n• Yapılma zamanını, yapılma yerini veya fiilin mîmli masdarını bildirir.';
+    case FormCategory.ismAlet:
+      return 'İsm-i Âlet, işin yapıldığı aracı bildirir.'
+          '\n\n• مِفْعَلٌ kalıbından yapılır.'
+          '\n• مِفْعَالٌ ve مِفْعَلَةٌ kalıpları da kullanılabilir.';
     case FormCategory.masdarMerre:
-      return 'Bir işin kaç defa yapıldığını bildiren masdardır.';
+      return 'Kemmiyete, yani bir işin kaç defa yapıldığına delâlet eden masdardır.';
     case FormCategory.masdarNev:
-      return 'Bir işin yapılış biçimini veya çeşidini bildiren masdardır; daha çok tekil biçimi kullanılır.';
+      return 'Keyfiyete, yani bir işin yapılış biçimine veya çeşidine delâlet eden masdardır.'
+          '\n\n• Kullanımda daha çok tekil biçimi tercih edilir.';
     case FormCategory.ismTasgir:
-      return 'Küçültme veya azlık anlamı verir. Üç, dört ve beş harfli isimler için farklı vezinleri vardır.';
+      return 'İsm-i Tasğir küçültme veya azlık anlamı verir.'
+          '\n\n• Üç harfli isimlerde فُعَيْلٌ vezni kullanılır.'
+          '\n• Dört harfli isimlerde فُعَيْعِلٌ vezni kullanılır.'
+          '\n• Beş harfli isimlerde فُعَيْعِيلٌ vezni kullanılır.'
+          '\n• Emsile kitabında müennes çekimleri yer almaz.';
     case FormCategory.ismMensub:
-      return 'Bir işe, yere veya şeye mensubiyet ve alâka bildirir.';
+      return 'İsm-i Mensub, bir işe, yere veya şeye mensubiyet ve alâka bildirir. Türkçedeki “-sal/-sel” ve yerine göre “-lı/-li” eklerine yaklaşır.'
+          '\n\n• Mimsiz masdarın sonuna şeddeli يّ eklenir; önceki son harf kesralı yapılır.'
+          '\n• Şahıs isminden yapılırsa münasebet bildirir: مُحَمَّدِيٌّ.'
+          '\n• Yer isminden yapılırsa mahal bildirir: إِسْتَانْبُولِيٌّ.'
+          '\n• Diğer isimlerden yapılırsa hâl bildirir: رَحْمِيٌّ.';
     case FormCategory.mubalagaIsmFail:
-      return 'İşi çokça yapanı bildirir; modern Arapçada alet ismi olarak da kullanılabilir.';
+      return 'Mübalağa İsm-i Fâil, işi çokça yapanı bildirir.'
+          '\n\n• Modern Arapçada alet ismi olarak da kullanılır.'
+          '\n• Örnek: بَرَّادٌ “buzdolabı”, غَسَّالَةٌ “çamaşır makinesi”.';
+    case FormCategory.ismTafdil:
+      return 'İsm-i Tafdil, iki şey arasında üstünlük veya en üstünlük bildirir. Türkçede “daha” ve “en” anlamlarını verir.'
+          '\n\n• Müzekker ve müennes biçimleri ile kurallı ve kırık çoğulları bulunur.';
+    case FormCategory.fiilTaaccubEvvel:
+      return 'Hayret ve şaşırma bildirir. Çekimi fiilin kendisiyle değil bitişik zamirlerle yapılır.'
+          '\n\n• Malûmdan olup meçhulü gelmez.'
+          '\n• Sonundaki zamir ismin yerini tutar; yerine açık bir isim getirilebilir.';
+    case FormCategory.fiilTaaccubSani:
+      return 'Hayret ve şaşırma bildirir. Çekimi fiilin kendisiyle değil bitişik zamirlerle yapılır.'
+          '\n\n• Malûmdan olup meçhulü gelmez.'
+          '\n• Sonundaki zamir ismin yerini tutar; yerine açık bir isim getirilebilir.'
+          '\n• هُ, هُمَا, هُمْ ve هُنَّ zamirlerindeki ه, öncesinde kesra veya sakin ي varsa kesralı okunur.';
+  }
+}
+
+String? _voiceExplanation(FormCategory category, Voice voice) {
+  if (voice != Voice.mechul) return null;
+
+  switch (category) {
+    case FormCategory.mazi:
+      return '• Sondan bir önceki harf kesralı yapılır.'
+          '\n• Bu harften önceki harekeli harfler dammeli yapılır.'
+          '\n• Cezimli harflerin harekesi değiştirilmez.';
+    case FormCategory.muzari:
+      return '• Sondan bir önceki harf fethalı yapılır.'
+          '\n• Muzaraat harfi dammeli yapılır.';
+    case FormCategory.cahdMutlak:
+    case FormCategory.cahdMustagrak:
+    case FormCategory.nefyHal:
+    case FormCategory.nefyIstikbal:
+    case FormCategory.tekidNefyIstikbal:
+      return 'Meçhul çekim, Fiil-i Muzârinin meçhule dönüşümü gibi yapılır:'
+          '\n\n• Sondan bir önceki harf fethalı yapılır.'
+          '\n• Muzaraat harfi dammeli yapılır.';
+    case FormCategory.emrGaib:
+    case FormCategory.nehyGaib:
+      return '• Meçhul çekim, Fiil-i Muzârinin meçhule dönüşümü gibi yapılır.'
+          '\n• Malûm çekime ek olarak mütekellim biçimleri de çekilir.';
+    case FormCategory.emrHazir:
+      return '• Meçhul çekimde emir lâmı kullanılır.'
+          '\n• Fiil-i Muzârinin meçhule dönüşüm kuralları uygulanır.'
+          '\n• Malûm çekime ek olarak mütekellim biçimleri de çekilir.';
+    case FormCategory.nehyHazir:
+      return '• Meçhul çekim, Nehy-i Gâibin meçhule dönüşümü gibi yapılır.'
+          '\n• Malûm çekime ek olarak mütekellim biçimleri de çekilir.';
+    case FormCategory.masdar:
+    case FormCategory.ismFail:
+    case FormCategory.ismMeful:
+    case FormCategory.ismZamanMekan:
+    case FormCategory.ismAlet:
+    case FormCategory.masdarMerre:
+    case FormCategory.masdarNev:
+    case FormCategory.ismTasgir:
+    case FormCategory.ismMensub:
+    case FormCategory.mubalagaIsmFail:
+    case FormCategory.ismTafdil:
     case FormCategory.fiilTaaccubEvvel:
     case FormCategory.fiilTaaccubSani:
-      return 'Hayret ve şaşırma bildirir. Çekimi fiilin kendisiyle değil bitişik zamirlerle yapılır; meçhulü kullanılmaz.';
-    default:
-      return '${category.label}, aynı kökten türeyen düzenli çekim kalıplarından biridir. Aşağıdaki tabloda tekil, ikil ve çoğul biçimleri gösterilir.';
+      return null;
   }
 }

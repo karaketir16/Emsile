@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,8 +8,7 @@ import 'package:emsile_flutter/app/emsile_app.dart';
 import 'package:emsile_flutter/data/models.dart';
 import 'package:emsile_flutter/features/conjugation/conjugation_screen.dart';
 import 'package:emsile_flutter/features/home/home_screen.dart';
-import 'package:emsile_flutter/features/ibare/bina_study_data.dart';
-import 'package:emsile_flutter/features/ibare/bina_study_screen.dart';
+import 'package:emsile_flutter/features/ibare/ibare_study_screen.dart';
 import 'package:emsile_flutter/features/lessons/lessons_screen.dart';
 import 'package:emsile_flutter/features/practice/practice_screen.dart';
 import 'package:emsile_flutter/features/source/source_screen.dart';
@@ -32,10 +33,15 @@ Future<void> pumpLoadedApp(WidgetTester tester) async {
 }
 
 void main() {
+  final binaBook = IbareBook.fromJson(
+    jsonDecode(File('assets/data/ibare/bina.json').readAsStringSync())
+        as Map<String, dynamic>,
+  );
+
   test('ibare data preserves printed harakat and toggles added harakat', () {
-    final besmele = binaPassages.first.words.first;
-    final printedPattern = binaPassages[2].words.firstWhere(
-      (word) => word.arabic == 'فَعَلَ',
+    final besmele = binaBook.passages.first.tokens.first;
+    final printedPattern = binaBook.passages[2].tokens.firstWhere(
+      (token) => token.arabic == 'فَعَلَ',
     );
 
     expect(besmele.displayArabic(false), 'بسم');
@@ -43,20 +49,20 @@ void main() {
     expect(printedPattern.displayArabic(false), 'فَعَلَ –');
     expect(printedPattern.displayArabic(true), 'فَعَلَ –');
 
-    final numberedSentence = binaPassages[1].words.firstWhere(
-      (word) => word.arabic == 'بَابًا',
+    final numberedSentence = binaBook.passages[1].tokens.firstWhere(
+      (token) => token.arabic == 'بَابًا',
     );
     expect(numberedSentence.displayArabic(false), 'باباً،');
     expect(numberedSentence.displayArabic(true), 'بَابًا،');
 
-    final alametuhu = binaPassages[2].words.firstWhere(
-      (word) => word.arabic == 'وَعَلَامَتُهُ',
+    final alametuhu = binaBook.passages[2].tokens.firstWhere(
+      (token) => token.arabic == 'وَعَلَامَتُهُ',
     );
     expect(alametuhu.displayArabic(false), 'وعلامَتُهُ');
     expect(alametuhu.displayArabic(true), 'وَعَلَامَتُهُ');
 
-    final bina = binaPassages[3].words.firstWhere(
-      (word) => word.arabic == 'وَبِنَاؤُهُ',
+    final bina = binaBook.passages[3].tokens.firstWhere(
+      (token) => token.arabic == 'وَبِنَاؤُهُ',
     );
     expect(bina.displayArabic(false), 'وبِناؤُهُ');
     expect(bina.displayArabic(true), 'وَبِنَاؤُهُ');
@@ -64,10 +70,10 @@ void main() {
 
   test('ibare text matches the book forms when harakat are hidden', () {
     expect(
-      binaPassages
+      binaBook.passages
           .map(
-            (passage) => passage.words
-                .map((word) => word.displayArabic(false))
+            (passage) => passage.tokens
+                .map((token) => token.displayArabic(false))
                 .join(' '),
           )
           .toList(),
@@ -81,12 +87,12 @@ void main() {
   });
 
   test('ibare broken meanings preserve conjunction waw', () {
-    final conjunctions = binaPassages
-        .expand((passage) => passage.words)
-        .where((word) => word.arabic.startsWith('وَ'));
+    final conjunctions = binaBook.passages
+        .expand((passage) => passage.tokens)
+        .where((token) => token.arabic.startsWith('وَ'));
 
     expect(
-      conjunctions.every((word) => word.meaning.startsWith('Ve ')),
+      conjunctions.every((token) => token.gloss.startsWith('Ve ')),
       isTrue,
     );
   });
@@ -223,7 +229,7 @@ void main() {
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
     await tester.pumpWidget(
-      const MaterialApp(home: BinaPassageScreen(initialIndex: 1)),
+      MaterialApp(home: IbarePassageScreen(book: binaBook, initialIndex: 1)),
     );
 
     expect(find.text('اعلم'), findsOneWidget);
@@ -255,6 +261,25 @@ void main() {
 
     expect(find.text('Muhakkak ki'), findsOneWidget);
     expect(find.text('Bapları'), findsOneWidget);
+  });
+
+  testWidgets('ibare book list opens data-driven passages', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 844));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(home: IbareStudyScreen(books: [binaBook])),
+    );
+
+    expect(find.text(binaBook.title), findsOneWidget);
+    await tester.tap(find.text(binaBook.title));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Bölümler'), findsOneWidget);
+    expect(find.text('Besmele'), findsOneWidget);
+    expect(find.text('Birinci Bab'), findsOneWidget);
   });
 
   testWidgets('lesson detail renders muhtelife table entries', (

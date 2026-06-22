@@ -1,44 +1,44 @@
-import 'package:emsile_flutter/features/ibare/bina_study_data.dart';
+import 'package:emsile_flutter/data/models.dart';
 import 'package:emsile_flutter/shared/widgets/app_page.dart';
 import 'package:emsile_flutter/shared/widgets/arabic_text.dart';
 import 'package:emsile_flutter/shared/widgets/info_panel.dart';
 import 'package:flutter/material.dart';
 
-class BinaStudyScreen extends StatelessWidget {
-  const BinaStudyScreen({super.key});
+class IbareStudyScreen extends StatelessWidget {
+  const IbareStudyScreen({required this.books, super.key});
+
+  final List<IbareBook> books;
 
   @override
   Widget build(BuildContext context) {
     return _StudyScaffold(
       title: 'İbare Çalışması',
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const InfoPanel(
-            title: 'Metnü’l-Binâ ve’l-Esâs',
-            body:
-                'Metni kırık mana ve kelime tahliliyle çalış. Bir kelimeye dokunarak sarf ve nahiv bilgilerini görebilirsin.',
-          ),
-          const SizedBox(height: 18),
-          Text('Bölümler', style: Theme.of(context).textTheme.titleLarge),
-          const SizedBox(height: 10),
-          for (var index = 0; index < binaPassages.length; index++) ...[
+          if (books.isEmpty)
+            const InfoPanel(
+              title: 'İçerik bulunamadı',
+              body: 'Henüz eklenmiş bir ibare kitabı yok.',
+            ),
+          for (final book in books) ...[
             Card(
               child: ListTile(
                 contentPadding: const EdgeInsets.all(14),
-                leading: CircleAvatar(child: Text('${index + 1}')),
+                leading: const CircleAvatar(
+                  child: Icon(Icons.auto_stories_outlined),
+                ),
                 title: Text(
-                  binaPassages[index].title,
+                  book.title,
                   style: const TextStyle(fontWeight: FontWeight.w800),
                 ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 4),
-                  child: Text(binaPassages[index].subtitle),
+                  child: Text(book.description),
                 ),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute<void>(
-                    builder: (_) => BinaPassageScreen(initialIndex: index),
+                    builder: (_) => IbareBookScreen(book: book),
                   ),
                 ),
               ),
@@ -51,23 +51,74 @@ class BinaStudyScreen extends StatelessWidget {
   }
 }
 
-class BinaPassageScreen extends StatefulWidget {
-  const BinaPassageScreen({required this.initialIndex, super.key});
+class IbareBookScreen extends StatelessWidget {
+  const IbareBookScreen({required this.book, super.key});
 
+  final IbareBook book;
+
+  @override
+  Widget build(BuildContext context) {
+    return _StudyScaffold(
+      title: book.shortTitle,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InfoPanel(title: book.title, body: book.description),
+          const SizedBox(height: 18),
+          Text('Bölümler', style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 10),
+          for (var index = 0; index < book.passages.length; index++) ...[
+            Card(
+              child: ListTile(
+                contentPadding: const EdgeInsets.all(14),
+                leading: CircleAvatar(child: Text('${index + 1}')),
+                title: Text(
+                  book.passages[index].title,
+                  style: const TextStyle(fontWeight: FontWeight.w800),
+                ),
+                subtitle: Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(book.passages[index].subtitle),
+                ),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        IbarePassageScreen(book: book, initialIndex: index),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class IbarePassageScreen extends StatefulWidget {
+  const IbarePassageScreen({
+    required this.book,
+    required this.initialIndex,
+    super.key,
+  });
+
+  final IbareBook book;
   final int initialIndex;
 
   @override
-  State<BinaPassageScreen> createState() => _BinaPassageScreenState();
+  State<IbarePassageScreen> createState() => _IbarePassageScreenState();
 }
 
-class _BinaPassageScreenState extends State<BinaPassageScreen> {
+class _IbarePassageScreenState extends State<IbarePassageScreen> {
   late int _index;
-  int? _selectedWord;
+  int? _selectedToken;
   bool _showBrokenMeanings = false;
   bool _showTranslation = false;
   bool _showOptionalHarakat = false;
 
-  BinaPassage get passage => binaPassages[_index];
+  IbarePassage get passage => widget.book.passages[_index];
 
   @override
   void initState() {
@@ -78,7 +129,7 @@ class _BinaPassageScreenState extends State<BinaPassageScreen> {
   void _move(int change) {
     setState(() {
       _index += change;
-      _selectedWord = null;
+      _selectedToken = null;
       _showBrokenMeanings = false;
       _showTranslation = false;
       _showOptionalHarakat = false;
@@ -87,13 +138,13 @@ class _BinaPassageScreenState extends State<BinaPassageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final selected = _selectedWord == null
+    final selected = _selectedToken == null
         ? null
-        : passage.words[_selectedWord!];
+        : passage.tokens[_selectedToken!];
 
     return _StudyScaffold(
       title: passage.title,
-      trailing: Text('${_index + 1}/${binaPassages.length}'),
+      trailing: Text('${_index + 1}/${widget.book.passages.length}'),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -114,10 +165,10 @@ class _BinaPassageScreenState extends State<BinaPassageScreen> {
           ],
           const SizedBox(height: 14),
           _ArabicPassage(
-            words: passage.words,
-            selectedIndex: _selectedWord,
+            tokens: passage.tokens,
+            selectedIndex: _selectedToken,
             showOptionalHarakat: _showOptionalHarakat,
-            onSelected: (index) => setState(() => _selectedWord = index),
+            onSelected: (index) => setState(() => _selectedToken = index),
           ),
           const SizedBox(height: 10),
           Text(
@@ -126,8 +177,8 @@ class _BinaPassageScreenState extends State<BinaPassageScreen> {
           ),
           if (selected != null) ...[
             const SizedBox(height: 12),
-            _WordAnalysisCard(
-              word: selected,
+            _TokenAnalysisCard(
+              token: selected,
               showOptionalHarakat: _showOptionalHarakat,
             ),
           ],
@@ -140,16 +191,16 @@ class _BinaPassageScreenState extends State<BinaPassageScreen> {
                 setState(() => _showBrokenMeanings = !_showBrokenMeanings),
             child: Column(
               children: [
-                for (final word in passage.words)
+                for (final token in passage.tokens)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(child: Text(word.meaning)),
+                        Expanded(child: Text(token.gloss)),
                         const SizedBox(width: 12),
                         Text(
-                          word.displayArabic(_showOptionalHarakat),
+                          token.displayArabic(_showOptionalHarakat),
                           textDirection: TextDirection.rtl,
                           style: arabicTextStyle(22),
                         ),
@@ -178,7 +229,7 @@ class _BinaPassageScreenState extends State<BinaPassageScreen> {
                   label: const Text('Önceki'),
                 ),
               const Spacer(),
-              if (_index < binaPassages.length - 1)
+              if (_index < widget.book.passages.length - 1)
                 FilledButton.icon(
                   onPressed: () => _move(1),
                   iconAlignment: IconAlignment.end,
@@ -195,13 +246,13 @@ class _BinaPassageScreenState extends State<BinaPassageScreen> {
 
 class _ArabicPassage extends StatelessWidget {
   const _ArabicPassage({
-    required this.words,
+    required this.tokens,
     required this.selectedIndex,
     required this.showOptionalHarakat,
     required this.onSelected,
   });
 
-  final List<BinaWord> words;
+  final List<IbareToken> tokens;
   final int? selectedIndex;
   final bool showOptionalHarakat;
   final ValueChanged<int> onSelected;
@@ -221,7 +272,7 @@ class _ArabicPassage extends StatelessWidget {
             spacing: 6,
             runSpacing: 8,
             children: [
-              for (var index = 0; index < words.length; index++)
+              for (var index = 0; index < tokens.length; index++)
                 InkWell(
                   borderRadius: BorderRadius.circular(8),
                   onTap: () => onSelected(index),
@@ -243,7 +294,7 @@ class _ArabicPassage extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      words[index].displayArabic(showOptionalHarakat),
+                      tokens[index].displayArabic(showOptionalHarakat),
                       style: arabicTextStyle(27),
                     ),
                   ),
@@ -256,13 +307,13 @@ class _ArabicPassage extends StatelessWidget {
   }
 }
 
-class _WordAnalysisCard extends StatelessWidget {
-  const _WordAnalysisCard({
-    required this.word,
+class _TokenAnalysisCard extends StatelessWidget {
+  const _TokenAnalysisCard({
+    required this.token,
     required this.showOptionalHarakat,
   });
 
-  final BinaWord word;
+  final IbareToken token;
   final bool showOptionalHarakat;
 
   @override
@@ -284,54 +335,69 @@ class _WordAnalysisCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        word.kind,
+                        token.kind,
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           color: scheme.primary,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
                       const SizedBox(height: 3),
-                      Text(word.meaning),
+                      Text(token.gloss),
                     ],
                   ),
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  word.displayArabic(showOptionalHarakat),
+                  token.displayArabic(showOptionalHarakat),
                   textDirection: TextDirection.rtl,
                   style: arabicTextStyle(28),
                 ),
               ],
             ),
             const Divider(height: 24),
-            for (final fact in word.facts)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 7),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 105,
-                      child: Text(
-                        fact.$1,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          height: 1.45,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        fact.$2,
-                        style: const TextStyle(fontSize: 16, height: 1.45),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            for (final field in IbareField.values)
+              if (token.fields[field] case final value?)
+                _AnalysisRow(label: field.label, value: value),
+            for (final detail in token.details)
+              _AnalysisRow(label: detail.label, value: detail.value),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _AnalysisRow extends StatelessWidget {
+  const _AnalysisRow({required this.label, required this.value});
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 7),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 105,
+            child: Text(
+              label,
+              style: const TextStyle(
+                fontSize: 16,
+                height: 1.45,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(fontSize: 16, height: 1.45),
+            ),
+          ),
+        ],
       ),
     );
   }

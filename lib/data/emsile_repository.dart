@@ -27,6 +27,21 @@ class EmsileRepository {
     final verbJson = jsonDecode(verbRaw) as Map<String, dynamic>;
     final verbEntry = VerbEntry.fromJson(verbJson);
     final forms = MuttarideGenerator.fromVerbEntry(verbEntry);
+    final ibareBooks = await Future.wait(
+      catalog.ibareBooks.map((manifest) async {
+        final raw = await _bundle.loadString(manifest.assetPath);
+        final book = IbareBook.fromJson(
+          jsonDecode(raw) as Map<String, dynamic>,
+        );
+        if (book.id != manifest.id) {
+          throw FormatException(
+            'İbare kitap kimliği manifest ile eşleşmiyor: '
+            '${manifest.id} != ${book.id}',
+          );
+        }
+        return book;
+      }),
+    );
 
     final seedData = AppData(
       lessons: catalog.lessons,
@@ -34,6 +49,7 @@ class EmsileRepository {
       muhtelifeEntries: verbEntry.muhtelifeEntries,
       forms: forms,
       practiceQuestions: const [],
+      ibareBooks: ibareBooks,
     );
 
     return seedData.copyWith(

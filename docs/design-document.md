@@ -60,6 +60,8 @@ Dersler ekranında dört ana başlık bulunur:
 
 İbare Çalışması:
 
+- Kitap manifesti → kitap → pasaj → token hiyerarşisinde JSON tabanlı içerik
+- Yeni kitapların ekran kodu değiştirilmeden kataloğa eklenebilmesi
 - `Metnü'l-Binâ ve'l-Esâs` metninin giriş ve birinci bab bölümleri
 - Dokunulabilir Arapça kelime ve ibare parçaları
 - Kelime türüne göre sarf-nahiv tahlili: bab, vezin, çekim, şahıs,

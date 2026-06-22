@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "kitap_kimligi",
+  "title": "Kitabın tam adı",
+  "shortTitle": "Kısa ad",
+  "description": "Kitap listesinde gösterilen açıklama",
+  "passages": [
+    {
+      "id": "benzersiz_bolum_kimligi",
+      "order": 1,
+      "title": "Bölüm başlığı",
+      "subtitle": "Bölüm alt başlığı",
+      "translation": "Toparlanmış mana",
+      "tokens": [
+        {
+          "id": "benzersiz_kelime_kimligi",
+          "arabic": "تَامُّ الْحَرَكَاتِ",
+          "printedArabic": "Kitapta basıldığı biçim",
+          "punctuation": "،",
+          "gloss": "Kırık mana",
+          "analysis": {
+            "kind": "Fiil / isim / harf / sıfat",
+            "fields": {
+              "root": "ف ع ل",
+              "pattern": "فَعَلَ",
+              "conjugation": "Fiil-i mâzi, malûm",
+              "person": "3. şahıs, müzekker, tekil",
+              "syntax": "Fiil",
+              "irab": "Varsa i‘rab açıklaması"
+            },
+            "details": [
+              {
+                "label": "Kitaba özel alan",
+                "value": "Standart alanlara girmeyen açıklama"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

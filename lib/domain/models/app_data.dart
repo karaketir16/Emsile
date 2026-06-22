@@ -1,5 +1,6 @@
 import 'conjugation_form.dart';
 import 'content.dart';
+import 'ibare.dart';
 import 'practice_question.dart';
 
 class AppData {
@@ -9,6 +10,7 @@ class AppData {
     required this.muhtelifeEntries,
     required this.forms,
     required this.practiceQuestions,
+    this.ibareBooks = const [],
   });
 
   final List<Lesson> lessons;
@@ -16,6 +18,7 @@ class AppData {
   final List<MuhtelifeEntry> muhtelifeEntries;
   final List<ConjugationForm> forms;
   final List<PracticeQuestion> practiceQuestions;
+  final List<IbareBook> ibareBooks;
 
   factory AppData.fromJson(Map<String, dynamic> json) {
     return AppData(
@@ -36,6 +39,9 @@ class AppData {
             (item) => PracticeQuestion.fromJson(item as Map<String, dynamic>),
           )
           .toList(),
+      ibareBooks: ((json['ibareBooks'] as List<dynamic>?) ?? [])
+          .map((item) => IbareBook.fromJson(item as Map<String, dynamic>))
+          .toList(),
     );
   }
 
@@ -45,6 +51,7 @@ class AppData {
     List<MuhtelifeEntry>? muhtelifeEntries,
     List<ConjugationForm>? forms,
     List<PracticeQuestion>? practiceQuestions,
+    List<IbareBook>? ibareBooks,
   }) {
     return AppData(
       lessons: lessons ?? this.lessons,
@@ -52,6 +59,7 @@ class AppData {
       muhtelifeEntries: muhtelifeEntries ?? this.muhtelifeEntries,
       forms: forms ?? this.forms,
       practiceQuestions: practiceQuestions ?? this.practiceQuestions,
+      ibareBooks: ibareBooks ?? this.ibareBooks,
     );
   }
 }

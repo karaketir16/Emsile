@@ -7,6 +7,7 @@ class CatalogData {
     required this.lessons,
     required this.pronouns,
     required this.verbs,
+    required this.ibareBooks,
   });
 
   final int version;
@@ -14,6 +15,7 @@ class CatalogData {
   final List<Lesson> lessons;
   final List<PronounEntry> pronouns;
   final List<VerbManifest> verbs;
+  final List<IbareBookManifest> ibareBooks;
 
   factory CatalogData.fromJson(Map<String, dynamic> json) {
     return CatalogData(
@@ -28,8 +30,32 @@ class CatalogData {
       verbs: (json['verbs'] as List<dynamic>)
           .map((item) => VerbManifest.fromJson(item as Map<String, dynamic>))
           .toList(),
+      ibareBooks: ((json['ibareBooks'] as List<dynamic>?) ?? [])
+          .map(
+            (item) => IbareBookManifest.fromJson(item as Map<String, dynamic>),
+          )
+          .toList(),
     );
   }
+}
+
+class IbareBookManifest {
+  const IbareBookManifest({
+    required this.id,
+    required this.title,
+    required this.assetPath,
+  });
+
+  final String id;
+  final String title;
+  final String assetPath;
+
+  factory IbareBookManifest.fromJson(Map<String, dynamic> json) =>
+      IbareBookManifest(
+        id: json['id'] as String,
+        title: json['title'] as String,
+        assetPath: json['assetPath'] as String,
+      );
 }
 
 class VerbManifest {

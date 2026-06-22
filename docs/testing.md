@@ -20,7 +20,7 @@ npm run visual-check
 
 ## 2. Otomatik Test Kapsamı
 
-Mevcut test paketi `53` test içerir.
+Mevcut test paketi `61` test içerir.
 
 21 Haziran 2026 doğrulamasında satır kapsamı `2425/2731` (`%88,8`) ölçülmüştür.
 
@@ -48,7 +48,15 @@ Mevcut test paketi `53` test içerir.
 
 - Enjekte edilen asset bundle ile katalog + fiil composition
 - Generated fiil verisinin repository üzerinden 339 forma dönüşmesi
+- Manifestteki ibare kitaplarının JSON asset'lerinden yüklenmesi
 - Varsayılan fiil manifesti bulunamadığında hata üretimi
+
+`test/data/ibare_model_test.dart`
+
+- Standart tahlil alanlarının parse edilmesi
+- Pasajların `order` alanına göre sıralanması
+- Bilinmeyen alan anahtarlarının reddedilmesi
+- Tekrarlanan pasaj ve token kimliklerinin reddedilmesi
 
 `test/matching_practice_test.dart`
 
@@ -117,6 +125,9 @@ Pratik ekranları testlerde `Random(1)` gibi sabit random nesneleri alır. Üret
 - ders, zamir, manifest ve Muhtelife alanları
 - generated kaynak profili
 - enum değerleri
+- ibare kitap manifestleri ve dosya yolları
+- pasaj/token kimliklerinin benzersizliği
+- standart ibare tahlil alanlarının geçerliliği
 
 üzerinde temel yapısal kontrol yapar.
 

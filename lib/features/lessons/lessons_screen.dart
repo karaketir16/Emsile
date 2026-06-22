@@ -1,6 +1,6 @@
 import 'package:emsile_flutter/data/models.dart';
 import 'package:emsile_flutter/features/conjugation/conjugation_screen.dart';
-import 'package:emsile_flutter/features/ibare/bina_study_screen.dart';
+import 'package:emsile_flutter/features/ibare/ibare_study_screen.dart';
 import 'package:emsile_flutter/features/practice/matching_practice_screen.dart';
 import 'package:emsile_flutter/shared/widgets/app_page.dart';
 import 'package:emsile_flutter/shared/widgets/info_panel.dart';
@@ -21,9 +21,11 @@ class LessonsScreen extends StatelessWidget {
             title: 'İbare Çalışması',
             subtitle: 'Metnü’l-Binâ’yı kırık mana ve kelime tahliliyle çalış',
             icon: Icons.touch_app_outlined,
-            onTap: () => Navigator.of(
-              context,
-            ).push(MaterialPageRoute(builder: (_) => const BinaStudyScreen())),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => IbareStudyScreen(books: data.ibareBooks),
+              ),
+            ),
           ),
           const SizedBox(height: 10),
           _MainLessonTile(

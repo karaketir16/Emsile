@@ -425,7 +425,7 @@ void main() {
 
     expect(find.text('Emr-i hâzır, malûm'), findsOneWidget);
     expect(find.text('أَنْتَ “sen”'), findsOneWidget);
-    expect(find.text('Sülâsî mücerred 4. bab'), findsOneWidget);
+    expect(find.text('Sülâsî mücerred 4. bap'), findsOneWidget);
 
     await tester.tap(find.text('Harekeleri göster'));
     await tester.pumpAndSettle();

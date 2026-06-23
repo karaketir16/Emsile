@@ -1,7 +1,7 @@
 {
   "id": "passage_17",
   "order": 17,
-  "translation": "Ve bu babın binası çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr'a ikram etti”; ve lazımın misali “Adam sabaha ulaştı” cümlesidir.",
+  "translation": "Bu bap çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr’a ikram etti”; lazımın misali ise “Adam sabahladı” cümlesidir.",
   "phrases": [
     {
       "id": "p17_ph1",
@@ -26,7 +26,7 @@
       "id": "p17_ph4",
       "tokenIds": ["p17_t9", "p17_t10", "p17_t11"],
       "type": "Fiil cümlesi",
-      "meaning": "Zeyd Amr'a ikram etti.",
+      "meaning": "Zeyd Amr’a ikram etti.",
       "parentId": "p17_ph5",
       "explanation": "أَكْرَمَ fiil, زَيْدٌ fâil, عَمْرًا mef‘ûlün bihtir."
     },
@@ -34,14 +34,14 @@
       "id": "p17_ph5",
       "tokenIds": ["p17_t8", "p17_t9", "p17_t10", "p17_t11"],
       "type": "Örnekleme terkibi",
-      "meaning": "Şunun gibi: Zeyd Amr'a ikram etti.",
+      "meaning": "Şunun gibi: Zeyd Amr’a ikram etti.",
       "parentId": "p17_ph6"
     },
     {
       "id": "p17_ph6",
       "tokenIds": ["p17_t7", "p17_t7b", "p17_t8", "p17_t9", "p17_t10", "p17_t11"],
       "type": "Örnek bildiren isim cümlesi",
-      "meaning": "Müteaddinin misali: Zeyd Amr'a ikram etti."
+      "meaning": "Müteaddinin misali: Zeyd Amr’a ikram etti."
     },
     {
       "id": "p17_ph7",
@@ -54,7 +54,7 @@
       "id": "p17_ph8",
       "tokenIds": ["p17_t14", "p17_t15"],
       "type": "Fiil cümlesi",
-      "meaning": "Adam sabaha ulaştı.",
+      "meaning": "Adam sabahladı.",
       "parentId": "p17_ph9",
       "explanation": "أَصْبَحَ fiil, الرَّجُلُ fâildir; fiil lazım olduğu için mef‘ûl almaz."
     },
@@ -62,14 +62,14 @@
       "id": "p17_ph9",
       "tokenIds": ["p17_t13", "p17_t14", "p17_t15"],
       "type": "Örnekleme terkibi",
-      "meaning": "Şunun gibi: Adam sabaha ulaştı.",
+      "meaning": "Şunun gibi: Adam sabahladı.",
       "parentId": "p17_ph10"
     },
     {
       "id": "p17_ph10",
       "tokenIds": ["p17_t12", "p17_t12b", "p17_t13", "p17_t14", "p17_t15"],
       "type": "Örnek bildiren isim cümlesi",
-      "meaning": "Ve lazımın misali: Adam sabaha ulaştı."
+      "meaning": "Ve lazımın misali: Adam sabahladı."
     }
   ],
   "tokens": [
@@ -139,7 +139,7 @@
       "printedArabic": "يكون",
       "gloss": "Olur",
       "analysis": {
-        "kind": "Fiil",
+        "kind": "Nâkıs fiil",
         "fields": {
           "root": "ك و ن",
           "conjugation": "Fiil-i muzâri, malûm",
@@ -239,7 +239,7 @@
       "id": "p17_t11",
       "arabic": "عَمْرًا",
       "printedArabic": "عمراً",
-      "gloss": "Amr'ı",
+      "gloss": "Amr’ı",
       "analysis": {
         "kind": "Özel isim",
         "fields": {
@@ -271,7 +271,7 @@
       "analysis": {
         "kind": "İsm-i fâil",
         "fields": {
-          "root": "ل z م",
+          "root": "ل ز م",
           "pattern": "فَاعِل",
           "role": "Muzafun ileyh",
           "irab": "Kesra ile mecrur"
@@ -296,7 +296,7 @@
     {
       "id": "p17_t14",
       "arabic": "أَصْبَحَ",
-      "gloss": "Ulaştı",
+      "gloss": "Sabahladı, sabaha girdi",
       "analysis": {
         "kind": "Fiil",
         "fields": {

@@ -1,13 +1,13 @@
 {
   "id": "passage_16",
   "order": 16,
-  "translation": "Yedinci babın (sülâsî mezîd birinci babın) vezni أَفْعَلَ يُفْعِلُ إِفْعَالًا, mevzunu أَكْرَمَ يُكْرِمُ إِكْرَامًا’dır. Alâmeti, mâzisinin başında hemze artırılmasıyla dört harf üzere olmasıdır.",
+  "translation": "Yedinci babın (sülâsî mezîd birinci babın) vezni أَفْعَلَ يُفْعِلُ إِفْعَالًا, mevzunu أَكْرَمَ يُكْرِمُ إِكْرَامًا’dır. Alâmeti, mâzi biçiminin başına hemze eklenerek dört harfli hâle gelmesidir.",
   "phrases": [
     {
       "id": "p16_ph1",
       "tokenIds": ["p16_t1", "p16_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Birinci bab"
+      "meaning": "Birinci bap"
     },
     {
       "id": "p16_ph2",
@@ -186,7 +186,7 @@
     {
       "id": "p16_t8",
       "arabic": "يُكْرِمُ",
-      "gloss": "A ağırlar",
+      "gloss": "İkram eder",
       "analysis": {
         "kind": "Fiil",
         "fields": {

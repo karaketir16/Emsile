@@ -7,7 +7,7 @@
       "id": "p3_ph1",
       "tokenIds": ["p3_t1", "p3_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Birinci bab",
+      "meaning": "Birinci bap",
       "explanation": "الْأَوَّلُ, الْبَابُ kelimesini niteleyen sıra sayısıdır."
     },
     {
@@ -176,7 +176,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ن ص ر",
-          "bab": "Sülâsî mücerred 1. bab",
+          "bab": "Sülâsî mücerred 1. bap",
           "pattern": "فَعَلَ",
           "transitivity": "Müteaddi"
         }
@@ -194,7 +194,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ن ص ر",
-          "bab": "Sülâsî mücerred 1. bab",
+          "bab": "Sülâsî mücerred 1. bap",
           "pattern": "يَفْعُلُ",
           "transitivity": "Müteaddi"
         }
@@ -241,7 +241,7 @@
       "printedArabic": "يكون",
       "gloss": "Olmasıdır",
       "analysis": {
-        "kind": "Fiil",
+        "kind": "Nâkıs fiil",
         "fields": {
           "conjugation": "Fiil-i muzâri, ناقص fiil",
           "person": "3. şahıs, müzekker, tekil",

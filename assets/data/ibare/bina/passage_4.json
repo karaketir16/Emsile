@@ -1,13 +1,13 @@
 {
   "id": "passage_4",
   "order": 4,
-  "translation": "Ve bu bab çoğunlukla müteaddi, bazen lazım fiiller için kullanılır. Müteaddinin misali “Zeyd Amr’a yardım etti”; ve lazımın misali “Zeyd çıktı” cümlesidir.",
+  "translation": "Ve bu bap çoğunlukla müteaddi, bazen lazım fiiller için kullanılır. Müteaddinin misali “Zeyd Amr’a yardım etti”; ve lazımın misali “Zeyd çıktı” cümlesidir.",
   "phrases": [
     {
       "id": "p4_ph1",
       "tokenIds": ["p4_t1", "p4_t2", "p4_t3"],
       "type": "İsim cümlesi",
-      "meaning": "Bu bab çoğunlukla müteaddilik içindir.",
+      "meaning": "Bu bap çoğunlukla müteaddilik içindir.",
       "explanation": "بِنَاؤُهُ mübtedâ, لِلتَّعْدِيَةِ câr-mecrûru haberdir; غَالِبًا çoğunluk kaydıdır."
     },
     {
@@ -160,7 +160,7 @@
       "printedArabic": "يكون",
       "gloss": "Olur",
       "analysis": {
-        "kind": "Fiil",
+        "kind": "Nâkıs fiil",
         "fields": {
           "conjugation": "Fiil-i muzâri, malûm",
           "person": "3. şahıs, müzekker, tekil",
@@ -244,7 +244,7 @@
           "conjugation": "Fiil-i mâzi, malûm",
           "person": "3. şahıs, müzekker, tekil",
           "root": "ن ص ر",
-          "bab": "Sülâsî mücerred 1. bab",
+          "bab": "Sülâsî mücerred 1. bap",
           "pattern": "فَعَلَ",
           "presentForm": "يَنْصُرُ",
           "syntax": "Fiil",
@@ -340,7 +340,7 @@
           "conjugation": "Fiil-i mâzi, malûm",
           "person": "3. şahıs, müzekker, tekil",
           "root": "خ ر ج",
-          "bab": "Sülâsî mücerred 1. bab",
+          "bab": "Sülâsî mücerred 1. bap",
           "pattern": "فَعَلَ",
           "presentForm": "يَخْرُجُ",
           "syntax": "Fiil",

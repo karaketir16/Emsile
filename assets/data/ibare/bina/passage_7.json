@@ -1,13 +1,13 @@
 {
   "id": "passage_7",
   "order": 7,
-  "translation": "Üçüncü babın vezni فَعَلَ يَفْعَلُ, mevzunu فَتَحَ يَفْتَحُ’dür; ve alâmet-i lafziyyesi aynü’l-fiilinin veya lâmü’l-fiilinin boğaz harflerinden biri olması şartıyla, aynü’l-fiilinin mâzide ve muzârîde fethalı olmasıdır. Boğaz harfleri de altıdır: ح, خ, ع, غ, هـ, ء.",
+  "translation": "Üçüncü babın vezni فَعَلَ يَفْعَلُ, mevzunu فَتَحَ يَفْتَحُ’dür. Lafzî alâmeti, aynü’l-fiilin mâzide ve muzârîde fethalı olmasıdır; bunun şartı, aynü’l-fiilin veya lâmü’l-fiilin boğaz harflerinden biri olmasıdır. Boğaz harfleri altıdır: ح, خ, ع, غ, هـ, ء.",
   "phrases": [
     {
       "id": "p7_ph1",
       "tokenIds": ["p7_t1", "p7_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Üçüncü bab"
+      "meaning": "Üçüncü bap"
     },
     {
       "id": "p7_ph2",
@@ -205,7 +205,7 @@
     {
       "id": "p7_t4",
       "arabic": "يَفْعَلُ",
-      "gloss": "Muzâri vezni: yef'alü",
+      "gloss": "Muzâri vezni: yef‘alü",
       "analysis": {
         "kind": "Vezin",
         "fields": {
@@ -247,7 +247,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ف ت ح",
-          "bab": "Sülâsî mücerred 3. bab",
+          "bab": "Sülâsî mücerred 3. bap",
           "pattern": "فَعَلَ",
           "transitivity": "Müteaddi"
         }
@@ -265,7 +265,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ف ت ح",
-          "bab": "Sülâsî mücerred 3. bab",
+          "bab": "Sülâsî mücerred 3. bap",
           "pattern": "يَفْعَلُ",
           "transitivity": "Müteaddi"
         }
@@ -312,7 +312,7 @@
       "printedArabic": "يكون",
       "gloss": "Olmasıdır",
       "analysis": {
-        "kind": "Fiil",
+        "kind": "Nâkıs fiil",
         "fields": {
           "conjugation": "Fiil-i muzâri, ناقص fiil",
           "person": "3. şahıs, müzekker, tekil",
@@ -467,7 +467,7 @@
       "printedArabic": "يكون",
       "gloss": "Olması",
       "analysis": {
-        "kind": "Fiil",
+        "kind": "Nâkıs fiil",
         "fields": {
           "conjugation": "Fiil-i muzâri, ناقص fiil",
           "person": "3. şahıs, müzekker, tekil",

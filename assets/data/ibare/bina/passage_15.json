@@ -1,40 +1,40 @@
 {
   "id": "passage_15",
   "order": 15,
-  "translation": "Onlardan on iki bab sülasi üzerine ziyade kılınan (sülâsî mezîd) fiiller içindir. O da üç nevidir. Birinci nevi: Sülasi üzerine bir harf ilave olunan sülasi mezid fiildir. O da üç babdır.",
+  "translation": "Bu baplardan on ikisi, sülâsî köke harf ilave edilerek oluşturulan fiillere aittir. Bunlar üç çeşittir. Birinci çeşit, sülâsî köke bir harf ilave edilen fiillerdir. Bu çeşit üç baptan oluşur.",
   "phrases": [
     {
       "id": "p15_ph1",
       "tokenIds": ["p15_t1", "p15_t2", "p15_t3"],
       "type": "Sayı tamlaması",
-      "meaning": "On iki bab"
+      "meaning": "On iki bap"
     },
     {
       "id": "p15_ph2",
       "tokenIds": ["p15_t1", "p15_t2", "p15_t3", "p15_t4"],
       "type": "Mübtedâ kelime grubu",
-      "meaning": "Onlardan on iki bab",
+      "meaning": "Onlardan on iki bap",
       "parentId": "p15_ph4"
     },
     {
       "id": "p15_ph3a",
       "tokenIds": ["p15_t6", "p15_t7", "p15_t8"],
       "type": "Sıla cümlesi / Fiil cümlesi",
-      "meaning": "Sülasi üzerine ziyade olan",
+      "meaning": "Sülâsî üzerine ziyade olan",
       "parentId": "p15_ph3"
     },
     {
       "id": "p15_ph3",
       "tokenIds": ["p15_t5", "p15_t6", "p15_t7", "p15_t8"],
       "type": "Câr-mecrûr",
-      "meaning": "Sülasi üzerine ziyade kılınanlar için",
+      "meaning": "Sülâsî üzerine ziyade kılınanlar için",
       "parentId": "p15_ph4"
     },
     {
       "id": "p15_ph4",
       "tokenIds": ["p15_t1", "p15_t2", "p15_t3", "p15_t4", "p15_t5", "p15_t6", "p15_t7", "p15_t8"],
       "type": "İsim cümlesi",
-      "meaning": "Onlardan on iki bab sülasi üzerine ziyade olanlar içindir."
+      "meaning": "Onlardan on iki bap sülâsî üzerine ziyade olanlar içindir."
     },
     {
       "id": "p15_ph5a",
@@ -67,14 +67,14 @@
       "id": "p15_ph7",
       "tokenIds": ["p15_t14", "p15_t15", "p15_t16", "p15_t17", "p15_t18"],
       "type": "Sıfat tamlaması haber grubu",
-      "meaning": "Sülasi üzerine bir harf ilave olunan fiil",
+      "meaning": "Sülâsî üzerine bir harf ilave olunan fiil",
       "parentId": "p15_ph7_full"
     },
     {
       "id": "p15_ph7_full",
       "tokenIds": ["p15_t12", "p15_t13", "p15_t14", "p15_t15", "p15_t16", "p15_t17", "p15_t18"],
       "type": "İsim cümlesi",
-      "meaning": "Birinci nevi: Sülasi üzerine bir harf ilave olunan fiildir."
+      "meaning": "Birinci nevi: Sülâsî üzerine bir harf ilave olunan fiildir."
     },
     {
       "id": "p15_ph8c",
@@ -87,34 +87,34 @@
       "id": "p15_ph8b",
       "tokenIds": ["p15_t21", "p15_t22", "p15_t23", "p15_t24", "p15_t25", "p15_t26"],
       "type": "Meçhul fiil cümlesi / Sıla cümlesi",
-      "meaning": "Kendisinde sülasi üzerine bir harf artırıldı",
+      "meaning": "Kendisinde sülâsî üzerine bir harf artırıldı",
       "parentId": "p15_ph8a"
     },
     {
       "id": "p15_ph8a",
       "tokenIds": ["p15_t20", "p15_t21", "p15_t22", "p15_t23", "p15_t24", "p15_t25", "p15_t26"],
       "type": "İsmi mevsul grubu haber",
-      "meaning": "Kendisinde sülasi üzerine bir harf artırılan şey",
+      "meaning": "Kendisinde sülâsî üzerine bir harf artırılan şey",
       "parentId": "p15_ph8"
     },
     {
       "id": "p15_ph8",
       "tokenIds": ["p15_t19", "p15_t20", "p15_t21", "p15_t22", "p15_t23", "p15_t24", "p15_t25", "p15_t26"],
       "type": "İsim cümlesi",
-      "meaning": "Ve o, kendisinde sülasi üzerine bir harf artırılan şeydir."
+      "meaning": "Ve o, kendisinde sülâsî üzerine bir harf artırılan şeydir."
     },
     {
       "id": "p15_ph9a",
       "tokenIds": ["p15_t28", "p15_t29"],
       "type": "Sayı tamlaması",
-      "meaning": "Üç bab",
+      "meaning": "Üç bap",
       "parentId": "p15_ph9"
     },
     {
       "id": "p15_ph9",
       "tokenIds": ["p15_t27", "p15_t28", "p15_t29"],
       "type": "İsim cümlesi",
-      "meaning": "Ve o da üç babdır."
+      "meaning": "Ve o da üç baptır."
     }
   ],
   "tokens": [
@@ -207,7 +207,7 @@
       "id": "p15_t6",
       "arabic": "زَادَ",
       "printedArabic": "زاد",
-      "gloss": "Ziyade kılındı (artırıldı)",
+      "gloss": "Arttı, ziyade oldu",
       "analysis": {
         "kind": "Fiil",
         "fields": {
@@ -231,7 +231,7 @@
       "id": "p15_t8",
       "arabic": "الثُّلَاثِيِّ",
       "printedArabic": "الثلاثي",
-      "gloss": "Sülasi üzerine",
+      "gloss": "Sülâsî üzerine",
       "analysis": {
         "kind": "İsim",
         "fields": {
@@ -334,7 +334,7 @@
       "id": "p15_t15",
       "arabic": "الثُّلَاثِيُّ",
       "printedArabic": "الثلاثي",
-      "gloss": "Sülasi",
+      "gloss": "Sülâsî",
       "analysis": {
         "kind": "Sıfat",
         "fields": {
@@ -450,7 +450,7 @@
           },
           {
             "label": "هِ",
-            "value": "Zamir (mâ fiiline veya sülasi fiile döner)"
+            "value": "Zamir (mâ fiiline veya sülâsî fiile döner)"
           }
         ]
       }
@@ -496,7 +496,7 @@
       "id": "p15_t26",
       "arabic": "الثُّلَاثِيِّ",
       "printedArabic": "الثلاثي",
-      "gloss": "Sülasi üzerine",
+      "gloss": "Sülâsî üzerine",
       "analysis": {
         "kind": "İsim",
         "fields": {

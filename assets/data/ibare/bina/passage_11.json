@@ -7,7 +7,7 @@
       "id": "p11_ph1",
       "tokenIds": ["p11_t1", "p11_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Beşinci bab"
+      "meaning": "Beşinci bap"
     },
     {
       "id": "p11_ph2",
@@ -113,7 +113,7 @@
     {
       "id": "p11_t4",
       "arabic": "يَفْعُلُ",
-      "gloss": "Muzâri vezni: yef'ulü",
+      "gloss": "Muzâri vezni: yef‘ulü",
       "analysis": {
         "kind": "Vezin",
         "fields": {
@@ -146,7 +146,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ح س ن",
-          "bab": "Sülâsî mücerred 5. bab",
+          "bab": "Sülâsî mücerred 5. bap",
           "pattern": "فَعُلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Lazım"
@@ -162,7 +162,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ح س ن",
-          "bab": "Sülâsî mücerred 5. bab",
+          "bab": "Sülâsî mücerred 5. bap",
           "pattern": "يَفْعُلُ",
           "conjugation": "Fiil-i muzâri, malûm",
           "transitivity": "Lazım"

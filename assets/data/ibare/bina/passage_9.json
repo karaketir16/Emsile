@@ -10,7 +10,7 @@
         "p9_t2"
       ],
       "type": "Sıfat tamlaması",
-      "meaning": "Dördüncü bab"
+      "meaning": "Dördüncü bap"
     },
     {
       "id": "p9_ph2",
@@ -220,7 +220,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ع ل م",
-          "bab": "Sülâsî mücerred 4. bab",
+          "bab": "Sülâsî mücerred 4. bap",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Müteaddi"
@@ -236,7 +236,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ع ل م",
-          "bab": "Sülâsî mücerred 4. bab",
+          "bab": "Sülâsî mücerred 4. bap",
           "pattern": "يَفْعَلُ",
           "conjugation": "Fiil-i muzâri, malûm",
           "transitivity": "Müteaddi"

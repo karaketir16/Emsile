@@ -1,7 +1,7 @@
 {
   "id": "passage_14",
   "order": 14,
-  "translation": "Ve bu babın binası da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr'ı faziletli sandı”; ve lazımın misali “Zeyd varis oldu” cümlesidir.",
+  "translation": "Bu bap da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr’ı faziletli sandı”; lazımın misali ise “Zeyd varis oldu” cümlesidir.",
   "phrases": [
     {
       "id": "p14_ph0",
@@ -9,13 +9,13 @@
       "type": "Mübtedâ + ilave bildiren zarf",
       "meaning": "Bu babın binası da",
       "parentId": "p14_ph1",
-      "explanation": "أَيْضًا, önceki bablardaki hükmün bu bab için de geçerli olduğunu bildirir."
+      "explanation": "أَيْضًا, önceki baplardaki hükmün bu bap için de geçerli olduğunu bildirir."
     },
     {
       "id": "p14_ph1",
       "tokenIds": ["p14_t1", "p14_t2", "p14_t3", "p14_t4"],
       "type": "İsim cümlesi",
-      "meaning": "Bu bab da çoğunlukla müteaddilik içindir."
+      "meaning": "Bu bap da çoğunlukla müteaddilik içindir."
     },
     {
       "id": "p14_ph2",
@@ -27,7 +27,7 @@
       "id": "p14_ph3",
       "tokenIds": ["p14_t10", "p14_t11", "p14_t12", "p14_t13"],
       "type": "Fiil cümlesi",
-      "meaning": "Zeyd Amr'ı faziletli sandı.",
+      "meaning": "Zeyd Amr’ı faziletli sandı.",
       "parentId": "p14_ph4",
       "explanation": "حَسِبَ iki mef‘ûl alan geçişli bir fiildir; زَيْدٌ fâil, عَمْرًا birinci mef‘ûl, فَاضِلًا ikinci mef‘ûldür."
     },
@@ -35,7 +35,7 @@
       "id": "p14_ph4",
       "tokenIds": ["p14_t9", "p14_t10", "p14_t11", "p14_t12", "p14_t13"],
       "type": "Örnekleme terkibi",
-      "meaning": "Şunun gibi: Zeyd Amr'ı faziletli sandı.",
+      "meaning": "Şunun gibi: Zeyd Amr’ı faziletli sandı.",
       "parentId": "p14_ph5"
     },
     {
@@ -49,7 +49,7 @@
       "id": "p14_ph5",
       "tokenIds": ["p14_t8", "p14_t8b", "p14_t9", "p14_t10", "p14_t11", "p14_t12", "p14_t13"],
       "type": "Örnek bildiren isim cümlesi",
-      "meaning": "Müteaddinin misali: Zeyd Amr'ı faziletli sandı."
+      "meaning": "Müteaddinin misali: Zeyd Amr’ı faziletli sandı."
     },
     {
       "id": "p14_ph6",
@@ -57,7 +57,7 @@
       "type": "Fiil cümlesi",
       "meaning": "Zeyd varis oldu.",
       "parentId": "p14_ph7",
-      "explanation": "وَرِثَ fiil, زَيْدٌ fâildir."
+      "explanation": "وَرِثَ fiil, زَيْدٌ fâildir. Fiil burada “varis oldu” anlamında lazım kullanılmıştır; başka bağlamlarda mef‘ûl alarak “miras aldı” anlamında da kullanılabilir."
     },
     {
       "id": "p14_ph7",
@@ -102,11 +102,10 @@
       "printedArabic": "أيضاً",
       "gloss": "De, dahi",
       "analysis": {
-        "kind": "Zarf / İsim",
+        "kind": "Zarf anlamında kullanılan mansub isim",
         "fields": {
-          "root": "ي ض ع",
-          "meaning": "Dahilik bildiren zarf lafzı",
-          "irab": "Mef‘ûl-i mutlak olarak mansubdur"
+          "meaning": "De, dahi, ayrıca",
+          "irab": "Fetha ile mansubdur; çoğunlukla mef‘ûl-i mutlak kabul edilir."
         }
       }
     },
@@ -161,7 +160,7 @@
       "printedArabic": "يكون",
       "gloss": "Olur",
       "analysis": {
-        "kind": "Fiil",
+        "kind": "Nâkıs fiil",
         "fields": {
           "root": "ك و ن",
           "conjugation": "Fiil-i muzâri, malûm",
@@ -236,7 +235,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ح س ب",
-          "bab": "Sülâsî mücerred 6. bab",
+          "bab": "Sülâsî mücerred 6. bap",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Müteaddi"
@@ -261,7 +260,7 @@
       "id": "p14_t12",
       "arabic": "عَمْرًا",
       "printedArabic": "عمراً",
-      "gloss": "Amr'ı",
+      "gloss": "Amr’ı",
       "analysis": {
         "kind": "Özel isim",
         "fields": {
@@ -338,7 +337,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "و ر ث",
-          "bab": "Sülâsî mücerred 6. bab",
+          "bab": "Sülâsî mücerred 6. bap",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Lazım"

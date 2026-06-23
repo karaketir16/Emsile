@@ -7,7 +7,7 @@
       "id": "p5_ph1",
       "tokenIds": ["p5_t1", "p5_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "İkinci bab"
+      "meaning": "İkinci bap"
     },
     {
       "id": "p5_ph2",
@@ -131,7 +131,7 @@
     {
       "id": "p5_t4",
       "arabic": "يَفْعِلُ",
-      "gloss": "Muzâri vezni: yef'ilü",
+      "gloss": "Muzâri vezni: yef‘ilü",
       "analysis": {
         "kind": "Vezin",
         "fields": {
@@ -173,7 +173,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ض ر ب",
-          "bab": "Sülâsî mücerred 2. bab",
+          "bab": "Sülâsî mücerred 2. bap",
           "pattern": "فَعَلَ",
           "transitivity": "Müteaddi"
         }
@@ -191,7 +191,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ض ر ب",
-          "bab": "Sülâsî mücerred 2. bab",
+          "bab": "Sülâsî mücerred 2. bap",
           "pattern": "يَفْعِلُ",
           "transitivity": "Müteaddi"
         }
@@ -238,7 +238,7 @@
       "printedArabic": "يكون",
       "gloss": "Olmasıdır",
       "analysis": {
-        "kind": "Fiil",
+        "kind": "Nâkıs fiil",
         "fields": {
           "conjugation": "Fiil-i muzâri, ناقص fiil",
           "person": "3. şahıs, müzekker, tekil",

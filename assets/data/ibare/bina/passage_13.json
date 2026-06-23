@@ -7,7 +7,7 @@
       "id": "p13_ph1",
       "tokenIds": ["p13_t1", "p13_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Altıncı bab"
+      "meaning": "Altıncı bap"
     },
     {
       "id": "p13_ph2",
@@ -113,7 +113,7 @@
     {
       "id": "p13_t4",
       "arabic": "يَفْعِلُ",
-      "gloss": "Muzâri vezni: yef'ilü",
+      "gloss": "Muzâri vezni: yef‘ilü",
       "analysis": {
         "kind": "Vezin",
         "fields": {
@@ -146,7 +146,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ح س ب",
-          "bab": "Sülâsî mücerred 6. bab",
+          "bab": "Sülâsî mücerred 6. bap",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Müteaddi"
@@ -162,7 +162,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ح س ب",
-          "bab": "Sülâsî mücerred 6. bab",
+          "bab": "Sülâsî mücerred 6. bap",
           "pattern": "يَفْعِلُ",
           "conjugation": "Fiil-i muzâri, malûm",
           "transitivity": "Müteaddi"

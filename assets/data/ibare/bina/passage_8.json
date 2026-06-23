@@ -1,7 +1,7 @@
 {
   "id": "passage_8",
   "order": 8,
-  "translation": "Ve bu babın binası da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd kapıyı açtı”; ve lazımın misali “Zeyd gitti” cümlesidir.",
+  "translation": "Bu bap da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd kapıyı açtı”; lazımın misali ise “Zeyd gitti” cümlesidir.",
   "phrases": [
     {
       "id": "p8_ph0",
@@ -9,13 +9,13 @@
       "type": "Mübtedâ + ilave bildiren zarf",
       "meaning": "Bu babın binası da",
       "parentId": "p8_ph1",
-      "explanation": "أَيْضًا, önceki bablardaki hükmün bu bab için de geçerli olduğunu bildirir."
+      "explanation": "أَيْضًا, önceki baplardaki hükmün bu bap için de geçerli olduğunu bildirir."
     },
     {
       "id": "p8_ph1",
       "tokenIds": ["p8_t1", "p8_t2", "p8_t3", "p8_t4"],
       "type": "İsim cümlesi",
-      "meaning": "Bu bab da çoğunlukla müteaddilik içindir."
+      "meaning": "Bu bap da çoğunlukla müteaddilik içindir."
     },
     {
       "id": "p8_ph2",
@@ -112,11 +112,10 @@
       "printedArabic": "أيضاً",
       "gloss": "De, dahi",
       "analysis": {
-        "kind": "Zarf / İsim",
+        "kind": "Zarf anlamında kullanılan mansub isim",
         "fields": {
-          "root": "ي ض ع",
-          "meaning": "Dahilik, dahi, de anlamında kullanılan zarf lafzı",
-          "irab": "Mef‘ûl-i mutlak olarak fetha ile mansubdur."
+          "meaning": "De, dahi, ayrıca",
+          "irab": "Fetha ile mansubdur; çoğunlukla mef‘ûl-i mutlak kabul edilir."
         }
       }
     },
@@ -180,7 +179,7 @@
       "printedArabic": "يكون",
       "gloss": "Olur",
       "analysis": {
-        "kind": "Fiil",
+        "kind": "Nâkıs fiil",
         "fields": {
           "conjugation": "Fiil-i muzâri, malûm",
           "person": "3. şahıs, müzekker, tekil",
@@ -264,7 +263,7 @@
           "conjugation": "Fiil-i mâzi, malûm",
           "person": "3. şahıs, müzekker, tekil",
           "root": "ف ت ح",
-          "bab": "Sülâsî mücerred 3. bab",
+          "bab": "Sülâsî mücerred 3. bap",
           "pattern": "فَعَلَ",
           "presentForm": "يَفْتَحُ",
           "syntax": "Fiil",
@@ -361,7 +360,7 @@
           "conjugation": "Fiil-i mâzi, malûm",
           "person": "3. şahıs, müzekker, tekil",
           "root": "ذ ه ب",
-          "bab": "Sülâsî mücerred 3. bab",
+          "bab": "Sülâsî mücerred 3. bap",
           "pattern": "فَعَلَ",
           "presentForm": "يَذْهَبُ",
           "syntax": "Fiil",

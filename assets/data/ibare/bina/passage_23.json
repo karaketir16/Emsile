@@ -1,7 +1,7 @@
 {
   "id": "passage_23",
   "order": 23,
-  "orijinal_metin": "الباب الأول: اِنْفَعَلَ يَنْفَعِلُ اِنْفِعَالًا موزونه اِنْكَسَرَ يَنْكَسِرُ اِنْكِسَارًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة الهمزة والنون في أوله وبناؤه للمطاوعة نحو: كَسَرْتُ الزجاج فَانْكَسَرَ ذلك الزجاج",
+  "orijinal_metin": "الباب الأول: اِنْفَعَلَ يَنْفَعِلُ اِنْفِعَالًا موزونه اِنْكَسَرَ يَنْكَسِرُ اِنْكِسَارًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة الهمزة والنون في أوله وبناؤه للمطاوعة نحو: كَسَرْتُ الزجاج فَانْكَسَرَ ذلك الزجاج، فإن انكسار الزجاج أثر حصل عن تعلق الكسر الذي هو الفعل المتعدي",
   "translation": "Sülâsî mezîd iki harfli birinci babın vezni اِنْفَعَلَ يَنْفَعِلُ اِنْفِعَالًا, mevzunu اِنْكَسَرَ يَنْكَسِرُ اِنْكِسَارًا’dır. Alâmeti, mâzisinin başında hemze ve nun ziyadesiyle beş harf üzere olmasıdır. Binası mutâvaat içindir; “camı kırdım, o cam kırıldı” örneğinde kırılma, müteaddi fiilin etkisinden doğar.",
   "tokens": [
     {
@@ -409,6 +409,7 @@
       "id": "p23_t29",
       "arabic": "الزُّجَاجُ",
       "printedArabic": "الزجاج",
+      "punctuation": "،",
       "gloss": "Cam",
       "analysis": {
         "kind": "İsim",
@@ -417,6 +418,90 @@
           "irab": "Zamme ile merfû"
         }
       }
+    },
+    {
+      "id": "p23_t30",
+      "arabic": "فَإِنَّ",
+      "printedArabic": "فإن",
+      "gloss": "Çünkü",
+      "analysis": { "kind": "Harf" }
+    },
+    {
+      "id": "p23_t31",
+      "arabic": "اِنْكِسَارَ",
+      "printedArabic": "انكسار",
+      "gloss": "Kırılma",
+      "analysis": { "kind": "Masdar" }
+    },
+    {
+      "id": "p23_t32",
+      "arabic": "الزُّجَاجِ",
+      "printedArabic": "الزجاج",
+      "gloss": "Camın",
+      "analysis": { "kind": "İsim" }
+    },
+    {
+      "id": "p23_t33",
+      "arabic": "أَثَرٌ",
+      "printedArabic": "أثر",
+      "gloss": "Bir etki",
+      "analysis": { "kind": "İsim" }
+    },
+    {
+      "id": "p23_t34",
+      "arabic": "حَصَلَ",
+      "printedArabic": "حصل",
+      "gloss": "Meydana geldi",
+      "analysis": { "kind": "Fiil" }
+    },
+    {
+      "id": "p23_t35",
+      "arabic": "عَنْ",
+      "printedArabic": "عن",
+      "gloss": "-den",
+      "analysis": { "kind": "Harf-i cer" }
+    },
+    {
+      "id": "p23_t36",
+      "arabic": "تَعَلُّقِ",
+      "printedArabic": "تعلق",
+      "gloss": "Bağlanmasından",
+      "analysis": { "kind": "Masdar" }
+    },
+    {
+      "id": "p23_t37",
+      "arabic": "الْكَسْرِ",
+      "printedArabic": "الكسر",
+      "gloss": "Kırmanın",
+      "analysis": { "kind": "Masdar" }
+    },
+    {
+      "id": "p23_t38",
+      "arabic": "الَّذِي",
+      "printedArabic": "الذي",
+      "gloss": "Ki o",
+      "analysis": { "kind": "İsm-i mevsûl" }
+    },
+    {
+      "id": "p23_t39",
+      "arabic": "هُوَ",
+      "printedArabic": "هو",
+      "gloss": "O",
+      "analysis": { "kind": "Zamir" }
+    },
+    {
+      "id": "p23_t40",
+      "arabic": "الْفِعْلُ",
+      "printedArabic": "الفعل",
+      "gloss": "Fiil",
+      "analysis": { "kind": "İsim" }
+    },
+    {
+      "id": "p23_t41",
+      "arabic": "الْمُتَعَدِّي",
+      "printedArabic": "المتعدي",
+      "gloss": "Müteaddi",
+      "analysis": { "kind": "Sıfat" }
     }
   ]
 }

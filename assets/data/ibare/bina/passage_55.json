@@ -1,7 +1,7 @@
 {
   "id": "passage_55",
   "order": 55,
-  "orijinal_metin": "الباب الثاني: اِفْعَنْلَى يَفْعَنْلِي اِفْعِنْلَاءً، موزونه: اِسْلَنْقَى يَسْلَنْقِي اِسْلِنْقَاءً، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله، والنون بين العين واللام والياء في آخره، وبناؤه للازم نحو: اِسْلَنْقَى زيد",
+  "orijinal_metin": "الباب الثاني: اِفْعَنْلَى يَفْعَنْلِي اِفْعِنْلَاءً، موزونه: اِسْلَنْقَى يَسْلَنْقِي اِسْلِنْقَاءً، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله، والنون بين العين واللام في آخره، وبناؤه للازم نحو: اِسْلَنْقَى زيد",
   "translation": "Rubâî mezîd mülhaklarının اِحْرَنْجَمَ babına tâbi ikinci babı اِفْعَنْلَى يَفْعَنْلِي اِفْعِنْلَاءً’dır. Mevzunu اِسْلَنْقَى يَسْلَنْقِي اِسْلِنْقَاءً’dır. Alâmeti, mâzisinin başında hemze, ayn ile lâm arasında nûn ve sonunda yâ ziyadesiyle altı harf üzere olmasıdır. Binası lazım içindir.",
   "tokens": [
     {
@@ -294,18 +294,6 @@
         "kind": "Bağlaç + harf adı",
         "fields": {
           "term": "Lâmü’l-fiil"
-        }
-      }
-    },
-    {
-      "id": "p55_t25",
-      "arabic": "وَالْيَاءِ",
-      "printedArabic": "والياء",
-      "gloss": "Ve yâ harfinin",
-      "analysis": {
-        "kind": "Bağlaç + harf adı",
-        "fields": {
-          "role": "Ziyade edilen harf"
         }
       }
     },

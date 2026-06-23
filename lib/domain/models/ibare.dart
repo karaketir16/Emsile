@@ -133,6 +133,16 @@ class IbarePhrase {
   );
 }
 
+class IbareNote {
+  const IbareNote({required this.label, required this.text});
+
+  final String label;
+  final String text;
+
+  factory IbareNote.fromJson(Map<String, dynamic> json) =>
+      IbareNote(label: json['label'] as String, text: json['text'] as String);
+}
+
 class IbarePassage {
   const IbarePassage({
     required this.id,
@@ -140,17 +150,21 @@ class IbarePassage {
     required this.translation,
     required this.tokens,
     required this.phrases,
+    required this.notes,
     this.title,
     this.subtitle,
+    this.editorialCorrection,
   });
 
   final String id;
   final int order;
   final String? title;
   final String? subtitle;
+  final String? editorialCorrection;
   final String translation;
   final List<IbareToken> tokens;
   final List<IbarePhrase> phrases;
+  final List<IbareNote> notes;
 
   bool get hasOptionalHarakat =>
       tokens.any((token) => token.hasOptionalHarakat);
@@ -220,9 +234,13 @@ class IbarePassage {
       order: json['order'] as int,
       title: json['title'] as String?,
       subtitle: json['subtitle'] as String?,
+      editorialCorrection: json['editorialCorrection'] as String?,
       translation: json['translation'] as String,
       tokens: tokens,
       phrases: phrases,
+      notes: ((json['notes'] as List<dynamic>?) ?? const [])
+          .map((item) => IbareNote.fromJson(item as Map<String, dynamic>))
+          .toList(),
     );
   }
 }

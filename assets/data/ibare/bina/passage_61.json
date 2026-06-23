@@ -1,8 +1,8 @@
 {
   "id": "passage_61",
   "order": 61,
-  "orijinal_metin": "وإما مهموز وهو الذي يكون أحد حروفه الأصلية همزة نحو: أَخَذَ وسأل وقرأ، فإن كانت الهمزة في مقابلة فائه يسمى مهموز الفاء نحو: أَخَذَ وإن كانت الهمزة في مقابلة عينه يسمى مهموز العين نحو: سَأَلَ وإن كانت الهمزة في مقابلة لامه يسمى مهموز اللام نحو: قَرَأَ ويقال لهذه الأقسام السبعة يجمعها هذا البيت: صَحِيحٌ سِتْ مِثَالٌ سِتْ مُضَاعَفٌ... لَفِيفٌ نَاقِصٌ مَهْمُوزٌ أَجْوَفُ، والله ورسوله أعلم بالصواب، النهاية",
-  "translation": "Mehmûz fiil, asıl harflerinden biri hemze olan fiildir; örneği أَخَذَ, سَأَلَ ve قَرَأَ. Hemze fâ karşılığında olursa mehmûzü’l-fâ denir, örneği أَخَذَ. Ayn karşılığında olursa mehmûzü’l-ayn denir, örneği سَأَلَ. Lâm karşılığında olursa mehmûzü’l-lâm denir, örneği قَرَأَ. Bu yedi kısmı şu beyit toplar: صَحِيحٌ سِتْ مِثَالٌ سِتْ مُضَاعَفٌ ... لَفِيفٌ نَاقِصٌ مَهْمُوزٌ أَجْوَفُ. Allah ve Resulü doğruyu daha iyi bilir. Bitiş.",
+  "orijinal_metin": "وإما مهموز وهو الذي يكون أحد حروفه الأصلية همزة نحو: أَخَذَ وسأل وقرأ، فإن كانت الهمزة في مقابلة فائه يسمى مهموز الفاء نحو: أَخَذَ وإن كانت الهمزة في مقابلة عينه يسمى مهموز العين نحو: سَأَلَ وإن كانت الهمزة في مقابلة لامه يسمى مهموز اللام نحو: قَرَأَ ويقال لهذه الأقسام السبعة يجمعها هذا البيت: صَحِيحِسْتْ مِثَالِسْتْ مُضَاعَفٌ... لَفِيفٌ نَاقِصٌ مَهْمُوزٌ أَجْوَفُ، والله ورسوله أعلم بالصواب، النهاية",
+  "translation": "Mehmûz fiil, asıl harflerinden biri hemze olan fiildir; örneği أَخَذَ, سَأَلَ ve قَرَأَ. Hemze fâ karşılığında olursa mehmûzü’l-fâ denir, örneği أَخَذَ. Ayn karşılığında olursa mehmûzü’l-ayn denir, örneği سَأَلَ. Lâm karşılığında olursa mehmûzü’l-lâm denir, örneği قَرَأَ. Bu yedi kısmı şu beyit toplar: sahih, misâl, mudâaf, lefîf, nâkıs, mehmûz ve ecvaf. Allah ve Resulü doğruyu daha iyi bilir. Bitiş.",
   "tokens": [
     {
       "id": "p61_t1",
@@ -651,45 +651,25 @@
     },
     {
       "id": "p61_t54",
-      "arabic": "صَحِيحٌ",
-      "gloss": "Sahih",
+      "arabic": "صَحِيحِسْتْ",
+      "printedArabic": "صحيحست",
+      "gloss": "Sahihtir",
       "analysis": {
-        "kind": "Nazım parçası",
+        "kind": "Farsça birleşik nazım parçası",
         "fields": {
-          "term": "Sahih fiil"
+          "term": "Sahih fiil + Farsça است"
         }
       }
     },
     {
       "id": "p61_t55",
-      "arabic": "سِتْ",
-      "gloss": "Altı",
+      "arabic": "مِثَالِسْتْ",
+      "printedArabic": "مثالست",
+      "gloss": "Misâldir",
       "analysis": {
-        "kind": "Nazım parçası",
+        "kind": "Farsça birleşik nazım parçası",
         "fields": {
-          "numberType": "Aded"
-        }
-      }
-    },
-    {
-      "id": "p61_t56",
-      "arabic": "مِثَالٌ",
-      "gloss": "Misâl",
-      "analysis": {
-        "kind": "Nazım parçası",
-        "fields": {
-          "term": "Misâl fiil"
-        }
-      }
-    },
-    {
-      "id": "p61_t57",
-      "arabic": "سِتْ",
-      "gloss": "Altı",
-      "analysis": {
-        "kind": "Nazım parçası",
-        "fields": {
-          "numberType": "Aded"
+          "term": "Misâl fiil + Farsça است"
         }
       }
     },

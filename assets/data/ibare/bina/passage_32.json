@@ -2,7 +2,7 @@
   "id": "passage_32",
   "order": 32,
   "orijinal_metin": "الباب الرابع: اِفْعَالَّ يَفْعَالُّ اِفْعِيلَالًا موزونه: اِحْمَارَّ يَحْمَارُّ اِحْمِيرَارًا، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله والألف بين العين واللام وحرف آخر من جنس لام فعله في آخره وبناؤه لمبالغة اللازم، ولكن هذا الباب أبلغ من باب الإفعلال لأنه يقال: حَمُرَ زيد: إذا كان له حمرة في الجملة ويقال: اِحْمَرَّ زيد: إذا كان حمرة مبالغة ويقال: اِحْمَارَّ زيد: إذا كان له حمرة زيادة مبالغة",
-  "translation": "Dördüncü babın vezni اِفْعَالَّ يَفْعَالُّ اِفْعِيلَالًا, mevzunu اِحْمَارَّ يَحْمَارُّ اِحْمِيرَارًا’dır. Alâmeti, mâzisinin başında hemze, ayn ile lâm arasında elif ve sonunda lâmü’l-fiil cinsinden bir harf ziyadesiyle altı harf üzere olmasıdır. Binası lazım fiilde mübalağa içindir; fakat bu bab if‘ilâl babından daha beliğdir: حَمُرَ genel kırmızılık, اِحْمَرَّ mübalağalı kırmızılık, اِحْمَارَّ daha fazla mübalağalı kırmızılık bildirir.",
+  "translation": "Dördüncü babın vezni اِفْعَالَّ يَفْعَالُّ اِفْعِيلَالًا, mevzunu اِحْمَارَّ يَحْمَارُّ اِحْمِيرَارًا’dır. Alâmeti, mâzisinin başında hemze, ayn ile lâm arasında elif ve sonunda lâmü’l-fiil cinsinden bir harf ziyadesiyle altı harf üzere olmasıdır. Binası lâzım fiilde mübalağa içindir; fakat bu bab if‘ilâl babından daha beliğdir: حَمُرَ زيد, onda genel olarak bir kırmızılık bulunduğunu; اِحْمَرَّ زيد, onda mübalağalı kırmızılık bulunduğunu; اِحْمَارَّ زيد ise onda daha fazla mübalağalı kırmızılık bulunduğunu bildirir.",
   "tokens": [
     {
       "id": "p32_t1",
@@ -601,7 +601,7 @@
       "id": "p32_t48",
       "arabic": "كَانَ",
       "printedArabic": "كان",
-      "gloss": "Oldu",
+      "gloss": "Vardı / bulunuyordu",
       "analysis": {
         "kind": "Nâkıs fiil",
         "fields": {
@@ -614,7 +614,7 @@
       "id": "p32_t49",
       "arabic": "لَهُ",
       "printedArabic": "له",
-      "gloss": "Onun için",
+      "gloss": "Onda / onun vardı",
       "analysis": {
         "kind": "Harf-i cer + zamir",
         "fields": {
@@ -715,7 +715,7 @@
       "id": "p32_t57",
       "arabic": "كَانَ",
       "printedArabic": "كان",
-      "gloss": "Oldu",
+      "gloss": "Vardı / bulunuyordu",
       "analysis": {
         "kind": "Nâkıs fiil",
         "fields": {
@@ -805,7 +805,7 @@
       "id": "p32_t64",
       "arabic": "كَانَ",
       "printedArabic": "كان",
-      "gloss": "Oldu",
+      "gloss": "Vardı / bulunuyordu",
       "analysis": {
         "kind": "Nâkıs fiil",
         "fields": {
@@ -817,7 +817,7 @@
       "id": "p32_t65",
       "arabic": "لَهُ",
       "printedArabic": "له",
-      "gloss": "Onun için",
+      "gloss": "Onda / onun vardı",
       "analysis": {
         "kind": "Harf-i cer + zamir",
         "fields": {

@@ -2,7 +2,7 @@
   "id": "passage_55",
   "order": 55,
   "orijinal_metin": "الباب الثاني: اِفْعَنْلَى يَفْعَنْلِي اِفْعِنْلَاءً، موزونه: اِسْلَنْقَى يَسْلَنْقِي اِسْلِنْقَاءً، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله، والنون بين العين واللام في آخره، وبناؤه للازم نحو: اِسْلَنْقَى زيد",
-  "translation": "Rubâî mezîd mülhaklarının اِحْرَنْجَمَ babına tâbi ikinci babı اِفْعَنْلَى يَفْعَنْلِي اِفْعِنْلَاءً’dır. Mevzunu اِسْلَنْقَى يَسْلَنْقِي اِسْلِنْقَاءً’dır. Alâmeti, mâzisinin başında hemze, ayn ile lâm arasında nûn ve sonunda yâ ziyadesiyle altı harf üzere olmasıdır. Binası lazım içindir.",
+  "translation": "Rubâî mezîd mülhaklarının اِحْرَنْجَمَ babına tâbi ikinci babı اِفْعَنْلَى يَفْعَنْلِي اِفْعِنْلَاءً’dır. Mevzunu اِسْلَنْقَى يَسْلَنْقِي اِسْلِنْقَاءً’dır. Alâmeti, mâzisinin başında hemze, ayn ile lâm arasında nûn ve sonunda yâ ziyadesiyle altı harf üzere olmasıdır. Binası lâzım içindir.",
   "tokens": [
     {
       "id": "p55_t1",
@@ -383,6 +383,13 @@
           "role": "Fâil"
         }
       }
+    }
+  ],
+  "editorialCorrection": "بزيادة الهمزة في أوله، والنون بين العين واللام، والياء في آخره",
+  "notes": [
+    {
+      "label": "Tashih notu",
+      "text": "Matbu metinde والياء yoktur; vezne göre doğru açıklama yânın sonda ziyade edildiğini ayrıca belirtir. Çeviri bu tashihli anlamı verir."
     }
   ]
 }

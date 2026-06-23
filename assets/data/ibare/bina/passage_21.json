@@ -286,7 +286,7 @@
     {
       "id": "p21_t20",
       "arabic": "قَاتَلَهُمْ",
-      "gloss": "Onlarla savaştı, onları kahretti",
+      "gloss": "Allah onları kahretsin / helâk etsin",
       "analysis": {
         "kind": "Fiil + zamir",
         "fields": {
@@ -296,7 +296,7 @@
           "bab": "Sülâsî mezîd, müfâ‘ale babı",
           "pattern": "فَاعَلَ",
           "pronoun": "هُمْ: mef‘ûl zamiri",
-          "meaning": "Burada bab ortaklık değil, tek taraflı fiil manasında kullanılmıştır."
+          "meaning": "Burada müfâ‘ale babı karşılıklı savaşma değil, tek taraflı beddua/dua üslubuyla kullanılmıştır."
         }
       }
     },

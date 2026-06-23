@@ -266,12 +266,12 @@
       "id": "p31_t21",
       "arabic": "لِوَاوَيْنِ",
       "printedArabic": "لواوين",
-      "gloss": "İki vâv için",
+      "gloss": "İki vâv ziyadesiyle",
       "analysis": {
         "kind": "Harf-i cer + tesniye isim",
         "fields": {
           "numberType": "Tesniye",
-          "meaning": "İki vâv ziyadesi"
+          "meaning": "İki vâvın eklenmesi"
         }
       }
     },

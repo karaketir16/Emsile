@@ -497,7 +497,20 @@ class _IbarePassageScreenState extends State<IbarePassageScreen> {
             shown: _showTranslation,
             onPressed: () =>
                 setState(() => _showTranslation = !_showTranslation),
-            child: Text(passage.translation),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(passage.translation),
+                if (passage.editorialCorrection case final correction?) ...[
+                  const SizedBox(height: 10),
+                  _AnalysisRow(label: 'Tashih', value: correction),
+                ],
+                for (final note in passage.notes) ...[
+                  const SizedBox(height: 10),
+                  _AnalysisRow(label: note.label, value: note.text),
+                ],
+              ],
+            ),
           ),
           const SizedBox(height: 14),
           Row(

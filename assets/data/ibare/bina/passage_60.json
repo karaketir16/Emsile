@@ -2,7 +2,7 @@
   "id": "passage_60",
   "order": 60,
   "orijinal_metin": "النوع الأول: واجب: وهو أن يكون الحرفان المتجانسان متحركين أو يكون الحرف الأول ساكنا والحرف الثاني متحركا نحو: مَدَّ يَمُدُّ مَدًّا، النوع الثاني: جائز: وهو أن يكون الحرف الأول متحركا والحرف الثاني ساكنا بسكون عارض نحو: لَمْ يَمُدَّ، بحركات الدال الثانية أصله لَمْ يَمْدُدْ فنقلت حركة الدال الأولى إلى الميم ثم حركت الدال الثانية إما بالفتح أو بالضم أو بالكسر لكون سكونها عارضا، ثم أدغمت الدال الأولى فيها، فصار لَمْ يَمُدَّ بالإدغام، ويجوز لَمْ يَمْدُدْ بالفك، النوع الثالث: ممتنع: وهو أن يكون الأول متحركا، والثاني ساكنا بسكون أصلي نحو: مَدَدْتُ إلى مَدَدْنَ",
-  "translation": "İdğamın birinci türü vâciptir: iki cinsdaş harf harekeli olursa veya birinci harf sakin, ikinci harf harekeli olursa; örneği مَدَّ يَمُدُّ مَدًّا. İkinci tür câizdir: birinci cinsdaş harf harekeli, ikinci harf arızî sükûnla sakin olursa; örneği لَمْ يَمُدَّ. İkinci dâlın harekeleriyle aslı لَمْ يَمْدُدْ idi; birinci dâlın harekesi mîme nakledildi, sonra ikinci dâl ya fetha, ya damme, ya kesra ile harekelendi; çünkü sükûnu arızîdir. Sonra birinci dâl ona idğam edildi ve idğamla لَمْ يَمُدَّ oldu. Çözerek لَمْ يَمْدُدْ da câizdir. Üçüncü tür mümteni‘dir: birinci harf harekeli, ikinci harf aslî sükûnla sakin olursa; örneği مَدَدْتُ ve مَدَدْنَ.",
+  "translation": "İdğamın birinci türü vâciptir: iki cinsdaş harf harekeli olursa veya birinci harf sakin, ikinci harf harekeli olursa; örneği مَدَّ يَمُدُّ مَدًّا. İkinci tür câizdir: birinci cinsdaş harf harekeli, ikinci harf arızî sükûnla sakin olursa; örneği لَمْ يَمُدَّ. İkinci dâle verilebilen harekelere göre idğamlı şeklin üç farklı okunuşu vardır; kelimenin idğamsız aslı لَمْ يَمْدُدْ biçimindedir. birinci dâlın harekesi mîme nakledildi, sonra ikinci dâl ya fetha, ya damme, ya kesra ile harekelendi; çünkü sükûnu arızîdir. Sonra birinci dâl ona idğam edildi ve idğamla لَمْ يَمُدَّ oldu. Çözerek لَمْ يَمْدُدْ da câizdir. Üçüncü tür mümteni‘dir: birinci harf harekeli, ikinci harf aslî sükûnla sakin olursa; örneği مَدَدْتُ ve مَدَدْنَ.",
   "tokens": [
     {
       "id": "p60_t1",
@@ -1102,11 +1102,11 @@
       "id": "p60_t64",
       "arabic": "إِلَى",
       "printedArabic": "إلى",
-      "gloss": "-e kadar, ile",
+      "gloss": "-e kadar",
       "analysis": {
         "kind": "Harf-i cer",
         "fields": {
-          "meaning": "Burada örnekleri bağlar"
+          "meaning": "Örnek aralığının sonunu gösterir"
         }
       }
     },

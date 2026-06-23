@@ -2,7 +2,7 @@
   "id": "passage_52",
   "order": 52,
   "orijinal_metin": "الباب الخامس: تَفَعْلَى يَتَفَعْلَى تَفَعْلِيًا، موزونه: تَسَلْقَى يَتَسَلْقَى تَسَلْقِيًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله والياء في آخره، وبناؤه للازم نحو: تَسَلْقَى زيد، أي نام على قفاه، أي أن حقيقة الإلحاق في هذه الملحقات إنما تكون بزيادة غير التاء، مثلا الإلحاق في تَجَلْبَبَ إنما هو بتكرار الباء والتاء إنما دخلت لمعنى المطاوعة كما كانت في تَدَحْرَجَ لأن الإلحاق لا يكون في أول الكلمة بل في وسطها وآخرها على ما صرح به في شرح المفصل",
-  "translation": "Mülhak rubâî mezîdin beşinci babı تَفَعْلَى يَتَفَعْلَى تَفَعْلِيًا’dır. Mevzunu تَسَلْقَى يَتَسَلْقَى تَسَلْقِيًا’dır. Alâmeti, mâzisinin başında tâ ve sonunda yâ ziyadesiyle beş harf üzere olmasıdır. Binası lazım içindir. تَسَلْقَى زيد, yani Zeyd sırt üstü yattı. Bu mülhaklarda gerçek ilhâk tâ dışındaki ziyadeyledir. Mesela تَجَلْبَبَ kelimesinde ilhâk bâ harfinin tekrarıyladır; tâ ise تَدَحْرَجَ babında olduğu gibi mutâva‘a manası için girmiştir. Çünkü ilhâk kelimenin başında değil, ortasında ve sonunda olur; Şerhu’l-Mufassal’da böyle açıklanmıştır.",
+  "translation": "Mülhak rubâî mezîdin beşinci babı تَفَعْلَى يَتَفَعْلَى تَفَعْلِيًا’dır. Mevzunu تَسَلْقَى يَتَسَلْقَى تَسَلْقِيًا’dır. Alâmeti, mâzisinin başında tâ ve sonunda yâ ziyadesiyle beş harf üzere olmasıdır. Binası lâzım içindir. تَسَلْقَى زيد, yani Zeyd sırtüstü yattı. Bu mülhaklarda gerçek ilhâk tâ dışındaki ziyadeyledir. Mesela تَجَلْبَبَ kelimesinde ilhâk bâ harfinin tekrarıyladır; tâ ise تَدَحْرَجَ babında olduğu gibi mutâvaat manası için girmiştir. Çünkü ilhâk kelimenin başında değil, ortasında ve sonunda olur; Şerhu’l-Mufassal’da böyle açıklanmıştır.",
   "tokens": [
     {
       "id": "p52_t1",
@@ -390,7 +390,7 @@
       "arabic": "قَفَاهُ",
       "printedArabic": "قفاه",
       "punctuation": "،",
-      "gloss": "Ensesinin, sırtının üzerine",
+      "gloss": "Ensesinin/arka tarafının üzerine",
       "analysis": {
         "kind": "İsim + zamir",
         "fields": {
@@ -422,63 +422,81 @@
       "arabic": "حَقِيقَةَ",
       "printedArabic": "حقيقة",
       "gloss": "Hakikati",
-      "analysis": { "kind": "İsim" }
+      "analysis": {
+        "kind": "İsim"
+      }
     },
     {
       "id": "p52_t36",
       "arabic": "الْإِلْحَاقِ",
       "printedArabic": "الإلحاق",
       "gloss": "İlhâkın",
-      "analysis": { "kind": "Masdar" }
+      "analysis": {
+        "kind": "Masdar"
+      }
     },
     {
       "id": "p52_t37",
       "arabic": "فِي",
       "printedArabic": "في",
       "gloss": "-de",
-      "analysis": { "kind": "Harf-i cer" }
+      "analysis": {
+        "kind": "Harf-i cer"
+      }
     },
     {
       "id": "p52_t38",
       "arabic": "هَذِهِ",
       "printedArabic": "هذه",
       "gloss": "Bu",
-      "analysis": { "kind": "İşaret ismi" }
+      "analysis": {
+        "kind": "İşaret ismi"
+      }
     },
     {
       "id": "p52_t39",
       "arabic": "الْمُلْحَقَاتِ",
       "printedArabic": "الملحقات",
       "gloss": "Mülhaklarda",
-      "analysis": { "kind": "İsim" }
+      "analysis": {
+        "kind": "İsim"
+      }
     },
     {
       "id": "p52_t40",
       "arabic": "إِنَّمَا",
       "printedArabic": "إنما",
       "gloss": "Ancak",
-      "analysis": { "kind": "Hasr edatı" }
+      "analysis": {
+        "kind": "Hasr edatı"
+      }
     },
     {
       "id": "p52_t40a",
       "arabic": "تَكُونُ",
       "printedArabic": "تكون",
       "gloss": "Olur",
-      "analysis": { "kind": "Fiil" }
+      "analysis": {
+        "kind": "Fiil"
+      }
     },
     {
       "id": "p52_t40b",
       "arabic": "بِزِيَادَةِ",
       "printedArabic": "بزيادة",
       "gloss": "Ziyade ile",
-      "analysis": { "kind": "Harf-i cer + masdar" }
+      "analysis": {
+        "kind": "Harf-i cer + masdar"
+      }
     },
     {
       "id": "p52_t40c",
       "arabic": "غَيْرِ",
       "printedArabic": "غير",
       "gloss": "Başka",
-      "analysis": { "kind": "İsim" }
+      "analysis": {
+        "kind": "İsim"
+      }
     },
     {
       "id": "p52_t40d",
@@ -486,7 +504,9 @@
       "printedArabic": "التاء",
       "punctuation": "،",
       "gloss": "Tâ harfinden",
-      "analysis": { "kind": "Harf adı" }
+      "analysis": {
+        "kind": "Harf adı"
+      }
     },
     {
       "id": "p52_t41",

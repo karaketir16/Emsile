@@ -2,7 +2,7 @@
   "id": "passage_57",
   "order": 57,
   "orijinal_metin": "واعلم أن كل فعل إما صحيح وهو الذي ليس في مقابلة فائه وعينه ولامه حرف من حروف العلة وهي الواو والياء والألف والهمزة والتضعيف نحو: نَصَرَ وإما معتل وهو الذي يكون في مقابلة فائه وعينه ولامه حرف من حروف العلة نحو: وَعَدَ وقال وطغى",
-  "translation": "Her fiil ya sahihtir: fâsı, aynısı ve lâmı karşılığında illet harflerinden biri bulunmayan fiildir; illet harfleri vâv, yâ, elif, hemze ve taz‘îftir. Örneği نَصَرَ. Ya da mu‘teldir: fâsı, aynısı veya lâmı karşılığında illet harflerinden biri bulunan fiildir. Örneği وَعَدَ, قَالَ ve طَغَى.",
+  "translation": "Her fiil ya sahihtir: fâü’l-fiili, aynü’l-fiili ve lâmü’l-fiili karşılığında metnin saydığı illet/arıza unsurlarından biri bulunmayan fiildir; metin burada vâv, yâ, elif, hemze ve taz‘îfi birlikte anar. Örneği نَصَرَ. Ya da mu‘teldir: fâü’l-fiili, aynü’l-fiili veya lâmü’l-fiili karşılığında illet harflerinden biri bulunan fiildir. Örneği وَعَدَ, قَالَ ve طَغَى.",
   "tokens": [
     {
       "id": "p57_t1",
@@ -537,6 +537,12 @@
           "term": "Nâkıs mu‘tel"
         }
       }
+    }
+  ],
+  "notes": [
+    {
+      "label": "Terim notu",
+      "text": "Metin hemze ve taz‘îfi de bu kapsamda saymaktadır; standart sarf terminolojisinde hurûf-ı illet yalnız و، ا، ي’dir."
     }
   ]
 }

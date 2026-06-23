@@ -239,16 +239,15 @@
     {
       "id": "p19_t17",
       "arabic": "مَوَّتَ",
-      "gloss": "Çokça öldü/telef oldu",
+      "gloss": "Develer arasında çok sayıda ölüm meydana geldi / çok sayıda deve telef oldu",
       "analysis": {
         "kind": "Fiil",
         "fields": {
           "conjugation": "Fiil-i mâzi, malûm",
-          "person": "3. şahıs, müzekker, tekil",
           "root": "م و ت",
           "bab": "Sülâsî mezîd, tef‘îl babı",
           "pattern": "فَعَّلَ",
-          "meaning": "Fâilde teksir: ölen varlıkların çok olması"
+          "meaning": "Fâilde teksir: PDF örneği, çok sayıda devenin telef olmasını gösterir."
         }
       }
     },

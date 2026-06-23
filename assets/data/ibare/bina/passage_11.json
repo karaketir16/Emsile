@@ -141,7 +141,6 @@
     {
       "id": "p11_t6",
       "arabic": "حَسُنَ",
-      "printedArabic": "حسن",
       "gloss": "Güzel oldu",
       "analysis": {
         "kind": "Fiil",
@@ -157,7 +156,6 @@
     {
       "id": "p11_t7",
       "arabic": "يَحْسُنُ",
-      "printedArabic": "يحسن",
       "punctuation": "،",
       "gloss": "Güzel olur",
       "analysis": {

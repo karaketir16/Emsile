@@ -122,7 +122,6 @@
     {
       "id": "p16_t3",
       "arabic": "أَفْعَلَ",
-      "printedArabic": "أفعل",
       "gloss": "Mâzi vezni: ef‘ale",
       "analysis": {
         "kind": "Vezin",
@@ -134,7 +133,6 @@
     {
       "id": "p16_t4",
       "arabic": "يُفْعِلُ",
-      "printedArabic": "يفعل",
       "gloss": "Muzâri vezni: yüf‘ilü",
       "analysis": {
         "kind": "Vezin",
@@ -146,7 +144,6 @@
     {
       "id": "p16_t5",
       "arabic": "إِفْعَالًا",
-      "printedArabic": "إفعالاً",
       "gloss": "Masdar vezni: if‘âlen",
       "analysis": {
         "kind": "Vezin",
@@ -174,7 +171,6 @@
     {
       "id": "p16_t7",
       "arabic": "أَكْرَمَ",
-      "printedArabic": "أكرم",
       "gloss": "Ağırladı",
       "analysis": {
         "kind": "Fiil",
@@ -190,7 +186,6 @@
     {
       "id": "p16_t8",
       "arabic": "يُكْرِمُ",
-      "printedArabic": "يكرم",
       "gloss": "A ağırlar",
       "analysis": {
         "kind": "Fiil",
@@ -206,7 +201,6 @@
     {
       "id": "p16_t9",
       "arabic": "إِكْرَامًا",
-      "printedArabic": "إكراماً",
       "punctuation": "،",
       "gloss": "Ağırlamak",
       "analysis": {

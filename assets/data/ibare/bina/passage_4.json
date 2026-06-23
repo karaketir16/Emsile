@@ -80,7 +80,7 @@
     {
       "id": "p4_t1",
       "arabic": "وَبِنَاؤُهُ",
-      "printedArabic": "وبِناؤُهُ",
+      "printedArabic": "وبناؤه",
       "gloss": "Ve bu babın manen binası",
       "analysis": {
         "kind": "Bağlaç + masdar + zamir",
@@ -103,7 +103,7 @@
     {
       "id": "p4_t2",
       "arabic": "لِلتَّعْدِيَةِ",
-      "printedArabic": "لِلتَّعْدِيَةِ",
+      "printedArabic": "للتعدية",
       "gloss": "Müteaddilik içindir",
       "analysis": {
         "kind": "Harf-i cer + isim",
@@ -122,7 +122,7 @@
     {
       "id": "p4_t3",
       "arabic": "غَالِبًا",
-      "printedArabic": "غَالِباً",
+      "printedArabic": "غالباً",
       "gloss": "Çoğu kez",
       "analysis": {
         "kind": "İsm-i fâil",
@@ -138,7 +138,7 @@
     {
       "id": "p4_t4",
       "arabic": "وَقَدْ",
-      "printedArabic": "وَقَدْ",
+      "printedArabic": "وقد",
       "gloss": "Ve bazen",
       "analysis": {
         "kind": "Bağlaç + harf",
@@ -157,7 +157,7 @@
     {
       "id": "p4_t5",
       "arabic": "يَكُونُ",
-      "printedArabic": "يَكُونُ",
+      "printedArabic": "يكون",
       "gloss": "Olur",
       "analysis": {
         "kind": "Fiil",
@@ -175,7 +175,7 @@
     {
       "id": "p4_t6",
       "arabic": "لَازِمًا",
-      "printedArabic": "لَازِماً",
+      "printedArabic": "لازماً",
       "gloss": "Lazım, geçişsiz",
       "analysis": {
         "kind": "İsm-i fâil",
@@ -206,7 +206,7 @@
     {
       "id": "p4_t7b",
       "arabic": "الْمُتَعَدِّي",
-      "printedArabic": "المتعدِّي",
+      "printedArabic": "المتعدي",
       "gloss": "Müteaddinin",
       "analysis": {
         "kind": "İsm-i fâil",

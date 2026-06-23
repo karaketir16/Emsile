@@ -203,7 +203,7 @@
     {
       "id": "p3_t8",
       "arabic": "وَعَلَامَتُهُ",
-      "printedArabic": "وعلامَتُهُ",
+      "printedArabic": "وعلامته",
       "gloss": "Ve onun alâmeti",
       "analysis": {
         "kind": "Bağlaç + isim + zamir",
@@ -256,7 +256,7 @@
     {
       "id": "p3_t11",
       "arabic": "عَيْنُ",
-      "printedArabic": "عَيْنُ",
+      "printedArabic": "عين",
       "gloss": "Orta harfi",
       "analysis": {
         "kind": "İsim",
@@ -273,7 +273,7 @@
     {
       "id": "p3_t12",
       "arabic": "فِعْلِهِ",
-      "printedArabic": "فِعْلِهِ",
+      "printedArabic": "فعله",
       "gloss": "Fiilinin",
       "analysis": {
         "kind": "İsim + zamir",
@@ -289,7 +289,7 @@
     {
       "id": "p3_t13",
       "arabic": "مَفْتُوحًا",
-      "printedArabic": "مَفْتُوحاً",
+      "printedArabic": "مفتوحاً",
       "gloss": "Fethalı",
       "analysis": {
         "kind": "İsm-i mef‘ûl",
@@ -305,7 +305,7 @@
     {
       "id": "p3_t14",
       "arabic": "فِي",
-      "printedArabic": "فِي",
+      "printedArabic": "في",
       "gloss": "-de",
       "analysis": {
         "kind": "Harf-i cer",
@@ -333,7 +333,7 @@
     {
       "id": "p3_t15",
       "arabic": "وَمَضْمُومًا",
-      "printedArabic": "ومَضْمُوماً",
+      "printedArabic": "ومضموماً",
       "gloss": "Ve dammeli",
       "analysis": {
         "kind": "Bağlaç + ism-i mef‘ûl",
@@ -355,7 +355,7 @@
     {
       "id": "p3_t16",
       "arabic": "فِي",
-      "printedArabic": "فِي",
+      "printedArabic": "في",
       "gloss": "-de",
       "analysis": {
         "kind": "Harf-i cer",
@@ -367,7 +367,7 @@
     {
       "id": "p3_t16b",
       "arabic": "الْمُضَارِعِ",
-      "printedArabic": "المضارعِ",
+      "printedArabic": "المضارع",
       "gloss": "Muzârî",
       "analysis": {
         "kind": "İsim",

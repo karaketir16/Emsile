@@ -140,9 +140,6 @@ void main() {
     expect(token('p7_t23').gloss, 'Lâmı, son harfi');
     expect(token('p7_t25').gloss, '-den, -dan');
     expect(token('p7_t26').gloss, 'Harfleri');
-    final phrases = binaBook.passages[6].phrasesForToken('p7_t26');
-    expect(phrases.first.meaning, 'Boğaz harfleri');
-    expect(phrases[1].meaning, 'Boğaz harflerinden');
   });
 
   test('ibare tokens follow real word boundaries', () {
@@ -151,126 +148,12 @@ void main() {
         .where((token) => token.arabic.contains(' '));
 
     expect(multiWordTokens, isEmpty);
-    expect(
-      binaBook.passages[7].phrasesForToken('p8_t8').first.meaning,
-      'Müteaddinin misali',
-    );
-    expect(
-      binaBook.passages[7].phrasesForToken('p8_t1').first.meaning,
-      'Bu babın binası da',
-    );
   });
 
-  test('third bab distinguishes the kane sentence from its verbal noun', () {
-    final phrases = binaBook.passages[6].phrases;
-    final kane = phrases.firstWhere((phrase) => phrase.id == 'p7_ph15');
-    final masdar = phrases.firstWhere((phrase) => phrase.id == 'p7_ph16');
-
-    expect(
-      kane.meaning,
-      'Fiilinin ayn veya lâm harfi boğaz harflerinden biri olur.',
-    );
-    expect(
-      masdar.meaning,
-      'Fiilinin ayn veya lâm harfinin boğaz harflerinden biri olması',
-    );
-  });
-
-  test('all ibare phrase layers grow and have distinct meanings', () {
+  test('ibare passages no longer ship phrase layers', () {
     for (final passage in binaBook.passages) {
-      final byId = {for (final phrase in passage.phrases) phrase.id: phrase};
-      final coveredTokens = passage.phrases
-          .expand((phrase) => phrase.tokenIds)
-          .toSet();
-
-      expect(
-        coveredTokens,
-        containsAll(passage.tokens.map((token) => token.id)),
-        reason: passage.id,
-      );
-
-      for (final phrase in passage.phrases) {
-        if (phrase.parentId case final parentId?) {
-          final parent = byId[parentId]!;
-          expect(
-            parent.tokenIds.length,
-            greaterThan(phrase.tokenIds.length),
-            reason: '${passage.id}: ${phrase.id} -> $parentId',
-          );
-          expect(
-            parent.meaning.trim(),
-            isNot(phrase.meaning.trim()),
-            reason: '${passage.id}: ${phrase.id} -> $parentId',
-          );
-        }
-      }
+      expect(passage.phrases, isEmpty);
     }
-  });
-
-  test('besmele and introduction expose layered phrases', () {
-    final besmele = binaBook.passages[0];
-    final introduction = binaBook.passages[1];
-
-    expect(
-      besmele.phrasesForToken('p1_t2').map((phrase) => phrase.meaning),
-      containsAll([
-        'Allah’ın adıyla',
-        'Rahman olan Allah',
-        'Rahman ve Rahim olan Allah',
-        'Rahman ve Rahim olan Allah’ın adıyla [başlarım].',
-      ]),
-    );
-    expect(
-      introduction.phrasesForToken('p2_t5').map((phrase) => phrase.meaning),
-      containsAll([
-        'Otuz beş',
-        'Otuz beş bab',
-        'Sarf ilminin babları otuz beş babdır.',
-        'Muhakkak ki sarf ilminin babları otuz beş babdır.',
-        'Bil ki sarf ilminin babları otuz beş babdır.',
-      ]),
-    );
-    expect(
-      introduction.phrasesForToken('p2_t10').map((phrase) => phrase.meaning),
-      containsAll([
-        'Sülâsî mücerred için',
-        'Bunlardan altısı sülâsî mücerred içindir.',
-      ]),
-    );
-  });
-
-  testWidgets('ibare phrase layers open separately and grow with arrows', (
-    WidgetTester tester,
-  ) async {
-    await tester.binding.setSurfaceSize(const Size(390, 1600));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
-
-    await tester.pumpWidget(
-      MaterialApp(home: IbarePassageScreen(book: binaBook, initialIndex: 6)),
-    );
-
-    await tester.tap(find.byKey(const ValueKey('detail_p7_t26')));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Kelime grubunu göster (8)'), findsOneWidget);
-    expect(find.text('Boğaz harfleri'), findsNothing);
-
-    final phraseButton = find.text('Kelime grubunu göster (8)');
-    await tester.ensureVisible(phraseButton);
-    await tester.pumpAndSettle();
-    await tester.tap(phraseButton);
-    await tester.pumpAndSettle();
-
-    await tester.ensureVisible(find.text('Terkip (Kelime Grubu)'));
-    expect(find.text('Terkip (Kelime Grubu)'), findsOneWidget);
-    expect(find.text('Boğaz harfleri'), findsOneWidget);
-    expect(find.text('1/8'), findsOneWidget);
-
-    await tester.tap(find.byTooltip('Daha büyük terkip'));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Boğaz harflerinden'), findsOneWidget);
-    expect(find.text('2/8'), findsOneWidget);
   });
 
   testWidgets('shows the Emsile home screen', (WidgetTester tester) async {

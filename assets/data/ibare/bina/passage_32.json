@@ -1,0 +1,305 @@
+{
+  "id": "passage_32",
+  "order": 32,
+  "title": "Üçüncü Bab: Fa‘vele",
+  "translation": "Üçüncü bab فَعْوَلَ يُفَعْوِلُ’dür. Ayn ile lâm arasına vav eklenir ve müteaddi kullanılır.",
+  "phrases": [
+    {
+      "id": "p32_ph1",
+      "tokenIds": [
+        "p32_t1",
+        "p32_t2",
+        "p32_t3",
+        "p32_t4",
+        "p32_t5",
+        "p32_t6",
+        "p32_t7",
+        "p32_t8",
+        "p32_t9",
+        "p32_t10",
+        "p32_t11",
+        "p32_t12",
+        "p32_t13",
+        "p32_t14",
+        "p32_t15",
+        "p32_t16",
+        "p32_t17",
+        "p32_t18",
+        "p32_t19",
+        "p32_t20",
+        "p32_t21",
+        "p32_t22",
+        "p32_t23",
+        "p32_t24"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Üçüncü bab فَعْوَلَ يُفَعْوِلُ’dür. Ayn ile lâm arasına vav eklenir ve müteaddi kullanılır."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p32_t1",
+      "arabic": "الْبَابُ",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Bab"
+        }
+      }
+    },
+    {
+      "id": "p32_t2",
+      "arabic": "الثَّالِثُ",
+      "gloss": "Üçüncü",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Üçüncü"
+        }
+      }
+    },
+    {
+      "id": "p32_t3",
+      "arabic": "فَعْوَلَ",
+      "gloss": "فَعْوَلَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَعْوَلَ"
+        }
+      }
+    },
+    {
+      "id": "p32_t4",
+      "arabic": "يُفَعْوِلُ",
+      "gloss": "يُفَعْوِلُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يُفَعْوِلُ"
+        }
+      }
+    },
+    {
+      "id": "p32_t5",
+      "arabic": "فَعْوَلَةً",
+      "gloss": "فَعْوَلَةً",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَعْوَلَةً"
+        }
+      }
+    },
+    {
+      "id": "p32_t6",
+      "arabic": "وَفِعْوَالًا",
+      "gloss": "Ve وَفِعْوَالًا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَفِعْوَالًا"
+        }
+      }
+    },
+    {
+      "id": "p32_t7",
+      "arabic": "مَوْزُونُهُ",
+      "gloss": "Mevzunu",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mevzunu"
+        }
+      }
+    },
+    {
+      "id": "p32_t8",
+      "arabic": "جَهْوَرَ",
+      "gloss": "جَهْوَرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "جَهْوَرَ"
+        }
+      }
+    },
+    {
+      "id": "p32_t9",
+      "arabic": "يُجَهْوِرُ",
+      "gloss": "يُجَهْوِرُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يُجَهْوِرُ"
+        }
+      }
+    },
+    {
+      "id": "p32_t10",
+      "arabic": "جَهْوَرَةً",
+      "gloss": "جَهْوَرَةً",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "جَهْوَرَةً"
+        }
+      }
+    },
+    {
+      "id": "p32_t11",
+      "arabic": "وَجِهْوَارًا",
+      "gloss": "Ve وَجِهْوَارًا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَجِهْوَارًا"
+        }
+      }
+    },
+    {
+      "id": "p32_t12",
+      "arabic": "وَعَلَامَتُهُ",
+      "gloss": "Ve alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve alâmeti"
+        }
+      }
+    },
+    {
+      "id": "p32_t13",
+      "arabic": "زِيَادَةُ",
+      "gloss": "Eklenmesi",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Eklenmesi"
+        }
+      }
+    },
+    {
+      "id": "p32_t14",
+      "arabic": "الْوَاوِ",
+      "gloss": "Vavın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Vavın"
+        }
+      }
+    },
+    {
+      "id": "p32_t15",
+      "arabic": "بَيْنَ",
+      "gloss": "Arasında",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "Arasında"
+        }
+      }
+    },
+    {
+      "id": "p32_t16",
+      "arabic": "الْعَيْنِ",
+      "gloss": "Aynın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Aynın"
+        }
+      }
+    },
+    {
+      "id": "p32_t17",
+      "arabic": "وَاللَّامِ",
+      "gloss": "Ve وَاللَّامِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاللَّامِ"
+        }
+      }
+    },
+    {
+      "id": "p32_t18",
+      "arabic": "وَبِنَاؤُهُ",
+      "gloss": "Ve kullanılışı",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve kullanılışı"
+        }
+      }
+    },
+    {
+      "id": "p32_t19",
+      "arabic": "لِلتَّعْدِيَةِ",
+      "gloss": "Geçişlilik içindir",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Geçişlilik içindir"
+        }
+      }
+    },
+    {
+      "id": "p32_t20",
+      "arabic": "أَيْضًا",
+      "gloss": "Ayrıca",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Ayrıca"
+        }
+      }
+    },
+    {
+      "id": "p32_t21",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p32_t22",
+      "arabic": "جَهْوَرَ",
+      "gloss": "جَهْوَرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "جَهْوَرَ"
+        }
+      }
+    },
+    {
+      "id": "p32_t23",
+      "arabic": "زَيْدٌ",
+      "gloss": "Zeyd",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Zeyd"
+        }
+      }
+    },
+    {
+      "id": "p32_t24",
+      "arabic": "الْقُرْآنَ",
+      "gloss": "الْقُرْآنَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْقُرْآنَ"
+        }
+      }
+    }
+  ]
+}

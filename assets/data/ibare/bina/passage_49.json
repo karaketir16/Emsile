@@ -1,0 +1,401 @@
+{
+  "id": "passage_49",
+  "order": 49,
+  "title": "Mudaafın Tanımı",
+  "translation": "Aynü’l-fiili ile lâmü’l-fiili aynı cinsten olan fiile mudaaf denir. İdgam, aynı cinsten iki harften birini diğerine katmaktır ve üç çeşittir.",
+  "phrases": [
+    {
+      "id": "p49_ph1",
+      "tokenIds": [
+        "p49_t1",
+        "p49_t2",
+        "p49_t3",
+        "p49_t4",
+        "p49_t5",
+        "p49_t6",
+        "p49_t7",
+        "p49_t8",
+        "p49_t9",
+        "p49_t10",
+        "p49_t11",
+        "p49_t12",
+        "p49_t13",
+        "p49_t14",
+        "p49_t15",
+        "p49_t16",
+        "p49_t17",
+        "p49_t18",
+        "p49_t19",
+        "p49_t20",
+        "p49_t21",
+        "p49_t22",
+        "p49_t23",
+        "p49_t24",
+        "p49_t25",
+        "p49_t26",
+        "p49_t27",
+        "p49_t28",
+        "p49_t29",
+        "p49_t30",
+        "p49_t31",
+        "p49_t32"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Aynü’l-fiili ile lâmü’l-fiili aynı cinsten olan fiile mudaaf denir. İdgam, aynı cinsten iki harften birini diğerine katmaktır ve üç çeşittir."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p49_t1",
+      "arabic": "وَإِمَّا",
+      "gloss": "Ve وَإِمَّا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَإِمَّا"
+        }
+      }
+    },
+    {
+      "id": "p49_t2",
+      "arabic": "مُضَاعَفٌ",
+      "gloss": "Mudaaf",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mudaaf"
+        }
+      }
+    },
+    {
+      "id": "p49_t3",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p49_t4",
+      "arabic": "الَّذِي",
+      "gloss": "الَّذِي",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الَّذِي"
+        }
+      }
+    },
+    {
+      "id": "p49_t5",
+      "arabic": "عَيْنُهُ",
+      "gloss": "عَيْنُهُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "عَيْنُهُ"
+        }
+      }
+    },
+    {
+      "id": "p49_t6",
+      "arabic": "وَلَامُهُ",
+      "gloss": "Ve وَلَامُهُ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَلَامُهُ"
+        }
+      }
+    },
+    {
+      "id": "p49_t7",
+      "arabic": "مِنْ",
+      "gloss": "-den",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "-den"
+        }
+      }
+    },
+    {
+      "id": "p49_t8",
+      "arabic": "جِنْسٍ",
+      "gloss": "جِنْسٍ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "جِنْسٍ"
+        }
+      }
+    },
+    {
+      "id": "p49_t9",
+      "arabic": "وَاحِدٍ",
+      "gloss": "Ve وَاحِدٍ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاحِدٍ"
+        }
+      }
+    },
+    {
+      "id": "p49_t10",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p49_t11",
+      "arabic": "مَدَّ",
+      "gloss": "مَدَّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَدَّ"
+        }
+      }
+    },
+    {
+      "id": "p49_t12",
+      "arabic": "أَصْلُهُ",
+      "gloss": "Aslı",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Aslı"
+        }
+      }
+    },
+    {
+      "id": "p49_t13",
+      "arabic": "مَدَدَ",
+      "gloss": "مَدَدَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَدَدَ"
+        }
+      }
+    },
+    {
+      "id": "p49_t14",
+      "arabic": "حُذِفَتْ",
+      "gloss": "حُذِفَتْ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "حُذِفَتْ"
+        }
+      }
+    },
+    {
+      "id": "p49_t15",
+      "arabic": "حَرَكَةُ",
+      "gloss": "حَرَكَةُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "حَرَكَةُ"
+        }
+      }
+    },
+    {
+      "id": "p49_t16",
+      "arabic": "الدَّالِ",
+      "gloss": "الدَّالِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الدَّالِ"
+        }
+      }
+    },
+    {
+      "id": "p49_t17",
+      "arabic": "الْأُولَى",
+      "gloss": "الْأُولَى",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْأُولَى"
+        }
+      }
+    },
+    {
+      "id": "p49_t18",
+      "arabic": "ثُمَّ",
+      "gloss": "ثُمَّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "ثُمَّ"
+        }
+      }
+    },
+    {
+      "id": "p49_t19",
+      "arabic": "أُدْغِمَتِ",
+      "gloss": "أُدْغِمَتِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "أُدْغِمَتِ"
+        }
+      }
+    },
+    {
+      "id": "p49_t20",
+      "arabic": "الدَّالُ",
+      "gloss": "الدَّالُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الدَّالُ"
+        }
+      }
+    },
+    {
+      "id": "p49_t21",
+      "arabic": "الْأُولَى",
+      "gloss": "الْأُولَى",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْأُولَى"
+        }
+      }
+    },
+    {
+      "id": "p49_t22",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p49_t23",
+      "arabic": "الثَّانِيَةِ",
+      "gloss": "الثَّانِيَةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الثَّانِيَةِ"
+        }
+      }
+    },
+    {
+      "id": "p49_t24",
+      "arabic": "وَالْإِدْغَامُ",
+      "gloss": "Ve وَالْإِدْغَامُ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَالْإِدْغَامُ"
+        }
+      }
+    },
+    {
+      "id": "p49_t25",
+      "arabic": "إِدْخَالُ",
+      "gloss": "إِدْخَالُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "إِدْخَالُ"
+        }
+      }
+    },
+    {
+      "id": "p49_t26",
+      "arabic": "أَحَدِ",
+      "gloss": "أَحَدِ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَحَدِ"
+        }
+      }
+    },
+    {
+      "id": "p49_t27",
+      "arabic": "الْمُتَجَانِسَيْنِ",
+      "gloss": "الْمُتَجَانِسَيْنِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْمُتَجَانِسَيْنِ"
+        }
+      }
+    },
+    {
+      "id": "p49_t28",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p49_t29",
+      "arabic": "الْآخَرِ",
+      "gloss": "الْآخَرِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْآخَرِ"
+        }
+      }
+    },
+    {
+      "id": "p49_t30",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p49_t31",
+      "arabic": "ثَلَاثَةُ",
+      "gloss": "Üç",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Üç"
+        }
+      }
+    },
+    {
+      "id": "p49_t32",
+      "arabic": "أَنْوَاعٍ",
+      "gloss": "أَنْوَاعٍ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَنْوَاعٍ"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,497 @@
+{
+  "id": "passage_47",
+  "order": 47,
+  "title": "Sahih ve Mu‘tel",
+  "translation": "Her fiil ya sahihtir ya da mu‘teldir. Aslî harflerinde illet harfi bulunmayan fiil sahih; bulunan fiil mu‘teldir.",
+  "phrases": [
+    {
+      "id": "p47_ph1",
+      "tokenIds": [
+        "p47_t1",
+        "p47_t2",
+        "p47_t3",
+        "p47_t4",
+        "p47_t5",
+        "p47_t6",
+        "p47_t7",
+        "p47_t8",
+        "p47_t9",
+        "p47_t10",
+        "p47_t11",
+        "p47_t12",
+        "p47_t13",
+        "p47_t14",
+        "p47_t15",
+        "p47_t16",
+        "p47_t17",
+        "p47_t18",
+        "p47_t19",
+        "p47_t20",
+        "p47_t21",
+        "p47_t22",
+        "p47_t23",
+        "p47_t24",
+        "p47_t25",
+        "p47_t26",
+        "p47_t27",
+        "p47_t28",
+        "p47_t29",
+        "p47_t30",
+        "p47_t31",
+        "p47_t32",
+        "p47_t33",
+        "p47_t34",
+        "p47_t35",
+        "p47_t36",
+        "p47_t37",
+        "p47_t38",
+        "p47_t39",
+        "p47_t40"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Her fiil ya sahihtir ya da mu‘teldir. Aslî harflerinde illet harfi bulunmayan fiil sahih; bulunan fiil mu‘teldir."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p47_t1",
+      "arabic": "وَاعْلَمْ",
+      "gloss": "Ve وَاعْلَمْ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاعْلَمْ"
+        }
+      }
+    },
+    {
+      "id": "p47_t2",
+      "arabic": "أَنَّ",
+      "gloss": "أَنَّ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَنَّ"
+        }
+      }
+    },
+    {
+      "id": "p47_t3",
+      "arabic": "كُلَّ",
+      "gloss": "كُلَّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "كُلَّ"
+        }
+      }
+    },
+    {
+      "id": "p47_t4",
+      "arabic": "فِعْلٍ",
+      "gloss": "فِعْلٍ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فِعْلٍ"
+        }
+      }
+    },
+    {
+      "id": "p47_t5",
+      "arabic": "إِمَّا",
+      "gloss": "إِمَّا",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "إِمَّا"
+        }
+      }
+    },
+    {
+      "id": "p47_t6",
+      "arabic": "صَحِيحٌ",
+      "gloss": "Sahih",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Sahih"
+        }
+      }
+    },
+    {
+      "id": "p47_t7",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p47_t8",
+      "arabic": "الَّذِي",
+      "gloss": "الَّذِي",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الَّذِي"
+        }
+      }
+    },
+    {
+      "id": "p47_t9",
+      "arabic": "لَيْسَ",
+      "gloss": "لَيْسَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "لَيْسَ"
+        }
+      }
+    },
+    {
+      "id": "p47_t10",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p47_t11",
+      "arabic": "مُقَابَلَةِ",
+      "gloss": "مُقَابَلَةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُقَابَلَةِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t12",
+      "arabic": "فَائِهِ",
+      "gloss": "فَائِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَائِهِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t13",
+      "arabic": "وَعَيْنِهِ",
+      "gloss": "Ve وَعَيْنِهِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَعَيْنِهِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t14",
+      "arabic": "وَلَامِهِ",
+      "gloss": "Ve وَلَامِهِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَلَامِهِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t15",
+      "arabic": "حَرْفٌ",
+      "gloss": "Bir harf",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Bir harf"
+        }
+      }
+    },
+    {
+      "id": "p47_t16",
+      "arabic": "مِنْ",
+      "gloss": "-den",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "-den"
+        }
+      }
+    },
+    {
+      "id": "p47_t17",
+      "arabic": "حُرُوفِ",
+      "gloss": "حُرُوفِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "حُرُوفِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t18",
+      "arabic": "الْعِلَّةِ",
+      "gloss": "الْعِلَّةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْعِلَّةِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t19",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p47_t20",
+      "arabic": "نَصَرَ",
+      "gloss": "نَصَرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "نَصَرَ"
+        }
+      }
+    },
+    {
+      "id": "p47_t21",
+      "arabic": "وَإِمَّا",
+      "gloss": "Ve وَإِمَّا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَإِمَّا"
+        }
+      }
+    },
+    {
+      "id": "p47_t22",
+      "arabic": "مُعْتَلٌّ",
+      "gloss": "Mu‘tel",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mu‘tel"
+        }
+      }
+    },
+    {
+      "id": "p47_t23",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p47_t24",
+      "arabic": "الَّذِي",
+      "gloss": "الَّذِي",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الَّذِي"
+        }
+      }
+    },
+    {
+      "id": "p47_t25",
+      "arabic": "يَكُونُ",
+      "gloss": "يَكُونُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَكُونُ"
+        }
+      }
+    },
+    {
+      "id": "p47_t26",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p47_t27",
+      "arabic": "مُقَابَلَةِ",
+      "gloss": "مُقَابَلَةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُقَابَلَةِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t28",
+      "arabic": "فَائِهِ",
+      "gloss": "فَائِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَائِهِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t29",
+      "arabic": "أَوْ",
+      "gloss": "أَوْ",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "أَوْ"
+        }
+      }
+    },
+    {
+      "id": "p47_t30",
+      "arabic": "عَيْنِهِ",
+      "gloss": "عَيْنِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "عَيْنِهِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t31",
+      "arabic": "أَوْ",
+      "gloss": "أَوْ",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "أَوْ"
+        }
+      }
+    },
+    {
+      "id": "p47_t32",
+      "arabic": "لَامِهِ",
+      "gloss": "لَامِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "لَامِهِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t33",
+      "arabic": "حَرْفٌ",
+      "gloss": "Bir harf",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Bir harf"
+        }
+      }
+    },
+    {
+      "id": "p47_t34",
+      "arabic": "مِنْ",
+      "gloss": "-den",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "-den"
+        }
+      }
+    },
+    {
+      "id": "p47_t35",
+      "arabic": "حُرُوفِ",
+      "gloss": "حُرُوفِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "حُرُوفِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t36",
+      "arabic": "الْعِلَّةِ",
+      "gloss": "الْعِلَّةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْعِلَّةِ"
+        }
+      }
+    },
+    {
+      "id": "p47_t37",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p47_t38",
+      "arabic": "وَعَدَ",
+      "gloss": "Ve وَعَدَ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَعَدَ"
+        }
+      }
+    },
+    {
+      "id": "p47_t39",
+      "arabic": "وَقَالَ",
+      "gloss": "Ve وَقَالَ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَقَالَ"
+        }
+      }
+    },
+    {
+      "id": "p47_t40",
+      "arabic": "وَطَغَى",
+      "gloss": "Ve وَطَغَى",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَطَغَى"
+        }
+      }
+    }
+  ]
+}

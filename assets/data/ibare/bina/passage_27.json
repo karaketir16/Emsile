@@ -1,0 +1,329 @@
+{
+  "id": "passage_27",
+  "order": 27,
+  "title": "Üçüncü Bab: İf‘ivvâl",
+  "translation": "Üçüncü bab اِفْعَوَّلَ يَفْعَوِّلُ اِفْعِوَّالًا veznidir. Başına hemze, ayn ile lâm arasına iki vav eklenir. Lâzım fiilde mübalağa bildirir.",
+  "phrases": [
+    {
+      "id": "p27_ph1",
+      "tokenIds": [
+        "p27_t1",
+        "p27_t2",
+        "p27_t3",
+        "p27_t4",
+        "p27_t5",
+        "p27_t6",
+        "p27_t7",
+        "p27_t8",
+        "p27_t9",
+        "p27_t10",
+        "p27_t11",
+        "p27_t12",
+        "p27_t13",
+        "p27_t14",
+        "p27_t15",
+        "p27_t16",
+        "p27_t17",
+        "p27_t18",
+        "p27_t19",
+        "p27_t20",
+        "p27_t21",
+        "p27_t22",
+        "p27_t23",
+        "p27_t24",
+        "p27_t25",
+        "p27_t26"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Üçüncü bab اِفْعَوَّلَ يَفْعَوِّلُ اِفْعِوَّالًا veznidir. Başına hemze, ayn ile lâm arasına iki vav eklenir. Lâzım fiilde mübalağa bildirir."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p27_t1",
+      "arabic": "الْبَابُ",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Bab"
+        }
+      }
+    },
+    {
+      "id": "p27_t2",
+      "arabic": "الثَّالِثُ",
+      "gloss": "Üçüncü",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Üçüncü"
+        }
+      }
+    },
+    {
+      "id": "p27_t3",
+      "arabic": "اِفْعَوَّلَ",
+      "gloss": "اِفْعَوَّلَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِفْعَوَّلَ"
+        }
+      }
+    },
+    {
+      "id": "p27_t4",
+      "arabic": "يَفْعَوِّلُ",
+      "gloss": "يَفْعَوِّلُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَفْعَوِّلُ"
+        }
+      }
+    },
+    {
+      "id": "p27_t5",
+      "arabic": "اِفْعِوَّالًا",
+      "gloss": "اِفْعِوَّالًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِفْعِوَّالًا"
+        }
+      }
+    },
+    {
+      "id": "p27_t6",
+      "arabic": "مَوْزُونُهُ",
+      "gloss": "Mevzunu",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mevzunu"
+        }
+      }
+    },
+    {
+      "id": "p27_t7",
+      "arabic": "اِجْلَوَّذَ",
+      "gloss": "اِجْلَوَّذَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِجْلَوَّذَ"
+        }
+      }
+    },
+    {
+      "id": "p27_t8",
+      "arabic": "يَجْلَوِّذُ",
+      "gloss": "يَجْلَوِّذُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَجْلَوِّذُ"
+        }
+      }
+    },
+    {
+      "id": "p27_t9",
+      "arabic": "اِجْلِوَّاذًا",
+      "gloss": "اِجْلِوَّاذًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِجْلِوَّاذًا"
+        }
+      }
+    },
+    {
+      "id": "p27_t10",
+      "arabic": "وَعَلَامَتُهُ",
+      "gloss": "Ve alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve alâmeti"
+        }
+      }
+    },
+    {
+      "id": "p27_t11",
+      "arabic": "زِيَادَةُ",
+      "gloss": "Eklenmesi",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Eklenmesi"
+        }
+      }
+    },
+    {
+      "id": "p27_t12",
+      "arabic": "الْهَمْزَةِ",
+      "gloss": "Hemzenin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Hemzenin"
+        }
+      }
+    },
+    {
+      "id": "p27_t13",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p27_t14",
+      "arabic": "أَوَّلِهِ",
+      "gloss": "Başında",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Başında"
+        }
+      }
+    },
+    {
+      "id": "p27_t15",
+      "arabic": "وَوَاوَيْنِ",
+      "gloss": "Ve وَوَاوَيْنِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَوَاوَيْنِ"
+        }
+      }
+    },
+    {
+      "id": "p27_t16",
+      "arabic": "بَيْنَ",
+      "gloss": "Arasında",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "Arasında"
+        }
+      }
+    },
+    {
+      "id": "p27_t17",
+      "arabic": "الْعَيْنِ",
+      "gloss": "Aynın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Aynın"
+        }
+      }
+    },
+    {
+      "id": "p27_t18",
+      "arabic": "وَاللَّامِ",
+      "gloss": "Ve وَاللَّامِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاللَّامِ"
+        }
+      }
+    },
+    {
+      "id": "p27_t19",
+      "arabic": "وَبِنَاؤُهُ",
+      "gloss": "Ve kullanılışı",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve kullanılışı"
+        }
+      }
+    },
+    {
+      "id": "p27_t20",
+      "arabic": "لِمُبَالَغَةِ",
+      "gloss": "Mübalağa içindir",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mübalağa içindir"
+        }
+      }
+    },
+    {
+      "id": "p27_t21",
+      "arabic": "اللَّازِمِ",
+      "gloss": "اللَّازِمِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "اللَّازِمِ"
+        }
+      }
+    },
+    {
+      "id": "p27_t22",
+      "arabic": "يُقَالُ",
+      "gloss": "يُقَالُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يُقَالُ"
+        }
+      }
+    },
+    {
+      "id": "p27_t23",
+      "arabic": "جَلَذَتِ",
+      "gloss": "جَلَذَتِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "جَلَذَتِ"
+        }
+      }
+    },
+    {
+      "id": "p27_t24",
+      "arabic": "الْإِبِلُ",
+      "gloss": "الْإِبِلُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْإِبِلُ"
+        }
+      }
+    },
+    {
+      "id": "p27_t25",
+      "arabic": "وَاِجْلَوَّذَتِ",
+      "gloss": "Ve وَاِجْلَوَّذَتِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاِجْلَوَّذَتِ"
+        }
+      }
+    },
+    {
+      "id": "p27_t26",
+      "arabic": "الْإِبِلُ",
+      "gloss": "الْإِبِلُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْإِبِلُ"
+        }
+      }
+    }
+  ]
+}

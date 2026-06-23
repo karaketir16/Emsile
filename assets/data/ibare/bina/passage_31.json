@@ -1,0 +1,329 @@
+{
+  "id": "passage_31",
+  "order": 31,
+  "title": "İkinci Bab: Fey‘ale",
+  "translation": "İkinci bab فَيْعَلَ يُفَيْعِلُ’dür. Fâ ile ayn arasına yâ eklenir ve yalnız müteaddi kullanılır.",
+  "phrases": [
+    {
+      "id": "p31_ph1",
+      "tokenIds": [
+        "p31_t1",
+        "p31_t2",
+        "p31_t3",
+        "p31_t4",
+        "p31_t5",
+        "p31_t6",
+        "p31_t7",
+        "p31_t8",
+        "p31_t9",
+        "p31_t10",
+        "p31_t11",
+        "p31_t12",
+        "p31_t13",
+        "p31_t14",
+        "p31_t15",
+        "p31_t16",
+        "p31_t17",
+        "p31_t18",
+        "p31_t19",
+        "p31_t20",
+        "p31_t21",
+        "p31_t22",
+        "p31_t23",
+        "p31_t24",
+        "p31_t25",
+        "p31_t26"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "İkinci bab فَيْعَلَ يُفَيْعِلُ’dür. Fâ ile ayn arasına yâ eklenir ve yalnız müteaddi kullanılır."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p31_t1",
+      "arabic": "الْبَابُ",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Bab"
+        }
+      }
+    },
+    {
+      "id": "p31_t2",
+      "arabic": "الثَّانِي",
+      "gloss": "İkinci",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "İkinci"
+        }
+      }
+    },
+    {
+      "id": "p31_t3",
+      "arabic": "فَيْعَلَ",
+      "gloss": "فَيْعَلَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَيْعَلَ"
+        }
+      }
+    },
+    {
+      "id": "p31_t4",
+      "arabic": "يُفَيْعِلُ",
+      "gloss": "يُفَيْعِلُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يُفَيْعِلُ"
+        }
+      }
+    },
+    {
+      "id": "p31_t5",
+      "arabic": "فَيْعَلَةً",
+      "gloss": "فَيْعَلَةً",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَيْعَلَةً"
+        }
+      }
+    },
+    {
+      "id": "p31_t6",
+      "arabic": "وَفِيعَالًا",
+      "gloss": "Ve وَفِيعَالًا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَفِيعَالًا"
+        }
+      }
+    },
+    {
+      "id": "p31_t7",
+      "arabic": "مَوْزُونُهُ",
+      "gloss": "Mevzunu",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mevzunu"
+        }
+      }
+    },
+    {
+      "id": "p31_t8",
+      "arabic": "بَيْطَرَ",
+      "gloss": "بَيْطَرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "بَيْطَرَ"
+        }
+      }
+    },
+    {
+      "id": "p31_t9",
+      "arabic": "يُبَيْطِرُ",
+      "gloss": "يُبَيْطِرُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يُبَيْطِرُ"
+        }
+      }
+    },
+    {
+      "id": "p31_t10",
+      "arabic": "بَيْطَرَةً",
+      "gloss": "بَيْطَرَةً",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "بَيْطَرَةً"
+        }
+      }
+    },
+    {
+      "id": "p31_t11",
+      "arabic": "وَبِيطَارًا",
+      "gloss": "Ve وَبِيطَارًا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَبِيطَارًا"
+        }
+      }
+    },
+    {
+      "id": "p31_t12",
+      "arabic": "وَعَلَامَتُهُ",
+      "gloss": "Ve alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve alâmeti"
+        }
+      }
+    },
+    {
+      "id": "p31_t13",
+      "arabic": "زِيَادَةُ",
+      "gloss": "Eklenmesi",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Eklenmesi"
+        }
+      }
+    },
+    {
+      "id": "p31_t14",
+      "arabic": "الْيَاءِ",
+      "gloss": "Yânın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Yânın"
+        }
+      }
+    },
+    {
+      "id": "p31_t15",
+      "arabic": "بَيْنَ",
+      "gloss": "Arasında",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "Arasında"
+        }
+      }
+    },
+    {
+      "id": "p31_t16",
+      "arabic": "الْفَاءِ",
+      "gloss": "Fânın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Fânın"
+        }
+      }
+    },
+    {
+      "id": "p31_t17",
+      "arabic": "وَالْعَيْنِ",
+      "gloss": "Ve وَالْعَيْنِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَالْعَيْنِ"
+        }
+      }
+    },
+    {
+      "id": "p31_t18",
+      "arabic": "وَبِنَاؤُهُ",
+      "gloss": "Ve kullanılışı",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve kullanılışı"
+        }
+      }
+    },
+    {
+      "id": "p31_t19",
+      "arabic": "لِلتَّعْدِيَةِ",
+      "gloss": "Geçişlilik içindir",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Geçişlilik içindir"
+        }
+      }
+    },
+    {
+      "id": "p31_t20",
+      "arabic": "فَقَطْ",
+      "gloss": "فَقَطْ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَقَطْ"
+        }
+      }
+    },
+    {
+      "id": "p31_t21",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p31_t22",
+      "arabic": "بَيْطَرَ",
+      "gloss": "بَيْطَرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "بَيْطَرَ"
+        }
+      }
+    },
+    {
+      "id": "p31_t23",
+      "arabic": "زَيْدٌ",
+      "gloss": "Zeyd",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Zeyd"
+        }
+      }
+    },
+    {
+      "id": "p31_t24",
+      "arabic": "الْقَلَمَ",
+      "gloss": "الْقَلَمَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْقَلَمَ"
+        }
+      }
+    },
+    {
+      "id": "p31_t25",
+      "arabic": "أَيْ",
+      "gloss": "Yani",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Yani"
+        }
+      }
+    },
+    {
+      "id": "p31_t26",
+      "arabic": "شَقَّهُ",
+      "gloss": "شَقَّهُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "شَقَّهُ"
+        }
+      }
+    }
+  ]
+}

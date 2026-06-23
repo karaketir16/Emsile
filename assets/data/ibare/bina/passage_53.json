@@ -1,0 +1,533 @@
+{
+  "id": "passage_53",
+  "order": 53,
+  "title": "Mehmûzü’l-fâ, Mehmûzü’l-ayn ve Mehmûzü’l-lâm",
+  "translation": "Aslî harflerinden biri hemze olan fiile mehmuz denir. Hemze ilk harfteyse mehmûzü’l-fâ, ortadaysa mehmûzü’l-ayn, sondaysa mehmûzü’l-lâm adını alır.",
+  "phrases": [
+    {
+      "id": "p53_ph1",
+      "tokenIds": [
+        "p53_t1",
+        "p53_t2",
+        "p53_t3",
+        "p53_t4",
+        "p53_t5",
+        "p53_t6",
+        "p53_t7",
+        "p53_t8",
+        "p53_t9",
+        "p53_t10",
+        "p53_t11",
+        "p53_t12",
+        "p53_t13",
+        "p53_t14",
+        "p53_t15",
+        "p53_t16",
+        "p53_t17",
+        "p53_t18",
+        "p53_t19",
+        "p53_t20",
+        "p53_t21",
+        "p53_t22",
+        "p53_t23",
+        "p53_t24",
+        "p53_t25",
+        "p53_t26",
+        "p53_t27",
+        "p53_t28",
+        "p53_t29",
+        "p53_t30",
+        "p53_t31",
+        "p53_t32",
+        "p53_t33",
+        "p53_t34",
+        "p53_t35",
+        "p53_t36",
+        "p53_t37",
+        "p53_t38",
+        "p53_t39",
+        "p53_t40",
+        "p53_t41",
+        "p53_t42",
+        "p53_t43"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Aslî harflerinden biri hemze olan fiile mehmuz denir. Hemze ilk harfteyse mehmûzü’l-fâ, ortadaysa mehmûzü’l-ayn, sondaysa mehmûzü’l-lâm adını alır."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p53_t1",
+      "arabic": "وَإِمَّا",
+      "gloss": "Ve وَإِمَّا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَإِمَّا"
+        }
+      }
+    },
+    {
+      "id": "p53_t2",
+      "arabic": "مَهْمُوزٌ",
+      "gloss": "Mehmuz",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mehmuz"
+        }
+      }
+    },
+    {
+      "id": "p53_t3",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p53_t4",
+      "arabic": "الَّذِي",
+      "gloss": "الَّذِي",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الَّذِي"
+        }
+      }
+    },
+    {
+      "id": "p53_t5",
+      "arabic": "أَحَدُ",
+      "gloss": "أَحَدُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَحَدُ"
+        }
+      }
+    },
+    {
+      "id": "p53_t6",
+      "arabic": "حُرُوفِهِ",
+      "gloss": "حُرُوفِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "حُرُوفِهِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t7",
+      "arabic": "الْأَصْلِيَّةِ",
+      "gloss": "الْأَصْلِيَّةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْأَصْلِيَّةِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t8",
+      "arabic": "هَمْزَةٌ",
+      "gloss": "هَمْزَةٌ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "هَمْزَةٌ"
+        }
+      }
+    },
+    {
+      "id": "p53_t9",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p53_t10",
+      "arabic": "أَخَذَ",
+      "gloss": "أَخَذَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَخَذَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t11",
+      "arabic": "وَسَأَلَ",
+      "gloss": "Ve وَسَأَلَ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَسَأَلَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t12",
+      "arabic": "وَقَرَأَ",
+      "gloss": "Ve وَقَرَأَ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَقَرَأَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t13",
+      "arabic": "فَإِنْ",
+      "gloss": "فَإِنْ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَإِنْ"
+        }
+      }
+    },
+    {
+      "id": "p53_t14",
+      "arabic": "كَانَتِ",
+      "gloss": "كَانَتِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "كَانَتِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t15",
+      "arabic": "الْهَمْزَةُ",
+      "gloss": "الْهَمْزَةُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْهَمْزَةُ"
+        }
+      }
+    },
+    {
+      "id": "p53_t16",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p53_t17",
+      "arabic": "مُقَابَلَةِ",
+      "gloss": "مُقَابَلَةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُقَابَلَةِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t18",
+      "arabic": "فَائِهِ",
+      "gloss": "فَائِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَائِهِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t19",
+      "arabic": "سُمِّيَ",
+      "gloss": "سُمِّيَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سُمِّيَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t20",
+      "arabic": "مَهْمُوزَ",
+      "gloss": "مَهْمُوزَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَهْمُوزَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t21",
+      "arabic": "الْفَاءِ",
+      "gloss": "Fânın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Fânın"
+        }
+      }
+    },
+    {
+      "id": "p53_t22",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p53_t23",
+      "arabic": "أَخَذَ",
+      "gloss": "أَخَذَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَخَذَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t24",
+      "arabic": "وَإِنْ",
+      "gloss": "Ve وَإِنْ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَإِنْ"
+        }
+      }
+    },
+    {
+      "id": "p53_t25",
+      "arabic": "كَانَتْ",
+      "gloss": "كَانَتْ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "كَانَتْ"
+        }
+      }
+    },
+    {
+      "id": "p53_t26",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p53_t27",
+      "arabic": "مُقَابَلَةِ",
+      "gloss": "مُقَابَلَةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُقَابَلَةِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t28",
+      "arabic": "عَيْنِهِ",
+      "gloss": "عَيْنِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "عَيْنِهِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t29",
+      "arabic": "سُمِّيَ",
+      "gloss": "سُمِّيَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سُمِّيَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t30",
+      "arabic": "مَهْمُوزَ",
+      "gloss": "مَهْمُوزَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَهْمُوزَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t31",
+      "arabic": "الْعَيْنِ",
+      "gloss": "Aynın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Aynın"
+        }
+      }
+    },
+    {
+      "id": "p53_t32",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p53_t33",
+      "arabic": "سَأَلَ",
+      "gloss": "سَأَلَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سَأَلَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t34",
+      "arabic": "وَإِنْ",
+      "gloss": "Ve وَإِنْ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَإِنْ"
+        }
+      }
+    },
+    {
+      "id": "p53_t35",
+      "arabic": "كَانَتْ",
+      "gloss": "كَانَتْ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "كَانَتْ"
+        }
+      }
+    },
+    {
+      "id": "p53_t36",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p53_t37",
+      "arabic": "مُقَابَلَةِ",
+      "gloss": "مُقَابَلَةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُقَابَلَةِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t38",
+      "arabic": "لَامِهِ",
+      "gloss": "لَامِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "لَامِهِ"
+        }
+      }
+    },
+    {
+      "id": "p53_t39",
+      "arabic": "سُمِّيَ",
+      "gloss": "سُمِّيَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سُمِّيَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t40",
+      "arabic": "مَهْمُوزَ",
+      "gloss": "مَهْمُوزَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَهْمُوزَ"
+        }
+      }
+    },
+    {
+      "id": "p53_t41",
+      "arabic": "اللَّامِ",
+      "gloss": "Lâmın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Lâmın"
+        }
+      }
+    },
+    {
+      "id": "p53_t42",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p53_t43",
+      "arabic": "قَرَأَ",
+      "gloss": "قَرَأَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "قَرَأَ"
+        }
+      }
+    }
+  ]
+}

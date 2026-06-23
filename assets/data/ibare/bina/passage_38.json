@@ -1,0 +1,389 @@
+{
+  "id": "passage_38",
+  "order": 38,
+  "title": "İki Harf İlave - İkinci Bab",
+  "translation": "İkinci bab اِفْعَلَلَّ يَفْعَلِلُّ’dür. Başına hemze, sonuna ikinci lâm cinsinden bir harf eklenir. Lâzım fiilde mübalağa bildirir.",
+  "phrases": [
+    {
+      "id": "p38_ph1",
+      "tokenIds": [
+        "p38_t1",
+        "p38_t2",
+        "p38_t3",
+        "p38_t4",
+        "p38_t5",
+        "p38_t6",
+        "p38_t7",
+        "p38_t8",
+        "p38_t9",
+        "p38_t10",
+        "p38_t11",
+        "p38_t12",
+        "p38_t13",
+        "p38_t14",
+        "p38_t15",
+        "p38_t16",
+        "p38_t17",
+        "p38_t18",
+        "p38_t19",
+        "p38_t20",
+        "p38_t21",
+        "p38_t22",
+        "p38_t23",
+        "p38_t24",
+        "p38_t25",
+        "p38_t26",
+        "p38_t27",
+        "p38_t28",
+        "p38_t29",
+        "p38_t30",
+        "p38_t31"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "İkinci bab اِفْعَلَلَّ يَفْعَلِلُّ’dür. Başına hemze, sonuna ikinci lâm cinsinden bir harf eklenir. Lâzım fiilde mübalağa bildirir."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p38_t1",
+      "arabic": "الْبَابُ",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Bab"
+        }
+      }
+    },
+    {
+      "id": "p38_t2",
+      "arabic": "الثَّانِي",
+      "gloss": "İkinci",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "İkinci"
+        }
+      }
+    },
+    {
+      "id": "p38_t3",
+      "arabic": "اِفْعَلَلَّ",
+      "gloss": "اِفْعَلَلَّ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِفْعَلَلَّ"
+        }
+      }
+    },
+    {
+      "id": "p38_t4",
+      "arabic": "يَفْعَلِلُّ",
+      "gloss": "يَفْعَلِلُّ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَفْعَلِلُّ"
+        }
+      }
+    },
+    {
+      "id": "p38_t5",
+      "arabic": "اِفْعِلَالًّا",
+      "gloss": "اِفْعِلَالًّا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِفْعِلَالًّا"
+        }
+      }
+    },
+    {
+      "id": "p38_t6",
+      "arabic": "مَوْزُونُهُ",
+      "gloss": "Mevzunu",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mevzunu"
+        }
+      }
+    },
+    {
+      "id": "p38_t7",
+      "arabic": "اِقْشَعَرَّ",
+      "gloss": "اِقْشَعَرَّ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِقْشَعَرَّ"
+        }
+      }
+    },
+    {
+      "id": "p38_t8",
+      "arabic": "يَقْشَعِرُّ",
+      "gloss": "يَقْشَعِرُّ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَقْشَعِرُّ"
+        }
+      }
+    },
+    {
+      "id": "p38_t9",
+      "arabic": "اِقْشِعْرَارًا",
+      "gloss": "اِقْشِعْرَارًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِقْشِعْرَارًا"
+        }
+      }
+    },
+    {
+      "id": "p38_t10",
+      "arabic": "وَعَلَامَتُهُ",
+      "gloss": "Ve alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve alâmeti"
+        }
+      }
+    },
+    {
+      "id": "p38_t11",
+      "arabic": "زِيَادَةُ",
+      "gloss": "Eklenmesi",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Eklenmesi"
+        }
+      }
+    },
+    {
+      "id": "p38_t12",
+      "arabic": "الْهَمْزَةِ",
+      "gloss": "Hemzenin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Hemzenin"
+        }
+      }
+    },
+    {
+      "id": "p38_t13",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p38_t14",
+      "arabic": "أَوَّلِهِ",
+      "gloss": "Başında",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Başında"
+        }
+      }
+    },
+    {
+      "id": "p38_t15",
+      "arabic": "وَحَرْفٍ",
+      "gloss": "Ve وَحَرْفٍ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَحَرْفٍ"
+        }
+      }
+    },
+    {
+      "id": "p38_t16",
+      "arabic": "مِنْ",
+      "gloss": "-den",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "-den"
+        }
+      }
+    },
+    {
+      "id": "p38_t17",
+      "arabic": "جِنْسِ",
+      "gloss": "Cinsinden",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Cinsinden"
+        }
+      }
+    },
+    {
+      "id": "p38_t18",
+      "arabic": "اللَّامِ",
+      "gloss": "Lâmın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Lâmın"
+        }
+      }
+    },
+    {
+      "id": "p38_t19",
+      "arabic": "الثَّانِيَةِ",
+      "gloss": "الثَّانِيَةِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الثَّانِيَةِ"
+        }
+      }
+    },
+    {
+      "id": "p38_t20",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p38_t21",
+      "arabic": "آخِرِهِ",
+      "gloss": "Sonunda",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Sonunda"
+        }
+      }
+    },
+    {
+      "id": "p38_t22",
+      "arabic": "وَبِنَاؤُهُ",
+      "gloss": "Ve kullanılışı",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve kullanılışı"
+        }
+      }
+    },
+    {
+      "id": "p38_t23",
+      "arabic": "لِمُبَالَغَةِ",
+      "gloss": "Mübalağa içindir",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mübalağa içindir"
+        }
+      }
+    },
+    {
+      "id": "p38_t24",
+      "arabic": "اللَّازِمِ",
+      "gloss": "اللَّازِمِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "اللَّازِمِ"
+        }
+      }
+    },
+    {
+      "id": "p38_t25",
+      "arabic": "يُقَالُ",
+      "gloss": "يُقَالُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يُقَالُ"
+        }
+      }
+    },
+    {
+      "id": "p38_t26",
+      "arabic": "قَشْعَرَ",
+      "gloss": "قَشْعَرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "قَشْعَرَ"
+        }
+      }
+    },
+    {
+      "id": "p38_t27",
+      "arabic": "جِلْدُ",
+      "gloss": "جِلْدُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "جِلْدُ"
+        }
+      }
+    },
+    {
+      "id": "p38_t28",
+      "arabic": "الرَّجُلِ",
+      "gloss": "الرَّجُلِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الرَّجُلِ"
+        }
+      }
+    },
+    {
+      "id": "p38_t29",
+      "arabic": "وَاِقْشَعَرَّ",
+      "gloss": "Ve وَاِقْشَعَرَّ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاِقْشَعَرَّ"
+        }
+      }
+    },
+    {
+      "id": "p38_t30",
+      "arabic": "جِلْدُ",
+      "gloss": "جِلْدُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "جِلْدُ"
+        }
+      }
+    },
+    {
+      "id": "p38_t31",
+      "arabic": "الرَّجُلِ",
+      "gloss": "الرَّجُلِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الرَّجُلِ"
+        }
+      }
+    }
+  ]
+}

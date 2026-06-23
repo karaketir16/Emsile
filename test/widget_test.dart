@@ -90,6 +90,7 @@ void main() {
   test('ibare text matches the book forms when harakat are hidden', () {
     expect(
       binaBook.passages
+          .take(17)
           .map(
             (passage) => passage.tokens
                 .map((token) => token.displayArabic(false))

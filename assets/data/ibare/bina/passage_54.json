@@ -1,0 +1,257 @@
+{
+  "id": "passage_54",
+  "order": 54,
+  "title": "Yedi Kısım ve Sonuç",
+  "translation": "Fiillerin yedi temel kısmı sahih, misâl, mudaaf, ecvef, nâkıs, lefîf ve mehmuzdur. Doğrusunu Allah ve Resulü en iyi bilir. Son.",
+  "phrases": [
+    {
+      "id": "p54_ph1",
+      "tokenIds": [
+        "p54_t1",
+        "p54_t2",
+        "p54_t3",
+        "p54_t4",
+        "p54_t5",
+        "p54_t6",
+        "p54_t7",
+        "p54_t8",
+        "p54_t9",
+        "p54_t10",
+        "p54_t11",
+        "p54_t12",
+        "p54_t13",
+        "p54_t14",
+        "p54_t15",
+        "p54_t16",
+        "p54_t17",
+        "p54_t18",
+        "p54_t19",
+        "p54_t20"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Fiillerin yedi temel kısmı sahih, misâl, mudaaf, ecvef, nâkıs, lefîf ve mehmuzdur. Doğrusunu Allah ve Resulü en iyi bilir. Son."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p54_t1",
+      "arabic": "وَيُقَالُ",
+      "gloss": "Ve وَيُقَالُ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَيُقَالُ"
+        }
+      }
+    },
+    {
+      "id": "p54_t2",
+      "arabic": "لِهَذِهِ",
+      "gloss": "لِهَذِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "لِهَذِهِ"
+        }
+      }
+    },
+    {
+      "id": "p54_t3",
+      "arabic": "الْأَقْسَامِ",
+      "gloss": "الْأَقْسَامِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْأَقْسَامِ"
+        }
+      }
+    },
+    {
+      "id": "p54_t4",
+      "arabic": "الْأَقْسَامُ",
+      "gloss": "الْأَقْسَامُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْأَقْسَامُ"
+        }
+      }
+    },
+    {
+      "id": "p54_t5",
+      "arabic": "السَّبْعَةُ",
+      "gloss": "السَّبْعَةُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "السَّبْعَةُ"
+        }
+      }
+    },
+    {
+      "id": "p54_t6",
+      "arabic": "يَجْمَعُهَا",
+      "gloss": "يَجْمَعُهَا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَجْمَعُهَا"
+        }
+      }
+    },
+    {
+      "id": "p54_t7",
+      "arabic": "هَذَا",
+      "gloss": "هَذَا",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "هَذَا"
+        }
+      }
+    },
+    {
+      "id": "p54_t8",
+      "arabic": "الْبَيْتُ",
+      "gloss": "الْبَيْتُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْبَيْتُ"
+        }
+      }
+    },
+    {
+      "id": "p54_t9",
+      "arabic": "صَحِيحٌ",
+      "gloss": "Sahih",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Sahih"
+        }
+      }
+    },
+    {
+      "id": "p54_t10",
+      "arabic": "مِثَالٌ",
+      "gloss": "Misâl",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Misâl"
+        }
+      }
+    },
+    {
+      "id": "p54_t11",
+      "arabic": "مُضَاعَفٌ",
+      "gloss": "Mudaaf",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mudaaf"
+        }
+      }
+    },
+    {
+      "id": "p54_t12",
+      "arabic": "أَجْوَفُ",
+      "gloss": "Ecvef",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Ecvef"
+        }
+      }
+    },
+    {
+      "id": "p54_t13",
+      "arabic": "نَاقِصٌ",
+      "gloss": "Nâkıs",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Nâkıs"
+        }
+      }
+    },
+    {
+      "id": "p54_t14",
+      "arabic": "لَفِيفٌ",
+      "gloss": "Lefîf",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Lefîf"
+        }
+      }
+    },
+    {
+      "id": "p54_t15",
+      "arabic": "مَهْمُوزٌ",
+      "gloss": "Mehmuz",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mehmuz"
+        }
+      }
+    },
+    {
+      "id": "p54_t16",
+      "arabic": "وَاللَّهُ",
+      "gloss": "Ve وَاللَّهُ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاللَّهُ"
+        }
+      }
+    },
+    {
+      "id": "p54_t17",
+      "arabic": "وَرَسُولُهُ",
+      "gloss": "Ve وَرَسُولُهُ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَرَسُولُهُ"
+        }
+      }
+    },
+    {
+      "id": "p54_t18",
+      "arabic": "أَعْلَمُ",
+      "gloss": "أَعْلَمُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَعْلَمُ"
+        }
+      }
+    },
+    {
+      "id": "p54_t19",
+      "arabic": "بِالصَّوَابِ",
+      "gloss": "بِالصَّوَابِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "بِالصَّوَابِ"
+        }
+      }
+    },
+    {
+      "id": "p54_t20",
+      "arabic": "النِّهَايَةُ",
+      "gloss": "النِّهَايَةُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "النِّهَايَةُ"
+        }
+      }
+    }
+  ]
+}

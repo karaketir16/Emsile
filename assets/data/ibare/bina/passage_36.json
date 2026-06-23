@@ -1,0 +1,389 @@
+{
+  "id": "passage_36",
+  "order": 36,
+  "title": "Bir Harf İlave: Tefa‘lül",
+  "translation": "Rubâî mezîd üç kısımdır. Bir harf ilaveli kısmın tek babı تَفَعْلَلَ يَتَفَعْلَلُ’dür. Başına tâ eklenir ve mütâvaat bildirir.",
+  "phrases": [
+    {
+      "id": "p36_ph1",
+      "tokenIds": [
+        "p36_t1",
+        "p36_t2",
+        "p36_t3",
+        "p36_t4",
+        "p36_t5",
+        "p36_t6",
+        "p36_t7",
+        "p36_t8",
+        "p36_t9",
+        "p36_t10",
+        "p36_t11",
+        "p36_t12",
+        "p36_t13",
+        "p36_t14",
+        "p36_t15",
+        "p36_t16",
+        "p36_t17",
+        "p36_t18",
+        "p36_t19",
+        "p36_t20",
+        "p36_t21",
+        "p36_t22",
+        "p36_t23",
+        "p36_t24",
+        "p36_t25",
+        "p36_t26",
+        "p36_t27",
+        "p36_t28",
+        "p36_t29",
+        "p36_t30",
+        "p36_t31"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Rubâî mezîd üç kısımdır. Bir harf ilaveli kısmın tek babı تَفَعْلَلَ يَتَفَعْلَلُ’dür. Başına tâ eklenir ve mütâvaat bildirir."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p36_t1",
+      "arabic": "أَنْوَاعُ",
+      "gloss": "أَنْوَاعُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَنْوَاعُ"
+        }
+      }
+    },
+    {
+      "id": "p36_t2",
+      "arabic": "الرُّبَاعِيِّ",
+      "gloss": "الرُّبَاعِيِّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الرُّبَاعِيِّ"
+        }
+      }
+    },
+    {
+      "id": "p36_t3",
+      "arabic": "الْمَزِيدِ",
+      "gloss": "الْمَزِيدِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْمَزِيدِ"
+        }
+      }
+    },
+    {
+      "id": "p36_t4",
+      "arabic": "ثَلَاثَةٌ",
+      "gloss": "ثَلَاثَةٌ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "ثَلَاثَةٌ"
+        }
+      }
+    },
+    {
+      "id": "p36_t5",
+      "arabic": "النَّوْعُ",
+      "gloss": "Kısım",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Kısım"
+        }
+      }
+    },
+    {
+      "id": "p36_t6",
+      "arabic": "الْأَوَّلُ",
+      "gloss": "Birinci",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Birinci"
+        }
+      }
+    },
+    {
+      "id": "p36_t7",
+      "arabic": "الرُّبَاعِيُّ",
+      "gloss": "Rubâî",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Rubâî"
+        }
+      }
+    },
+    {
+      "id": "p36_t8",
+      "arabic": "الْمَزِيدُ",
+      "gloss": "Mezîd",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mezîd"
+        }
+      }
+    },
+    {
+      "id": "p36_t9",
+      "arabic": "بِحَرْفٍ",
+      "gloss": "بِحَرْفٍ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "بِحَرْفٍ"
+        }
+      }
+    },
+    {
+      "id": "p36_t10",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p36_t11",
+      "arabic": "بَابٌ",
+      "gloss": "بَابٌ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "بَابٌ"
+        }
+      }
+    },
+    {
+      "id": "p36_t12",
+      "arabic": "وَاحِدٌ",
+      "gloss": "Ve وَاحِدٌ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاحِدٌ"
+        }
+      }
+    },
+    {
+      "id": "p36_t13",
+      "arabic": "تَفَعْلَلَ",
+      "gloss": "تَفَعْلَلَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَفَعْلَلَ"
+        }
+      }
+    },
+    {
+      "id": "p36_t14",
+      "arabic": "يَتَفَعْلَلُ",
+      "gloss": "يَتَفَعْلَلُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَتَفَعْلَلُ"
+        }
+      }
+    },
+    {
+      "id": "p36_t15",
+      "arabic": "تَفَعْلُلًا",
+      "gloss": "تَفَعْلُلًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَفَعْلُلًا"
+        }
+      }
+    },
+    {
+      "id": "p36_t16",
+      "arabic": "مَوْزُونُهُ",
+      "gloss": "Mevzunu",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mevzunu"
+        }
+      }
+    },
+    {
+      "id": "p36_t17",
+      "arabic": "تَدَحْرَجَ",
+      "gloss": "تَدَحْرَجَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَدَحْرَجَ"
+        }
+      }
+    },
+    {
+      "id": "p36_t18",
+      "arabic": "يَتَدَحْرَجُ",
+      "gloss": "يَتَدَحْرَجُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَتَدَحْرَجُ"
+        }
+      }
+    },
+    {
+      "id": "p36_t19",
+      "arabic": "تَدَحْرُجًا",
+      "gloss": "تَدَحْرُجًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَدَحْرُجًا"
+        }
+      }
+    },
+    {
+      "id": "p36_t20",
+      "arabic": "وَعَلَامَتُهُ",
+      "gloss": "Ve alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve alâmeti"
+        }
+      }
+    },
+    {
+      "id": "p36_t21",
+      "arabic": "زِيَادَةُ",
+      "gloss": "Eklenmesi",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Eklenmesi"
+        }
+      }
+    },
+    {
+      "id": "p36_t22",
+      "arabic": "التَّاءِ",
+      "gloss": "Tânın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Tânın"
+        }
+      }
+    },
+    {
+      "id": "p36_t23",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p36_t24",
+      "arabic": "أَوَّلِهِ",
+      "gloss": "Başında",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Başında"
+        }
+      }
+    },
+    {
+      "id": "p36_t25",
+      "arabic": "وَبِنَاؤُهُ",
+      "gloss": "Ve kullanılışı",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve kullanılışı"
+        }
+      }
+    },
+    {
+      "id": "p36_t26",
+      "arabic": "لِلْمُطَاوَعَةِ",
+      "gloss": "Mütâvaat içindir",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mütâvaat içindir"
+        }
+      }
+    },
+    {
+      "id": "p36_t27",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p36_t28",
+      "arabic": "دَحْرَجْتُ",
+      "gloss": "دَحْرَجْتُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "دَحْرَجْتُ"
+        }
+      }
+    },
+    {
+      "id": "p36_t29",
+      "arabic": "الْحَجَرَ",
+      "gloss": "الْحَجَرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْحَجَرَ"
+        }
+      }
+    },
+    {
+      "id": "p36_t30",
+      "arabic": "فَتَدَحْرَجَ",
+      "gloss": "فَتَدَحْرَجَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَتَدَحْرَجَ"
+        }
+      }
+    },
+    {
+      "id": "p36_t31",
+      "arabic": "الْحَجَرُ",
+      "gloss": "الْحَجَرُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْحَجَرُ"
+        }
+      }
+    }
+  ]
+}

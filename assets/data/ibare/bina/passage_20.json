@@ -1,0 +1,389 @@
+{
+  "id": "passage_20",
+  "order": 20,
+  "title": "Birinci Bab: İnfi‘âl",
+  "translation": "İki harf ilaveli sülâsî mezîd beş babdır. Birinci bab اِنْفَعَلَ يَنْفَعِلُ اِنْفِعَالًا veznidir. Başına hemze ve nûn eklenir; çoğunlukla mütâvaat bildirir.",
+  "phrases": [
+    {
+      "id": "p20_ph1",
+      "tokenIds": [
+        "p20_t1",
+        "p20_t2",
+        "p20_t3",
+        "p20_t4",
+        "p20_t5",
+        "p20_t6",
+        "p20_t7",
+        "p20_t8",
+        "p20_t9",
+        "p20_t10",
+        "p20_t11",
+        "p20_t12",
+        "p20_t13",
+        "p20_t14",
+        "p20_t15",
+        "p20_t16",
+        "p20_t17",
+        "p20_t18",
+        "p20_t19",
+        "p20_t20",
+        "p20_t21",
+        "p20_t22",
+        "p20_t23",
+        "p20_t24",
+        "p20_t25",
+        "p20_t26",
+        "p20_t27",
+        "p20_t28",
+        "p20_t29",
+        "p20_t30",
+        "p20_t31"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "İki harf ilaveli sülâsî mezîd beş babdır. Birinci bab اِنْفَعَلَ يَنْفَعِلُ اِنْفِعَالًا veznidir. Başına hemze ve nûn eklenir; çoğunlukla mütâvaat bildirir."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p20_t1",
+      "arabic": "النَّوْعُ",
+      "gloss": "Kısım",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Kısım"
+        }
+      }
+    },
+    {
+      "id": "p20_t2",
+      "arabic": "الثَّانِي",
+      "gloss": "İkinci",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "İkinci"
+        }
+      }
+    },
+    {
+      "id": "p20_t3",
+      "arabic": "الْفِعْلُ",
+      "gloss": "Fiil",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Fiil"
+        }
+      }
+    },
+    {
+      "id": "p20_t4",
+      "arabic": "الثُّلَاثِيُّ",
+      "gloss": "Sülâsî",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Sülâsî"
+        }
+      }
+    },
+    {
+      "id": "p20_t5",
+      "arabic": "الْمَزِيدُ",
+      "gloss": "Mezîd",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mezîd"
+        }
+      }
+    },
+    {
+      "id": "p20_t6",
+      "arabic": "بِحَرْفَيْنِ",
+      "gloss": "بِحَرْفَيْنِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "بِحَرْفَيْنِ"
+        }
+      }
+    },
+    {
+      "id": "p20_t7",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p20_t8",
+      "arabic": "خَمْسَةُ",
+      "gloss": "Beş",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Beş"
+        }
+      }
+    },
+    {
+      "id": "p20_t9",
+      "arabic": "أَبْوَابٍ",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Bab"
+        }
+      }
+    },
+    {
+      "id": "p20_t10",
+      "arabic": "الْبَابُ",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Bab"
+        }
+      }
+    },
+    {
+      "id": "p20_t11",
+      "arabic": "الْأَوَّلُ",
+      "gloss": "Birinci",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Birinci"
+        }
+      }
+    },
+    {
+      "id": "p20_t12",
+      "arabic": "اِنْفَعَلَ",
+      "gloss": "اِنْفَعَلَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِنْفَعَلَ"
+        }
+      }
+    },
+    {
+      "id": "p20_t13",
+      "arabic": "يَنْفَعِلُ",
+      "gloss": "يَنْفَعِلُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَنْفَعِلُ"
+        }
+      }
+    },
+    {
+      "id": "p20_t14",
+      "arabic": "اِنْفِعَالًا",
+      "gloss": "اِنْفِعَالًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِنْفِعَالًا"
+        }
+      }
+    },
+    {
+      "id": "p20_t15",
+      "arabic": "مَوْزُونُهُ",
+      "gloss": "Mevzunu",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mevzunu"
+        }
+      }
+    },
+    {
+      "id": "p20_t16",
+      "arabic": "اِنْكَسَرَ",
+      "gloss": "اِنْكَسَرَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِنْكَسَرَ"
+        }
+      }
+    },
+    {
+      "id": "p20_t17",
+      "arabic": "يَنْكَسِرُ",
+      "gloss": "يَنْكَسِرُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَنْكَسِرُ"
+        }
+      }
+    },
+    {
+      "id": "p20_t18",
+      "arabic": "اِنْكِسَارًا",
+      "gloss": "اِنْكِسَارًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِنْكِسَارًا"
+        }
+      }
+    },
+    {
+      "id": "p20_t19",
+      "arabic": "وَعَلَامَتُهُ",
+      "gloss": "Ve alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve alâmeti"
+        }
+      }
+    },
+    {
+      "id": "p20_t20",
+      "arabic": "زِيَادَةُ",
+      "gloss": "Eklenmesi",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Eklenmesi"
+        }
+      }
+    },
+    {
+      "id": "p20_t21",
+      "arabic": "الْهَمْزَةِ",
+      "gloss": "Hemzenin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Hemzenin"
+        }
+      }
+    },
+    {
+      "id": "p20_t22",
+      "arabic": "وَالنُّونِ",
+      "gloss": "Ve وَالنُّونِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَالنُّونِ"
+        }
+      }
+    },
+    {
+      "id": "p20_t23",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p20_t24",
+      "arabic": "أَوَّلِهِ",
+      "gloss": "Başında",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Başında"
+        }
+      }
+    },
+    {
+      "id": "p20_t25",
+      "arabic": "وَبِنَاؤُهُ",
+      "gloss": "Ve kullanılışı",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve kullanılışı"
+        }
+      }
+    },
+    {
+      "id": "p20_t26",
+      "arabic": "لِلْمُطَاوَعَةِ",
+      "gloss": "Mütâvaat içindir",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mütâvaat içindir"
+        }
+      }
+    },
+    {
+      "id": "p20_t27",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p20_t28",
+      "arabic": "كَسَرْتُ",
+      "gloss": "كَسَرْتُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "كَسَرْتُ"
+        }
+      }
+    },
+    {
+      "id": "p20_t29",
+      "arabic": "الزُّجَاجَ",
+      "gloss": "الزُّجَاجَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الزُّجَاجَ"
+        }
+      }
+    },
+    {
+      "id": "p20_t30",
+      "arabic": "فَانْكَسَرَ",
+      "gloss": "فَانْكَسَرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فَانْكَسَرَ"
+        }
+      }
+    },
+    {
+      "id": "p20_t31",
+      "arabic": "الزُّجَاجُ",
+      "gloss": "الزُّجَاجُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الزُّجَاجُ"
+        }
+      }
+    }
+  ]
+}

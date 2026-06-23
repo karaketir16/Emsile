@@ -1,0 +1,713 @@
+{
+  "id": "passage_46",
+  "order": 46,
+  "title": "Sekiz Kısım",
+  "translation": "Fiiller sülâsî veya rubâî; mücerred veya mezîd; sâlim veya gayrisâlim olmalarına göre sekiz kısma ayrılır.",
+  "phrases": [
+    {
+      "id": "p46_ph1",
+      "tokenIds": [
+        "p46_t1",
+        "p46_t2",
+        "p46_t3",
+        "p46_t4",
+        "p46_t5",
+        "p46_t6",
+        "p46_t7",
+        "p46_t8",
+        "p46_t9",
+        "p46_t10",
+        "p46_t11",
+        "p46_t12",
+        "p46_t13",
+        "p46_t14",
+        "p46_t15",
+        "p46_t16",
+        "p46_t17",
+        "p46_t18",
+        "p46_t19",
+        "p46_t20",
+        "p46_t21",
+        "p46_t22",
+        "p46_t23",
+        "p46_t24",
+        "p46_t25",
+        "p46_t26",
+        "p46_t27",
+        "p46_t28",
+        "p46_t29",
+        "p46_t30",
+        "p46_t31",
+        "p46_t32",
+        "p46_t33",
+        "p46_t34",
+        "p46_t35",
+        "p46_t36",
+        "p46_t37",
+        "p46_t38",
+        "p46_t39",
+        "p46_t40",
+        "p46_t41",
+        "p46_t42",
+        "p46_t43",
+        "p46_t44",
+        "p46_t45",
+        "p46_t46",
+        "p46_t47",
+        "p46_t48",
+        "p46_t49",
+        "p46_t50",
+        "p46_t51",
+        "p46_t52",
+        "p46_t53",
+        "p46_t54",
+        "p46_t55",
+        "p46_t56",
+        "p46_t57",
+        "p46_t58"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Fiiller sülâsî veya rubâî; mücerred veya mezîd; sâlim veya gayrisâlim olmalarına göre sekiz kısma ayrılır."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p46_t1",
+      "arabic": "اِعْلَمْ",
+      "gloss": "اِعْلَمْ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "اِعْلَمْ"
+        }
+      }
+    },
+    {
+      "id": "p46_t2",
+      "arabic": "أَنَّ",
+      "gloss": "أَنَّ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَنَّ"
+        }
+      }
+    },
+    {
+      "id": "p46_t3",
+      "arabic": "الْفِعْلَ",
+      "gloss": "الْفِعْلَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْفِعْلَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t4",
+      "arabic": "الْمُنْحَصِرَ",
+      "gloss": "الْمُنْحَصِرَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْمُنْحَصِرَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t5",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p46_t6",
+      "arabic": "هَذِهِ",
+      "gloss": "هَذِهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "هَذِهِ"
+        }
+      }
+    },
+    {
+      "id": "p46_t7",
+      "arabic": "الْأَبْوَابِ",
+      "gloss": "الْأَبْوَابِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْأَبْوَابِ"
+        }
+      }
+    },
+    {
+      "id": "p46_t8",
+      "arabic": "إِمَّا",
+      "gloss": "إِمَّا",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "إِمَّا"
+        }
+      }
+    },
+    {
+      "id": "p46_t9",
+      "arabic": "ثُلَاثِيٌّ",
+      "gloss": "ثُلَاثِيٌّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "ثُلَاثِيٌّ"
+        }
+      }
+    },
+    {
+      "id": "p46_t10",
+      "arabic": "مُجَرَّدٌ",
+      "gloss": "مُجَرَّدٌ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُجَرَّدٌ"
+        }
+      }
+    },
+    {
+      "id": "p46_t11",
+      "arabic": "سَالِمٌ",
+      "gloss": "Sâlim",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Sâlim"
+        }
+      }
+    },
+    {
+      "id": "p46_t12",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p46_t13",
+      "arabic": "كَرُمَ",
+      "gloss": "كَرُمَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "كَرُمَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t14",
+      "arabic": "أَوْ",
+      "gloss": "أَوْ",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "أَوْ"
+        }
+      }
+    },
+    {
+      "id": "p46_t15",
+      "arabic": "غَيْرُ",
+      "gloss": "غَيْرُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "غَيْرُ"
+        }
+      }
+    },
+    {
+      "id": "p46_t16",
+      "arabic": "سَالِمٍ",
+      "gloss": "سَالِمٍ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سَالِمٍ"
+        }
+      }
+    },
+    {
+      "id": "p46_t17",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p46_t18",
+      "arabic": "وَعَدَ",
+      "gloss": "Ve وَعَدَ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَعَدَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t19",
+      "arabic": "وَإِمَّا",
+      "gloss": "Ve وَإِمَّا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَإِمَّا"
+        }
+      }
+    },
+    {
+      "id": "p46_t20",
+      "arabic": "ثُلَاثِيٌّ",
+      "gloss": "ثُلَاثِيٌّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "ثُلَاثِيٌّ"
+        }
+      }
+    },
+    {
+      "id": "p46_t21",
+      "arabic": "مَزِيدٌ",
+      "gloss": "مَزِيدٌ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَزِيدٌ"
+        }
+      }
+    },
+    {
+      "id": "p46_t22",
+      "arabic": "فِيهِ",
+      "gloss": "فِيهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فِيهِ"
+        }
+      }
+    },
+    {
+      "id": "p46_t23",
+      "arabic": "سَالِمٌ",
+      "gloss": "Sâlim",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Sâlim"
+        }
+      }
+    },
+    {
+      "id": "p46_t24",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p46_t25",
+      "arabic": "أَكْرَمَ",
+      "gloss": "أَكْرَمَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَكْرَمَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t26",
+      "arabic": "أَوْ",
+      "gloss": "أَوْ",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "أَوْ"
+        }
+      }
+    },
+    {
+      "id": "p46_t27",
+      "arabic": "غَيْرُ",
+      "gloss": "غَيْرُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "غَيْرُ"
+        }
+      }
+    },
+    {
+      "id": "p46_t28",
+      "arabic": "سَالِمٍ",
+      "gloss": "سَالِمٍ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سَالِمٍ"
+        }
+      }
+    },
+    {
+      "id": "p46_t29",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p46_t30",
+      "arabic": "أَوْعَدَ",
+      "gloss": "أَوْعَدَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَوْعَدَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t31",
+      "arabic": "وَإِمَّا",
+      "gloss": "Ve وَإِمَّا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَإِمَّا"
+        }
+      }
+    },
+    {
+      "id": "p46_t32",
+      "arabic": "رُبَاعِيٌّ",
+      "gloss": "رُبَاعِيٌّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "رُبَاعِيٌّ"
+        }
+      }
+    },
+    {
+      "id": "p46_t33",
+      "arabic": "مُجَرَّدٌ",
+      "gloss": "مُجَرَّدٌ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُجَرَّدٌ"
+        }
+      }
+    },
+    {
+      "id": "p46_t34",
+      "arabic": "سَالِمٌ",
+      "gloss": "Sâlim",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Sâlim"
+        }
+      }
+    },
+    {
+      "id": "p46_t35",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p46_t36",
+      "arabic": "دَحْرَجَ",
+      "gloss": "دَحْرَجَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "دَحْرَجَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t37",
+      "arabic": "أَوْ",
+      "gloss": "أَوْ",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "أَوْ"
+        }
+      }
+    },
+    {
+      "id": "p46_t38",
+      "arabic": "غَيْرُ",
+      "gloss": "غَيْرُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "غَيْرُ"
+        }
+      }
+    },
+    {
+      "id": "p46_t39",
+      "arabic": "سَالِمٍ",
+      "gloss": "سَالِمٍ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سَالِمٍ"
+        }
+      }
+    },
+    {
+      "id": "p46_t40",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p46_t41",
+      "arabic": "وَسْوَسَ",
+      "gloss": "Ve وَسْوَسَ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَسْوَسَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t42",
+      "arabic": "وَزَلْزَلَ",
+      "gloss": "Ve وَزَلْزَلَ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَزَلْزَلَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t43",
+      "arabic": "وَإِمَّا",
+      "gloss": "Ve وَإِمَّا",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَإِمَّا"
+        }
+      }
+    },
+    {
+      "id": "p46_t44",
+      "arabic": "رُبَاعِيٌّ",
+      "gloss": "رُبَاعِيٌّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "رُبَاعِيٌّ"
+        }
+      }
+    },
+    {
+      "id": "p46_t45",
+      "arabic": "مَزِيدٌ",
+      "gloss": "مَزِيدٌ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَزِيدٌ"
+        }
+      }
+    },
+    {
+      "id": "p46_t46",
+      "arabic": "فِيهِ",
+      "gloss": "فِيهِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "فِيهِ"
+        }
+      }
+    },
+    {
+      "id": "p46_t47",
+      "arabic": "سَالِمٌ",
+      "gloss": "Sâlim",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Sâlim"
+        }
+      }
+    },
+    {
+      "id": "p46_t48",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p46_t49",
+      "arabic": "تَدَحْرَجَ",
+      "gloss": "تَدَحْرَجَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَدَحْرَجَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t50",
+      "arabic": "أَوْ",
+      "gloss": "أَوْ",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "أَوْ"
+        }
+      }
+    },
+    {
+      "id": "p46_t51",
+      "arabic": "غَيْرُ",
+      "gloss": "غَيْرُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "غَيْرُ"
+        }
+      }
+    },
+    {
+      "id": "p46_t52",
+      "arabic": "سَالِمٍ",
+      "gloss": "سَالِمٍ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سَالِمٍ"
+        }
+      }
+    },
+    {
+      "id": "p46_t53",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p46_t54",
+      "arabic": "تَوَسْوَسَ",
+      "gloss": "تَوَسْوَسَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَوَسْوَسَ"
+        }
+      }
+    },
+    {
+      "id": "p46_t55",
+      "arabic": "وَيُقَالُ",
+      "gloss": "Ve وَيُقَالُ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَيُقَالُ"
+        }
+      }
+    },
+    {
+      "id": "p46_t56",
+      "arabic": "لَهَا",
+      "gloss": "لَهَا",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "لَهَا"
+        }
+      }
+    },
+    {
+      "id": "p46_t57",
+      "arabic": "الْأَقْسَامُ",
+      "gloss": "الْأَقْسَامُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْأَقْسَامُ"
+        }
+      }
+    },
+    {
+      "id": "p46_t58",
+      "arabic": "الثَّمَانِيَةُ",
+      "gloss": "الثَّمَانِيَةُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الثَّمَانِيَةُ"
+        }
+      }
+    }
+  ]
+}

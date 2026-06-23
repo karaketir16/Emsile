@@ -1,0 +1,293 @@
+{
+  "id": "passage_42",
+  "order": 42,
+  "title": "Dördüncü Bab: Terehveke",
+  "translation": "Dördüncü bab تَفَعْوَلَ يَتَفَعْوَلُ’dür. Başa tâ, ayn ile lâm arasına vav eklenir ve lâzım kullanılır.",
+  "phrases": [
+    {
+      "id": "p42_ph1",
+      "tokenIds": [
+        "p42_t1",
+        "p42_t2",
+        "p42_t3",
+        "p42_t4",
+        "p42_t5",
+        "p42_t6",
+        "p42_t7",
+        "p42_t8",
+        "p42_t9",
+        "p42_t10",
+        "p42_t11",
+        "p42_t12",
+        "p42_t13",
+        "p42_t14",
+        "p42_t15",
+        "p42_t16",
+        "p42_t17",
+        "p42_t18",
+        "p42_t19",
+        "p42_t20",
+        "p42_t21",
+        "p42_t22",
+        "p42_t23"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "Dördüncü bab تَفَعْوَلَ يَتَفَعْوَلُ’dür. Başa tâ, ayn ile lâm arasına vav eklenir ve lâzım kullanılır."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p42_t1",
+      "arabic": "الْبَابُ",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Bab"
+        }
+      }
+    },
+    {
+      "id": "p42_t2",
+      "arabic": "الرَّابِعُ",
+      "gloss": "Dördüncü",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Dördüncü"
+        }
+      }
+    },
+    {
+      "id": "p42_t3",
+      "arabic": "تَفَعْوَلَ",
+      "gloss": "تَفَعْوَلَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَفَعْوَلَ"
+        }
+      }
+    },
+    {
+      "id": "p42_t4",
+      "arabic": "يَتَفَعْوَلُ",
+      "gloss": "يَتَفَعْوَلُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَتَفَعْوَلُ"
+        }
+      }
+    },
+    {
+      "id": "p42_t5",
+      "arabic": "تَفَعْوُلًا",
+      "gloss": "تَفَعْوُلًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَفَعْوُلًا"
+        }
+      }
+    },
+    {
+      "id": "p42_t6",
+      "arabic": "مَوْزُونُهُ",
+      "gloss": "Mevzunu",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Mevzunu"
+        }
+      }
+    },
+    {
+      "id": "p42_t7",
+      "arabic": "تَرَهْوَكَ",
+      "gloss": "تَرَهْوَكَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَرَهْوَكَ"
+        }
+      }
+    },
+    {
+      "id": "p42_t8",
+      "arabic": "يَتَرَهْوَكُ",
+      "gloss": "يَتَرَهْوَكُ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَتَرَهْوَكُ"
+        }
+      }
+    },
+    {
+      "id": "p42_t9",
+      "arabic": "تَرَهْوُكًا",
+      "gloss": "تَرَهْوُكًا",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَرَهْوُكًا"
+        }
+      }
+    },
+    {
+      "id": "p42_t10",
+      "arabic": "وَعَلَامَتُهُ",
+      "gloss": "Ve alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve alâmeti"
+        }
+      }
+    },
+    {
+      "id": "p42_t11",
+      "arabic": "زِيَادَةُ",
+      "gloss": "Eklenmesi",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Eklenmesi"
+        }
+      }
+    },
+    {
+      "id": "p42_t12",
+      "arabic": "التَّاءِ",
+      "gloss": "Tânın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Tânın"
+        }
+      }
+    },
+    {
+      "id": "p42_t13",
+      "arabic": "فِي",
+      "gloss": "İçinde",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "İçinde"
+        }
+      }
+    },
+    {
+      "id": "p42_t14",
+      "arabic": "أَوَّلِهِ",
+      "gloss": "Başında",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Başında"
+        }
+      }
+    },
+    {
+      "id": "p42_t15",
+      "arabic": "وَالْوَاوِ",
+      "gloss": "Ve وَالْوَاوِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَالْوَاوِ"
+        }
+      }
+    },
+    {
+      "id": "p42_t16",
+      "arabic": "بَيْنَ",
+      "gloss": "Arasında",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "Arasında"
+        }
+      }
+    },
+    {
+      "id": "p42_t17",
+      "arabic": "الْعَيْنِ",
+      "gloss": "Aynın",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Aynın"
+        }
+      }
+    },
+    {
+      "id": "p42_t18",
+      "arabic": "وَاللَّامِ",
+      "gloss": "Ve وَاللَّامِ",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَاللَّامِ"
+        }
+      }
+    },
+    {
+      "id": "p42_t19",
+      "arabic": "وَبِنَاؤُهُ",
+      "gloss": "Ve kullanılışı",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve kullanılışı"
+        }
+      }
+    },
+    {
+      "id": "p42_t20",
+      "arabic": "لِلَّازِمِ",
+      "gloss": "Lâzımlık içindir",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Lâzımlık içindir"
+        }
+      }
+    },
+    {
+      "id": "p42_t21",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p42_t22",
+      "arabic": "تَرَهْوَكَ",
+      "gloss": "تَرَهْوَكَ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "تَرَهْوَكَ"
+        }
+      }
+    },
+    {
+      "id": "p42_t23",
+      "arabic": "زَيْدٌ",
+      "gloss": "Zeyd",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Zeyd"
+        }
+      }
+    }
+  ]
+}

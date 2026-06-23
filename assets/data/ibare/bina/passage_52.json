@@ -1,0 +1,245 @@
+{
+  "id": "passage_52",
+  "order": 52,
+  "title": "İdgamın İmkânsız Olduğu Yer",
+  "translation": "İlk harf harekeli, ikinci harf aslî sükûnla sâkin olduğunda idgam yapılamaz.",
+  "phrases": [
+    {
+      "id": "p52_ph1",
+      "tokenIds": [
+        "p52_t1",
+        "p52_t2",
+        "p52_t3",
+        "p52_t4",
+        "p52_t5",
+        "p52_t6",
+        "p52_t7",
+        "p52_t8",
+        "p52_t9",
+        "p52_t10",
+        "p52_t11",
+        "p52_t12",
+        "p52_t13",
+        "p52_t14",
+        "p52_t15",
+        "p52_t16",
+        "p52_t17",
+        "p52_t18",
+        "p52_t19"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "İlk harf harekeli, ikinci harf aslî sükûnla sâkin olduğunda idgam yapılamaz."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p52_t1",
+      "arabic": "النَّوْعُ",
+      "gloss": "Kısım",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Kısım"
+        }
+      }
+    },
+    {
+      "id": "p52_t2",
+      "arabic": "الثَّالِثُ",
+      "gloss": "Üçüncü",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Üçüncü"
+        }
+      }
+    },
+    {
+      "id": "p52_t3",
+      "arabic": "الْإِدْغَامُ",
+      "gloss": "İdgam",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "İdgam"
+        }
+      }
+    },
+    {
+      "id": "p52_t4",
+      "arabic": "الْمُمْتَنِعُ",
+      "gloss": "İmkânsız",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "İmkânsız"
+        }
+      }
+    },
+    {
+      "id": "p52_t5",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p52_t6",
+      "arabic": "أَنْ",
+      "gloss": "-mesi",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "-mesi"
+        }
+      }
+    },
+    {
+      "id": "p52_t7",
+      "arabic": "يَكُونَ",
+      "gloss": "Olması",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Olması"
+        }
+      }
+    },
+    {
+      "id": "p52_t8",
+      "arabic": "الْأَوَّلُ",
+      "gloss": "Birinci",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Birinci"
+        }
+      }
+    },
+    {
+      "id": "p52_t9",
+      "arabic": "مِنَ",
+      "gloss": "مِنَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مِنَ"
+        }
+      }
+    },
+    {
+      "id": "p52_t10",
+      "arabic": "الْمُتَجَانِسَيْنِ",
+      "gloss": "الْمُتَجَانِسَيْنِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْمُتَجَانِسَيْنِ"
+        }
+      }
+    },
+    {
+      "id": "p52_t11",
+      "arabic": "مُتَحَرِّكًا",
+      "gloss": "مُتَحَرِّكًا",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُتَحَرِّكًا"
+        }
+      }
+    },
+    {
+      "id": "p52_t12",
+      "arabic": "وَالثَّانِي",
+      "gloss": "Ve وَالثَّانِي",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَالثَّانِي"
+        }
+      }
+    },
+    {
+      "id": "p52_t13",
+      "arabic": "سَاكِنًا",
+      "gloss": "سَاكِنًا",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سَاكِنًا"
+        }
+      }
+    },
+    {
+      "id": "p52_t14",
+      "arabic": "بِسُكُونٍ",
+      "gloss": "بِسُكُونٍ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "بِسُكُونٍ"
+        }
+      }
+    },
+    {
+      "id": "p52_t15",
+      "arabic": "أَصْلِيٍّ",
+      "gloss": "أَصْلِيٍّ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "أَصْلِيٍّ"
+        }
+      }
+    },
+    {
+      "id": "p52_t16",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p52_t17",
+      "arabic": "مَدَدْتُ",
+      "gloss": "مَدَدْتُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَدَدْتُ"
+        }
+      }
+    },
+    {
+      "id": "p52_t18",
+      "arabic": "إِلَى",
+      "gloss": "إِلَى",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "إِلَى"
+        }
+      }
+    },
+    {
+      "id": "p52_t19",
+      "arabic": "مَدَدْنَ",
+      "gloss": "مَدَدْنَ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَدَدْنَ"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "id": "passage_50",
+  "order": 50,
+  "title": "Vâcip İdgam",
+  "translation": "İki aynı cins harf harekeli olduğunda veya birincisi sâkin, ikincisi harekeli olduğunda idgam vâciptir.",
+  "phrases": [
+    {
+      "id": "p50_ph1",
+      "tokenIds": [
+        "p50_t1",
+        "p50_t2",
+        "p50_t3",
+        "p50_t4",
+        "p50_t5",
+        "p50_t6",
+        "p50_t7",
+        "p50_t8",
+        "p50_t9",
+        "p50_t10",
+        "p50_t11",
+        "p50_t12",
+        "p50_t13",
+        "p50_t14",
+        "p50_t15",
+        "p50_t16",
+        "p50_t17",
+        "p50_t18",
+        "p50_t19",
+        "p50_t20",
+        "p50_t21"
+      ],
+      "type": "Açıklama cümlesi",
+      "meaning": "İki aynı cins harf harekeli olduğunda veya birincisi sâkin, ikincisi harekeli olduğunda idgam vâciptir."
+    }
+  ],
+  "tokens": [
+    {
+      "id": "p50_t1",
+      "arabic": "النَّوْعُ",
+      "gloss": "Kısım",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Kısım"
+        }
+      }
+    },
+    {
+      "id": "p50_t2",
+      "arabic": "الْأَوَّلُ",
+      "gloss": "Birinci",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Birinci"
+        }
+      }
+    },
+    {
+      "id": "p50_t3",
+      "arabic": "الْإِدْغَامُ",
+      "gloss": "İdgam",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "İdgam"
+        }
+      }
+    },
+    {
+      "id": "p50_t4",
+      "arabic": "الْوَاجِبُ",
+      "gloss": "Vâcip",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Vâcip"
+        }
+      }
+    },
+    {
+      "id": "p50_t5",
+      "arabic": "وَهُوَ",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve o"
+        }
+      }
+    },
+    {
+      "id": "p50_t6",
+      "arabic": "أَنْ",
+      "gloss": "-mesi",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "-mesi"
+        }
+      }
+    },
+    {
+      "id": "p50_t7",
+      "arabic": "يَكُونَ",
+      "gloss": "Olması",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Olması"
+        }
+      }
+    },
+    {
+      "id": "p50_t8",
+      "arabic": "الْحَرْفَانِ",
+      "gloss": "الْحَرْفَانِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْحَرْفَانِ"
+        }
+      }
+    },
+    {
+      "id": "p50_t9",
+      "arabic": "الْمُتَجَانِسَانِ",
+      "gloss": "الْمُتَجَانِسَانِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْمُتَجَانِسَانِ"
+        }
+      }
+    },
+    {
+      "id": "p50_t10",
+      "arabic": "مُتَحَرِّكَيْنِ",
+      "gloss": "مُتَحَرِّكَيْنِ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُتَحَرِّكَيْنِ"
+        }
+      }
+    },
+    {
+      "id": "p50_t11",
+      "arabic": "أَوْ",
+      "gloss": "أَوْ",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "meaning": "أَوْ"
+        }
+      }
+    },
+    {
+      "id": "p50_t12",
+      "arabic": "يَكُونَ",
+      "gloss": "Olması",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "Olması"
+        }
+      }
+    },
+    {
+      "id": "p50_t13",
+      "arabic": "الْحَرْفُ",
+      "gloss": "الْحَرْفُ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "الْحَرْفُ"
+        }
+      }
+    },
+    {
+      "id": "p50_t14",
+      "arabic": "الْأَوَّلُ",
+      "gloss": "Birinci",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Birinci"
+        }
+      }
+    },
+    {
+      "id": "p50_t15",
+      "arabic": "سَاكِنًا",
+      "gloss": "سَاكِنًا",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "سَاكِنًا"
+        }
+      }
+    },
+    {
+      "id": "p50_t16",
+      "arabic": "وَالثَّانِي",
+      "gloss": "Ve وَالثَّانِي",
+      "analysis": {
+        "kind": "Bağlaç + kelime",
+        "fields": {
+          "meaning": "Ve وَالثَّانِي"
+        }
+      }
+    },
+    {
+      "id": "p50_t17",
+      "arabic": "مُتَحَرِّكًا",
+      "gloss": "مُتَحَرِّكًا",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مُتَحَرِّكًا"
+        }
+      }
+    },
+    {
+      "id": "p50_t18",
+      "arabic": "نَحْوُ",
+      "gloss": "Örneğin",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "Örneğin"
+        }
+      }
+    },
+    {
+      "id": "p50_t19",
+      "arabic": "مَدَّ",
+      "gloss": "مَدَّ",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَدَّ"
+        }
+      }
+    },
+    {
+      "id": "p50_t20",
+      "arabic": "يَمُدُّ",
+      "gloss": "يَمُدُّ",
+      "analysis": {
+        "kind": "Fiil / kalıp",
+        "fields": {
+          "meaning": "يَمُدُّ"
+        }
+      }
+    },
+    {
+      "id": "p50_t21",
+      "arabic": "مَدًّا",
+      "gloss": "مَدًّا",
+      "analysis": {
+        "kind": "İsim / kelime",
+        "fields": {
+          "meaning": "مَدًّا"
+        }
+      }
+    }
+  ]
+}

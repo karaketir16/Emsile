@@ -129,8 +129,14 @@ function validateIbareBook(bookPath, expectedId) {
   assert(book.passages.length > 0, `${expectedId}.passages must not be empty`);
 
   const passageIds = new Set();
-  book.passages.forEach((passage, passageIndex) => {
-    const prefix = `${expectedId}.passages[${passageIndex}]`;
+  book.passages.forEach((passagePath, passageIndex) => {
+    const absolutePassagePath = path.join(__dirname, '..', passagePath);
+    assert(
+      fs.existsSync(absolutePassagePath),
+      `${expectedId}.passages[${passageIndex}] path does not exist: ${passagePath}`,
+    );
+    const passage = JSON.parse(fs.readFileSync(absolutePassagePath, 'utf8'));
+    const prefix = `${expectedId}.passages[${passageIndex}] (${passagePath})`;
     assertString(passage.id, `${prefix}.id`);
     assert(!passageIds.has(passage.id), `${prefix}.id must be unique`);
     passageIds.add(passage.id);

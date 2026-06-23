@@ -1,0 +1,202 @@
+{
+  "id": "passage_2",
+  "order": 2,
+  "title": "Sarfın Bapları",
+  "subtitle": "Giriş cümlesi",
+  "translation": "Bil ki sarf ilminin bapları otuz beş baptır. Bunlardan altısı sülâsî mücerred içindir.",
+  "tokens": [
+    {
+      "id": "p2_t1",
+      "arabic": "اِعْلَمْ",
+      "printedArabic": "اعلم",
+      "gloss": "Bil",
+      "analysis": {
+        "kind": "Fiil",
+        "fields": {
+          "conjugation": "Emr-i hâzır, malûm",
+          "person": "2. şahıs, müzekker, tekil",
+          "hiddenPronoun": "أَنْتَ “sen”",
+          "root": "ع ل م",
+          "baseForm": "عَلِمَ يَعْلَمُ",
+          "bab": "Sülâsî mücerred 4. bab",
+          "pattern": "اِفْعَلْ",
+          "syntax": "Fiil"
+        }
+      }
+    },
+    {
+      "id": "p2_t2",
+      "arabic": "أَنَّ",
+      "printedArabic": "أن",
+      "gloss": "Muhakkak ki",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "morphology": "Te’kid ve nasb harfi",
+          "effect": "İsmini mansub, haberini merfû yapar."
+        }
+      }
+    },
+    {
+      "id": "p2_t3",
+      "arabic": "أَبْوَابَ",
+      "printedArabic": "أبواب",
+      "gloss": "Bapları",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "singular": "بَابٌ",
+          "root": "ب و ب",
+          "pattern": "أَفْعَال",
+          "wordForm": "Cem-i mükesser, muzaf",
+          "role": "أَنَّ edatının ismi",
+          "irab": "Fetha ile mansub",
+          "construction": "Muzaf"
+        }
+      }
+    },
+    {
+      "id": "p2_t4",
+      "arabic": "التَّصْرِيفِ",
+      "printedArabic": "التصريف",
+      "gloss": "Sarf ilminin",
+      "analysis": {
+        "kind": "Masdar / isim",
+        "fields": {
+          "root": "ص ر ف",
+          "derivedFrom": "صَرَّفَ يُصَرِّفُ",
+          "bab": "Sülâsî mezîd, tef‘îl babı",
+          "pattern": "تَفْعِيل",
+          "wordForm": "Müfred ve marife",
+          "role": "أَبْوَابَ kelimesinin muzafun ileyhi",
+          "irab": "Kesra ile mecrur"
+        }
+      }
+    },
+    {
+      "id": "p2_t5",
+      "arabic": "خَمْسَةٌ",
+      "printedArabic": "خمسة",
+      "gloss": "Beş",
+      "analysis": {
+        "kind": "Sayı",
+        "fields": {
+          "numberType": "Birler basamağı",
+          "tamyiz": "بَابًا",
+          "role": "أَنَّ edatının haberinin ilk parçası",
+          "irab": "Merfû"
+        }
+      }
+    },
+    {
+      "id": "p2_t6",
+      "arabic": "وَثَلَاثُونَ",
+      "printedArabic": "وثلاثون",
+      "gloss": "Ve otuz",
+      "analysis": {
+        "kind": "Bağlaç + sayı",
+        "fields": {
+          "numberType": "Ukûd sayılarından “otuz”",
+          "role": "خَمْسَةٌ kelimesine atfedilmiştir.",
+          "irab": "Vav ile merfû"
+        },
+        "details": [
+          {
+            "label": "وَ",
+            "value": "Atıf harfi: “ve”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p2_t7",
+      "arabic": "بَابًا",
+      "printedArabic": "باباً",
+      "punctuation": "،",
+      "gloss": "Bap olarak",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ب و ب",
+          "wordForm": "Müfred ve nekre",
+          "role": "Sayı temyizi",
+          "irab": "Fetha ile mansub"
+        }
+      }
+    },
+    {
+      "id": "p2_t8",
+      "arabic": "سِتَّةٌ",
+      "printedArabic": "ستة",
+      "gloss": "Altı tanesi",
+      "analysis": {
+        "kind": "Sayı",
+        "fields": {
+          "numberType": "Asıl sayı",
+          "role": "Yeni cümlenin mübtedası",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p2_t9",
+      "arabic": "مِنْهَا",
+      "printedArabic": "منها",
+      "gloss": "Onlardan",
+      "analysis": {
+        "kind": "Harf-i cer + zamir",
+        "fields": {
+          "pronoun": "هَا: 3. şahıs, müennes, tekil",
+          "referent": "Otuz beş baba döner.",
+          "irab": "هَا zamiri mahallen mecrurdur."
+        },
+        "details": [
+          {
+            "label": "مِنْ",
+            "value": "Harf-i cer: “-den/-dan”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p2_t10",
+      "arabic": "لِلثُّلَاثِيِّ",
+      "printedArabic": "للثلاثي",
+      "gloss": "Üç harfli için",
+      "analysis": {
+        "kind": "Harf-i cer + isim",
+        "fields": {
+          "root": "ث ل ث",
+          "meaning": "Sülâsî: üç harfli",
+          "wordForm": "Nisbet ismi, müfred ve marife",
+          "irab": "Mecrur"
+        },
+        "details": [
+          {
+            "label": "لِ",
+            "value": "Harf-i cer: “için”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p2_t11",
+      "arabic": "الْمُجَرَّدِ",
+      "printedArabic": "المجرد",
+      "gloss": "Mücerred, yalın olan",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "ج ر د",
+          "derivedFrom": "جَرَّدَ يُجَرِّدُ",
+          "bab": "Sülâsî mezîd, tef‘îl babı",
+          "pattern": "مُفَعَّل",
+          "morphology": "İsm-i mef‘ûl",
+          "meaning": "Ziyade harflerden soyulmuş kök fiil",
+          "role": "الثُّلَاثِيِّ kelimesinin sıfatı",
+          "irab": "Mecrur"
+        }
+      }
+    }
+  ]
+}

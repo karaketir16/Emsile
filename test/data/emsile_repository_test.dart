@@ -58,24 +58,25 @@ void main() {
           'shortTitle': 'Binâ',
           'description': 'İbare çalışması',
           'passages': [
+            'assets/data/ibare/bina/giris.json',
+          ],
+        }),
+        'assets/data/ibare/bina/giris.json': jsonEncode({
+          'id': 'giris',
+          'order': 1,
+          'title': 'Giriş',
+          'subtitle': 'İlk cümle',
+          'translation': 'Bil.',
+          'tokens': [
             {
-              'id': 'giris',
-              'order': 1,
-              'title': 'Giriş',
-              'subtitle': 'İlk cümle',
-              'translation': 'Bil.',
-              'tokens': [
-                {
-                  'id': 'giris_1',
-                  'arabic': 'اِعْلَمْ',
-                  'printedArabic': 'اعلم',
-                  'gloss': 'Bil',
-                  'analysis': {
-                    'kind': 'Fiil',
-                    'fields': {'conjugation': 'Emr-i hâzır'},
-                  },
-                },
-              ],
+              'id': 'giris_1',
+              'arabic': 'اِعْلَمْ',
+              'printedArabic': 'اعlem',
+              'gloss': 'Bil',
+              'analysis': {
+                'kind': 'Fiil',
+                'fields': {'conjugation': 'Emr-i hâzır'},
+              },
             },
           ],
         }),

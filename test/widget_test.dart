@@ -32,11 +32,20 @@ Future<void> pumpLoadedApp(WidgetTester tester) async {
   throw TestFailure('AppData did not finish loading in widget test.');
 }
 
+IbareBook _loadBookSync(String manifestPath) {
+  final manifestRaw = File(manifestPath).readAsStringSync();
+  final manifestJson = jsonDecode(manifestRaw) as Map<String, dynamic>;
+  final passagePaths = List<String>.from(manifestJson['passages'] as List);
+  final passages = passagePaths.map((path) {
+    final passageRaw = File(path).readAsStringSync();
+    return jsonDecode(passageRaw) as Map<String, dynamic>;
+  }).toList();
+  final fullJson = Map<String, dynamic>.from(manifestJson)..['passages'] = passages;
+  return IbareBook.fromJson(fullJson);
+}
+
 void main() {
-  final binaBook = IbareBook.fromJson(
-    jsonDecode(File('assets/data/ibare/bina.json').readAsStringSync())
-        as Map<String, dynamic>,
-  );
+  final binaBook = _loadBookSync('assets/data/ibare/bina.json');
 
   test('ibare data preserves printed harakat and toggles added harakat', () {
     final besmele = binaBook.passages.first.tokens.first;
@@ -82,6 +91,10 @@ void main() {
         'اعلم أن أبواب التصريف خمسة وثلاثون باباً، ستة منها للثلاثي المجرد',
         'الباب الأول: فَعَلَ – يَفْعُلُ موزونه: نَصَرَ يَنْصُرُ، وعلامَتُهُ أن يكون عَيْنُ فِعْلِهِ مَفْتُوحاً فِي الماضي ومَضْمُوماً فِي المضارعِ',
         'وبِناؤُهُ لِلتَّعْدِيَةِ غَالِباً وَقَدْ يَكُونُ لَازِماً مثال المتعدِّي نحو: نَصَرَ زَيْدٌ عَمْرًا ومثال اللازم نحو: خَرَجَ زَيْدٌ',
+        'الباب الثاني: فَعَلَ – يَفْعِلُ موزونه: ضَرَبَ يَضْرِبُ، وعلامته أن يكون عين فعله مفتوحاً في الماضي ومكسوراً في المضارع',
+        'وبناؤه أيضاً للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: ضَرَبَ زَيْدٌ عَمْرًا ومثال اللازم مثل: جَلَسَ زَيْدٌ',
+        'الباب الثالث: فَعَلَ – يَفْعَلُ موزونه: فَتَحَ يَفْتَحُ، وعلامته أن يكون عين فعله مفتوحاً في الماضي والمضارع بشرط أن يكون عين فعله أو لامه واحداً من حروف الحلق وهي ستة: الحاء والخاء والعين والغين والهاء والهمزة.',
+        'وبناؤه أيضاً للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: فَتَحَ زَيْدٌ الْبَابَ ومثال اللازم نحو: ذَهَبَ زَيْدٌ.',
       ],
     );
   });
@@ -89,7 +102,7 @@ void main() {
   test('ibare broken meanings preserve conjunction waw', () {
     final conjunctions = binaBook.passages
         .expand((passage) => passage.tokens)
-        .where((token) => token.arabic.startsWith('وَ'));
+        .where((token) => token.arabic.startsWith('وَ') && token.arabic != 'وَاحِدًا');
 
     expect(
       conjunctions.every((token) => token.gloss.startsWith('Ve ')),

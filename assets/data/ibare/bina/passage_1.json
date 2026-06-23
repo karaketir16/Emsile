@@ -1,0 +1,71 @@
+{
+  "id": "passage_1",
+  "order": 1,
+  "title": "Besmele",
+  "subtitle": "Kitabın başlangıcı",
+  "translation": "Rahman ve Rahim olan Allah’ın ismiyle başlarım.",
+  "tokens": [
+    {
+      "id": "p1_t1",
+      "arabic": "بِسْمِ",
+      "printedArabic": "بسم",
+      "gloss": "Allah’ın ismiyle ifadesindeki “isim ile”",
+      "analysis": {
+        "kind": "Harf-i cer + isim",
+        "fields": {
+          "structure": "بِ harf-i cerri, اِسْمِ ise mecrur isimdir.",
+          "noun": "اِسْمٌ: müfred, muzaf",
+          "irab": "Kesra ile mecrurdur.",
+          "role": "Muzaf",
+          "ellipsis": "Başında gizli أَبْدَأُ “başlarım” fiili vardır."
+        }
+      }
+    },
+    {
+      "id": "p1_t2",
+      "arabic": "اللّٰهِ",
+      "printedArabic": "اللّٰه",
+      "gloss": "Allah’ın",
+      "analysis": {
+        "kind": "Özel isim",
+        "fields": {
+          "wordForm": "Müfred ve marife",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrurdur."
+        }
+      }
+    },
+    {
+      "id": "p1_t3",
+      "arabic": "الرَّحْمٰنِ",
+      "printedArabic": "الرحمن",
+      "gloss": "Rahman olan",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "ر ح م",
+          "pattern": "فَعْلَان",
+          "wordForm": "Müfred, müzekker ve marife",
+          "role": "Allah lafzının birinci sıfatı",
+          "irab": "Mecrurdur; mevsufuna uyar."
+        }
+      }
+    },
+    {
+      "id": "p1_t4",
+      "arabic": "الرَّحِيمِ",
+      "printedArabic": "الرحيم",
+      "gloss": "Rahim olan",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "ر ح م",
+          "pattern": "فَعِيل",
+          "wordForm": "Müfred, müzekker ve marife",
+          "role": "Allah lafzının ikinci sıfatı",
+          "irab": "Mecrurdur; mevsufuna uyar."
+        }
+      }
+    }
+  ]
+}

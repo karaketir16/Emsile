@@ -30,9 +30,17 @@ class EmsileRepository {
     final ibareBooks = await Future.wait(
       catalog.ibareBooks.map((manifest) async {
         final raw = await _bundle.loadString(manifest.assetPath);
-        final book = IbareBook.fromJson(
-          jsonDecode(raw) as Map<String, dynamic>,
+        final bookJson = jsonDecode(raw) as Map<String, dynamic>;
+        final passagePaths = List<String>.from(bookJson['passages'] as List);
+        final passagesJson = await Future.wait(
+          passagePaths.map((path) async {
+            final passageRaw = await _bundle.loadString(path);
+            return jsonDecode(passageRaw) as Map<String, dynamic>;
+          }),
         );
+        final fullBookJson = Map<String, dynamic>.from(bookJson)
+          ..['passages'] = passagesJson;
+        final book = IbareBook.fromJson(fullBookJson);
         if (book.id != manifest.id) {
           throw FormatException(
             'İbare kitap kimliği manifest ile eşleşmiyor: '

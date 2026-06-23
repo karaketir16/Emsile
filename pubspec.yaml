@@ -72,6 +72,7 @@ flutter:
     - assets/data/emsile_seed.json
     - assets/data/verbs/
     - assets/data/ibare/
+    - assets/data/ibare/bina/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

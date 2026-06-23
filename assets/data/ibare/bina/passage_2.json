@@ -1,13 +1,13 @@
 {
   "id": "passage_2",
   "order": 2,
-  "translation": "Bil ki sarf ilminin bapları otuz beş baptır. Bunlardan altısı sülâsî mücerred içindir.",
+  "translation": "Bil ki sarf ilminin babları otuz beş babdır. Bunlardan altısı sülâsî mücerred içindir.",
   "phrases": [
     {
       "id": "p2_ph1",
       "tokenIds": ["p2_t3", "p2_t4"],
       "type": "İsim tamlaması (izafet)",
-      "meaning": "Sarf ilminin bapları",
+      "meaning": "Sarf ilminin babları",
       "parentId": "p2_ph4",
       "explanation": "أَبْوَابَ muzaf, التَّصْرِيفِ muzafun ileyhtir."
     },
@@ -23,7 +23,7 @@
       "id": "p2_ph3",
       "tokenIds": ["p2_t5", "p2_t6", "p2_t7"],
       "type": "Sayı-temyiz terkibi",
-      "meaning": "Otuz beş bap",
+      "meaning": "Otuz beş bab",
       "parentId": "p2_ph4",
       "explanation": "بَابًا, خَمْسَةٌ وَثَلَاثُونَ sayısının mansub ve tekil temyizidir."
     },
@@ -31,7 +31,7 @@
       "id": "p2_ph4",
       "tokenIds": ["p2_t3", "p2_t4", "p2_t5", "p2_t6", "p2_t7"],
       "type": "أَنَّ cümlesinin isim-haber çekirdeği",
-      "meaning": "Sarf ilminin bapları otuz beş baptır.",
+      "meaning": "Sarf ilminin babları otuz beş babdır.",
       "parentId": "p2_ph5",
       "explanation": "أَبْوَابَ التَّصْرِيفِ, أَنَّ edatının ismi; sayı terkibi haberidir."
     },
@@ -39,7 +39,7 @@
       "id": "p2_ph5",
       "tokenIds": ["p2_t2", "p2_t3", "p2_t4", "p2_t5", "p2_t6", "p2_t7"],
       "type": "أَنَّ cümlesi",
-      "meaning": "Muhakkak ki sarf ilminin bapları otuz beş baptır.",
+      "meaning": "Muhakkak ki sarf ilminin babları otuz beş babdır.",
       "parentId": "p2_ph6",
       "explanation": "أَنَّ, isim cümlesine tekit katar; ismini mansub, haberini merfû yapar."
     },
@@ -47,7 +47,7 @@
       "id": "p2_ph6",
       "tokenIds": ["p2_t1", "p2_t2", "p2_t3", "p2_t4", "p2_t5", "p2_t6", "p2_t7"],
       "type": "Emir fiili ve mef‘ûl cümlesi",
-      "meaning": "Bil ki sarf ilminin bapları otuz beş baptır.",
+      "meaning": "Bil ki sarf ilminin babları otuz beş babdır.",
       "explanation": "اِعْلَمْ emir fiilidir; ardından gelen أَنَّ cümlesi bilinen şeyi bildirir."
     },
     {
@@ -88,7 +88,7 @@
           "hiddenPronoun": "أَنْتَ “sen”",
           "root": "ع ل م",
           "baseForm": "عَلِمَ يَعْلَمُ",
-          "bab": "Sülâsî mücerred 4. bap",
+          "bab": "Sülâsî mücerred 4. bab",
           "pattern": "اِفْعَلْ",
           "syntax": "Fiil"
         }
@@ -111,7 +111,7 @@
       "id": "p2_t3",
       "arabic": "أَبْوَابَ",
       "printedArabic": "أبواب",
-      "gloss": "Bapları",
+      "gloss": "Babları",
       "analysis": {
         "kind": "İsim",
         "fields": {
@@ -139,7 +139,7 @@
           "pattern": "تَفْعِيل",
           "wordForm": "Müfred ve marife",
           "role": "أَبْوَابَ kelimesinin muzafun ileyhi",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -183,7 +183,7 @@
       "arabic": "بَابًا",
       "printedArabic": "باباً",
       "punctuation": "،",
-      "gloss": "Bap olarak",
+      "gloss": "Bab olarak",
       "analysis": {
         "kind": "İsim",
         "fields": {
@@ -239,7 +239,7 @@
           "root": "ث ل ث",
           "meaning": "Sülâsî: üç harfli",
           "wordForm": "Nisbet ismi, müfred ve marife",
-          "irab": "Mecrur"
+          "irab": "Mecrûr"
         },
         "details": [
           {
@@ -264,7 +264,7 @@
           "morphology": "İsm-i mef‘ûl",
           "meaning": "Ziyade harflerden soyulmuş kök fiil",
           "role": "الثُّلَاثِيِّ kelimesinin sıfatı",
-          "irab": "Mecrur"
+          "irab": "Mecrûr"
         }
       }
     }

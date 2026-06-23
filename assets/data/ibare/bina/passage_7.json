@@ -7,7 +7,7 @@
       "id": "p7_ph1",
       "tokenIds": ["p7_t1", "p7_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Üçüncü bap"
+      "meaning": "Üçüncü bab"
     },
     {
       "id": "p7_ph2",
@@ -247,7 +247,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ف ت ح",
-          "bab": "Sülâsî mücerred 3. bap",
+          "bab": "Sülâsî mücerred 3. bab",
           "pattern": "فَعَلَ",
           "transitivity": "Müteaddi"
         }
@@ -265,7 +265,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ف ت ح",
-          "bab": "Sülâsî mücerred 3. bap",
+          "bab": "Sülâsî mücerred 3. bab",
           "pattern": "يَفْعَلُ",
           "transitivity": "Müteaddi"
         }
@@ -283,7 +283,7 @@
           "pattern": "فَعَالَة",
           "wordForm": "Müfred, muzaf ve merfû",
           "pronoun": "هُ: üçüncü baba döner.",
-          "meaning": "Babı diğer baplardan ayıran lafzî özellik"
+          "meaning": "Babı diğer bablardan ayıran lafzî özellik"
         },
         "details": [
           {
@@ -314,7 +314,7 @@
       "analysis": {
         "kind": "Nâkıs fiil",
         "fields": {
-          "conjugation": "Fiil-i muzâri, ناقص fiil",
+          "conjugation": "Fiil-i muzâri, nâkıs fiil",
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "nasb": "أَنْ sebebiyle mansub",
@@ -353,7 +353,7 @@
           "pattern": "فِعْل",
           "role": "Muzafun ileyh",
           "pronoun": "هُ: vezne giren fiile döner.",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -397,7 +397,7 @@
           "morphology": "الْمَاضِي: ism-i fâil",
           "pattern": "فَاعِل",
           "meaning": "Fiil-i mâzi",
-          "irab": "Kesra takdir edilerek mecrur"
+          "irab": "Kesra takdir edilerek mecrûr"
         }
       }
     },
@@ -414,7 +414,7 @@
           "bab": "Sülâsî mezîd, müfâale babı",
           "pattern": "مُفَاعِل",
           "morphology": "İsm-i fâil; terim olarak fiil-i muzâri",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         },
         "details": [
           {
@@ -434,7 +434,7 @@
         "fields": {
           "root": "ش ر ط",
           "meaning": "“-mesi şartıyla” veya “şartı ile”",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         },
         "details": [
           {
@@ -469,7 +469,7 @@
       "analysis": {
         "kind": "Nâkıs fiil",
         "fields": {
-          "conjugation": "Fiil-i muzâri, ناقص fiil",
+          "conjugation": "Fiil-i muzâri, nâkıs fiil",
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "nasb": "أَنْ sebebiyle mansub",
@@ -508,7 +508,7 @@
           "pattern": "فِعْل",
           "role": "Muzafun ileyh",
           "pronoun": "هُ: vezne giren fiile döner.",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -580,7 +580,7 @@
           "pattern": "فُعُول",
           "wordForm": "Cemi taksir, muzaf",
           "meaning": "Harfler",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -596,7 +596,7 @@
           "pattern": "فَعْل",
           "wordForm": "Müfred, muzafun ileyh ve marife",
           "meaning": "Boğaz",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },

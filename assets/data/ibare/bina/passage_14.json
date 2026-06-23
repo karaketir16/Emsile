@@ -1,7 +1,7 @@
 {
   "id": "passage_14",
   "order": 14,
-  "translation": "Bu bap da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr’ı faziletli sandı”; lazımın misali ise “Zeyd varis oldu” cümlesidir.",
+  "translation": "Bu bab da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr’ı faziletli sandı”; lazımın misali ise “Zeyd varis oldu” cümlesidir.",
   "phrases": [
     {
       "id": "p14_ph0",
@@ -9,13 +9,13 @@
       "type": "Mübtedâ + ilave bildiren zarf",
       "meaning": "Bu babın binası da",
       "parentId": "p14_ph1",
-      "explanation": "أَيْضًا, önceki baplardaki hükmün bu bap için de geçerli olduğunu bildirir."
+      "explanation": "أَيْضًا, önceki bablardaki hükmün bu bab için de geçerli olduğunu bildirir."
     },
     {
       "id": "p14_ph1",
       "tokenIds": ["p14_t1", "p14_t2", "p14_t3", "p14_t4"],
       "type": "İsim cümlesi",
-      "meaning": "Bu bap da çoğunlukla müteaddilik içindir."
+      "meaning": "Bu bab da çoğunlukla müteaddilik içindir."
     },
     {
       "id": "p14_ph2",
@@ -123,7 +123,7 @@
           "pattern": "تَفْعِلَة",
           "morphology": "Masdar",
           "meaning": "Geçişlilik",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -208,7 +208,7 @@
           "root": "ع د و",
           "pattern": "مُتَفَعِّل",
           "role": "Muzafun ileyh",
-          "irab": "Kesra takdir edilerek mecrur"
+          "irab": "Kesra takdir edilerek mecrûr"
         }
       }
     },
@@ -235,7 +235,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ح س ب",
-          "bab": "Sülâsî mücerred 6. bap",
+          "bab": "Sülâsî mücerred 6. bab",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Müteaddi"
@@ -310,7 +310,7 @@
           "root": "ل ز م",
           "pattern": "فَاعِل",
           "role": "Muzafun ileyh",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -337,7 +337,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "و ر ث",
-          "bab": "Sülâsî mücerred 6. bap",
+          "bab": "Sülâsî mücerred 6. bab",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Lazım"

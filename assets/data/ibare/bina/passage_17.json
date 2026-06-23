@@ -1,7 +1,7 @@
 {
   "id": "passage_17",
   "order": 17,
-  "translation": "Bu bap çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr’a ikram etti”; lazımın misali ise “Adam sabahladı” cümlesidir.",
+  "translation": "Bu bab çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr’a ikram etti”; lazımın misali ise “Adam sabahladı” cümlesidir.",
   "phrases": [
     {
       "id": "p17_ph1",
@@ -102,7 +102,7 @@
           "pattern": "تَفْعِلَة",
           "morphology": "Masdar",
           "meaning": "Geçişlilik",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -187,7 +187,7 @@
           "root": "ع د و",
           "pattern": "مُتَفَعِّل",
           "role": "Muzafun ileyh",
-          "irab": "الْمُتَعَدِّي kesra takdir edilerek mecrur"
+          "irab": "الْمُتَعَدِّي kesra takdir edilerek mecrûr"
         }
       }
     },
@@ -274,7 +274,7 @@
           "root": "ل ز م",
           "pattern": "فَاعِل",
           "role": "Muzafun ileyh",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },

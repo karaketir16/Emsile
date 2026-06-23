@@ -1,7 +1,7 @@
 {
   "id": "passage_6",
   "order": 6,
-  "translation": "Bu bap da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr’a vurdu”; lazımın misali ise “Zeyd oturdu” cümlesidir.",
+  "translation": "Bu bab da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd Amr’a vurdu”; lazımın misali ise “Zeyd oturdu” cümlesidir.",
   "phrases": [
     {
       "id": "p6_ph0",
@@ -9,13 +9,13 @@
       "type": "Mübtedâ + ilave bildiren zarf",
       "meaning": "Bu babın binası da",
       "parentId": "p6_ph1",
-      "explanation": "أَيْضًا, önceki baptaki hükmün bu bap için de geçerli olduğunu bildirir."
+      "explanation": "أَيْضًا, önceki babdaki hükmün bu bab için de geçerli olduğunu bildirir."
     },
     {
       "id": "p6_ph1",
       "tokenIds": ["p6_t1", "p6_t2", "p6_t3", "p6_t4"],
       "type": "İsim cümlesi",
-      "meaning": "Bu bap da çoğunlukla müteaddilik içindir."
+      "meaning": "Bu bab da çoğunlukla müteaddilik içindir."
     },
     {
       "id": "p6_ph2",
@@ -134,7 +134,7 @@
           "morphology": "Masdar",
           "meaning": "Fiilin etkisinin mef‘ûle geçmesi",
           "turkish": "Geçişlilik",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -234,7 +234,7 @@
           "derivedFrom": "تَعَدَّى يَتَعَدَّى",
           "pattern": "مُتَفَعِّل",
           "role": "Muzafun ileyh",
-          "irab": "الْمُتَعَدِّي kesra takdir edilerek mecrur"
+          "irab": "الْمُتَعَدِّي kesra takdir edilerek mecrûr"
         }
       }
     },
@@ -263,7 +263,7 @@
           "conjugation": "Fiil-i mâzi, malûm",
           "person": "3. şahıs, müzekker, tekil",
           "root": "ض ر ب",
-          "bab": "Sülâsî mücerred 2. bap",
+          "bab": "Sülâsî mücerred 2. bab",
           "pattern": "فَعَلَ",
           "presentForm": "يَضْرِبُ",
           "syntax": "Fiil",
@@ -330,7 +330,7 @@
           "root": "ل ز م",
           "pattern": "فَاعِل",
           "role": "Muzafun ileyh",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -359,7 +359,7 @@
           "conjugation": "Fiil-i mâzi, malûm",
           "person": "3. şahıs, müzekker, tekil",
           "root": "ج ل س",
-          "bab": "Sülâsî mücerred 2. bap",
+          "bab": "Sülâsî mücerred 2. bab",
           "pattern": "فَعَلَ",
           "presentForm": "يَجْلِسُ",
           "syntax": "Fiil",

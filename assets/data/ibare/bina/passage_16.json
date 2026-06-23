@@ -7,7 +7,7 @@
       "id": "p16_ph1",
       "tokenIds": ["p16_t1", "p16_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Birinci bap"
+      "meaning": "Birinci bab"
     },
     {
       "id": "p16_ph2",
@@ -290,7 +290,7 @@
         "fields": {
           "root": "ر ب ع",
           "construction": "Muzaf",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -304,7 +304,7 @@
         "fields": {
           "root": "ح ر ف",
           "wordForm": "Cemi taksir, muzafun ileyh",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -319,7 +319,7 @@
           "root": "ز ي د",
           "construction": "Muzaf",
           "meaning": "fazlalığıyla / artmasıyla",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -333,7 +333,7 @@
         "fields": {
           "root": "ه م ز",
           "role": "Muzafun ileyh",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -360,7 +360,7 @@
         "fields": {
           "root": "أ و ل",
           "pronoun": "هِ: mâzi fiile döner",
-          "role": "Mecrur"
+          "role": "Mecrûr"
         }
       }
     }

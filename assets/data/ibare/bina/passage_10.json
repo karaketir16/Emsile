@@ -1,7 +1,7 @@
 {
   "id": "passage_10",
   "order": 10,
-  "translation": "Bu bap da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd meseleyi bildi”; lazımın misali “Zeyd korktu” cümlesidir.",
+  "translation": "Bu bab da çoğunlukla müteaddi, bazen lazım fiiller içindir. Müteaddinin misali “Zeyd meseleyi bildi”; lazımın misali “Zeyd korktu” cümlesidir.",
   "phrases": [
     {
       "id": "p10_ph1",
@@ -22,7 +22,7 @@
         "p10_t4"
       ],
       "type": "İsim cümlesi",
-      "meaning": "Bu bap da çoğunlukla müteaddilik içindir."
+      "meaning": "Bu bab da çoğunlukla müteaddilik içindir."
     },
     {
       "id": "p10_ph3",
@@ -165,7 +165,7 @@
           "root": "ع د و",
           "turkish": "Geçişlilik",
           "role": "Haber",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       },
       "printedArabic": "للتعدية"
@@ -252,7 +252,7 @@
           "root": "ع د و",
           "pattern": "مُتَفَعِّل",
           "role": "Muzafun ileyh",
-          "irab": "Kesra takdir edilerek mecrur"
+          "irab": "Kesra takdir edilerek mecrûr"
         }
       },
       "printedArabic": "المتعدي"
@@ -280,7 +280,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ع ل م",
-          "bab": "Sülâsî mücerred 4. bap",
+          "bab": "Sülâsî mücerred 4. bab",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Müteaddi"
@@ -339,7 +339,7 @@
           "root": "ل ز م",
           "pattern": "فَاعِل",
           "role": "Muzafun ileyh",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       },
       "printedArabic": "اللازم"
@@ -367,7 +367,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "و ج ل",
-          "bab": "Sülâsî mücerred 4. bap",
+          "bab": "Sülâsî mücerred 4. bab",
           "pattern": "فَعِلَ",
           "presentForm": "يَوْجَلُ",
           "conjugation": "Fiil-i mâzi, malûm",

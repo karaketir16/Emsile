@@ -1,19 +1,19 @@
 {
   "id": "passage_15",
   "order": 15,
-  "translation": "Bu baplardan on ikisi, sülâsî köke harf ilave edilerek oluşturulan fiillere aittir. Bunlar üç çeşittir. Birinci çeşit, sülâsî köke bir harf ilave edilen fiillerdir. Bu çeşit üç baptan oluşur.",
+  "translation": "Bu bablardan on ikisi, sülâsî köke harf ilave edilerek oluşturulan fiillere aittir. Bunlar üç çeşittir. Birinci çeşit, sülâsî köke bir harf ilave edilen fiillerdir. Bu çeşit üç babdan oluşur.",
   "phrases": [
     {
       "id": "p15_ph1",
       "tokenIds": ["p15_t1", "p15_t2", "p15_t3"],
       "type": "Sayı tamlaması",
-      "meaning": "On iki bap"
+      "meaning": "On iki bab"
     },
     {
       "id": "p15_ph2",
       "tokenIds": ["p15_t1", "p15_t2", "p15_t3", "p15_t4"],
       "type": "Mübtedâ kelime grubu",
-      "meaning": "Onlardan on iki bap",
+      "meaning": "Onlardan on iki bab",
       "parentId": "p15_ph4"
     },
     {
@@ -34,7 +34,7 @@
       "id": "p15_ph4",
       "tokenIds": ["p15_t1", "p15_t2", "p15_t3", "p15_t4", "p15_t5", "p15_t6", "p15_t7", "p15_t8"],
       "type": "İsim cümlesi",
-      "meaning": "Onlardan on iki bap sülâsî üzerine ziyade olanlar içindir."
+      "meaning": "Onlardan on iki bab sülâsî üzerine ziyade olanlar içindir."
     },
     {
       "id": "p15_ph5a",
@@ -107,14 +107,14 @@
       "id": "p15_ph9a",
       "tokenIds": ["p15_t28", "p15_t29"],
       "type": "Sayı tamlaması",
-      "meaning": "Üç bap",
+      "meaning": "Üç bab",
       "parentId": "p15_ph9"
     },
     {
       "id": "p15_ph9",
       "tokenIds": ["p15_t27", "p15_t28", "p15_t29"],
       "type": "İsim cümlesi",
-      "meaning": "Ve o da üç baptır."
+      "meaning": "Ve o da üç babdır."
     }
   ],
   "tokens": [
@@ -236,7 +236,7 @@
         "kind": "İsim",
         "fields": {
           "root": "ث ل ث",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -283,7 +283,7 @@
         "fields": {
           "root": "ن و ع",
           "wordForm": "Cemi taksir, muzafun ileyh",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -348,7 +348,7 @@
       "id": "p15_t16",
       "arabic": "الْمَزِيدُ",
       "printedArabic": "المزيد",
-      "gloss": "Mezid kılınmış (artırılmış)",
+      "gloss": "Mezîd kılınmış (artırılmış)",
       "analysis": {
         "kind": "İsm-i mef‘ûl",
         "fields": {
@@ -372,7 +372,7 @@
           },
           {
             "label": "حَرْفٍ",
-            "value": "Mecrur isim"
+            "value": "Mecrûr isim"
           }
         ]
       }
@@ -387,7 +387,7 @@
         "fields": {
           "root": "و ح د",
           "role": "حَرْفٍ kelimesinin sıfatı",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -501,7 +501,7 @@
         "kind": "İsim",
         "fields": {
           "root": "ث ل ث",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -548,7 +548,7 @@
         "fields": {
           "root": "ب و ب",
           "wordForm": "Cemi taksir, muzafun ileyh",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     }

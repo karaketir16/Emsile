@@ -7,7 +7,7 @@
       "id": "p13_ph1",
       "tokenIds": ["p13_t1", "p13_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Altıncı bap"
+      "meaning": "Altıncı bab"
     },
     {
       "id": "p13_ph2",
@@ -146,7 +146,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ح س ب",
-          "bab": "Sülâsî mücerred 6. bap",
+          "bab": "Sülâsî mücerred 6. bab",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Müteaddi"
@@ -162,7 +162,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ح س ب",
-          "bab": "Sülâsî mücerred 6. bap",
+          "bab": "Sülâsî mücerred 6. bab",
           "pattern": "يَفْعِلُ",
           "conjugation": "Fiil-i muzâri, malûm",
           "transitivity": "Müteaddi"
@@ -236,7 +236,7 @@
           "root": "ف ع ل",
           "role": "Muzafun ileyh",
           "pronoun": "هُ: vezne giren fiile döner",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -277,7 +277,7 @@
         "fields": {
           "root": "م ض ي",
           "meaning": "Fiil-i mâzi",
-          "irab": "Kesra takdir edilerek mecrur"
+          "irab": "Kesra takdir edilerek mecrûr"
         }
       }
     },
@@ -291,7 +291,7 @@
         "fields": {
           "root": "ض ر ع",
           "meaning": "Fiil-i muzâri",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     }

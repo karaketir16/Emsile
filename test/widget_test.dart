@@ -233,10 +233,10 @@ void main() {
       introduction.phrasesForToken('p2_t5').map((phrase) => phrase.meaning),
       containsAll([
         'Otuz beş',
-        'Otuz beş bap',
-        'Sarf ilminin bapları otuz beş baptır.',
-        'Muhakkak ki sarf ilminin bapları otuz beş baptır.',
-        'Bil ki sarf ilminin bapları otuz beş baptır.',
+        'Otuz beş bab',
+        'Sarf ilminin babları otuz beş babdır.',
+        'Muhakkak ki sarf ilminin babları otuz beş babdır.',
+        'Bil ki sarf ilminin babları otuz beş babdır.',
       ]),
     );
     expect(
@@ -425,7 +425,7 @@ void main() {
 
     expect(find.text('Emr-i hâzır, malûm'), findsOneWidget);
     expect(find.text('أَنْتَ “sen”'), findsOneWidget);
-    expect(find.text('Sülâsî mücerred 4. bap'), findsOneWidget);
+    expect(find.text('Sülâsî mücerred 4. bab'), findsOneWidget);
 
     await tester.tap(find.text('Harekeleri göster'));
     await tester.pumpAndSettle();
@@ -445,7 +445,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Muhakkak ki'), findsOneWidget);
-    expect(find.text('Bapları'), findsOneWidget);
+    expect(find.text('Babları'), findsOneWidget);
   });
 
   testWidgets('ibare book shows passages, word analysis, and detail action', (

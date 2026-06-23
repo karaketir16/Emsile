@@ -10,7 +10,7 @@
         "p9_t2"
       ],
       "type": "Sıfat tamlaması",
-      "meaning": "Dördüncü bap"
+      "meaning": "Dördüncü bab"
     },
     {
       "id": "p9_ph2",
@@ -220,7 +220,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ع ل م",
-          "bab": "Sülâsî mücerred 4. bap",
+          "bab": "Sülâsî mücerred 4. bab",
           "pattern": "فَعِلَ",
           "conjugation": "Fiil-i mâzi, malûm",
           "transitivity": "Müteaddi"
@@ -236,7 +236,7 @@
         "kind": "Fiil",
         "fields": {
           "root": "ع ل م",
-          "bab": "Sülâsî mücerred 4. bap",
+          "bab": "Sülâsî mücerred 4. bab",
           "pattern": "يَفْعَلُ",
           "conjugation": "Fiil-i muzâri, malûm",
           "transitivity": "Müteaddi"
@@ -309,7 +309,7 @@
           "root": "ف ع ل",
           "role": "Muzafun ileyh",
           "pronoun": "هُ: vezne giren fiile döner",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       },
       "printedArabic": "فعله"
@@ -350,7 +350,7 @@
         "fields": {
           "root": "م ض ي",
           "meaning": "Fiil-i mâzi",
-          "irab": "Kesra takdir edilerek mecrur"
+          "irab": "Kesra takdir edilerek mecrûr"
         }
       },
       "printedArabic": "الماضي"
@@ -391,7 +391,7 @@
         "fields": {
           "root": "ض ر ع",
           "meaning": "Fiil-i muzâri",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       },
       "printedArabic": "المضارع"

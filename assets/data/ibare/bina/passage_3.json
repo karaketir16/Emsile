@@ -7,7 +7,7 @@
       "id": "p3_ph1",
       "tokenIds": ["p3_t1", "p3_t2"],
       "type": "Sıfat tamlaması",
-      "meaning": "Birinci bap",
+      "meaning": "Birinci bab",
       "explanation": "الْأَوَّلُ, الْبَابُ kelimesini niteleyen sıra sayısıdır."
     },
     {
@@ -176,7 +176,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ن ص ر",
-          "bab": "Sülâsî mücerred 1. bap",
+          "bab": "Sülâsî mücerred 1. bab",
           "pattern": "فَعَلَ",
           "transitivity": "Müteaddi"
         }
@@ -194,7 +194,7 @@
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "root": "ن ص ر",
-          "bab": "Sülâsî mücerred 1. bap",
+          "bab": "Sülâsî mücerred 1. bab",
           "pattern": "يَفْعُلُ",
           "transitivity": "Müteaddi"
         }
@@ -212,7 +212,7 @@
           "pattern": "فَعَالَة",
           "wordForm": "Müfred, muzaf ve merfû",
           "pronoun": "هُ: birinci baba döner.",
-          "meaning": "Babı diğer baplardan ayıran lafzî özellik"
+          "meaning": "Babı diğer bablardan ayıran lafzî özellik"
         },
         "details": [
           {
@@ -243,7 +243,7 @@
       "analysis": {
         "kind": "Nâkıs fiil",
         "fields": {
-          "conjugation": "Fiil-i muzâri, ناقص fiil",
+          "conjugation": "Fiil-i muzâri, nâkıs fiil",
           "person": "3. şahıs, müzekker, tekil",
           "hiddenPronoun": "هُوَ",
           "nasb": "أَنْ sebebiyle mansub",
@@ -282,7 +282,7 @@
           "pattern": "فِعْل",
           "role": "Muzafun ileyh",
           "pronoun": "هُ: vezne giren fiile döner.",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     },
@@ -326,7 +326,7 @@
           "morphology": "الْمَاضِي: ism-i fâil",
           "pattern": "فَاعِل",
           "meaning": "Fiil-i mâzi",
-          "irab": "Kesra takdir edilerek mecrur"
+          "irab": "Kesra takdir edilerek mecrûr"
         }
       }
     },
@@ -377,7 +377,7 @@
           "bab": "Sülâsî mezîd, müfâale babı",
           "pattern": "مُفَاعِل",
           "morphology": "İsm-i fâil; terim olarak fiil-i muzâri",
-          "irab": "Kesra ile mecrur"
+          "irab": "Kesra ile mecrûr"
         }
       }
     }

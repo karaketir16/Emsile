@@ -51,13 +51,28 @@ class IbareStudyScreen extends StatelessWidget {
   }
 }
 
-class IbareBookScreen extends StatelessWidget {
+class IbareBookScreen extends StatefulWidget {
   const IbareBookScreen({required this.book, super.key});
 
   final IbareBook book;
 
   @override
+  State<IbareBookScreen> createState() => _IbareBookScreenState();
+}
+
+class _IbareBookScreenState extends State<IbareBookScreen> {
+  static const _pageSize = 5;
+
+  int _page = 0;
+
+  @override
   Widget build(BuildContext context) {
+    final book = widget.book;
+    final passages = book.passages;
+    final totalPages = (passages.length / _pageSize).ceil();
+    final start = _page * _pageSize;
+    final pagePassages = passages.skip(start).take(_pageSize).toSet();
+
     return _StudyScaffold(
       title: book.shortTitle,
       child: Column(
@@ -65,8 +80,35 @@ class IbareBookScreen extends StatelessWidget {
         children: [
           InfoPanel(title: book.title, body: book.description),
           const SizedBox(height: 18),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  '${start + 1}-${start + pagePassages.length} / ${passages.length}',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              IconButton(
+                key: const ValueKey('ibare_prev_page'),
+                onPressed: _page == 0 ? null : () => setState(() => _page--),
+                tooltip: 'Önceki sayfa',
+                icon: const Icon(Icons.chevron_left),
+              ),
+              Text('${_page + 1}/$totalPages'),
+              IconButton(
+                key: const ValueKey('ibare_next_page'),
+                onPressed: _page >= totalPages - 1
+                    ? null
+                    : () => setState(() => _page++),
+                tooltip: 'Sonraki sayfa',
+                icon: const Icon(Icons.chevron_right),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
           for (final section in book.sections) ...[
-            if (section.title.isNotEmpty) ...[
+            if (section.passages.any(pagePassages.contains) &&
+                section.title.isNotEmpty) ...[
               Text(
                 section.title,
                 style: Theme.of(context).textTheme.titleLarge,
@@ -78,14 +120,16 @@ class IbareBookScreen extends StatelessWidget {
                 ),
               const SizedBox(height: 10),
             ],
-            for (final passage in section.passages) ...[
+            for (final passage in section.passages.where(
+              pagePassages.contains,
+            )) ...[
               _PassageOverviewCard(
                 passage: passage,
                 onOpen: () => Navigator.of(context).push(
                   MaterialPageRoute<void>(
                     builder: (_) => IbarePassageScreen(
                       book: book,
-                      initialIndex: book.passages.indexOf(passage),
+                      initialIndex: passages.indexOf(passage),
                     ),
                   ),
                 ),
@@ -149,18 +193,14 @@ class _PassageOverviewCardState extends State<_PassageOverviewCard> {
                           children: [
                             Text(
                               title,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleMedium,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                             if (widget.passage.subtitle
                                 case final subtitle?) ...[
                               const SizedBox(height: 2),
                               Text(
                                 subtitle,
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall,
+                                style: Theme.of(context).textTheme.bodySmall,
                               ),
                             ],
                           ],

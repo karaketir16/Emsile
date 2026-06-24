@@ -416,7 +416,17 @@ void main() {
 
     expect(find.text('Giriş'), findsOneWidget);
     expect(find.text('Birinci Bab'), findsOneWidget);
-    expect(find.text('Harekeler'), findsNWidgets(binaBook.passages.length));
+    expect(find.text('1-5 / ${binaBook.passages.length}'), findsOneWidget);
+    expect(find.text('Harekeler'), findsNWidgets(5));
+
+    await tester.tap(find.byKey(const ValueKey('ibare_next_page')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('6-10 / ${binaBook.passages.length}'), findsOneWidget);
+    expect(find.text('Harekeler'), findsNWidgets(5));
+
+    await tester.tap(find.byKey(const ValueKey('ibare_prev_page')));
+    await tester.pumpAndSettle();
 
     await tester.tap(find.byKey(const ValueKey('harakat_passage_1')));
     await tester.pumpAndSettle();

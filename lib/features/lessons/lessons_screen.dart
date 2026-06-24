@@ -18,17 +18,6 @@ class LessonsScreen extends StatelessWidget {
       child: Column(
         children: [
           _MainLessonTile(
-            title: 'İbare Çalışması',
-            subtitle: 'Metnü’l-Binâ’yı kırık mana ve kelime tahliliyle çalış',
-            icon: Icons.touch_app_outlined,
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => IbareStudyScreen(books: data.ibareBooks),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          _MainLessonTile(
             title: 'Emsile-i Muhtelife',
             subtitle: 'Aynı kökten türeyen farklı kalıplar ve anlamları',
             icon: Icons.account_tree_outlined,
@@ -57,6 +46,18 @@ class LessonsScreen extends StatelessWidget {
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (_) => _PronounsLessonScreen(pronouns: data.pronouns),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          _MainLessonTile(
+            title: 'İbare Çalışması',
+            subtitle:
+                'Metin ve tahliller yapay zeka tarafından hazırlanmıştır; yanlışlar olabilir.',
+            icon: Icons.touch_app_outlined,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => IbareStudyScreen(books: data.ibareBooks),
               ),
             ),
           ),

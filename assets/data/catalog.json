@@ -1,6 +1,13 @@
 {
   "version": 1,
   "defaultVerbId": "nasara",
+  "ibareBooks": [
+    {
+      "id": "bina",
+      "title": "Metnü'l-Binâ ve'l-Esâs",
+      "assetPath": "assets/data/ibare/bina.json"
+    }
+  ],
   "lessons": [
     {
       "order": 1,

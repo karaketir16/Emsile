@@ -1,0 +1,176 @@
+{
+  "id": "passage_44",
+  "order": 44,
+  "orijinal_metin": "النوع الثاني: وهو ما زيد فيه حرفان على الرباعي وهو بابان:",
+  "translation": "İkinci çeşit, rubâî üzerine iki harf ziyade edilen fiildir ve iki babdır.",
+  "tokens": [
+    {
+      "id": "p44_t1",
+      "arabic": "النَّوْعُ",
+      "printedArabic": "النوع",
+      "gloss": "Çeşit",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ن و ع",
+          "wordForm": "Müfred, marife",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p44_t2",
+      "arabic": "الثَّانِي",
+      "printedArabic": "الثاني",
+      "punctuation": ":",
+      "gloss": "İkinci",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "ث ن ي",
+          "wordForm": "Sıra sayısı, müfred, marife",
+          "role": "النَّوْعُ kelimesinin sıfatı",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p44_t3",
+      "arabic": "وَهُوَ",
+      "printedArabic": "وهو",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + zamir",
+        "fields": {
+          "pronoun": "هُوَ: 3. şahıs, müzekker, tekil",
+          "referent": "İkinci çeşit (النَّوْعُ الثَّانِي)",
+          "role": "Mübtedâ",
+          "irab": "Zamir mahallen merfûdur."
+        }
+      }
+    },
+    {
+      "id": "p44_t4",
+      "arabic": "مَا",
+      "printedArabic": "ما",
+      "gloss": "Şeydir ki",
+      "analysis": {
+        "kind": "İsm-i mevsûl",
+        "fields": {
+          "morphology": "İsm-i mevsûl",
+          "meaning": "Şey ki (mevsûliyet bildirir)",
+          "role": "Haber",
+          "irab": "Mahallen merfûdur."
+        }
+      }
+    },
+    {
+      "id": "p44_t5",
+      "arabic": "زِيدَ",
+      "printedArabic": "زيد",
+      "gloss": "Ziyade edildi",
+      "analysis": {
+        "kind": "Meçhul fiil",
+        "fields": {
+          "conjugation": "Fiil-i mâzi, meçhul",
+          "person": "3. şahıs, müzekker, tekil",
+          "root": "ز ي د",
+          "baseForm": "زِيدَ يُزَادُ",
+          "transitivity": "Meçhul",
+          "syntax": "Sıla cümlesinin fiili"
+        }
+      }
+    },
+    {
+      "id": "p44_t6",
+      "arabic": "فِيهِ",
+      "printedArabic": "فيه",
+      "gloss": "Onda",
+      "analysis": {
+        "kind": "Harf + zamir",
+        "fields": {
+          "structure": "فِي harf-i cerri ve هِ zamiri",
+          "pronoun": "هِ: 3. şahıs, müzekker, tekil",
+          "referent": "Mevsûl olan مَا edatına döner.",
+          "irab": "Zamir mahallen mecrûrdur."
+        }
+      }
+    },
+    {
+      "id": "p44_t7",
+      "arabic": "حَرْفَانِ",
+      "printedArabic": "حرفان",
+      "gloss": "İki harf",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "wordForm": "Tesniye (ikil), nekre",
+          "numberType": "İkil (tesniye)",
+          "role": "زِيدَ meçhul fiilinin nâib-i fâili",
+          "irab": "Elif ile merfûdur."
+        }
+      }
+    },
+    {
+      "id": "p44_t8",
+      "arabic": "عَلَى",
+      "printedArabic": "على",
+      "gloss": "Üzerine",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "morphology": "Harf-i cer",
+          "meaning": "-in üzerine"
+        }
+      }
+    },
+    {
+      "id": "p44_t9",
+      "arabic": "الرُّبَاعِيِّ",
+      "printedArabic": "الرباعي",
+      "gloss": "Rubâînin",
+      "analysis": {
+        "kind": "Nisbet ismi",
+        "fields": {
+          "root": "ر ب ع",
+          "wordForm": "Nisbet ismi, müfred, marife",
+          "term": "Dört harfli kelime",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p44_t10",
+      "arabic": "وَهُوَ",
+      "printedArabic": "وهو",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + zamir",
+        "fields": {
+          "pronoun": "هُوَ: 3. şahıs, müzekker, tekil",
+          "referent": "İkinci çeşit (النَّوْعُ الثَّانِي)",
+          "role": "Mübtedâ",
+          "irab": "Zamir mahallen merfûdur."
+        }
+      }
+    },
+    {
+      "id": "p44_t11",
+      "arabic": "بَابَانِ",
+      "printedArabic": "بابان",
+      "punctuation": ":",
+      "gloss": "İki babdır",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ب و ب",
+          "wordForm": "Tesniye (ikil), nekre",
+          "numberType": "İkil (tesniye)",
+          "role": "Haber",
+          "irab": "Elif ile merfûdur."
+        }
+      }
+    }
+  ]
+}

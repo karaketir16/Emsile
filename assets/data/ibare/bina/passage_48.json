@@ -1,0 +1,511 @@
+{
+  "id": "passage_48",
+  "order": 48,
+  "orijinal_metin": "الباب الأول: تَفَعْلَلَ يَتَفَعْلَلُ تَفَعْلُلًا، موزونه تَجَلْبَبَ يَتَجَلْبَبُ تَجَلْبُبًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله، وحرف آخر من جنس لام فعله في آخره، وبناؤه للازم نحو: تَجَلْبَبَ زيد",
+  "translation": "Mülhak rubâî mezîdin birinci babı تَفَعْلَلَ يَتَفَعْلَلُ تَفَعْلُلًا’dır. Mevzunu تَجَلْبَبَ يَتَجَلْبَبُ تَجَلْبُبًا’dır. Alâmeti, mâzisinin başında tâ ve sonunda lâmü’l-fiilin cinsinden bir harf ziyadesiyle beş harf üzere olmasıdır. Binası lâzım içindir.",
+  "tokens": [
+    {
+      "id": "p48_t1",
+      "arabic": "الْبَابُ",
+      "printedArabic": "الباب",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ب و ب",
+          "wordForm": "Müfred ve marife",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p48_t2",
+      "arabic": "الْأَوَّلُ",
+      "printedArabic": "الأول",
+      "punctuation": ":",
+      "gloss": "Birinci",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "أ و ل",
+          "wordForm": "Sıra sayısı, müfred ve marife",
+          "role": "الْبَابُ kelimesinin sıfatı",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p48_t3",
+      "arabic": "تَفَعْلَلَ",
+      "gloss": "Mâzi vezni: tefa‘lele",
+      "analysis": {
+        "kind": "Vezin",
+        "fields": {
+          "bab": "Mülhak rubâî mezîd 1. bab",
+          "morphology": "Başta tâ, sonda lâm cinsinden harf ziyadelidir.",
+          "conjugation": "Fiil-i mâzi, malûm",
+          "pattern": "تَفَعْلَلَ"
+        }
+      }
+    },
+    {
+      "id": "p48_t4",
+      "arabic": "يَتَفَعْلَلُ",
+      "gloss": "Muzâri vezni: yetefa‘lelü",
+      "analysis": {
+        "kind": "Vezin",
+        "fields": {
+          "bab": "Mülhak rubâî mezîd 1. bab",
+          "conjugation": "Fiil-i muzâri, malûm",
+          "pattern": "يَتَفَعْلَلُ"
+        }
+      }
+    },
+    {
+      "id": "p48_t5",
+      "arabic": "تَفَعْلُلًا",
+      "punctuation": "،",
+      "gloss": "Masdar vezni: tefa‘lulen",
+      "analysis": {
+        "kind": "Masdar vezni",
+        "fields": {
+          "bab": "Mülhak rubâî mezîd 1. bab",
+          "pattern": "تَفَعْلُل",
+          "morphology": "Masdar"
+        }
+      }
+    },
+    {
+      "id": "p48_t6",
+      "arabic": "مَوْزُونُهُ",
+      "printedArabic": "موزونه",
+      "gloss": "Onun mevzunu",
+      "analysis": {
+        "kind": "İsim + zamir",
+        "fields": {
+          "root": "و ز ن",
+          "derivedFrom": "وَزَنَ يَزِنُ",
+          "pattern": "مَفْعُول",
+          "morphology": "İsm-i mef‘ûl",
+          "meaning": "Bu vezne oturan örnek fiil",
+          "pronoun": "هُ: 3. şahıs, müzekker, tekil",
+          "referent": "Birinci baba döner."
+        }
+      }
+    },
+    {
+      "id": "p48_t7",
+      "arabic": "تَجَلْبَبَ",
+      "gloss": "Cilbâb giydi",
+      "analysis": {
+        "kind": "Fiil",
+        "fields": {
+          "root": "ج ل ب ب",
+          "bab": "Mülhak rubâî mezîd 1. bab",
+          "pattern": "تَفَعْلَلَ",
+          "conjugation": "Fiil-i mâzi, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ",
+          "transitivity": "Lazım"
+        }
+      }
+    },
+    {
+      "id": "p48_t8",
+      "arabic": "يَتَجَلْبَبُ",
+      "gloss": "Cilbâb giyer",
+      "analysis": {
+        "kind": "Fiil",
+        "fields": {
+          "root": "ج ل ب ب",
+          "bab": "Mülhak rubâî mezîd 1. bab",
+          "pattern": "يَتَفَعْلَلُ",
+          "conjugation": "Fiil-i muzâri, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ",
+          "transitivity": "Lazım"
+        }
+      }
+    },
+    {
+      "id": "p48_t9",
+      "arabic": "تَجَلْبُبًا",
+      "punctuation": "،",
+      "gloss": "Cilbâb giymek",
+      "analysis": {
+        "kind": "Masdar",
+        "fields": {
+          "root": "ج ل ب ب",
+          "pattern": "تَفَعْلُل",
+          "morphology": "Masdar"
+        }
+      }
+    },
+    {
+      "id": "p48_t10",
+      "arabic": "وَعَلَامَتُهُ",
+      "printedArabic": "وعلامته",
+      "gloss": "Ve onun alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + isim + zamir",
+        "fields": {
+          "root": "ع ل م",
+          "pattern": "فَعَالَة",
+          "wordForm": "Müfred, muzaf ve merfû",
+          "pronoun": "هُ: bu baba döner.",
+          "meaning": "Babı diğer bablardan ayıran özellik"
+        }
+      }
+    },
+    {
+      "id": "p48_t11",
+      "arabic": "أَنْ",
+      "printedArabic": "أن",
+      "gloss": "-mesi",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "morphology": "Masdariyye ve nasb harfi",
+          "effect": "Muzâri fiili nasb eder."
+        }
+      }
+    },
+    {
+      "id": "p48_t12",
+      "arabic": "يَكُونَ",
+      "printedArabic": "يكون",
+      "gloss": "Olmasıdır",
+      "analysis": {
+        "kind": "Nâkıs fiil",
+        "fields": {
+          "conjugation": "Fiil-i muzâri, nâkıs fiil",
+          "person": "3. şahıs, müzekker, tekil",
+          "nasb": "أَنْ sebebiyle mansub",
+          "root": "ك و ن",
+          "baseForm": "كَانَ يَكُونُ",
+          "pattern": "يَفْعُلُ"
+        }
+      }
+    },
+    {
+      "id": "p48_t13",
+      "arabic": "مَاضِيهِ",
+      "printedArabic": "ماضيه",
+      "gloss": "Onun mâzisi",
+      "analysis": {
+        "kind": "İsim + zamir",
+        "fields": {
+          "root": "م ض ي",
+          "wordForm": "İsim, muzaf",
+          "pronoun": "هِ: fiile döner.",
+          "role": "يَكُونَ fiilinin ismi",
+          "irab": "Zamme takdir edilerek merfû"
+        }
+      }
+    },
+    {
+      "id": "p48_t14",
+      "arabic": "عَلَى",
+      "printedArabic": "على",
+      "gloss": "Üzere",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "morphology": "Harf-i cer",
+          "meaning": "Üzerine, üzere"
+        }
+      }
+    },
+    {
+      "id": "p48_t15",
+      "arabic": "خَمْسَةِ",
+      "printedArabic": "خمسة",
+      "gloss": "Beş",
+      "analysis": {
+        "kind": "Sayı",
+        "fields": {
+          "wordForm": "Müfred, müennes, muzaf",
+          "numberType": "Asıl sayı (beş)",
+          "role": "عَلَى harfiyle mecrûr",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t16",
+      "arabic": "أَحْرُفٍ",
+      "printedArabic": "أحرف",
+      "gloss": "Harf",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "singular": "حَرْفٌ",
+          "root": "ح ر ف",
+          "wordForm": "Cem-i mükesser (kırık çoğul)",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t17",
+      "arabic": "بِزِيَادَةِ",
+      "printedArabic": "بزيادة",
+      "gloss": "Ziyadesiyle",
+      "analysis": {
+        "kind": "Harf-i cer + masdar",
+        "fields": {
+          "root": "ز ي د",
+          "derivedFrom": "زَادَ يَزِيدُ",
+          "wordForm": "Masdar, muzaf",
+          "role": "بِ harf-i cerriyle mecrûr",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t18",
+      "arabic": "التَّاءِ",
+      "printedArabic": "التاء",
+      "gloss": "Tâ harfinin",
+      "analysis": {
+        "kind": "Harf adı",
+        "fields": {
+          "wordForm": "Müfred, marife",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t19",
+      "arabic": "فِي",
+      "printedArabic": "في",
+      "gloss": "-de",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "morphology": "Harf-i cer",
+          "meaning": "“-de/-da”"
+        }
+      }
+    },
+    {
+      "id": "p48_t20",
+      "arabic": "أَوَّلِهِ",
+      "printedArabic": "أوله",
+      "punctuation": "،",
+      "gloss": "Başında",
+      "analysis": {
+        "kind": "İsim + zamir",
+        "fields": {
+          "root": "أ و ل",
+          "wordForm": "İsim, muzaf",
+          "pronoun": "هِ: fiilin mâzisine döner.",
+          "role": "فِي harfiyle mecrûr",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t21",
+      "arabic": "وَحَرْفٍ",
+      "printedArabic": "وحرف",
+      "gloss": "Ve bir harf",
+      "analysis": {
+        "kind": "Bağlaç + isim",
+        "fields": {
+          "root": "ح ر ف",
+          "wordForm": "Müfred, nekre",
+          "role": "Atfedilen kelime",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t22",
+      "arabic": "آخَرَ",
+      "printedArabic": "آخر",
+      "gloss": "Başka",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "أ خ ر",
+          "wordForm": "Müfred, nekre",
+          "role": "حَرْفٍ kelimesinin sıfatı",
+          "irab": "Fetha ile mansub (gayrimunsarıf olduğundan kesra yerine fetha almıştır)"
+        }
+      }
+    },
+    {
+      "id": "p48_t23",
+      "arabic": "مِنْ",
+      "printedArabic": "من",
+      "gloss": "-den",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "morphology": "Harf-i cer",
+          "meaning": "Cins bildirir."
+        }
+      }
+    },
+    {
+      "id": "p48_t24",
+      "arabic": "جِنْسِ",
+      "printedArabic": "جنس",
+      "gloss": "Cinsinden",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ج ن س",
+          "wordForm": "Müfred, muzaf",
+          "role": "مِنْ harfiyle mecrûr",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t25",
+      "arabic": "لَامِ",
+      "printedArabic": "لام",
+      "gloss": "Lâmının",
+      "analysis": {
+        "kind": "Harf adı",
+        "fields": {
+          "wordForm": "Müfred, muzaf",
+          "term": "Lâmü’l-fiil",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t26",
+      "arabic": "فِعْلِهِ",
+      "printedArabic": "فعله",
+      "gloss": "Fiilinin",
+      "analysis": {
+        "kind": "İsim + zamir",
+        "fields": {
+          "root": "ف ع ل",
+          "wordForm": "İsim, muzaf",
+          "pronoun": "هِ: fiile döner.",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t27",
+      "arabic": "فِي",
+      "printedArabic": "في",
+      "gloss": "-de",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "morphology": "Harf-i cer",
+          "meaning": "“-de/-da”"
+        }
+      }
+    },
+    {
+      "id": "p48_t28",
+      "arabic": "آخِرِهِ",
+      "printedArabic": "آخره",
+      "punctuation": "،",
+      "gloss": "Sonunda",
+      "analysis": {
+        "kind": "İsim + zamir",
+        "fields": {
+          "root": "أ خ ر",
+          "wordForm": "İsim, muzaf",
+          "pronoun": "هِ: fiilin mâzisine döner.",
+          "role": "فِي harfiyle mecrûr",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t29",
+      "arabic": "وَبِنَاؤُهُ",
+      "printedArabic": "وبناؤه",
+      "gloss": "Ve binası",
+      "analysis": {
+        "kind": "Bağlaç + masdar + zamir",
+        "fields": {
+          "root": "ب ن ي",
+          "derivedFrom": "بَنَى يَبْنِي",
+          "pattern": "فِعَال",
+          "meaning": "Babın hangi işlev için kullanıldığı",
+          "pronoun": "هُ: bu baba döner.",
+          "irab": "Merfû"
+        }
+      }
+    },
+    {
+      "id": "p48_t30",
+      "arabic": "لِلَّازِمِ",
+      "printedArabic": "للازم",
+      "gloss": "Lazım içindir",
+      "analysis": {
+        "kind": "Harf-i cer + ism-i fâil",
+        "fields": {
+          "root": "ل ز م",
+          "derivedFrom": "لَزِمَ يَلْزَمُ",
+          "pattern": "فَاعِل",
+          "morphology": "İsm-i fâil",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p48_t31",
+      "arabic": "نَحْوُ",
+      "printedArabic": "نحو",
+      "punctuation": ":",
+      "gloss": "Şunun gibi",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ن ح و",
+          "meaning": "Örnek vermek için “gibi, şöyle” manasında kullanılır.",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p48_t32",
+      "arabic": "تَجَلْبَبَ",
+      "gloss": "Cilbâb giydi",
+      "analysis": {
+        "kind": "Fiil",
+        "fields": {
+          "root": "ج ل ب ب",
+          "bab": "Mülhak rubâî mezîd 1. bab",
+          "pattern": "تَفَعْلَلَ",
+          "conjugation": "Fiil-i mâzi, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ",
+          "transitivity": "Lazım"
+        }
+      }
+    },
+    {
+      "id": "p48_t33",
+      "arabic": "زَيْدٌ",
+      "printedArabic": "زيد",
+      "gloss": "Zeyd",
+      "analysis": {
+        "kind": "Özel isim",
+        "fields": {
+          "wordForm": "Müfred, müzekker ve marife",
+          "syntax": "Fâil",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    }
+  ]
+}

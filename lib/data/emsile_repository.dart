@@ -27,6 +27,43 @@ class EmsileRepository {
     final verbJson = jsonDecode(verbRaw) as Map<String, dynamic>;
     final verbEntry = VerbEntry.fromJson(verbJson);
     final forms = MuttarideGenerator.fromVerbEntry(verbEntry);
+    final ibareBooks = await Future.wait(
+      catalog.ibareBooks.map((manifest) async {
+        final raw = await _bundle.loadString(manifest.assetPath);
+        final bookJson = jsonDecode(raw) as Map<String, dynamic>;
+        Future<Map<String, dynamic>> loadPassage(String path) async {
+          final passageRaw = await _bundle.loadString(path);
+          return jsonDecode(passageRaw) as Map<String, dynamic>;
+        }
+
+        final fullBookJson = Map<String, dynamic>.from(bookJson);
+        if (bookJson['sections'] case final List<dynamic> sections) {
+          fullBookJson['sections'] = await Future.wait(
+            sections.map((item) async {
+              final section = Map<String, dynamic>.from(
+                item as Map<String, dynamic>,
+              );
+              section['passages'] = await Future.wait(
+                List<String>.from(section['passages'] as List).map(loadPassage),
+              );
+              return section;
+            }),
+          );
+        } else {
+          fullBookJson['passages'] = await Future.wait(
+            List<String>.from(bookJson['passages'] as List).map(loadPassage),
+          );
+        }
+        final book = IbareBook.fromJson(fullBookJson);
+        if (book.id != manifest.id) {
+          throw FormatException(
+            'İbare kitap kimliği manifest ile eşleşmiyor: '
+            '${manifest.id} != ${book.id}',
+          );
+        }
+        return book;
+      }),
+    );
 
     final seedData = AppData(
       lessons: catalog.lessons,
@@ -34,6 +71,7 @@ class EmsileRepository {
       muhtelifeEntries: verbEntry.muhtelifeEntries,
       forms: forms,
       practiceQuestions: const [],
+      ibareBooks: ibareBooks,
     );
 
     return seedData.copyWith(

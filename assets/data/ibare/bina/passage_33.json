@@ -1,0 +1,118 @@
+{
+  "id": "passage_33",
+  "order": 33,
+  "orijinal_metin": "وواحد منها للرباعي المجرد وهو باب واحد",
+  "translation": "Otuz beş babdan biri rubâî mücerred içindir ve o tek babdır.",
+  "tokens": [
+    {
+      "id": "p33_t1",
+      "arabic": "وَوَاحِدٌ",
+      "printedArabic": "وواحد",
+      "gloss": "Ve bir",
+      "analysis": {
+        "kind": "Bağlaç + sayı",
+        "fields": {
+          "numberType": "Asıl sayı",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p33_t2",
+      "arabic": "مِنْهَا",
+      "printedArabic": "منها",
+      "gloss": "Onlardan",
+      "analysis": {
+        "kind": "Harf + zamir",
+        "fields": {
+          "pronoun": "هَا: 3. şahıs, müennes, tekil",
+          "referent": "Otuz beş bab",
+          "irab": "Zamir mahallen mecrurdur."
+        }
+      }
+    },
+    {
+      "id": "p33_t3",
+      "arabic": "لِلرُّبَاعِيِّ",
+      "printedArabic": "للرباعي",
+      "gloss": "Rubâî içindir",
+      "analysis": {
+        "kind": "Harf-i cer + nisbet ismi",
+        "fields": {
+          "root": "ر ب ع",
+          "wordForm": "Nisbet ismi, müfred ve marife",
+          "term": "Dört harfli fiil",
+          "role": "Mübtedânın (وَوَاحِدٌ) haberi (şibh-i cümle)",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p33_t4",
+      "arabic": "الْمُجَرَّدِ",
+      "printedArabic": "المجرد",
+      "gloss": "Mücerred",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "ج ر د",
+          "derivedFrom": "جَرَّدَ يُجَرِّdü",
+          "derivedFrom": "جَرَّdَ يُجَرِّdُ",
+          "derivedFrom": "جَرَّدَ يُجَرِّدُ",
+          "bab": "Sülâsî mezîd, tef‘îl babı",
+          "pattern": "مُفَعَّل",
+          "morphology": "İsm-i mef‘ûl",
+          "meaning": "Ziyadesiz, bütün harfleri kök",
+          "role": "الرُّبَاعِيِّ kelimesinin sıfatı",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p33_t5",
+      "arabic": "وَهُوَ",
+      "printedArabic": "وهو",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + zamir",
+        "fields": {
+          "pronoun": "هُوَ: 3. şahıs, müzekker, tekil",
+          "referent": "Rubâî mücerred",
+          "role": "Yeni cümlenin mübtedası",
+          "irab": "Mahallen merfûdur."
+        }
+      }
+    },
+    {
+      "id": "p33_t6",
+      "arabic": "بَابٌ",
+      "printedArabic": "باب",
+      "gloss": "Bir babdır",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ب و ب",
+          "singular": "بَابٌ",
+          "wordForm": "Müfred ve nekre",
+          "role": "Mübtedânın (وَهُوَ) haberi",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p33_t7",
+      "arabic": "وَاحِدٌ",
+      "printedArabic": "واحد",
+      "gloss": "Tek",
+      "analysis": {
+        "kind": "Sayı",
+        "fields": {
+          "numberType": "Asıl sayı",
+          "role": "بَابٌ kelimesinin sıfatı",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    }
+  ]
+}

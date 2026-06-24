@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,6 +8,7 @@ import 'package:emsile_flutter/app/emsile_app.dart';
 import 'package:emsile_flutter/data/models.dart';
 import 'package:emsile_flutter/features/conjugation/conjugation_screen.dart';
 import 'package:emsile_flutter/features/home/home_screen.dart';
+import 'package:emsile_flutter/features/ibare/ibare_study_screen.dart';
 import 'package:emsile_flutter/features/lessons/lessons_screen.dart';
 import 'package:emsile_flutter/features/practice/practice_screen.dart';
 import 'package:emsile_flutter/features/source/source_screen.dart';
@@ -29,7 +32,208 @@ Future<void> pumpLoadedApp(WidgetTester tester) async {
   throw TestFailure('AppData did not finish loading in widget test.');
 }
 
+IbareBook _loadBookSync(String manifestPath) {
+  final manifestRaw = File(manifestPath).readAsStringSync();
+  final manifestJson = jsonDecode(manifestRaw) as Map<String, dynamic>;
+  Map<String, dynamic> loadPassage(String path) =>
+      jsonDecode(File(path).readAsStringSync()) as Map<String, dynamic>;
+  final fullJson = Map<String, dynamic>.from(manifestJson);
+  if (manifestJson['sections'] case final List<dynamic> sections) {
+    fullJson['sections'] = sections.map((item) {
+      final section = Map<String, dynamic>.from(item as Map<String, dynamic>);
+      section['passages'] = List<String>.from(
+        section['passages'] as List,
+      ).map(loadPassage).toList();
+      return section;
+    }).toList();
+  } else {
+    fullJson['passages'] = List<String>.from(
+      manifestJson['passages'] as List,
+    ).map(loadPassage).toList();
+  }
+  return IbareBook.fromJson(fullJson);
+}
+
 void main() {
+  final binaBook = _loadBookSync('assets/data/ibare/bina.json');
+
+  test('ibare data preserves printed harakat and toggles added harakat', () {
+    final besmele = binaBook.passages.first.tokens.first;
+    final printedPattern = binaBook.passages[2].tokens.firstWhere(
+      (token) => token.arabic == 'فَعَلَ',
+    );
+
+    expect(besmele.displayArabic(false), 'بسم');
+    expect(besmele.displayArabic(true), 'بِسْمِ');
+    expect(printedPattern.displayArabic(false), 'فَعَلَ –');
+    expect(printedPattern.displayArabic(true), 'فَعَلَ –');
+
+    final numberedSentence = binaBook.passages[1].tokens.firstWhere(
+      (token) => token.arabic == 'بَابًا',
+    );
+    expect(numberedSentence.displayArabic(false), 'باباً،');
+    expect(numberedSentence.displayArabic(true), 'بَاباً،');
+
+    final alametuhu = binaBook.passages[2].tokens.firstWhere(
+      (token) => token.arabic == 'وَعَلَامَتُهُ',
+    );
+    expect(alametuhu.displayArabic(false), 'وعلامته');
+    expect(alametuhu.displayArabic(true), 'وَعَلَامَتُهُ');
+
+    final bina = binaBook.passages[3].tokens.firstWhere(
+      (token) => token.arabic == 'وَبِنَاؤُهُ',
+    );
+    expect(bina.displayArabic(false), 'وبناؤه');
+    expect(bina.displayArabic(true), 'وَبِنَاؤُهُ');
+  });
+
+  test('ibare text matches the book forms when harakat are hidden', () {
+    expect(
+      binaBook.passages
+          .map(
+            (passage) => passage.tokens
+                .map((token) => token.displayArabic(false))
+                .join(' '),
+          )
+          .toList(),
+      [
+        'بسم الله الرحمن الرحيم',
+        'اعلم أن أبواب التصريف خمسة وثلاثون باباً، ستة منها للثلاثي المجرد',
+        'الباب الأول: فَعَلَ – يَفْعُلُ موزونه: نَصَرَ يَنْصُرُ، وعلامته أن يكون عين فعله مفتوحاً في الماضي ومضموماً في المضارع',
+        'وبناؤه للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: نَصَرَ زيد عمراً ومثال اللازم نحو: خَرَجَ زيد',
+        'الباب الثاني: فَعَلَ – يَفْعِلُ موزونه: ضَرَبَ يَضْرِبُ، وعلامته أن يكون عين فعله مفتوحاً في الماضي ومكسوراً في المضارع',
+        'وبناؤه أيضاً للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: ضَرَبَ زيد عمراً ومثال اللازم مثل: جَلَسَ زيد',
+        'الباب الثالث: فَعَلَ – يَفْعَلُ موزونه: فَتَحَ يَفْتَحُ، وعلامته أن يكون عين فعله مفتوحاً في الماضي والمضارع بشرط أن يكون عين فعله أو لامه واحداً من حروف الحلق وهي ستة: الحاء والخاء والعين والغين والهاء والهمزة.',
+        'وبناؤه أيضاً للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: فَتَحَ زيد الباب ومثال اللازم نحو: ذَهَبَ زيد.',
+        'الباب الرابع: فَعِلَ – يَفْعَلُ موزونه عَلِمَ يَعْلَمُ، وعلامته أن يكون عين فعله مكسوراً في الماضي ومفتوحاً في المضارع،',
+        'وبناؤه أيضاً للتعدية غالباً وقد يكون لازماً، مثال المتعدي نحو: عَلِمَ زيد المسألة ومثال اللازم نحو: وَجِلَ زيد',
+        'الباب الخامس: فَعُلَ – يَفْعُلُ موزونه حَسُنَ يَحْسُنُ، وعلامته أن يكون عين فعله مضموماً في الماضي والمضارع وبناؤه لا يكون إلا لازماً',
+        'نحو: حَسُنَ زيد',
+        'الباب السادس: فَعِلَ – يَفْعِلُ موزونه حَسِبَ يَحْسِبُ، وعلامته أن يكون عين فعله مكسوراً في الماضي والمضارع،',
+        'وبناؤه أيضاً للتعدية غالباً وقد يكون لازماً، مثال المتعدي نحو: حَسِبَ زيد عمراً فاضلاً ومثال اللازم نحو: وَرِثَ زيد',
+        'واثنا عشر باباً منها لما زاد على الثلاثي وهو ثلاثة أنواع: النوع الأول: الفعل الثلاثي المزيد بحرف واحد وهو ما زيد فيه حرف واحد على الثلاثي وهو ثلاثة أبواب:',
+        'الباب الأول: أَفْعَلَ يُفْعِلُ إِفْعَالًا موزونه أَكْرَمَ يُكْرِمُ إِكْرَامًا، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة الهمزة في أوله',
+        'وبناؤه للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: أَكْرَمَ زيد عمراً ومثال اللازم نحو: أصبح الرجل',
+        'الباب الثاني: فَعَّلَ يُفَعِّلُ تَفْعِيلًا موزونه فَرَّحَ يُفَرِّحُ تَفْرِيحًا، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة حرف واحد بين الفاء والعين من جنس عين فعله',
+        'وبناؤه للتكثير وهو قد يكون في الفعل نحو: طَوَّفَ زيد الكعبة وقد يكون في الفاعل نحو: مَوَّتَ الإبل وقد يكون في المفعول نحو: غَلَّقَ زيد الباب',
+        'الباب الثالث: فَاعَلَ يُفَاعِلُ مُفَاعَلَةً وَفِعَالًا وَفِيعَالًا موزونه قَاتَلَ يُقَاتِلُ مُقَاتَلَةً وَقِتَالًا وَقِيتَالًا، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة الألف بين الفاء والعين',
+        'وبناؤه للمشاركة بين الإثنين غالباً وقد يكون للواحد مثال المشاركة بين الإثنين نحو: قَاتَلَ زيد عمراً ومثال الواحد نحو: قَاتَلَهُمْ الله',
+        'النوع الثاني وهو ما زيد فيه حرفان على الثلاثي وهو خمسة أبواب:',
+        'الباب الأول: اِنْفَعَلَ يَنْفَعِلُ اِنْفِعَالًا موزونه اِنْكَسَرَ يَنْكَسِرُ اِنْكِسَارًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة الهمزة والنون في أوله وبناؤه للمطاوعة نحو: كَسَرْتُ الزجاج فَانْكَسَرَ ذلك الزجاج، فإن انكسار الزجاج أثر حصل عن تعلق الكسر الذي هو الفعل المتعدي',
+        'الباب الثاني: اِفْتَعَلَ يَفْتَعِلُ اِفْتِعَالًا، موزونه اِجْتَمَعَ يَجْتَمِعُ اِجْتِمَاعًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة الهمزة في أوله والتاء بين الفاء والعين وبناؤه للمطاوعة أيضاً نحو: جَمَعْتُ الإبل فَاجْتَمَعَ تلك الإبل',
+        'الباب الثالث: اِفْعَلَّ يَفْعَلُّ اِفْعِلَالًا، موزونه اِحْمَرَّ يَحْمَرُّ اِحْمِرَارًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة الهمزة في أوله وحرف آخر من جنس لام فعله في آخره وبناؤه لمبالغة اللازم وقيل للألوان والعيوب مثال الألوان نحو: اِحْمَرَّ زيد ومثال العيوب نحو: اِعْوَرَّ زيد',
+        'الباب الرابع: تَفَعَّلَ يَتَفَعَّلُ تَفَعُّلًا موزونه تَكَلَّمَ يَتَكَلَّمُ تَكَلُّمًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله وحرف آخر من جنس عين فعله بين الفاء والعين وبناؤه للتكلف نحو: تَعَلَّمْتُ العلم مسألة بعد مسألة',
+        'الباب الخامس: تَفَاعَلَ يَتَفَاعَلُ تَفَاعُلًا، موزونه تَبَاعَدَ يَتَبَاعَدُ تَبَاعُدًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله والألف بين الفاء والعين وبناؤه للمشاركة بين الاثنين فصاعداً، مثال المشاركة بين الاثنين نحو: تَبَاعَدَ زيد عن عمرو ومثال المشاركة بين الاثنين فصاعداً نحو: تَصَالَحَ القوم',
+        'النوع الثالث: وهو ما زيد فيه ثلاثة أحرف على الثلاثي وهو أربعة أبواب.',
+        'الباب الأول: اِسْتَفْعَلَ يَسْتَفْعِلُ اِسْتِفْعَالًا موزونه: اِسْتَخْرَجَ يَسْتَخْرِجُ اِسْتِخْرَاجًا، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة والسين والتاء في أوله وبناؤه للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: اِسْتَخْرَجَ زيد المال ومثال اللازم نحو: اِسْتَحْجَرَ الطين وقيل لطلب الفعل نحو: اِسْتَغْفَرَ الله: أي اُطْلُبْ المغفرة من الله تعالى',
+        'الباب الثاني: اِفْعَوْعَلَ يَفْعَوْعِلُ اِفْعِيعَالًا، موزونه: اِعْشَوْشَبَ يَعْشَوْشِبُ اِعْشِيشَابًا، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله وحرف آخر من جنس عين فعله والواو بين العين واللام وبناؤه لمبالغة اللازم لأنه يقال: عَشُبَ الأرض: إذا نبت على وجه الأرض في الجملة ويقال: اِعْشَوْشَبَ الأرض: إذا كثر نبات وجه الأرض',
+        'الباب الثالث: اِفْعَوَّلَ يَفْعَوِّلُ اِفْعِوَّالًا موزونه: اِجْلَوَّذَ يَجْلَوِّذُ اِجْلِوَّاذًا، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله لواوين بين العين واللام وبناؤه أيضاً لمبالغة اللازم لأنه يقال: جَلَذَ الإبل: إذا سار سيراً بسرعة ويقال: اِجْلَوَّذَ الإبل: إذا سار سيراً بزيادة سرعة',
+        'الباب الرابع: اِفْعَالَّ يَفْعَالُّ اِفْعِيلَالًا موزونه: اِحْمَارَّ يَحْمَارُّ اِحْمِيرَارًا، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله والألف بين العين واللام وحرف آخر من جنس لام فعله في آخره وبناؤه لمبالغة اللازم، ولكن هذا الباب أبلغ من باب الإفعلال لأنه يقال: حَمُرَ زيد: إذا كان له حمرة في الجملة ويقال: اِحْمَرَّ زيد: إذا كان حمرة مبالغة ويقال: اِحْمَارَّ زيد: إذا كان له حمرة زيادة مبالغة',
+        'وواحد منها للرباعي المجرد وهو باب واحد',
+        'باب الرباعي المجرد فَعْلَلَ يُفَعْلِلُ فَعْلَلَةً وَفِعْلَالًا موزونه: دَحْرَجَ يُدَحْرِجُ دَحْرَجَةً وَدِحْرَاجًا، وعلامته أن يكون ماضيه على أربعة أحرف بأن يكون جميع حروفه أصلية وبناؤه للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: دَحْرَجَ زيد الحجر ومثال اللازم نحو: دَرْبَخَ زيد',
+        'أبواب الملحق الرباعي: وستة منها لملحق دَحْرَجَ ويقال لهذه الست الملحق الرباعي.',
+        'الباب الأول: فَوْعَلَ يُفَوْعِلُ فَوْعَلَةً وَفِيعَالًا، موزونه: حَوْقَلَ يُحَوْقِلُ حَوْقَلَةً وَحِيقَالًا، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة الواو بين الفاء والعين، وبناؤه للازم نحو: حَوْقَلَ زيد',
+        'الباب الثاني: فَيْعَلَ يُفَيْعِلُ فَيْعَلَةً وَفِيعَالًا، موزونه بَيْطَرَ يُبَيْطِرُ بَيْطَرَةً وَبِيطَارًا، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة الياء بين الفاء والعين وبناؤه للتعدية فقط نحو: بَيْطَرَ زيد القلم: أي شَقَّهُ',
+        'الباب الثالث: فَعْوَلَ يُفَعْوِلُ فَعْوَلَةً وَفِعْوَالًا موزونه: جَهْوَرَ يُجَهْوِرُ جَهْوَرَةً وَجِهْوَارًا، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة الواو بين العين واللام وبناؤه أيضاً للتعدية نحو: جَهْوَرَ زيد القرآن',
+        'الباب الرابع: فَعْيَلَ يُفَعْيِلُ فَعْيَلَةً وَفِعْيَالًا موزونه: عَثْيَرَ يُعَثْيِرُ عَثْيَرَةً وَعِثْيَارًا، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة الياء بين العين واللام وبناؤه للازم نحو: عَثْيَرَ زيد: أي طلع',
+        'الباب الخامس: فَعْلَلَ يُفَعْلِلُ فَعْلَلَةً وَفِعْلَالًا، موزونه جَلْبَبَ يُجَلْبِبُ جَلْبَبَةً وَجِلْبَابًا، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة حرف واحد من جنس لام فعله في آخره وبناؤه للتعدية فقط نحو: جَلْبَبَ زيد إذا لبس الجلباب',
+        'الباب السادس: فَعْلَى يُفَعْلِي فَعْلَيَةً وَفَعْلَاءً، موزونه: سَلْقَى يُسَلْقِي سَلْقَيَةً وَسَلْقَاءً، وعلامته أن يكون ماضيه على أربعة أحرف بزيادة الياء في آخره وبناؤه للازم فقط، نحو: سَلْقَى زيد: أي نام على قفاه، ويقال لهذه الستة الملحق بالرباعي ومعنى الإلحاق اتحاد المصدرين: أي الملحق به',
+        'أنواع الرباعي المزيد وثلاثة منها لما زاد على الرباعي المجرد وهو على نوعين: النوع الأول: وهو ما زيد فيه حرف واحد على الرباعي المجرد وهو باب واحد',
+        'النوع الأول: تَفَعْلَلَ يَتَفَعْلَلُ تَفَعْلُلًا، موزونه: تَدَحْرَجَ يَتَدَحْرَجُ تَدَحْرُجًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله، وبناؤه للمطاوعة نحو: دَحْرَجْتُ الحجر فَتَدَحْرَجَ ذلك الحجر',
+        'النوع الثاني: وهو ما زيد فيه حرفان على الرباعي وهو بابان:',
+        'الباب الأول: اِفْعَنْلَلَ يَفْعَنْلِلُ اِفْعِنْلَالًا، موزونه: اِحْرَنْجَمَ يَحْرَنْجِمُ اِحْرِنْجَامًا، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله والنون بين العين واللام الأولى، وبناؤه للمطاوعة أيضاً نحو: حَرْجَمْتُ الإبل فَاحْرَنْجَمَ ذلك الإبل',
+        'الباب الثاني: اِفْعَلَّلَ يَفْعَلِلُّ اِفْعِلَّالًا موزونه: اِقْشَعَرَّ يَقْشَعِرُّ اِقْشِعْرَارًا، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله، وحرف آخر من جنس اللام الثانية في آخره وبناؤه لمبالغة اللازم، لأنه يقال: قَشْعَرَ جلد الرجل: إذا انتشر شعر جلده في الجملة ويقال: اِقْشَعَرَّ جلد الرجل: إذا انتشر شعر جلده مبالغة',
+        'ملحقات الرباعي المزيد وخمسة منها لملحق تَدَحْرَجَ',
+        'الباب الأول: تَفَعْلَلَ يَتَفَعْلَلُ تَفَعْلُلًا، موزونه تَجَلْبَبَ يَتَجَلْبَبُ تَجَلْبُبًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله، وحرف آخر من جنس لام فعله في آخره، وبناؤه للازم نحو: تَجَلْبَبَ زيد',
+        'الباب الثاني: تَفَوْعَلَ يَتَفَوْعَلُ تَفَوْعُلًا موزونه: تَجَوْرَبَ يَتَجَوْرَبُ تَجَوْرُبًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله والواو بين الفاء والعين وبناؤه للازم نحو: تَجَوْرَبَ زيد',
+        'الباب الثالث: تَفَيْعَلَ يَتَفَيْعَلُ تَفَيْعُلًا، موزونه: تَشَيْطَنَ يَتَشَيْطَنُ تَشَيْطُنًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله والياء بين الفاء والعين وبناؤه للازم نحو: تَشَيْطَنَ زيد',
+        'الباب الرابع: تَفَعْوَلَ يَتَفَعْوَلُ تَفَعُولًا، موزونه: تَرَهْوَكَ يَتَرَهْوَكُ تَرَهُوكًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله والواو بين العين واللام وبناؤه للازم نحو: تَرَهْوَكَ زيد',
+        'الباب الخامس: تَفَعْلَى يَتَفَعْلَى تَفَعْلِيًا، موزونه: تَسَلْقَى يَتَسَلْقَى تَسَلْقِيًا، وعلامته أن يكون ماضيه على خمسة أحرف بزيادة التاء في أوله والياء في آخره، وبناؤه للازم نحو: تَسَلْقَى زيد، أي نام على قفاه، أي أن حقيقة الإلحاق في هذه الملحقات إنما تكون بزيادة غير التاء، مثلا الإلحاق في تَجَلْبَبَ إنما هو بتكرار الباء والتاء إنما دخلت لمعنى المطاوعة كما كانت في تَدَحْرَجَ لأن الإلحاق لا يكون في أول الكلمة بل في وسطها وآخرها على ما صرح به في شرح المفصل',
+        'توابع ملحقات الرباعي المزيد وإثنان لملحق اِحْرَنْجَمَ',
+        'الباب الأول: اِفْعَنْلَلَ يَفْعَنْلِلُ اِفْعِنْلَالًا، موزونه: اِقْعَنْسَسَ يَقْعَنْسِسُ اِقْعِنْسَاسًا، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله، والنون بين العين واللام وحرف آخر من جنس لام فعله في آخره، وبناؤه لمبالغة اللازم، لأنه يقال: قَعَسَ الرجل إذا خرج صدره في الجملة، ويقال: اِقْعَنْسَسَ الرجل إذا خرج صدره ودخل ظهره مبالغة',
+        'الباب الثاني: اِفْعَنْلَى يَفْعَنْلِي اِفْعِنْلَاءً، موزونه: اِسْلَنْقَى يَسْلَنْقِي اِسْلِنْقَاءً، وعلامته أن يكون ماضيه على ستة أحرف بزيادة الهمزة في أوله، والنون بين العين واللام في آخره، وبناؤه للازم نحو: اِسْلَنْقَى زيد',
+        'ثم اعلم أن الفعل المنحصر في هذه الأبواب: إما ثلاثي مجرد سالم نحو: كَرُمَ، وإما ثلاثي مجرد غير سالم نحو: وَعَدَ، وإما ثلاثي مزيد سالم نحو: أَكْرَمَ وإما ثلاثي مزيد فيه غير سالم نحو: أَوْعَدَ، وإما رباعي مجرد سالم نحو: دَحْرَجَ وإما رباعي غير سالم نحو: وَسْوَسَ وَزَلْزَلَ، وإما رباعي مزيد فيه سالم نحو: تَدَحْرَجَ وإما رباعي مزيد فيه غير سالم نحو: تَوَسْوَسَ ويقال لهذه الأقسام الأقسام الثمانية',
+        'واعلم أن كل فعل إما صحيح وهو الذي ليس في مقابلة فائه وعينه ولامه حرف من حروف العلة وهي الواو والياء والألف والهمزة والتضعيف نحو: نَصَرَ وإما معتل وهو الذي يكون في مقابلة فائه وعينه ولامه حرف من حروف العلة نحو: وَعَدَ وقال وطغى',
+        'أقسام الفعل المعتل: مثال وهو الذي يكون في مقابلة فائه حرف من حروف العلة نحو: وَعَدَ ويسر، وإما أجوف وهو الذي يكون في مقابلة عينه حرف من حروف العلة نحو: قَالَ وكال، وإما ناقص وهو الذي يكون في مقابلة لامه حرف من حروف العلة نحو: غَزَا ورمى، وإما لفيف وهو الذي يكون فيه حرفان من حروف العلة وهو على قسمين: الأول: اللفيف المقرون وهو الذي يكون في مقابلة عينه ولامه حرفان من حروف العلة نحو: طَوَى، والثاني: اللفيف المفروق وهو الذي يكون في مقابلة فائه ولامه حرفان من حروف العلة نحو: وَقَى',
+        'وإما مضاعف وهو الذي يكون عينه ولامه من جنس واحد نحو: مَدَّ، أصله مَدَدَ حذفت حركة الدال الأولى ثم أدغمت في الدال الثانية، والإدغام إدخال أحد المتجانسين في الآخر، وهو ثلاثة أنواع',
+        'النوع الأول: واجب: وهو أن يكون الحرفان المتجانسان متحركين أو يكون الحرف الأول ساكنا والحرف الثاني متحركا نحو: مَدَّ يَمُدُّ مَدًّا، النوع الثاني: جائز: وهو أن يكون الحرف الأول متحركا والحرف الثاني ساكنا بسكون عارض نحو: لَمْ يَمُدَّ، بحركات الدال الثانية أصله لَمْ يَمْدُدْ فنقلت حركة الدال الأولى إلى الميم ثم حركت الدال الثانية إما بالفتح أو بالضم أو بالكسر لكون سكونها عارضا، ثم أدغمت الدال الأولى فيها، فصار لَمْ يَمُدَّ بالإدغام، ويجوز لَمْ يَمْدُدْ بالفك، النوع الثالث: ممتنع: وهو أن يكون الأول متحركا، والثاني ساكنا بسكون أصلي نحو: مَدَدْتُ إلى مَدَدْنَ',
+        'وإما مهموز وهو الذي يكون أحد حروفه الأصلية همزة نحو: أَخَذَ وسأل وقرأ، فإن كانت الهمزة في مقابلة فائه يسمى مهموز الفاء نحو: أَخَذَ وإن كانت الهمزة في مقابلة عينه يسمى مهموز العين نحو: سَأَلَ وإن كانت الهمزة في مقابلة لامه يسمى مهموز اللام نحو: قَرَأَ ويقال لهذه الأقسام السبعة يجمعها هذا البيت: صحيحست مثالست مُضَاعَفٌ... لَفِيفٌ نَاقِصٌ مَهْمُوزٌ أَجْوَفُ، والله ورسوله أعلم بالصواب، النهاية',
+      ],
+    );
+  });
+
+  test('ibare broken meanings preserve conjunction waw', () {
+    final conjunctions = binaBook.passages
+        .expand((passage) => passage.tokens)
+        .where(
+          (token) =>
+              token.arabic.startsWith('وَ') &&
+              !token.arabic.contains('وَاحِد') &&
+              token.arabic != 'وَاجِبٌ' &&
+              token.arabic != 'وَعَدَ' &&
+              token.arabic != 'وَسْوَسَ' &&
+              token.arabic != 'وَقَى' &&
+              token.arabic != 'وَجِلَ' &&
+              token.arabic != 'وَرِثَ' &&
+              token.arabic != 'وَجْهِ',
+        );
+
+    expect(
+      conjunctions.every((token) => token.gloss.startsWith('Ve ')),
+      isTrue,
+    );
+  });
+
+  test('ibare broken meanings stay within token boundaries', () {
+    IbareToken token(String id) => binaBook.passages
+        .expand((passage) => passage.tokens)
+        .firstWhere((token) => token.id == id);
+
+    expect(token('p1_t1').gloss, 'İsim ile, adıyla');
+    expect(token('p3_t11').gloss, 'Orta harfi');
+    expect(token('p5_t11').gloss, 'Orta harfi');
+    expect(token('p7_t11').gloss, 'Ayn harfi, orta harfi');
+    expect(token('p7_t14').gloss, '-de');
+    expect(token('p7_t15').gloss, 'Mâzi');
+    expect(token('p7_t23').gloss, 'Lâmı, son harfi');
+    expect(token('p7_t25').gloss, '-den, -dan');
+    expect(token('p7_t26').gloss, 'Harfleri');
+  });
+
+  test('ibare tokens follow real word boundaries', () {
+    final multiWordTokens = binaBook.passages
+        .expand((passage) => passage.tokens)
+        .where((token) => token.arabic.contains(' '));
+
+    expect(multiWordTokens, isEmpty);
+  });
+
+  test('ibare passages no longer ship phrase layers', () {
+    for (final passage in binaBook.passages) {
+      expect(passage.phrases, isEmpty);
+    }
+  });
+
+  test('ibare passages load editorial notes and corrections', () {
+    final passage55 = binaBook.passages.firstWhere(
+      (passage) => passage.id == 'passage_55',
+    );
+    expect(passage55.editorialCorrection, contains('والياء'));
+    expect(passage55.notes.single.text, contains('Matbu metinde'));
+
+    final passage4 = binaBook.passages.firstWhere(
+      (passage) => passage.id == 'passage_4',
+    );
+    expect(
+      passage4.notes.map((note) => note.label),
+      contains('Dipnot: المتعدي'),
+    );
+    expect(
+      passage4.notes.map((note) => note.label),
+      contains('Dipnot: اللازم'),
+    );
+  });
+
   testWidgets('shows the Emsile home screen', (WidgetTester tester) async {
     await pumpLoadedApp(tester);
     addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -152,6 +356,134 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Dersler'), findsWidgets);
+    expect(find.text('İbare Çalışması'), findsOneWidget);
+  });
+
+  testWidgets('ibare study reveals word analysis and meanings', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 1600));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(home: IbarePassageScreen(book: binaBook, initialIndex: 1)),
+    );
+
+    expect(find.text('اعلم'), findsOneWidget);
+    expect(find.text('اِعْلَمْ'), findsNothing);
+
+    await tester.tap(find.text('اعلم'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Emr-i hâzır, malûm'), findsOneWidget);
+    expect(find.text('أَنْتَ “sen”'), findsOneWidget);
+    expect(find.text('Sülâsî mücerred 4. bab'), findsOneWidget);
+
+    await tester.tap(find.text('Harekeleri göster'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('اِعْلَمْ'), findsWidgets);
+    expect(find.text('Mefhum'), findsNothing);
+
+    await tester.tap(find.text('التَّصْرِيفِ'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Masdar / isim'), findsOneWidget);
+    expect(find.text('صَرَّفَ يُصَرِّفُ'), findsOneWidget);
+    expect(find.text('Sülâsî mezîd, tef‘îl babı'), findsOneWidget);
+
+    final showBrokenMeanings = find.widgetWithText(TextButton, 'Göster').first;
+    await tester.tap(showBrokenMeanings);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Muhakkak ki'), findsOneWidget);
+    expect(find.text('Babları'), findsOneWidget);
+  });
+
+  testWidgets('ibare book shows passages, word analysis, and detail action', (
+    WidgetTester tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(390, 1600));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    await tester.pumpWidget(
+      MaterialApp(home: IbareStudyScreen(books: [binaBook])),
+    );
+
+    expect(find.text(binaBook.title), findsOneWidget);
+    await tester.tap(find.text(binaBook.title));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Giriş'), findsOneWidget);
+    expect(find.text('Birinci Bab'), findsOneWidget);
+    expect(find.text('İkinci Bab'), findsOneWidget);
+    expect(find.text('1-6 / ${binaBook.passages.length}'), findsNWidgets(2));
+    expect(find.text('Harekeler'), findsNWidgets(6));
+
+    await tester.tap(find.byKey(const ValueKey('ibare_next_page_top')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('7-14 / ${binaBook.passages.length}'), findsNWidgets(2));
+    expect(find.text('Üçüncü Bab'), findsOneWidget);
+    expect(find.text('Altıncı Bab'), findsOneWidget);
+    expect(find.text('Harekeler'), findsNWidgets(8));
+
+    await tester.ensureVisible(
+      find.byKey(const ValueKey('ibare_prev_page_bottom')),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('ibare_prev_page_bottom')));
+    await tester.pumpAndSettle();
+
+    await tester.ensureVisible(find.byKey(const ValueKey('harakat_passage_1')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('harakat_passage_1')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('بِسْمِ'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('overview_p1_t1')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('İsim'), findsOneWidget);
+    expect(find.text('İsim ile, adıyla'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('overview_p1_t1')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('İsim ile, adıyla'), findsNothing);
+
+    await tester.tap(find.byKey(const ValueKey('inspect_passage_1')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Kırık Mana'), findsOneWidget);
+    expect(find.text('Toparlanmış Mana'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('Geri'));
+    await tester.pumpAndSettle();
+
+    for (var i = 0; i < 3; i++) {
+      await tester.ensureVisible(
+        find.byKey(const ValueKey('ibare_next_page_top')),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('ibare_next_page_top')));
+      await tester.pumpAndSettle();
+    }
+
+    await tester.ensureVisible(find.byKey(const ValueKey('overview_p27_t46')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('overview_p27_t46')));
+    await tester.pumpAndSettle();
+
+    await tester.ensureVisible(
+      find.byKey(const ValueKey('ibare_next_page_top')),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('ibare_next_page_top')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('28-32 / ${binaBook.passages.length}'), findsNWidgets(2));
   });
 
   testWidgets('lesson detail renders muhtelife table entries', (
@@ -259,6 +591,7 @@ void main() {
     );
     expect(find.textContaining('github.com/karaketir16'), findsOneWidget);
     expect(find.textContaining('arapcadiyari.blogspot.com'), findsOneWidget);
+    expect(find.textContaining('x.com/habbazzade'), findsOneWidget);
   });
 
   // ── Conjugation interactions ────────────────────────────────────────────────

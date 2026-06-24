@@ -13,6 +13,13 @@ void main() {
           'defaultVerbId': 'nasara',
           'lessons': <Object>[],
           'pronouns': <Object>[],
+          'ibareBooks': [
+            {
+              'id': 'bina',
+              'title': 'Binâ',
+              'assetPath': 'assets/data/ibare/bina.json',
+            },
+          ],
           'verbs': [
             {
               'id': 'nasara',
@@ -44,6 +51,35 @@ void main() {
             },
           },
         }),
+        'assets/data/ibare/bina.json': jsonEncode({
+          'schemaVersion': 1,
+          'id': 'bina',
+          'title': 'Binâ',
+          'shortTitle': 'Binâ',
+          'description': 'İbare çalışması',
+          'passages': [
+            'assets/data/ibare/bina/giris.json',
+          ],
+        }),
+        'assets/data/ibare/bina/giris.json': jsonEncode({
+          'id': 'giris',
+          'order': 1,
+          'title': 'Giriş',
+          'subtitle': 'İlk cümle',
+          'translation': 'Bil.',
+          'tokens': [
+            {
+              'id': 'giris_1',
+              'arabic': 'اِعْلَمْ',
+              'printedArabic': 'اعlem',
+              'gloss': 'Bil',
+              'analysis': {
+                'kind': 'Fiil',
+                'fields': {'conjugation': 'Emr-i hâzır'},
+              },
+            },
+          ],
+        }),
       }),
     );
 
@@ -51,6 +87,7 @@ void main() {
 
     expect(data.forms, hasLength(339));
     expect(data.practiceQuestions, hasLength(339));
+    expect(data.ibareBooks.single.passages.single.tokens.single.gloss, 'Bil');
   });
 
   test('repository reports a missing default verb manifest', () async {

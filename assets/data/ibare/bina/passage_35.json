@@ -1,0 +1,221 @@
+{
+  "id": "passage_35",
+  "order": 35,
+  "orijinal_metin": "أبواب الملحq الرباعي: وستة منها لملحق دَحْرَجَ ويقال لهذه الست الملحق الرباعي.",
+  "orijinal_metin": "أبواب الملحق الرباعي: وستة منها لملحق دَحْرَجَ ويقال لهذه الست الملحق الرباعي.",
+  "translation": "Rubâî mülhak babları: altı bab دَحْرَجَ mülhakı içindir; bu altısına mülhak-ı rubâî denir.",
+  "tokens": [
+    {
+      "id": "p35_t1",
+      "arabic": "أَبْوَابُ",
+      "printedArabic": "أبواب",
+      "gloss": "Babları",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "singular": "بَابٌ",
+          "root": "ب و ب",
+          "pattern": "أَفْعَال",
+          "wordForm": "Cem-i mükesser, muzaf",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû",
+          "construction": "Muzaf"
+        }
+      }
+    },
+    {
+      "id": "p35_t2",
+      "arabic": "الْمُلْحَقِ",
+      "printedArabic": "الملحق",
+      "gloss": "Mülhakın",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ل ح ق",
+          "term": "Başka vezne eklenen",
+          "wordForm": "Müfred, marife",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrûr",
+          "derivedFrom": "أَلْحَقَ يُلْحِقُ",
+          "pattern": "مُفْعَل",
+          "morphology": "İsm-i mef‘ûl"
+        }
+      }
+    },
+    {
+      "id": "p35_t3",
+      "arabic": "الرُّبَاعِيِّ",
+      "printedArabic": "الرباعي",
+      "punctuation": ":",
+      "gloss": "Rubâî",
+      "analysis": {
+        "kind": "Nisbet ismi",
+        "fields": {
+          "term": "Dört harfli",
+          "root": "ر ب ع",
+          "wordForm": "Müfred, marife, sıfat",
+          "role": "Sıfat",
+          "irab": "Kesra ile mecrûr",
+          "pattern": "فُعَالِيّ"
+        }
+      }
+    },
+    {
+      "id": "p35_t4",
+      "arabic": "وَسِتَّةٌ",
+      "printedArabic": "وستة",
+      "gloss": "Ve altı",
+      "analysis": {
+        "kind": "Bağlaç + sayı",
+        "fields": {
+          "numberType": "Aded",
+          "root": "س د س",
+          "wordForm": "Müfred, müzekker (lafzen müennes), nekre",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû",
+          "meaning": "Altı adet"
+        }
+      }
+    },
+    {
+      "id": "p35_t5",
+      "arabic": "مِنْهَا",
+      "printedArabic": "منها",
+      "gloss": "Onlardan",
+      "analysis": {
+        "kind": "Harf + zamir",
+        "fields": {
+          "referent": "Otuz beş bab",
+          "structure": "مِنْ harf-i cer, هَا muttasıl mecrûr zamirdir.",
+          "pronoun": "هَا",
+          "role": "Şibh-i cümle haber",
+          "irab": "Mahallen merfû"
+        }
+      }
+    },
+    {
+      "id": "p35_t6",
+      "arabic": "لِمُلْحَقِ",
+      "printedArabic": "لملحق",
+      "gloss": "Mülhakı içindir",
+      "analysis": {
+        "kind": "Harf-i cer + isim",
+        "fields": {
+          "root": "ل ح ق",
+          "derivedFrom": "أَلْحَقَ يُلْحِقُ",
+          "pattern": "مُفْعَل",
+          "morphology": "İsm-i mef‘ûl",
+          "wordForm": "Müfred, nekre, muzaf",
+          "role": "Mecrûr isim",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p35_t7",
+      "arabic": "دَحْرَجَ",
+      "gloss": "Dahrece",
+      "analysis": {
+        "kind": "Fiil örneği",
+        "fields": {
+          "root": "د ح ر ج",
+          "pattern": "فَعْلَلَ",
+          "conjugation": "Fiil-i mâzi, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "bab": "Rubâî mücerred 1. bab",
+          "transitivity": "Müteaddi",
+          "presentForm": "يُدَحْرِجُ",
+          "syntax": "Muzafun ileyh"
+        }
+      }
+    },
+    {
+      "id": "p35_t8",
+      "arabic": "وَيُقَالُ",
+      "printedArabic": "ويقال",
+      "gloss": "Ve denilir",
+      "analysis": {
+        "kind": "Bağlaç + meçhul fiil",
+        "fields": {
+          "root": "ق و ل",
+          "conjugation": "Fiil-i muzâri, meçhul",
+          "person": "3. şahıs, müzekker, tekil",
+          "baseForm": "قَالَ يَقُولُ",
+          "pattern": "يُفْعَلُ",
+          "irab": "Zamme ile merfû",
+          "syntax": "Matûf fiil"
+        }
+      }
+    },
+    {
+      "id": "p35_t9",
+      "arabic": "لِهَذِهِ",
+      "printedArabic": "لهذه",
+      "gloss": "Bu",
+      "analysis": {
+        "kind": "Harf-i cer + işaret ismi",
+        "fields": {
+          "referent": "Altı bab",
+          "structure": "لِ harf-i cer, هَذِهِ işaret ismidir.",
+          "wordForm": "Müfred, müennes, marife",
+          "role": "Mecrûr isim",
+          "irab": "Mahallen mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p35_t10",
+      "arabic": "السِّتِّ",
+      "printedArabic": "الست",
+      "gloss": "Altıya",
+      "analysis": {
+        "kind": "Sayı",
+        "fields": {
+          "numberType": "Aded",
+          "root": "س د س",
+          "wordForm": "Marife, mecrûr",
+          "role": "Müşârun ileyh veya bedel",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p35_t11",
+      "arabic": "الْمُلْحَقُ",
+      "printedArabic": "الملحق",
+      "gloss": "Mülhak",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "term": "Eklenen vezinler",
+          "root": "ل ح ق",
+          "derivedFrom": "أَلْحَقَ يُلْحِقُ",
+          "pattern": "مُفْعَل",
+          "morphology": "İsm-i mef‘ûl",
+          "wordForm": "Müfred, marife",
+          "role": "Nâib-i fâil",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p35_t12",
+      "arabic": "الرُّبَاعِيُّ",
+      "printedArabic": "الرباعي",
+      "punctuation": ".",
+      "gloss": "Rubâî",
+      "analysis": {
+        "kind": "Nisbet ismi",
+        "fields": {
+          "term": "Mülhak-ı rubâî",
+          "root": "ر ب c",
+          "root": "ر ب ع",
+          "pattern": "فُعَالِيّ",
+          "wordForm": "Müfred, marife, sıfat",
+          "role": "Sıfat",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "id": "passage_4",
+  "order": 4,
+  "orijinal_metin": "وبناؤه للتعدية غالباً وقد يكون لازماً مثال المتعدي نحو: نَصَرَ زيد عمراً ومثال اللازم نحو: خَرَجَ زيد",
+  "translation": "Ve bu bab çoğunlukla müteaddi, bazen lâzım fiiller için kullanılır. Müteaddinin misali “Zeyd Amr’a yardım etti”; ve lâzımın misali “Zeyd çıktı” cümlesidir.",
+  "tokens": [
+    {
+      "id": "p4_t1",
+      "arabic": "وَبِنَاؤُهُ",
+      "printedArabic": "وبناؤه",
+      "gloss": "Ve bu babın manen binası",
+      "analysis": {
+        "kind": "Bağlaç + masdar + zamir",
+        "fields": {
+          "root": "ب ن ي",
+          "derivedFrom": "بَنَى يَبْنِي",
+          "pattern": "فِعَال",
+          "meaning": "Babın hangi işlev için kullanıldığı",
+          "pronoun": "هُ: birinci baba döner.",
+          "irab": "Merfû"
+        },
+        "details": [
+          {
+            "label": "وَ",
+            "value": "Atıf harfi: “ve”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p4_t2",
+      "arabic": "لِلتَّعْدِيَةِ",
+      "printedArabic": "للتعدية",
+      "gloss": "Müteaddilik içindir",
+      "analysis": {
+        "kind": "Harf-i cer + isim",
+        "fields": {
+          "root": "ع د و",
+          "derivedFrom": "عَدَّى يُعَدِّي",
+          "bab": "Sülâsî mezîd, tef‘îl babı",
+          "pattern": "تَفْعِلَة",
+          "morphology": "Masdar",
+          "meaning": "Fiilin etkisinin mef‘ûle geçmesi",
+          "turkish": "Geçişlilik",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p4_t3",
+      "arabic": "غَالِبًا",
+      "printedArabic": "غالباً",
+      "gloss": "Çoğu kez",
+      "analysis": {
+        "kind": "İsm-i fâil",
+        "fields": {
+          "root": "غ ل ب",
+          "derivedFrom": "غَلَبَ يَغْلِبُ",
+          "pattern": "فَاعِل",
+          "role": "Hâl/zarf manası",
+          "irab": "Fetha ile mansub"
+        }
+      }
+    },
+    {
+      "id": "p4_t4",
+      "arabic": "وَقَدْ",
+      "printedArabic": "وقد",
+      "gloss": "Ve bazen",
+      "analysis": {
+        "kind": "Bağlaç + harf",
+        "details": [
+          {
+            "label": "وَ",
+            "value": "Atıf harfi: “ve”"
+          },
+          {
+            "label": "قَدْ",
+            "value": "Muzâri fiille burada ihtimal ve bazen manası verir."
+          }
+        ]
+      }
+    },
+    {
+      "id": "p4_t5",
+      "arabic": "يَكُونُ",
+      "printedArabic": "يكون",
+      "gloss": "Olur",
+      "analysis": {
+        "kind": "Nâkıs fiil",
+        "fields": {
+          "conjugation": "Fiil-i muzâri, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ",
+          "root": "ك و ن",
+          "baseForm": "كَانَ يَكُونُ",
+          "pattern": "يَفْعُلُ",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p4_t6",
+      "arabic": "لَازِمًا",
+      "printedArabic": "لازماً",
+      "gloss": "Lazım, geçişsiz",
+      "analysis": {
+        "kind": "İsm-i fâil",
+        "fields": {
+          "root": "ل ز م",
+          "derivedFrom": "لَزِمَ يَلْزَمُ",
+          "pattern": "فَاعِل",
+          "meaning": "Etkisi bir mef‘ûle geçmeyen fiil",
+          "role": "يَكُونُ fiilinin haberi",
+          "irab": "Fetha ile mansub"
+        }
+      }
+    },
+    {
+      "id": "p4_t7",
+      "arabic": "مِثَالُ",
+      "printedArabic": "مثال",
+      "gloss": "Misali",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "م ث ل",
+          "wordForm": "Müfred ve muzaf",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p4_t7b",
+      "arabic": "الْمُتَعَدِّي",
+      "printedArabic": "المتعدي",
+      "gloss": "Müteaddinin",
+      "analysis": {
+        "kind": "İsm-i fâil",
+        "fields": {
+          "root": "ع د و",
+          "derivedFrom": "تَعَدَّى يَتَعَدَّى",
+          "pattern": "مُتَفَعِّل",
+          "role": "Muzafun ileyh",
+          "irab": "الْمُتَعَدِّي kesra takdir edilerek mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p4_t8",
+      "arabic": "نَحْوُ",
+      "printedArabic": "نحو",
+      "punctuation": ":",
+      "gloss": "Şunun gibi",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ن ح و",
+          "meaning": "Örnek vermek için “gibi, şöyle” manasında kullanılır.",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p4_t9",
+      "arabic": "نَصَرَ",
+      "gloss": "Yardım etti",
+      "analysis": {
+        "kind": "Fiil",
+        "fields": {
+          "conjugation": "Fiil-i mâzi, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "root": "ن ص ر",
+          "bab": "Sülâsî mücerred 1. bab",
+          "pattern": "فَعَلَ",
+          "presentForm": "يَنْصُرُ",
+          "syntax": "Fiil",
+          "transitivity": "Müteaddi"
+        }
+      }
+    },
+    {
+      "id": "p4_t10",
+      "arabic": "زَيْدٌ",
+      "printedArabic": "زيد",
+      "gloss": "Zeyd",
+      "analysis": {
+        "kind": "Özel isim",
+        "fields": {
+          "wordForm": "Müfred, müzekker ve marife",
+          "syntax": "Fâil",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p4_t11",
+      "arabic": "عَمْرًا",
+      "printedArabic": "عمراً",
+      "gloss": "Amr’a",
+      "analysis": {
+        "kind": "Özel isim",
+        "fields": {
+          "wordForm": "Müfred, müzekker ve marife",
+          "syntax": "Mef‘ûlün bih",
+          "irab": "Fetha ile mansub"
+        }
+      }
+    },
+    {
+      "id": "p4_t12",
+      "arabic": "وَمِثَالُ",
+      "printedArabic": "ومثال",
+      "gloss": "Ve misali",
+      "analysis": {
+        "kind": "Bağlaç + isim",
+        "fields": {
+          "root": "م ث ل",
+          "wordForm": "Müfred ve muzaf",
+          "irab": "Zamme ile merfû"
+        },
+        "details": [
+          {
+            "label": "وَ",
+            "value": "Atıf harfi: “ve”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p4_t12b",
+      "arabic": "اللَّازِمِ",
+      "printedArabic": "اللازم",
+      "gloss": "Lazımın",
+      "analysis": {
+        "kind": "İsm-i fâil",
+        "fields": {
+          "root": "ل ز م",
+          "pattern": "فَاعِل",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p4_t13",
+      "arabic": "نَحْوُ",
+      "printedArabic": "نحو",
+      "punctuation": ":",
+      "gloss": "Şunun gibi",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ن ح و",
+          "meaning": "Örnek vermek için “gibi, şöyle” manasında kullanılır.",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p4_t14",
+      "arabic": "خَرَجَ",
+      "gloss": "Çıktı",
+      "analysis": {
+        "kind": "Fiil",
+        "fields": {
+          "conjugation": "Fiil-i mâzi, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "root": "خ ر ج",
+          "bab": "Sülâsî mücerred 1. bab",
+          "pattern": "فَعَلَ",
+          "presentForm": "يَخْرُجُ",
+          "syntax": "Fiil",
+          "transitivity": "Lazım"
+        }
+      }
+    },
+    {
+      "id": "p4_t15",
+      "arabic": "زَيْدٌ",
+      "printedArabic": "زيد",
+      "gloss": "Zeyd",
+      "analysis": {
+        "kind": "Özel isim",
+        "fields": {
+          "wordForm": "Müfred, müzekker ve marife",
+          "syntax": "Fâil",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    }
+  ],
+  "notes": [
+    {
+      "label": "Dipnot: المتعدي",
+      "text": "المتعدي ما يتجاوز فعل الفاعل إلى المفعول به"
+    },
+    {
+      "label": "Dipnot: اللازم",
+      "text": "واللازم هو ما لم يتجاوز فعل الفاعل إلى المفعول بل وقع في نفسه"
+    }
+  ]
+}

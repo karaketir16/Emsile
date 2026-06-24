@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "kitap_kimligi",
+  "title": "Kitabın tam adı",
+  "shortTitle": "Kısa ad",
+  "description": "Kitap listesinde gösterilen açıklama",
+  "sections": [
+    {
+      "id": "benzersiz_bolum_kimligi",
+      "order": 1,
+      "title": "Bölüm başlığı",
+      "passages": [
+        {
+          "id": "benzersiz_ibare_kimligi",
+          "order": 1,
+          "translation": "Toparlanmış mana",
+          "phrases": [
+            {
+              "id": "benzersiz_terkip_kimligi",
+              "tokenIds": [
+                "benzersiz_kelime_kimligi",
+                "ikinci_kelime_kimligi"
+              ],
+              "type": "İsim tamlaması (izafet)",
+              "meaning": "Terkibin toplu anlamı",
+              "parentId": "varsa_ust_terkip_kimligi",
+              "explanation": "İsteğe bağlı öğretici açıklama"
+            }
+          ],
+          "tokens": [
+            {
+              "id": "benzersiz_kelime_kimligi",
+              "arabic": "تَامُّ الْحَرَكَاتِ",
+              "gloss": "Kırık mana",
+              "analysis": {
+                "kind": "Fiil / isim / harf / sıfat",
+                "fields": {
+                  "root": "ف ع ل"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

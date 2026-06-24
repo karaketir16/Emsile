@@ -15,6 +15,7 @@ lib/
       conjugation_form.dart
       content.dart
       grammar.dart
+      ibare.dart
       practice_question.dart
   data/
     catalog_models.dart
@@ -39,6 +40,7 @@ lib/
       multiple_choice/
     home/home_screen.dart
     lessons/lessons_screen.dart
+    ibare/ibare_study_screen.dart
     source/source_screen.dart
   shared/
     theme/app_theme.dart
@@ -51,9 +53,11 @@ lib/
 assets/data/
   catalog.json
   verbs/nasara.json
+  ibare/bina.json
 test/
   data/
     emsile_repository_test.dart
+    ibare_model_test.dart
     muttaride_generator_test.dart
     practice_question_generator_test.dart
   matching_practice_test.dart
@@ -67,9 +71,10 @@ test/
 3. `catalog.json` yüklenir.
 4. `defaultVerbId` ile `verbs/nasara.json` yüklenir.
 5. `MuttarideGenerator.fromVerbEntry()` runtime `ConjugationForm` listesini üretir.
-6. Dersler, zamirler, Muhtelife satırları ve formlar `AppData` içinde birleştirilir.
-7. `PracticeQuestionGenerator.fromForms()` geriye dönük soru listesi üretir.
-8. `AppShell` beş ana ekranı `IndexedStack` içinde gösterir.
+6. Manifestteki ibare kitapları `assets/data/ibare/*.json` dosyalarından yüklenir.
+7. Dersler, ibare kitapları, zamirler, Muhtelife satırları ve formlar `AppData` içinde birleştirilir.
+8. `PracticeQuestionGenerator.fromForms()` geriye dönük soru listesi üretir.
+9. `AppShell` beş ana ekranı `IndexedStack` içinde gösterir.
 
 Yükleme sırasında `LoadingScreen`, hata halinde `LoadErrorScreen` kullanılır.
 
@@ -82,6 +87,18 @@ Yükleme sırasında `LoadingScreen`, hata halinde `LoadErrorScreen` kullanılı
 - `muhtelifeEntries`
 - `forms`
 - `practiceQuestions`
+- `ibareBooks`
+
+### İbare Modelleri
+
+- `IbareBook`: Kitap kimliği, başlıkları, açıklaması ve pasajları
+- `IbarePassage`: Sıralı bölüm, toparlanmış mana ve token listesi
+- `IbareToken`: Tam/basılı Arapça, noktalama, kırık mana ve tahlil
+- `IbareField`: Standart tahlil alanlarının anahtar ve Türkçe etiketleri
+- `IbareDetail`: Yalnız belirli bir kitaba özgü ek açıklama
+
+İbare ekranı herhangi bir kitap adı bilmez. `catalog.json` manifestine ve
+`assets/data/ibare/` altına JSON eklemek yeni kitabı görünür kılar.
 
 ### ConjugationForm
 
@@ -255,15 +272,18 @@ Fiiller `_FillTable`, isimler `_NounFillTable` ile çizilir.
 
 ## 7. Dersler
 
-`LessonsScreen` üç sabit ana ders sunar:
+`LessonsScreen` dört sabit ana ders sunar:
 
+- İbare Çalışması
 - Muhtelife
 - Muttaride
 - Şahıs Zamirleri
 
 `catalog.lessons` modeli geriye dönük uyumlulukta ve test fixture'larında bulunur; mevcut ana ders navigasyonu kod içindeki bu üç başlıktan kurulur.
 
-Muhtelife notları ve kategori açıklamaları şu an `lessons_screen.dart` içinde sabit metinlerdir. Tablo verileri `AppData` üzerinden gelir.
+İbare kitapları `AppData.ibareBooks` üzerinden veri güdümlü gösterilir.
+Muhtelife notları ve kategori açıklamaları şu an `lessons_screen.dart` içinde
+sabit metinlerdir. Tablo verileri `AppData` üzerinden gelir.
 
 ## 8. UI Altyapısı
 

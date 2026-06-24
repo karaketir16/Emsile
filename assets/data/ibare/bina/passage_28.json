@@ -1,0 +1,209 @@
+{
+  "id": "passage_28",
+  "order": 28,
+  "orijinal_metin": "النوع الثالث: وهو ما زيد فيه ثلاثة أحرف على الثلاثي وهو أربعة أبواب.",
+  "translation": "Üçüncü çeşit, sülâsî üzerine üç harf ziyade edilen fiildir ve dört babdır.",
+  "tokens": [
+    {
+      "id": "p28_t1",
+      "arabic": "النَّوْعُ",
+      "printedArabic": "النوع",
+      "gloss": "Çeşit",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ن و ع",
+          "wordForm": "Müfred ve marife",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p28_t2",
+      "arabic": "الثَّالِثُ",
+      "printedArabic": "الثالث",
+      "punctuation": ":",
+      "gloss": "Üçüncü",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "ث ل ث",
+          "wordForm": "Sıra sayısı, müfred ve marife",
+          "role": "النوع kelimesinin sıfatı",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p28_t3",
+      "arabic": "وَهُوَ",
+      "printedArabic": "وهو",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + zamir",
+        "fields": {
+          "pronoun": "هُوَ: 3. şahıs, müzekker, tekil",
+          "referent": "Üçüncü çeşit",
+          "role": "Yeni cümlenin mübtedası",
+          "irab": "Mahallen merfûdur."
+        }
+      }
+    },
+    {
+      "id": "p28_t4",
+      "arabic": "مَا",
+      "printedArabic": "ما",
+      "gloss": "Şeydir ki",
+      "analysis": {
+        "kind": "İsm-i mevsûl",
+        "fields": {
+          "meaning": "Müşterek ism-i mevsûl",
+          "role": "Mübtedânın (هُوَ) haberi",
+          "irab": "Mahallen merfûdur."
+        }
+      }
+    },
+    {
+      "id": "p28_t5",
+      "arabic": "زِيدَ",
+      "printedArabic": "زيد",
+      "gloss": "Ziyade edildi",
+      "analysis": {
+        "kind": "Meçhul fiil",
+        "fields": {
+          "root": "ز ي د",
+          "conjugation": "Fiil-i mâzi, meçhul",
+          "person": "3. şahıs, müzekker, tekil",
+          "bab": "Sülâsî mücerred 2. bab",
+          "pattern": "فُعِلَ",
+          "transitivity": "Lâzım",
+          "syntax": "Sıla cümlesinin fiili"
+        }
+      }
+    },
+    {
+      "id": "p28_t6",
+      "arabic": "فِيهِ",
+      "printedArabic": "فيه",
+      "gloss": "Onda",
+      "analysis": {
+        "kind": "Harf + zamir",
+        "fields": {
+          "pronoun": "هُ: 3. şahıs, müzekker, tekil",
+          "referent": "Mevsûl olan “mâ” kelimesine döner.",
+          "irab": "Mahallen mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p28_t7",
+      "arabic": "ثَلَاثَةُ",
+      "printedArabic": "ثلاثة",
+      "gloss": "Üç",
+      "analysis": {
+        "kind": "Sayı",
+        "fields": {
+          "numberType": "Asıl sayı, muzaf",
+          "tamyiz": "أَحْرُفٍ",
+          "role": "زِيدَ fiilinin nâib-i fâili",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p28_t8",
+      "arabic": "أَحْرُفٍ",
+      "printedArabic": "أحref",
+      "printedArabic": "أحرف",
+      "gloss": "Harf",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ح ر ف",
+          "singular": "حَرْفٌ",
+          "wordForm": "Cem-i mükesser (kıllet), muzafun ileyh",
+          "role": "Sayı tamyizi",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p28_t9",
+      "arabic": "عَلَى",
+      "printedArabic": "على",
+      "gloss": "Üzerine",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "“-in üzerine”",
+          "effect": "Sonrasındaki ismi mecrûr yapar."
+        }
+      }
+    },
+    {
+      "id": "p28_t10",
+      "arabic": "الثُّلَاثِيِّ",
+      "printedArabic": "الثلاثi",
+      "printedArabic": "الثلاثi",
+      "printedArabic": "الثلاثي",
+      "gloss": "Sülâsînin",
+      "analysis": {
+        "kind": "Nisbet ismi",
+        "fields": {
+          "root": "ث ل ث",
+          "wordForm": "Nisbet ismi, müfred ve marife",
+          "term": "Üç harfli fiil",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p28_t11",
+      "arabic": "وَهُوَ",
+      "printedArabic": "وهو",
+      "gloss": "Ve o",
+      "analysis": {
+        "kind": "Bağlaç + zamir",
+        "fields": {
+          "pronoun": "هُوَ: 3. şahıs, müzekker, tekil",
+          "referent": "Bu çeşit sülâsî mezîd fiil",
+          "role": "Yeni cümlenin mübtedası",
+          "irab": "Mahallen merfûdur."
+        }
+      }
+    },
+    {
+      "id": "p28_t12",
+      "arabic": "أَرْبَعَةُ",
+      "printedArabic": "أربعة",
+      "gloss": "Dört",
+      "analysis": {
+        "kind": "Sayı",
+        "fields": {
+          "numberType": "Asıl sayı, muzaf",
+          "tamyiz": "أَبْوَابٍ",
+          "role": "Mübtedânın (وَهُوَ) haberi",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p28_t13",
+      "arabic": "أَبْوَابٍ",
+      "printedArabic": "أبواب",
+      "punctuation": ".",
+      "gloss": "Babdır",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ب و ب",
+          "singular": "بَابٌ",
+          "wordForm": "Cem-i mükesser, muzafun ileyh",
+          "role": "Sayı tamyizi",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    }
+  ]
+}

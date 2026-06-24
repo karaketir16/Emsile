@@ -1,0 +1,298 @@
+{
+  "id": "passage_9",
+  "order": 9,
+  "orijinal_metin": "الباب الرابع: فَعِلَ – يَفْعَلُ موزونه عَلِمَ يَعْلَمُ، وعلامته أن يكون عين فعله مكسوراً في الماضي ومفتوحاً في المضارع،",
+  "translation": "Dördüncü babın vezni فَعِلَ يَفْعَلُ, mevzunu عَلِمَ يَعْلَمُ’dür. Alâmeti, aynü’l-fiilin mâzide kesreli, muzârîde fethalı olmasıdır.",
+  "tokens": [
+    {
+      "id": "p9_t1",
+      "arabic": "الْبَابُ",
+      "printedArabic": "الباب",
+      "gloss": "Bab",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ب و ب",
+          "wordForm": "Müfred ve marife",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p9_t2",
+      "arabic": "الرَّابِعُ",
+      "printedArabic": "الرابع",
+      "punctuation": ":",
+      "gloss": "Dördüncü",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "ر ب ع",
+          "wordForm": "Sıra sayısı, müfred ve marife",
+          "role": "الْبَابُ kelimesinin sıfatı",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p9_t3",
+      "arabic": "فَعِلَ",
+      "punctuation": " –",
+      "gloss": "Mâzi vezni: fe‘ile",
+      "analysis": {
+        "kind": "Vezin",
+        "fields": {
+          "morphology": "Sarf ölçüsü; gerçek bir kelime kökü değildir.",
+          "conjugation": "Fiil-i mâzi, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ",
+          "middleRadical": "Kesreli"
+        }
+      }
+    },
+    {
+      "id": "p9_t4",
+      "arabic": "يَفْعَلُ",
+      "gloss": "Muzâri vezni: yef‘alü",
+      "analysis": {
+        "kind": "Vezin",
+        "fields": {
+          "morphology": "Sarf ölçüsü; gerçek bir kelime kökü değildir.",
+          "conjugation": "Fiil-i muzâri, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ",
+          "middleRadical": "Fethalı"
+        }
+      }
+    },
+    {
+      "id": "p9_t5",
+      "arabic": "مَوْزُونُهُ",
+      "printedArabic": "موزونه",
+      "gloss": "Onun mevzunu",
+      "analysis": {
+        "kind": "İsim + zamir",
+        "fields": {
+          "root": "و ز ن",
+          "derivedFrom": "وَزَنَ يَزِنُ",
+          "pattern": "مَفْعُول",
+          "morphology": "İsm-i mef‘ûl",
+          "meaning": "Bu vezne oturan örnek fiil",
+          "pronoun": "هُ: dördüncü baba döner.",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p9_t6",
+      "arabic": "عَلِمَ",
+      "gloss": "Bildi",
+      "analysis": {
+        "kind": "Fiil",
+        "fields": {
+          "conjugation": "Fiil-i mâzi, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ",
+          "root": "ع ل م",
+          "bab": "Sülâsî mücerred 4. bab",
+          "pattern": "فَعِلَ",
+          "transitivity": "Müteaddi"
+        }
+      }
+    },
+    {
+      "id": "p9_t7",
+      "arabic": "يَعْلَمُ",
+      "punctuation": "،",
+      "gloss": "Bilir",
+      "analysis": {
+        "kind": "Fiil",
+        "fields": {
+          "conjugation": "Fiil-i muzâri, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ",
+          "root": "ع ل م",
+          "bab": "Sülâsî mücerred 4. bab",
+          "pattern": "يَفْعَلُ",
+          "transitivity": "Müteaddi"
+        }
+      }
+    },
+    {
+      "id": "p9_t8",
+      "arabic": "وَعَلَامَتُهُ",
+      "printedArabic": "وعلامته",
+      "gloss": "Ve onun alâmeti",
+      "analysis": {
+        "kind": "Bağlaç + isim + zamir",
+        "fields": {
+          "root": "ع ل م",
+          "pattern": "فَعَالَة",
+          "wordForm": "Müfred, muzaf ve merfû",
+          "pronoun": "هُ: dördüncü baba döner.",
+          "meaning": "Babı diğer bablardan ayıran lafzî özellik",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû"
+        },
+        "details": [
+          {
+            "label": "وَ",
+            "value": "Atıf harfi: “ve”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "p9_t9",
+      "arabic": "أَنْ",
+      "printedArabic": "أن",
+      "gloss": "-mesi, olması",
+      "analysis": {
+        "kind": "Harf",
+        "fields": {
+          "morphology": "Masdariyye ve nasb harfi",
+          "effect": "Muzâri fiili nasb eder."
+        }
+      }
+    },
+    {
+      "id": "p9_t10",
+      "arabic": "يَكُونَ",
+      "printedArabic": "يكون",
+      "gloss": "Olmasıdır",
+      "analysis": {
+        "kind": "Nâkıs fiil",
+        "fields": {
+          "conjugation": "Fiil-i muzâri, nâkıs fiil",
+          "person": "3. şahıs, müzekker, tekil",
+          "nasb": "أَنْ sebebiyle mansub",
+          "root": "ك و ن",
+          "baseForm": "كَانَ يَكُونُ",
+          "pattern": "يَفْعُلُ"
+        }
+      }
+    },
+    {
+      "id": "p9_t11",
+      "arabic": "عَيْنُ",
+      "printedArabic": "عين",
+      "gloss": "Ayn harfi, orta harfi",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ع ي ن",
+          "wordForm": "Müfred ve muzaf",
+          "term": "Aynü’l-fiil: kökün ikinci harfi",
+          "role": "يَكُونَ fiilinin ismi",
+          "construction": "Muzaf",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p9_t12",
+      "arabic": "فِعْلِهِ",
+      "printedArabic": "فعله",
+      "gloss": "Fiilinin",
+      "analysis": {
+        "kind": "İsim + zamir",
+        "fields": {
+          "root": "ف ع ل",
+          "pattern": "فِعْل",
+          "role": "Muzafun ileyh",
+          "pronoun": "هُ: vezne giren fiile döner.",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p9_t13",
+      "arabic": "مَكْسُورًا",
+      "printedArabic": "مكسوراً",
+      "gloss": "Kesreli",
+      "analysis": {
+        "kind": "İsm-i mef‘ûl",
+        "fields": {
+          "root": "ك س ر",
+          "derivedFrom": "كَسَرَ يَكْسِرُ",
+          "pattern": "مَفْعُول",
+          "role": "يَكُونَ fiilinin haberi",
+          "irab": "Fetha ile mansub"
+        }
+      }
+    },
+    {
+      "id": "p9_t14",
+      "arabic": "فِي",
+      "printedArabic": "في",
+      "gloss": "-de",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "“-de/-da”"
+        }
+      }
+    },
+    {
+      "id": "p9_t15",
+      "arabic": "الْمَاضِي",
+      "printedArabic": "الماضي",
+      "gloss": "Mâzi",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "م ض ي",
+          "morphology": "Fiil-i mâzi adı",
+          "role": "فِي harfiyle mecrûr",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p9_t16",
+      "arabic": "وَمَفْتُوحًا",
+      "printedArabic": "ومفتوحاً",
+      "gloss": "Ve fethalı",
+      "analysis": {
+        "kind": "Bağlaç + ism-i mef‘ûl",
+        "fields": {
+          "root": "ف ت ح",
+          "derivedFrom": "فَتَحَ يَفْتَحُ",
+          "pattern": "مَفْعُول",
+          "role": "Önceki مَكْسُورًا haberine atıf",
+          "irab": "Fetha ile mansub"
+        }
+      }
+    },
+    {
+      "id": "p9_t17",
+      "arabic": "فِي",
+      "printedArabic": "في",
+      "gloss": "-de",
+      "analysis": {
+        "kind": "Harf-i cer",
+        "fields": {
+          "meaning": "“-de/-da”"
+        }
+      }
+    },
+    {
+      "id": "p9_t18",
+      "arabic": "الْمُضَارِعِ",
+      "printedArabic": "المضارع",
+      "punctuation": "،",
+      "gloss": "Muzâri",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ض ر ع",
+          "morphology": "Fiil-i muzâri adı",
+          "role": "فِي harfiyle mecrûr",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    }
+  ]
+}

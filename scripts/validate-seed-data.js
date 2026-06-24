@@ -4,6 +4,38 @@ const path = require('path');
 const dataDir = path.join(__dirname, '..', 'assets', 'data');
 const catalogPath = path.join(dataDir, 'catalog.json');
 const verbsDir = path.join(dataDir, 'verbs');
+const validIbareFields = new Set([
+  'structure',
+  'wordForm',
+  'root',
+  'singular',
+  'derivedFrom',
+  'baseForm',
+  'bab',
+  'pattern',
+  'morphology',
+  'conjugation',
+  'person',
+  'hiddenPronoun',
+  'pronoun',
+  'referent',
+  'transitivity',
+  'presentForm',
+  'middleRadical',
+  'numberType',
+  'tamyiz',
+  'meaning',
+  'turkish',
+  'term',
+  'effect',
+  'syntax',
+  'role',
+  'construction',
+  'noun',
+  'nasb',
+  'irab',
+  'ellipsis',
+]);
 const validCategories = new Set([
   'mazi',
   'muzari',
@@ -74,6 +106,187 @@ function validateVerbManifest(verbs) {
     assertString(verb.title, `verbs[${index}].title`);
     assertString(verb.assetPath, `verbs[${index}].assetPath`);
     assertString(verb.group, `verbs[${index}].group`);
+  });
+}
+
+function validateIbareManifest(books) {
+  assert(Array.isArray(books), 'ibareBooks must be an array');
+  books.forEach((book, index) => {
+    assertString(book.id, `ibareBooks[${index}].id`);
+    assertString(book.title, `ibareBooks[${index}].title`);
+    assertString(book.assetPath, `ibareBooks[${index}].assetPath`);
+  });
+}
+
+function validateIbareBook(bookPath, expectedId) {
+  const book = JSON.parse(fs.readFileSync(bookPath, 'utf8'));
+  assert(book.schemaVersion === 1, `${expectedId}.schemaVersion must be 1`);
+  assert(book.id === expectedId, `${expectedId}.id must match manifest`);
+  assertString(book.title, `${expectedId}.title`);
+  assertString(book.shortTitle, `${expectedId}.shortTitle`);
+  assertString(book.description, `${expectedId}.description`);
+  const sections = book.sections;
+  assert(Array.isArray(sections), `${expectedId}.sections must be an array`);
+  assert(sections.length > 0, `${expectedId}.sections must not be empty`);
+
+  const sectionIds = new Set();
+  const passageEntries = [];
+  sections.forEach((section, sectionIndex) => {
+    const sectionPrefix = `${expectedId}.sections[${sectionIndex}]`;
+    assertString(section.id, `${sectionPrefix}.id`);
+    assert(!sectionIds.has(section.id), `${sectionPrefix}.id must be unique`);
+    sectionIds.add(section.id);
+    assert(Number.isInteger(section.order), `${sectionPrefix}.order must be an integer`);
+    assertString(section.title, `${sectionPrefix}.title`);
+    if (section.description != null) {
+      assertString(section.description, `${sectionPrefix}.description`);
+    }
+    assert(Array.isArray(section.passages), `${sectionPrefix}.passages must be an array`);
+    assert(section.passages.length > 0, `${sectionPrefix}.passages must not be empty`);
+    section.passages.forEach((passagePath, passageIndex) => {
+      passageEntries.push({
+        passagePath,
+        prefix: `${sectionPrefix}.passages[${passageIndex}]`,
+      });
+    });
+  });
+
+  const passageIds = new Set();
+  passageEntries.forEach(({ passagePath, prefix: pathPrefix }) => {
+    const absolutePassagePath = path.join(__dirname, '..', passagePath);
+    assert(
+      fs.existsSync(absolutePassagePath),
+      `${pathPrefix} path does not exist: ${passagePath}`,
+    );
+    const passage = JSON.parse(fs.readFileSync(absolutePassagePath, 'utf8'));
+    const prefix = `${pathPrefix} (${passagePath})`;
+    assertString(passage.id, `${prefix}.id`);
+    assert(!passageIds.has(passage.id), `${prefix}.id must be unique`);
+    passageIds.add(passage.id);
+    assert(Number.isInteger(passage.order), `${prefix}.order must be an integer`);
+    if (passage.title != null) assertString(passage.title, `${prefix}.title`);
+    if (passage.subtitle != null) assertString(passage.subtitle, `${prefix}.subtitle`);
+    if (passage.orijinal_metin != null) assertString(passage.orijinal_metin, `${prefix}.orijinal_metin`);
+    assertString(passage.translation, `${prefix}.translation`);
+    assert(Array.isArray(passage.tokens), `${prefix}.tokens must be an array`);
+    assert(passage.tokens.length > 0, `${prefix}.tokens must not be empty`);
+
+    const tokenIds = new Set();
+    passage.tokens.forEach((token, tokenIndex) => {
+      const tokenPrefix = `${prefix}.tokens[${tokenIndex}]`;
+      assertString(token.id, `${tokenPrefix}.id`);
+      assert(!tokenIds.has(token.id), `${tokenPrefix}.id must be unique`);
+      tokenIds.add(token.id);
+      assertString(token.arabic, `${tokenPrefix}.arabic`);
+      assertString(token.gloss, `${tokenPrefix}.gloss`);
+      if (token.printedArabic != null) {
+        assertString(token.printedArabic, `${tokenPrefix}.printedArabic`);
+      }
+      if (token.punctuation != null) {
+        assert(
+          typeof token.punctuation === 'string',
+          `${tokenPrefix}.punctuation must be a string`,
+        );
+      }
+      assert(
+        token.analysis && typeof token.analysis === 'object',
+        `${tokenPrefix}.analysis is required`,
+      );
+      assertString(token.analysis.kind, `${tokenPrefix}.analysis.kind`);
+
+      const fields = token.analysis.fields ?? {};
+      assert(
+        fields && typeof fields === 'object' && !Array.isArray(fields),
+        `${tokenPrefix}.analysis.fields must be an object`,
+      );
+      Object.entries(fields).forEach(([key, value]) => {
+        assert(
+          validIbareFields.has(key),
+          `${tokenPrefix}.analysis.fields.${key} is invalid`,
+        );
+        assertString(value, `${tokenPrefix}.analysis.fields.${key}`);
+      });
+
+      const details = token.analysis.details ?? [];
+      assert(Array.isArray(details), `${tokenPrefix}.analysis.details must be an array`);
+      details.forEach((detail, detailIndex) => {
+        assertString(
+          detail.label,
+          `${tokenPrefix}.analysis.details[${detailIndex}].label`,
+        );
+        assertString(
+          detail.value,
+          `${tokenPrefix}.analysis.details[${detailIndex}].value`,
+        );
+      });
+    });
+
+    if (passage.orijinal_metin != null) {
+      const printedText = passage.tokens
+        .map((token) => `${token.printedArabic ?? token.arabic}${token.punctuation ?? ''}`)
+        .join(' ');
+      assert(
+        passage.orijinal_metin === printedText,
+        `${prefix}.orijinal_metin must match printed token text`,
+      );
+    }
+
+    const phrases = passage.phrases ?? [];
+    assert(Array.isArray(phrases), `${prefix}.phrases must be an array`);
+    const phraseIds = new Set();
+    phrases.forEach((phrase, phraseIndex) => {
+      const phrasePrefix = `${prefix}.phrases[${phraseIndex}]`;
+      assertString(phrase.id, `${phrasePrefix}.id`);
+      assert(!phraseIds.has(phrase.id), `${phrasePrefix}.id must be unique`);
+      phraseIds.add(phrase.id);
+      assert(
+        Array.isArray(phrase.tokenIds) && phrase.tokenIds.length > 0,
+        `${phrasePrefix}.tokenIds must be a non-empty array`,
+      );
+      phrase.tokenIds.forEach((tokenId) => {
+        assertString(tokenId, `${phrasePrefix}.tokenIds[]`);
+        assert(
+          tokenIds.has(tokenId),
+          `${phrasePrefix}.tokenIds contains unknown token: ${tokenId}`,
+        );
+      });
+      assertString(phrase.type, `${phrasePrefix}.type`);
+      assertString(phrase.meaning, `${phrasePrefix}.meaning`);
+      if (phrase.parentId != null) {
+        assertString(phrase.parentId, `${phrasePrefix}.parentId`);
+      }
+      if (phrase.explanation != null) {
+        assertString(phrase.explanation, `${phrasePrefix}.explanation`);
+      }
+    });
+    phrases.forEach((phrase, phraseIndex) => {
+      if (phrase.parentId == null) return;
+      const phrasePrefix = `${prefix}.phrases[${phraseIndex}]`;
+      assert(
+        phraseIds.has(phrase.parentId) && phrase.parentId !== phrase.id,
+        `${phrasePrefix}.parentId is invalid`,
+      );
+      const parent = phrases.find((item) => item.id === phrase.parentId);
+      assert(
+        phrase.tokenIds.every((tokenId) => parent.tokenIds.includes(tokenId)),
+        `${phrasePrefix}.parentId must contain all child tokens`,
+      );
+      assert(
+        parent.tokenIds.length > phrase.tokenIds.length,
+        `${phrasePrefix}.parentId must be a larger phrase`,
+      );
+      assert(
+        parent.meaning.trim() !== phrase.meaning.trim(),
+        `${phrasePrefix}.parentId must have a distinct meaning`,
+      );
+      const visited = new Set([phrase.id]);
+      let parentId = phrase.parentId;
+      while (parentId != null) {
+        assert(!visited.has(parentId), `${phrasePrefix} contains a parent cycle`);
+        visited.add(parentId);
+        parentId = phrases.find((item) => item.id === parentId).parentId;
+      }
+    });
   });
 }
 
@@ -243,6 +456,7 @@ function main() {
   validateLessons(catalog.lessons);
   validatePronouns(catalog.pronouns);
   validateVerbManifest(catalog.verbs);
+  validateIbareManifest(catalog.ibareBooks ?? []);
 
   const knownVerbIds = new Set(catalog.verbs.map((verb) => verb.id));
   assert(
@@ -261,6 +475,15 @@ function main() {
   catalog.verbs.forEach((verb, index) => {
     const assetPath = path.join(__dirname, '..', verb.assetPath);
     assert(fs.existsSync(assetPath), `verbs[${index}].assetPath does not exist`);
+  });
+
+  (catalog.ibareBooks ?? []).forEach((book, index) => {
+    const assetPath = path.join(__dirname, '..', book.assetPath);
+    assert(
+      fs.existsSync(assetPath),
+      `ibareBooks[${index}].assetPath does not exist`,
+    );
+    validateIbareBook(assetPath, book.id);
   });
 
   console.log('Seed data valid');

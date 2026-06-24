@@ -1,0 +1,121 @@
+{
+  "id": "passage_47",
+  "order": 47,
+  "orijinal_metin": "ملحقات الرباعي المزيد وخمسة منها لملحق تَدَحْرَجَ",
+  "translation": "Rubâî mezîd mülhakları: beş bab تَدَحْرَجَ mülhakı içindir.",
+  "tokens": [
+    {
+      "id": "p47_t1",
+      "arabic": "مُلْحَقَاتُ",
+      "printedArabic": "ملحقات",
+      "gloss": "Mülhakları",
+      "analysis": {
+        "kind": "İsim",
+        "fields": {
+          "root": "ل ح ق",
+          "derivedFrom": "أَلْحَقَ يُلْحِقُ",
+          "morphology": "İsm-i mef‘ûl çoğulu",
+          "wordForm": "Cem-i müennes sâlim, muzaf",
+          "singular": "مُلْحَقٌ",
+          "role": "Mübtedâ",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p47_t2",
+      "arabic": "الرُّبَاعِيِّ",
+      "printedArabic": "الرباعي",
+      "gloss": "Rubâînin",
+      "analysis": {
+        "kind": "Nisbet ismi",
+        "fields": {
+          "root": "ر ب ع",
+          "wordForm": "Nisbet ismi, müfred, marife",
+          "term": "Dört harfli",
+          "role": "Muzafun ileyh",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p47_t3",
+      "arabic": "الْمَزِيدِ",
+      "printedArabic": "المزيد",
+      "gloss": "Mezîd",
+      "analysis": {
+        "kind": "Sıfat",
+        "fields": {
+          "root": "ز ي د",
+          "derivedFrom": "زَادَ يَزِيدُ",
+          "morphology": "İsm-i mef‘ûl",
+          "wordForm": "Müfred, marife",
+          "term": "Ziyadeli",
+          "role": "الرُّبَاعِيِّ kelimesinin sıfatı",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p47_t4",
+      "arabic": "وَخَمْسَةٌ",
+      "printedArabic": "وخمسة",
+      "gloss": "Ve beş",
+      "analysis": {
+        "kind": "Bağlaç + sayı",
+        "fields": {
+          "wordForm": "Müfred, müennes",
+          "numberType": "Asıl sayı (beş)",
+          "role": "Yeni cümlenin mübtedâsı",
+          "irab": "Zamme ile merfû"
+        }
+      }
+    },
+    {
+      "id": "p47_t5",
+      "arabic": "مِنْهَا",
+      "printedArabic": "منها",
+      "gloss": "Onlardan",
+      "analysis": {
+        "kind": "Harf + zamir",
+        "fields": {
+          "pronoun": "هَا: 3. şahıs, müennes, tekil",
+          "referent": "Mülhak bablar (مُلْحَقَات)",
+          "irab": "Zamir mahallen mecrûrdur."
+        }
+      }
+    },
+    {
+      "id": "p47_t6",
+      "arabic": "لِمُلْحَقِ",
+      "printedArabic": "لملحق",
+      "gloss": "Mülhakı içindir",
+      "analysis": {
+        "kind": "Harf-i cer + isim",
+        "fields": {
+          "root": "ل ح ق",
+          "derivedFrom": "أَلْحَقَ يُلْحِقُ",
+          "morphology": "İsm-i mef‘ûl, muzaf",
+          "role": "لِ harf-i cerriyle mecrûr",
+          "irab": "Kesra ile mecrûr"
+        }
+      }
+    },
+    {
+      "id": "p47_t7",
+      "arabic": "تَدَحْرَجَ",
+      "gloss": "Tedahrece",
+      "analysis": {
+        "kind": "Fiil örneği",
+        "fields": {
+          "root": "د ح ر ج",
+          "bab": "Rubâî mezîd bir harf",
+          "pattern": "تَفَعْلَلَ",
+          "conjugation": "Fiil-i mâzi, malûm",
+          "person": "3. şahıs, müzekker, tekil",
+          "hiddenPronoun": "هُوَ"
+        }
+      }
+    }
+  ]
+}

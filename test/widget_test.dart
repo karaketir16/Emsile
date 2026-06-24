@@ -416,29 +416,29 @@ void main() {
 
     expect(find.text('Giriş'), findsOneWidget);
     expect(find.text('Birinci Bab'), findsOneWidget);
-    expect(find.text('Harekeler'), findsNWidgets(binaBook.passages.length));
+    expect(find.text('İbare 1'), findsOneWidget);
 
-    await tester.tap(find.byKey(const ValueKey('harakat_passage_1')));
-    await tester.pumpAndSettle();
-
-    expect(find.text('بِسْمِ'), findsOneWidget);
-
-    await tester.tap(find.byKey(const ValueKey('overview_p1_t1')));
-    await tester.pumpAndSettle();
-
-    expect(find.text('İsim'), findsOneWidget);
-    expect(find.text('İsim ile, adıyla'), findsOneWidget);
-
-    await tester.tap(find.byKey(const ValueKey('overview_p1_t1')));
-    await tester.pumpAndSettle();
-
-    expect(find.text('İsim ile, adıyla'), findsNothing);
-
-    await tester.tap(find.byKey(const ValueKey('inspect_passage_1')));
+    await tester.tap(find.text('İbare 1'));
     await tester.pumpAndSettle();
 
     expect(find.text('Kırık Mana'), findsOneWidget);
     expect(find.text('Toparlanmış Mana'), findsOneWidget);
+
+    await tester.tap(find.text('Harekeleri göster'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('بِسْمِ'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('detail_p1_t1')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Harf-i cer + isim'), findsOneWidget);
+    expect(find.text('İsim ile, adıyla'), findsOneWidget);
+
+    await tester.tap(find.byKey(const ValueKey('detail_p1_t1')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('İsim ile, adıyla'), findsNothing);
   });
 
   testWidgets('lesson detail renders muhtelife table entries', (

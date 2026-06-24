@@ -58,276 +58,80 @@ class IbareBookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final passages = book.passages;
+    final items = <({IbareSection? section, IbarePassage? passage, int index})>[
+      for (final section in book.sections) ...[
+        (section: section, passage: null, index: -1),
+        for (final passage in section.passages)
+          (section: null, passage: passage, index: passages.indexOf(passage)),
+      ],
+    ];
+
     return _StudyScaffold(
       title: book.shortTitle,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          InfoPanel(title: book.title, body: book.description),
-          const SizedBox(height: 18),
-          for (final section in book.sections) ...[
-            if (section.title.isNotEmpty) ...[
-              Text(
-                section.title,
-                style: Theme.of(context).textTheme.titleLarge,
+      scrollable: false,
+      child: ListView.builder(
+        itemCount: items.length + 1,
+        itemBuilder: (context, itemIndex) {
+          if (itemIndex == 0) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 14),
+              child: InfoPanel(title: book.title, body: book.description),
+            );
+          }
+
+          final item = items[itemIndex - 1];
+          if (item.section case final section?) {
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(0, 12, 0, 6),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (section.title.isNotEmpty)
+                    Text(
+                      section.title,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  if (section.description case final description?)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 3),
+                      child: Text(description),
+                    ),
+                ],
               ),
-              if (section.description case final description?)
-                Padding(
-                  padding: const EdgeInsets.only(top: 3),
-                  child: Text(description),
+            );
+          }
+
+          final passage = item.passage!;
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Card(
+              child: ListTile(
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
                 ),
-              const SizedBox(height: 10),
-            ],
-            for (final passage in section.passages) ...[
-              _PassageOverviewCard(
-                passage: passage,
-                onOpen: () => Navigator.of(context).push(
+                leading: CircleAvatar(child: Text('${item.index + 1}')),
+                title: Text(
+                  passage.title ?? 'İbare ${item.index + 1}',
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
+                subtitle: passage.subtitle == null
+                    ? null
+                    : Text(passage.subtitle!),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(
                   MaterialPageRoute<void>(
                     builder: (_) => IbarePassageScreen(
                       book: book,
-                      initialIndex: book.passages.indexOf(passage),
+                      initialIndex: item.index,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
-            ],
-            const SizedBox(height: 10),
-          ],
-        ],
-      ),
-    );
-  }
-}
-
-class _PassageOverviewCard extends StatefulWidget {
-  const _PassageOverviewCard({required this.passage, required this.onOpen});
-
-  final IbarePassage passage;
-  final VoidCallback onOpen;
-
-  @override
-  State<_PassageOverviewCard> createState() => _PassageOverviewCardState();
-}
-
-class _PassageOverviewCardState extends State<_PassageOverviewCard> {
-  int? _selectedToken;
-  bool _showOptionalHarakat = false;
-  bool _showPhrase = false;
-  int _phraseIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final selected = _selectedToken == null
-        ? null
-        : widget.passage.tokens[_selectedToken!];
-    final phrases = selected == null
-        ? const <IbarePhrase>[]
-        : widget.passage.phrasesForToken(selected.id);
-    final activePhrase = _showPhrase && phrases.isNotEmpty
-        ? phrases[_phraseIndex]
-        : null;
-
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(14, 14, 66, 14),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (widget.passage.title case final title?)
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              title,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleMedium,
-                            ),
-                            if (widget.passage.subtitle
-                                case final subtitle?) ...[
-                              const SizedBox(height: 2),
-                              Text(
-                                subtitle,
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.bodySmall,
-                              ),
-                            ],
-                          ],
-                        ),
-                      )
-                    else
-                      const Spacer(),
-                    InkWell(
-                      borderRadius: BorderRadius.circular(8),
-                      onTap: () => setState(
-                        () => _showOptionalHarakat = !_showOptionalHarakat,
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text('Harekeler'),
-                          Checkbox(
-                            key: ValueKey('harakat_${widget.passage.id}'),
-                            value: _showOptionalHarakat,
-                            onChanged: (value) => setState(
-                              () => _showOptionalHarakat = value ?? false,
-                            ),
-                            visualDensity: VisualDensity.compact,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                SizedBox(
-                  width: double.infinity,
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: Wrap(
-                      alignment: WrapAlignment.start,
-                      spacing: 4,
-                      runSpacing: 6,
-                      children: [
-                        for (
-                          var index = 0;
-                          index < widget.passage.tokens.length;
-                          index++
-                        )
-                          InkWell(
-                            key: ValueKey(
-                              'overview_${widget.passage.tokens[index].id}',
-                            ),
-                            borderRadius: BorderRadius.circular(7),
-                            onTap: () => setState(() {
-                              _selectedToken = _selectedToken == index
-                                  ? null
-                                  : index;
-                              _showPhrase = false;
-                              _phraseIndex = 0;
-                            }),
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 150),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 5,
-                                vertical: 2,
-                              ),
-                              decoration: BoxDecoration(
-                                color: _selectedToken == index
-                                    ? scheme.primaryContainer
-                                    : activePhrase?.tokenIds.contains(
-                                            widget.passage.tokens[index].id,
-                                          ) ??
-                                          false
-                                    ? scheme.tertiaryContainer
-                                    : Colors.transparent,
-                                borderRadius: BorderRadius.circular(7),
-                              ),
-                              child: Text(
-                                widget.passage.tokens[index].displayArabic(
-                                  _showOptionalHarakat,
-                                ),
-                                style: arabicTextStyle(23),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                ),
-                if (selected != null) ...[
-                  const SizedBox(height: 10),
-                  _TokenAnalysisCard(
-                    token: selected,
-                    showOptionalHarakat: _showOptionalHarakat,
-                  ),
-                  if (phrases.isNotEmpty) ...[
-                    const SizedBox(height: 8),
-                    OutlinedButton.icon(
-                      key: ValueKey('phrase_toggle_${widget.passage.id}'),
-                      onPressed: () =>
-                          setState(() => _showPhrase = !_showPhrase),
-                      icon: Icon(
-                        _showPhrase
-                            ? Icons.expand_less
-                            : Icons.account_tree_outlined,
-                      ),
-                      label: Text(
-                        _showPhrase
-                            ? 'Kelime grubunu gizle'
-                            : 'Kelime grubunu göster (${phrases.length})',
-                      ),
-                    ),
-                    if (_showPhrase) ...[
-                      const SizedBox(height: 8),
-                      _PhraseCard(
-                        phrase: phrases[_phraseIndex],
-                        passage: widget.passage,
-                        showOptionalHarakat: _showOptionalHarakat,
-                        index: _phraseIndex,
-                        count: phrases.length,
-                        onPrevious: _phraseIndex > 0
-                            ? () => setState(() => _phraseIndex--)
-                            : null,
-                        onNext: _phraseIndex < phrases.length - 1
-                            ? () => setState(() => _phraseIndex++)
-                            : null,
-                      ),
-                    ],
-                  ],
-                ],
-              ],
             ),
-          ),
-          Positioned(
-            top: 0,
-            bottom: 0,
-            right: 0,
-            width: 52,
-            child: Semantics(
-              button: true,
-              label: '${widget.passage.title ?? 'İbare'} ayrıntısını incele',
-              child: Material(
-                color: scheme.secondaryContainer,
-                child: InkWell(
-                  key: ValueKey('inspect_${widget.passage.id}'),
-                  onTap: widget.onOpen,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.chevron_right,
-                        color: scheme.onSecondaryContainer,
-                      ),
-                      const SizedBox(height: 6),
-                      RotatedBox(
-                        quarterTurns: 3,
-                        child: Text(
-                          'İncele',
-                          style: TextStyle(
-                            color: scheme.onSecondaryContainer,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
@@ -832,11 +636,13 @@ class _StudyScaffold extends StatelessWidget {
     required this.title,
     required this.child,
     this.trailing,
+    this.scrollable = true,
   });
 
   final String title;
   final Widget child;
   final Widget? trailing;
+  final bool scrollable;
 
   @override
   Widget build(BuildContext context) {
@@ -850,6 +656,7 @@ class _StudyScaffold extends StatelessWidget {
             tooltip: 'Geri',
           ),
           trailing: trailing,
+          scrollable: scrollable,
           child: child,
         ),
       ),
